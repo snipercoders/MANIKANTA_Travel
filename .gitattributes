@@ -1,0 +1,2 @@
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+public/videos/Hero_section_video.mp4 filter=lfs diff=lfs merge=lfs -text
