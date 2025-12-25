@@ -34,7 +34,7 @@ export default function PageLoader() {
 
       {/* Loading Text */}
       <div className="flex items-center space-x-2">
-        <h2 className="text-2xl font-semibold text-gray-800">Loading</h2>
+        <h2 className="text-2xl font-semibold text-gray-800">Loading wait</h2>
         <div className="flex space-x-1">
           <span className="animate-bounce delay-0">.</span>
           <span className="animate-bounce delay-100">.</span>
