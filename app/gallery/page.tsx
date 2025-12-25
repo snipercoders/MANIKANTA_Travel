@@ -509,19 +509,6 @@ const handleDeleteItem = async (item: GalleryItem) => {
         />
       )}
 
-      {/* Loading Overlay */}
-      {loading && (
-        <div className="fixed inset-0 bg-white/90 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="text-center">
-            <div className="relative">
-              <Loader2 className="h-16 w-16 animate-spin text-blue-600 mx-auto" />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-xl"></div>
-            </div>
-            <p className="text-gray-700 text-lg mt-6 font-medium">Loading your gallery...</p>
-            <p className="text-gray-500 text-sm mt-2">Curating beautiful memories</p>
-          </div>
-        </div>
-      )}
 
       {/* Empty State */}
       {!loading && filteredItems.length === 0 && (

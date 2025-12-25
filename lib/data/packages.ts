@@ -368,7 +368,7 @@ export const tourPackages: TourPackage[] = [
     duration: 5,
     pricePerPerson: 22999,
     discountPrice: 19999,
-    category: 'Nature',
+    category: 'Adventure',
     location: 'Munnar, Kerala',
     rating: 4.7,
     reviewCount: 167,

@@ -1,5 +1,3 @@
-// File Path: components/shared/ReviewCard.tsx
-
 'use client';
 
 import { Review } from '@/lib/types/review';
@@ -42,17 +40,17 @@ export default function ReviewCard({ review }: ReviewCardProps) {
         <div className="flex items-center space-x-3">
           <UserCircleIcon className="h-12 w-12 text-gray-400" />
           <div>
-            <h3 className="font-semibold text-gray-900">{review.name}</h3>
-            {review.tripType && (
-              <span className="text-sm text-gray-500">{review.tripType}</span>
-            )}
+            {/* FIXED: Changed from review.name to review.author */}
+            <h3 className="font-semibold text-gray-900">{review.author}</h3>
+            {/* FIXED: Show travelerType instead of tripType */}
+            <span className="text-sm text-gray-500">{review.travelerType}</span>
           </div>
         </div>
         {renderStars(review.rating)}
       </div>
 
       {/* Comment */}
-      <p className="text-gray-700 mb-4 line-clamp-4">{review.comment}</p>
+      <p className="text-gray-700 mb-4 line-clamp-4">{review.content}</p>
 
       {/* Images */}
       {review.images && review.images.length > 0 && (

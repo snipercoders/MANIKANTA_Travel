@@ -1,45 +1,4 @@
-// // components/contact/ContactHero.tsx
-
-// "use client";
-
-// export default function ContactHero() {
-//   return (
-//     <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 py-16 lg:py-24">
-//       <div className="absolute inset-0">
-//         <div className="absolute inset-0 bg-black opacity-10"></div>
-//         <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-32 -translate-y-32"></div>
-//         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full transform -translate-x-48 translate-y-48"></div>
-//       </div>
-      
-//       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="text-center">
-//           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-//             Get in Touch with Us
-//           </h1>
-//           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-//             We're here to help you plan your perfect journey. Contact us for bookings, 
-//             inquiries, or travel assistance. Our team is ready to assist you 24/7.
-//           </p>
-//           <div className="mt-8 flex justify-center space-x-2">
-//             <div className="w-32 h-1.5 bg-white rounded-full"></div>
-//             <div className="w-8 h-1.5 bg-cyan-300 rounded-full"></div>
-//             <div className="w-32 h-1.5 bg-white rounded-full"></div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
+// components/contact/ContactHero.tsx
 "use client";
 
 export default function ContactHero() {

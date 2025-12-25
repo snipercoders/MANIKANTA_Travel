@@ -1,7 +1,7 @@
 // lib/database/reviews.ts
 
 import { Review } from '@/lib/types/review';
-import { connectToDatabase } from './mongodb';
+import { connectToDatabase } from '@/lib/database/mongodb';
 
 const COLLECTION_NAME = 'reviews';
 

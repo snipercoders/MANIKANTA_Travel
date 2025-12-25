@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote, ThumbsUp, X, Calendar, Users, Upload, Check, MessageSquare } from 'lucide-react';
-import { reviewService } from '@/lib/database/reviews';
+import { reviewService } from '@/lib/services/reviewService';
 import { tourPackages } from '@/lib/data/packages';
 import { Review } from '@/lib/types/review';
 
@@ -42,54 +42,65 @@ export default function TrustpilotWidget() {
     setCurrentSlide((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
-  const handleSubmitReview = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
 
-    try {
-      const selectedPackage = tourPackages.find(p => p.id === parseInt(formData.tourPackageId));
-      
-      const newReview = await reviewService.addReview({
-        author: formData.author,
-        email: formData.email,
-        rating: formData.rating,
-        title: formData.title,
-        content: formData.content,
-        tourPackageId: selectedPackage ? parseInt(formData.tourPackageId) : undefined,
-        tourPackageName: selectedPackage?.name,
-        location: selectedPackage?.location,
-        travelerType: formData.travelerType,
-        monthOfTravel: formData.monthOfTravel,
-        tripDuration: formData.tripDuration,
-      });
 
-      // Update the reviews list with the new review
-      setReviews(prev => [newReview, ...prev].slice(0, 6));
-      
-      setSubmitSuccess(true);
-      setFormData({
-        author: '',
-        email: '',
-        rating: 5,
-        title: '',
-        content: '',
-        tourPackageId: '',
-        travelerType: 'Family',
-        monthOfTravel: '',
-        tripDuration: '',
-      });
+// Update the handleSubmitReview function in TrustpilotWidget.tsx
+const handleSubmitReview = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-      setTimeout(() => {
-        setSubmitSuccess(false);
-        setShowReviewForm(false);
-      }, 3000);
-    } catch (error) {
-      console.error('Error submitting review:', error);
-      alert('Error submitting review. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  try {
+    const selectedPackage = tourPackages.find(p => p.id === parseInt(formData.tourPackageId));
+    
+    const newReview = await reviewService.addReview({
+      author: formData.author,
+      email: formData.email,
+      rating: formData.rating,
+      title: formData.title,
+      content: formData.content,
+      tourPackageId: selectedPackage ? parseInt(formData.tourPackageId) : undefined,
+      tourPackageName: selectedPackage?.name,
+      location: selectedPackage?.location,
+      travelerType: formData.travelerType,
+      monthOfTravel: formData.monthOfTravel,
+      tripDuration: formData.tripDuration,
+      // REMOVE THESE LINES - the service will generate them:
+      // date: new Date().toISOString().split('T')[0], // Today's date as string
+      // verified: false, // New reviews start as unverified
+      // helpful: 0, // Start with 0 helpful votes
+      // createdAt: new Date(),
+      // updatedAt: new Date(),
+    });
+
+    // Update the reviews list with the new review
+    setReviews(prev => [newReview, ...prev].slice(0, 6));
+    
+    setSubmitSuccess(true);
+    setFormData({
+      author: '',
+      email: '',
+      rating: 5,
+      title: '',
+      content: '',
+      tourPackageId: '',
+      travelerType: 'Family',
+      monthOfTravel: '',
+      tripDuration: '',
+    });
+
+    setTimeout(() => {
+      setSubmitSuccess(false);
+      setShowReviewForm(false);
+    }, 3000);
+  } catch (error) {
+    console.error('Error submitting review:', error);
+    alert('Error submitting review. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
 
   const handleMarkHelpful = async (reviewId: string) => {
     if (helpfulClicked.has(reviewId)) {

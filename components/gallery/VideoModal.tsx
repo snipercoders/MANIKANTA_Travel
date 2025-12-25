@@ -1,9 +1,11 @@
-\// components/gallery/VideoModal.tsx
+// components/gallery/VideoModal.tsx
 'use client';
 
 import { useEffect } from 'react';
 import { GalleryItem } from '@/lib/types/gallery';
-import { XMarkIcon, Trash2, MapPinIcon, CalendarIcon, TagIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, MapPinIcon, CalendarIcon, TagIcon } from '@heroicons/react/24/outline';
+import { Trash2 } from 'lucide-react';
+
 
 interface VideoModalProps {
   video: GalleryItem;

@@ -5,11 +5,12 @@ import { reviewService } from '@/lib/database/reviews';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const reviewId = params.id;
-    const updatedReview = await reviewService.markHelpful(reviewId);
+    // Await params in Next.js 15+
+    const { id } = await params;
+    const updatedReview = await reviewService.markHelpful(id);
     
     if (!updatedReview) {
       return NextResponse.json(
