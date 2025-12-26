@@ -1,6 +1,6 @@
 
-// // app/transportation/buses/page.tsx
 
+// // File Path: app/transportation/buses/page.tsx
 // 'use client';
 // import React, { useState, useEffect, useMemo } from 'react';
 // import { 
@@ -16,12 +16,12 @@
 //   UserGroupIcon,
 //   ShieldCheckIcon,
 //   ClockIcon,
-//   CurrencyDollarIcon, // Changed from CurrencyRupeeIcon
-//   Cog6ToothIcon, // Changed from AdjustmentsHorizontalIcon
+//   CurrencyDollarIcon,
+//   Cog6ToothIcon,
 //   ArrowsUpDownIcon,
 //   CheckCircleIcon,
 //   PhoneIcon,
-//   ChatBubbleLeftRightIcon, // Changed from ChatBubbleBottomCenterTextIcon
+//   ChatBubbleLeftRightIcon,
 //   CalendarIcon,
 //   WifiIcon,
 //   TvIcon,
@@ -32,6 +32,7 @@
 // } from '@heroicons/react/24/outline';
 // import { StarIcon as StarIconSolid, BoltIcon as BoltIconSolid } from '@heroicons/react/24/solid';
 // import Image from 'next/image';
+// import { calculateDistance } from '@/lib/utils/distanceCalculator';
 
 // // Bus categories and types
 // const busTypes = [
@@ -256,12 +257,12 @@
 
 // // Popular group routes
 // const groupRoutes = [
-//   { type: 'Pilgrimage', route: 'Hyderabad → Tirupati', groups: '25-50 people', price: '₹65,000 - ₹1,20,000' },
-//   { type: 'School Trip', route: 'Bangalore → Mysore', groups: '40-60 students', price: '₹45,000 - ₹85,000' },
-//   { type: 'Corporate', route: 'Mumbai → Lonavala', groups: '30-45 employees', price: '₹55,000 - ₹95,000' },
-//   { type: 'Wedding', route: 'Delhi → Jaipur', groups: '50-80 guests', price: '₹85,000 - ₹1,50,000' },
-//   { type: 'Tour', route: 'Chennai → Pondicherry', groups: '20-35 tourists', price: '₹35,000 - ₹65,000' },
-//   { type: 'Family', route: 'Kolkata → Digha', groups: '15-25 members', price: '₹28,000 - ₹52,000' },
+//   { type: 'Pilgrimage', route: 'Hyderabad → Tirupati', from: 'Hyderabad', to: 'Tirupati', groups: '25-50 people', price: '₹65,000 - ₹1,20,000' },
+//   { type: 'School Trip', route: 'Bangalore → Mysore', from: 'Bangalore', to: 'Mysore', groups: '40-60 students', price: '₹45,000 - ₹85,000' },
+//   { type: 'Corporate', route: 'Mumbai → Lonavala', from: 'Mumbai', to: 'Lonavala', groups: '30-45 employees', price: '₹55,000 - ₹95,000' },
+//   { type: 'Wedding', route: 'Delhi → Jaipur', from: 'Delhi', to: 'Jaipur', groups: '50-80 guests', price: '₹85,000 - ₹1,50,000' },
+//   { type: 'Tour', route: 'Chennai → Pondicherry', from: 'Chennai', to: 'Pondicherry', groups: '20-35 tourists', price: '₹35,000 - ₹65,000' },
+//   { type: 'Family', route: 'Kolkata → Digha', from: 'Kolkata', to: 'Digha', groups: '15-25 members', price: '₹28,000 - ₹52,000' },
 // ];
 
 // export default function BusesPage() {
@@ -269,6 +270,8 @@
 //   const [to, setTo] = useState('');
 //   const [km, setKm] = useState('');
 //   const [distance, setDistance] = useState<number | null>(null);
+//   const [duration, setDuration] = useState<string>('');
+//   const [routeDetails, setRouteDetails] = useState<string[]>([]);
 //   const [loading, setLoading] = useState(false);
 //   const [currentPage, setCurrentPage] = useState(1);
 //   const [selectedType, setSelectedType] = useState<string | null>(null);
@@ -281,6 +284,7 @@
 //   const [showGroupBooking, setShowGroupBooking] = useState(false);
 //   const [passengerCount, setPassengerCount] = useState(40);
 //   const [hoveredVehicle, setHoveredVehicle] = useState<number | null>(null);
+//   const [isCalculating, setIsCalculating] = useState(false);
 
 //   const ITEMS_PER_PAGE = 6;
 //   const MINIMUM_KM_PER_DAY = 250;
@@ -304,24 +308,44 @@
 //     return gradients[color] || 'from-green-500 to-green-700';
 //   };
 
-//   useEffect(() => {
-//     if (!from || !to || from.length < 2 || to.length < 2) {
-//       setDistance(null);
+//   const calculateDistanceWithAPI = async () => {
+//     if (!from || !to || from.trim() === '' || to.trim() === '') {
+//       alert('Please enter both pickup and destination locations');
 //       return;
 //     }
 
-//     const timer = setTimeout(() => {
-//       setLoading(true);
-//       setTimeout(() => {
+//     setIsCalculating(true);
+//     setLoading(true);
+//     try {
+//       const result = await calculateDistance(from, to);
+      
+//       if (result) {
+//         setDistance(result.distance);
+//         setDuration(result.duration);
+//         setRouteDetails(result.route);
+//         if (!km) setKm(result.distance.toString());
+//         console.log('Distance calculated:', result);
+//       } else {
+//         // Fallback calculation
 //         const mockDistance = Math.floor(Math.random() * 800) + 200;
 //         setDistance(mockDistance);
+//         setDuration(`${Math.ceil(mockDistance / 50)}-${Math.ceil(mockDistance / 40)} hrs`);
+//         setRouteDetails([from, to]);
 //         if (!km) setKm(mockDistance.toString());
-//         setLoading(false);
-//       }, 800);
-//     }, 1000);
-
-//     return () => clearTimeout(timer);
-//   }, [from, to, km]);
+//       }
+//     } catch (error) {
+//       console.error('Distance calculation failed:', error);
+//       // Fallback to local calculation
+//       const mockDistance = Math.floor(Math.random() * 800) + 200;
+//       setDistance(mockDistance);
+//       setDuration(`${Math.ceil(mockDistance / 50)}-${Math.ceil(mockDistance / 40)} hrs`);
+//       setRouteDetails([from, to]);
+//       if (!km) setKm(mockDistance.toString());
+//     } finally {
+//       setLoading(false);
+//       setIsCalculating(false);
+//     }
+//   };
 
 //   // Filter and sort vehicles
 //   const filteredVehicles = useMemo(() => {
@@ -363,9 +387,27 @@
 //   const minimumKmCharge = numberOfDays * MINIMUM_KM_PER_DAY;
 //   const driverBataTotal = numberOfDays * DRIVER_BATA_PER_DAY;
 
-//   const handleGroupRouteSelect = (route: any) => {
+//   const handleGroupRouteSelect = async (route: any) => {
 //     setSelectedRoute(route);
 //     setPassengerCount(parseInt(route.groups.split('-')[0]));
+//     setFrom(route.from);
+//     setTo(route.to);
+    
+//     // Calculate distance for the selected route
+//     setLoading(true);
+//     try {
+//       const result = await calculateDistance(route.from, route.to);
+//       if (result) {
+//         setDistance(result.distance);
+//         setDuration(result.duration);
+//         setRouteDetails(result.route);
+//         setKm(result.distance.toString());
+//       }
+//     } catch (error) {
+//       console.error('Error calculating route distance:', error);
+//     } finally {
+//       setLoading(false);
+//     }
 //   };
 
 //   const calculateTotal = (vehicle: any) => {
@@ -381,7 +423,7 @@
 //       .filter(v => v.seats >= passengerCount)
 //       .sort((a, b) => a.perKmWithTax - b.perKmWithTax)
 //       .slice(0, 3);
-//   }, [passengerCount]);
+//   }, [passengerCount, vehicles]);
 
 //   return (
 //     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -497,14 +539,65 @@
 //               </div>
 //             </div>
             
+//             {/* Calculate Button */}
+//             <div className="mt-6 text-center">
+//               <button
+//                 onClick={calculateDistanceWithAPI}
+//                 disabled={!from || !to || isCalculating}
+//                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+//               >
+//                 {isCalculating ? (
+//                   <>
+//                     <ArrowPathIcon className="h-5 w-5 animate-spin" />
+//                     Calculating...
+//                   </>
+//                 ) : (
+//                   <>
+//                     <MapPinIcon className="h-5 w-5" />
+//                     Calculate Distance & Price
+//                   </>
+//                 )}
+//               </button>
+//             </div>
+            
 //             {loading && (
 //               <div className="mt-6 text-center">
 //                 <div className="inline-flex items-center gap-3">
 //                   <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse"></div>
 //                   <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse delay-150"></div>
 //                   <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse delay-300"></div>
-//                   <span className="text-gray-600">Finding best buses for your group...</span>
+//                   <span className="text-gray-600">Calculating distance via AI...</span>
 //                 </div>
+//               </div>
+//             )}
+            
+//             {distance && !loading && (
+//               <div className="mt-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
+//                 <div className="flex items-center justify-between mb-3">
+//                   <div>
+//                     <div className="text-sm text-gray-600">Route Information</div>
+//                     <div className="text-lg font-bold text-gray-900">{from} → {to}</div>
+//                     <div className="flex items-center gap-3 mt-1">
+//                       <span className="text-emerald-600 font-semibold">{distance} KM</span>
+//                       <span className="text-gray-400">•</span>
+//                       <span className="text-gray-600">{duration}</span>
+//                       <span className="text-gray-400">•</span>
+//                       <span className="text-blue-600 font-medium">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
+//                     </div>
+//                   </div>
+//                   <button
+//                     onClick={calculateDistanceWithAPI}
+//                     className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-medium hover:bg-emerald-200 transition-colors"
+//                   >
+//                     Recalculate
+//                   </button>
+//                 </div>
+                
+//                 {routeDetails.length > 2 && (
+//                   <div className="text-sm text-gray-600 mt-2">
+//                     <span className="font-medium">Suggested Route:</span> {routeDetails.join(' → ')}
+//                   </div>
+//                 )}
 //               </div>
 //             )}
             
@@ -979,7 +1072,7 @@
             
 //             <div className="flex flex-col sm:flex-row gap-4 justify-center">
 //               <a 
-//                 href="tel:+919876543210"
+//                 href="tel:+919591762419"
 //                 className="inline-flex items-center justify-center gap-3 bg-white text-orange-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg"
 //               >
 //                 <PhoneIcon className="h-6 w-6" />
@@ -1168,7 +1261,7 @@ const vehicles = [
     badge: 'Best Value',
     fuel: 'Diesel',
     year: 2022,
-    imageColor: 'green',
+    imageColor: 'red',
     images: [
       '/images/transportation/mini-bus-1.jpg',
       '/images/transportation/mini-bus-2.jpg',
@@ -1191,7 +1284,7 @@ const vehicles = [
     badge: 'Night Travel',
     fuel: 'Diesel',
     year: 2023,
-    imageColor: 'blue',
+    imageColor: 'red',
     images: [
       '/images/transportation/sleeper-bus-1.jpg',
       '/images/transportation/sleeper-bus-2.jpg',
@@ -1214,7 +1307,7 @@ const vehicles = [
     badge: 'Most Comfortable',
     fuel: 'Diesel',
     year: 2024,
-    imageColor: 'purple',
+    imageColor: 'red',
     images: [
       '/images/transportation/volvo-bus-1.jpg',
       '/images/transportation/volvo-bus-2.jpg',
@@ -1260,7 +1353,7 @@ const vehicles = [
     badge: 'Economical',
     fuel: 'Diesel',
     year: 2021,
-    imageColor: 'yellow',
+    imageColor: 'red',
     images: [
       '/images/transportation/standard-bus-1.jpg',
       '/images/transportation/standard-bus-2.jpg',
@@ -1283,7 +1376,7 @@ const vehicles = [
     badge: 'Party Special',
     fuel: 'Diesel',
     year: 2023,
-    imageColor: 'pink',
+    imageColor: 'red',
     images: [
       '/images/transportation/party-bus-1.jpg',
       '/images/transportation/party-bus-2.jpg',
@@ -1306,7 +1399,7 @@ const vehicles = [
     badge: 'School Safe',
     fuel: 'Diesel',
     year: 2022,
-    imageColor: 'orange',
+    imageColor: 'red',
     images: [
       '/images/transportation/school-bus-1.jpg',
       '/images/transportation/school-bus-2.jpg',
@@ -1329,7 +1422,7 @@ const vehicles = [
     badge: 'Corporate',
     fuel: 'Diesel',
     year: 2024,
-    imageColor: 'gray',
+    imageColor: 'red',
     images: [
       '/images/transportation/vip-coach-1.jpg',
       '/images/transportation/vip-coach-2.jpg',
@@ -1352,7 +1445,7 @@ const vehicles = [
     badge: 'Tour Ready',
     fuel: 'Diesel',
     year: 2022,
-    imageColor: 'teal',
+    imageColor: 'red',
     images: [
       '/images/transportation/tourist-bus-1.jpg',
       '/images/transportation/tourist-bus-2.jpg',
@@ -1401,17 +1494,9 @@ export default function BusesPage() {
   
   const getGradientColor = (color: string) => {
     const gradients: Record<string, string> = {
-      green: 'from-emerald-500 to-green-700',
-      blue: 'from-blue-500 to-blue-700',
-      purple: 'from-purple-500 to-purple-700',
       red: 'from-red-500 to-red-700',
-      yellow: 'from-amber-500 to-amber-700',
-      pink: 'from-pink-500 to-pink-700',
-      orange: 'from-orange-500 to-orange-700',
-      teal: 'from-teal-500 to-teal-700',
-      gray: 'from-gray-600 to-gray-800',
     };
-    return gradients[color] || 'from-green-500 to-green-700';
+    return gradients[color] || 'from-red-500 to-red-700';
   };
 
   const calculateDistanceWithAPI = async () => {
@@ -1432,7 +1517,6 @@ export default function BusesPage() {
         if (!km) setKm(result.distance.toString());
         console.log('Distance calculated:', result);
       } else {
-        // Fallback calculation
         const mockDistance = Math.floor(Math.random() * 800) + 200;
         setDistance(mockDistance);
         setDuration(`${Math.ceil(mockDistance / 50)}-${Math.ceil(mockDistance / 40)} hrs`);
@@ -1441,7 +1525,6 @@ export default function BusesPage() {
       }
     } catch (error) {
       console.error('Distance calculation failed:', error);
-      // Fallback to local calculation
       const mockDistance = Math.floor(Math.random() * 800) + 200;
       setDistance(mockDistance);
       setDuration(`${Math.ceil(mockDistance / 50)}-${Math.ceil(mockDistance / 40)} hrs`);
@@ -1470,11 +1553,10 @@ export default function BusesPage() {
     }
     
     if (maxPrice < 100) {
-      const maxPriceValue = (maxPrice / 100) * 165; // 165 is max perKmWithTax
+      const maxPriceValue = (maxPrice / 100) * 165;
       filtered = filtered.filter(v => v.perKmWithTax <= maxPriceValue);
     }
     
-    // Sort vehicles
     filtered.sort((a, b) => {
       if (sortBy === 'price') return a.perKmWithTax - b.perKmWithTax;
       if (sortBy === 'rating') return b.rating - a.rating;
@@ -1499,7 +1581,6 @@ export default function BusesPage() {
     setFrom(route.from);
     setTo(route.to);
     
-    // Calculate distance for the selected route
     setLoading(true);
     try {
       const result = await calculateDistance(route.from, route.to);
@@ -1533,11 +1614,11 @@ export default function BusesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-green-900 via-emerald-800 to-teal-900">
+      {/* Hero Section - Red Theme */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-red-900 via-red-800 to-red-900">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(156,146,172,0.05)_1px,transparent_0)] bg-[size:20px_20px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:20px_20px]" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
@@ -1551,7 +1632,7 @@ export default function BusesPage() {
               Premium <span className="text-yellow-300">Buses</span> for Group Travel
             </h1>
             
-            <p className="text-xl md:text-2xl text-emerald-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-red-100 mb-8 max-w-3xl mx-auto">
               Perfect for pilgrimages, school trips, corporate events, weddings, and large group tours across India
             </p>
             
@@ -1565,7 +1646,7 @@ export default function BusesPage() {
               ].map((stat, idx) => (
                 <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
                   <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                  <div className="text-sm text-emerald-200">{stat.label}</div>
+                  <div className="text-sm text-red-200">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -1577,12 +1658,12 @@ export default function BusesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
         {/* Group Booking Calculator */}
         <div className="bg-white rounded-2xl shadow-2xl mb-8 overflow-hidden">
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 p-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-3">
               <UserGroupIcon className="h-7 w-7" />
               Group Travel Calculator
             </h2>
-            <p className="text-emerald-100">Get instant pricing for your group size</p>
+            <p className="text-red-100">Get instant pricing for your group size</p>
           </div>
           
           <div className="p-6">
@@ -1596,10 +1677,10 @@ export default function BusesPage() {
                     max="80"
                     value={passengerCount}
                     onChange={(e) => setPassengerCount(parseInt(e.target.value))}
-                    className="w-full"
+                    className="w-full accent-red-600"
                   />
                   <div className="text-center mt-2">
-                    <span className="text-2xl font-bold text-emerald-600">{passengerCount}</span>
+                    <span className="text-2xl font-bold text-red-600">{passengerCount}</span>
                     <span className="text-gray-600 ml-2">passengers</span>
                   </div>
                 </div>
@@ -1614,7 +1695,7 @@ export default function BusesPage() {
                     value={from}
                     onChange={(e) => setFrom(e.target.value)}
                     placeholder="Enter city"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -1628,7 +1709,7 @@ export default function BusesPage() {
                     value={to}
                     onChange={(e) => setTo(e.target.value)}
                     placeholder="Destination city"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -1640,7 +1721,7 @@ export default function BusesPage() {
                   value={km}
                   onChange={(e) => setKm(e.target.value)}
                   placeholder="Enter distance"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -1650,7 +1731,7 @@ export default function BusesPage() {
               <button
                 onClick={calculateDistanceWithAPI}
                 disabled={!from || !to || isCalculating}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 {isCalculating ? (
                   <>
@@ -1669,31 +1750,31 @@ export default function BusesPage() {
             {loading && (
               <div className="mt-6 text-center">
                 <div className="inline-flex items-center gap-3">
-                  <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse"></div>
-                  <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse delay-150"></div>
-                  <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse delay-300"></div>
+                  <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse delay-150"></div>
+                  <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse delay-300"></div>
                   <span className="text-gray-600">Calculating distance via AI...</span>
                 </div>
               </div>
             )}
             
             {distance && !loading && (
-              <div className="mt-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
+              <div className="mt-6 bg-gradient-to-r from-red-50 to-red-50 rounded-xl p-4 border border-red-200">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <div className="text-sm text-gray-600">Route Information</div>
                     <div className="text-lg font-bold text-gray-900">{from} → {to}</div>
                     <div className="flex items-center gap-3 mt-1">
-                      <span className="text-emerald-600 font-semibold">{distance} KM</span>
+                      <span className="text-red-600 font-semibold">{distance} KM</span>
                       <span className="text-gray-400">•</span>
                       <span className="text-gray-600">{duration}</span>
                       <span className="text-gray-400">•</span>
-                      <span className="text-blue-600 font-medium">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
+                      <span className="text-red-600 font-medium">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
                     </div>
                   </div>
                   <button
                     onClick={calculateDistanceWithAPI}
-                    className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-medium hover:bg-emerald-200 transition-colors"
+                    className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors"
                   >
                     Recalculate
                   </button>
@@ -1714,14 +1795,14 @@ export default function BusesPage() {
                   {recommendedBuses.map((bus) => {
                     const { total } = calculateTotal(bus);
                     return (
-                      <div key={bus.id} className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
+                      <div key={bus.id} className="bg-gradient-to-r from-red-50 to-red-50 rounded-xl p-4 border border-red-200">
                         <div className="flex justify-between items-start">
                           <div>
                             <div className="font-bold text-gray-900">{bus.name}</div>
                             <div className="text-sm text-gray-600">{bus.seats} seats • {bus.ac ? 'AC' : 'Non-AC'}</div>
                           </div>
                           <div className="text-right">
-                            <div className="text-lg font-bold text-emerald-600">₹{formatPrice(total)}</div>
+                            <div className="text-lg font-bold text-red-600">₹{formatPrice(total)}</div>
                             <div className="text-xs text-gray-500">estimated</div>
                           </div>
                         </div>
@@ -1749,8 +1830,8 @@ export default function BusesPage() {
                 onClick={() => setSelectedType(type.id === selectedType ? null : type.id)}
                 className={`p-4 rounded-xl border-2 transition-all ${
                   selectedType === type.id
-                    ? 'border-emerald-500 bg-emerald-50'
-                    : 'border-gray-200 bg-white hover:border-emerald-200'
+                    ? 'border-red-500 bg-red-50'
+                    : 'border-gray-200 bg-white hover:border-red-200'
                 }`}
               >
                 <div className="text-2xl mb-2">{type.icon}</div>
@@ -1770,13 +1851,13 @@ export default function BusesPage() {
                 key={idx}
                 onClick={() => handleGroupRouteSelect(route)}
                 className={`bg-white rounded-xl p-4 shadow-sm border-2 transition-all hover:shadow-md ${
-                  selectedRoute?.route === route.route ? 'border-emerald-500' : 'border-gray-200'
+                  selectedRoute?.route === route.route ? 'border-red-500' : 'border-gray-200'
                 }`}
               >
                 <div className="flex justify-between items-start mb-3">
                   <div>
                     <div className="font-bold text-gray-900">{route.route}</div>
-                    <div className="text-sm text-emerald-600 font-medium">{route.type}</div>
+                    <div className="text-sm text-red-600 font-medium">{route.type}</div>
                   </div>
                   <ArrowRightIcon className="h-5 w-5 text-gray-400" />
                 </div>
@@ -1801,7 +1882,7 @@ export default function BusesPage() {
                 <button
                   onClick={() => setMinSeats(20)}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-                    minSeats === 20 ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'
+                    minSeats === 20 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   20+ Seats
@@ -1809,7 +1890,7 @@ export default function BusesPage() {
                 <button
                   onClick={() => setMinSeats(40)}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-                    minSeats === 40 ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'
+                    minSeats === 40 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   40+ Seats
@@ -1817,7 +1898,7 @@ export default function BusesPage() {
                 <button
                   onClick={() => setShowACOnly(!showACOnly)}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-                    showACOnly ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'
+                    showACOnly ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   AC Only
@@ -1837,7 +1918,7 @@ export default function BusesPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
               >
                 <option value="price">Price: Low to High</option>
                 <option value="rating">Highest Rated</option>
@@ -1867,7 +1948,7 @@ export default function BusesPage() {
                     max="80"
                     value={minSeats}
                     onChange={(e) => setMinSeats(parseInt(e.target.value))}
-                    className="w-full"
+                    className="w-full accent-red-600"
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-1">
                     <span>20 Seats</span>
@@ -1885,7 +1966,7 @@ export default function BusesPage() {
                     max="100"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(parseInt(e.target.value))}
-                    className="w-full"
+                    className="w-full accent-red-600"
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-1">
                     <span>₹33</span>
@@ -1907,7 +1988,7 @@ export default function BusesPage() {
                 </button>
                 <button
                   onClick={() => setShowFilters(false)}
-                  className="px-4 py-2 text-sm bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
+                  className="px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700"
                 >
                   Apply Filters
                 </button>
@@ -1942,7 +2023,7 @@ export default function BusesPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={vehicle.id <= 3}
                     />
-                    <div className={`absolute inset-0 ${gradient} opacity-30`} />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-30`} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   </div>
                   
@@ -1989,7 +2070,7 @@ export default function BusesPage() {
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors">
                         {vehicle.name}
                       </h3>
                       <div className="flex items-center gap-2 mt-1">
@@ -1997,7 +2078,7 @@ export default function BusesPage() {
                           {vehicle.category}
                         </span>
                         {vehicle.ac && (
-                          <span className="flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">
+                          <span className="flex items-center gap-1 px-2 py-1 bg-red-50 text-red-700 text-xs font-medium rounded">
                             <span className="text-xs">❄️</span>
                             AC
                           </span>
@@ -2015,7 +2096,7 @@ export default function BusesPage() {
                     <div className="text-sm font-medium text-gray-700 mb-2">Features:</div>
                     <div className="flex flex-wrap gap-2">
                       {vehicle.features.slice(0, 4).map((feature, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-emerald-50 text-emerald-700 text-xs rounded">
+                        <span key={idx} className="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">
                           {feature}
                         </span>
                       ))}
@@ -2028,7 +2109,7 @@ export default function BusesPage() {
                     <div className="flex flex-wrap gap-2">
                       {vehicle.amenities.slice(0, 3).map((amenity, idx) => (
                         <div key={idx} className="flex items-center gap-1">
-                          <CheckCircleIcon className="h-3 w-3 text-emerald-500" />
+                          <CheckCircleIcon className="h-3 w-3 text-red-500" />
                           <span className="text-xs text-gray-600">{amenity}</span>
                         </div>
                       ))}
@@ -2063,11 +2144,11 @@ export default function BusesPage() {
                   <div className="flex gap-3">
                     <button
                       onClick={() => setShowGroupBooking(true)}
-                      className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-0.5"
+                      className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:-translate-y-0.5"
                     >
                       Book for Group
                     </button>
-                    <button className="px-4 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+                    <button className="px-4 py-3 border-2 border-red-600 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition-colors">
                       View Photos
                     </button>
                   </div>
@@ -2106,7 +2187,7 @@ export default function BusesPage() {
                     onClick={() => setCurrentPage(page)}
                     className={`w-10 h-10 rounded-lg font-medium ${
                       currentPage === page
-                        ? 'bg-emerald-600 text-white'
+                        ? 'bg-red-600 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -2127,7 +2208,7 @@ export default function BusesPage() {
         )}
 
         {/* Features Section */}
-        <div className="bg-gradient-to-r from-teal-900 to-emerald-900 rounded-2xl p-8 mb-12 text-white">
+        <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-2xl p-8 mb-12 text-white">
           <h3 className="text-2xl font-bold text-center mb-8">Why Choose Our Bus Service for Groups?</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -2153,7 +2234,7 @@ export default function BusesPage() {
                   {feature.icon}
                 </div>
                 <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
-                <p className="text-emerald-200">{feature.description}</p>
+                <p className="text-red-200">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -2161,7 +2242,7 @@ export default function BusesPage() {
 
         {/* Group Booking CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-2xl p-8 md:p-12 text-white mb-8">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 md:p-12 text-white mb-8">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Need a Bus for Your Group?</h3>
             <p className="text-xl mb-6 opacity-90">Get special discounts for groups of 30+ people</p>
             
@@ -2179,7 +2260,7 @@ export default function BusesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="tel:+919591762419"
-                className="inline-flex items-center justify-center gap-3 bg-white text-orange-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg"
+                className="inline-flex items-center justify-center gap-3 bg-white text-red-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg"
               >
                 <PhoneIcon className="h-6 w-6" />
                 Call Group Coordinator
@@ -2187,7 +2268,7 @@ export default function BusesPage() {
               
               <button
                 onClick={() => setShowGroupBooking(true)}
-                className="inline-flex items-center justify-center gap-3 bg-orange-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-900 transition-all shadow-lg"
+                className="inline-flex items-center justify-center gap-3 bg-red-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-900 transition-all shadow-lg"
               >
                 <UserGroupIcon className="h-6 w-6" />
                 Request Group Quote
@@ -2213,7 +2294,7 @@ export default function BusesPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Group Type</label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg">
+                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
                   <option>School/College Trip</option>
                   <option>Corporate Event</option>
                   <option>Pilgrimage Tour</option>
@@ -2230,7 +2311,7 @@ export default function BusesPage() {
                     type="number"
                     value={passengerCount}
                     onChange={(e) => setPassengerCount(parseInt(e.target.value))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                     min="20"
                     max="200"
                   />
@@ -2241,7 +2322,7 @@ export default function BusesPage() {
                   <input
                     type="number"
                     defaultValue="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                     min="1"
                   />
                 </div>
@@ -2251,7 +2332,7 @@ export default function BusesPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Travel Dates</label>
                 <input
                   type="date"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
               
@@ -2260,7 +2341,7 @@ export default function BusesPage() {
                 <textarea
                   rows={3}
                   placeholder="Any special needs, amenities required, or specific requests..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
               
@@ -2276,7 +2357,7 @@ export default function BusesPage() {
                   </div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-orange-600 to-amber-600 text-white py-3 rounded-lg font-bold text-lg">
+                <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-bold text-lg hover:from-red-700 hover:to-red-800">
                   Get Special Group Quote
                 </button>
                 

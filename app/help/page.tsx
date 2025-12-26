@@ -61,7 +61,7 @@ export default function BookingHelp() {
                 className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 <PhoneIcon className="h-5 w-5" />
-                Call +91 98765 43210
+                Call +91 +91 9591762419
               </a>
             </div>
           </div>

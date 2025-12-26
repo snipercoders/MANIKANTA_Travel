@@ -1,7 +1,7 @@
 // app/about/page.tsx
 import ContactForm from '@/components/about/ContactForm';
 import FounderCard from '@/components/about/FounderCard';
-import TeamSection from '@/components/about/TeamSection';
+// import TeamSection from '@/components/about/TeamSection';
 
 export const metadata = {
   title: 'About Us - Sri Manikanta Tours & Travels',
@@ -12,8 +12,20 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-orange-600 to-amber-600 py-16 lg:py-24">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div className="relative overflow-hidden py-16 lg:py-24">
+        {/* Background image */}
+        <img 
+          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop"
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               About Sri Manikanta Tours & Travels
@@ -43,7 +55,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
               <div className="space-y-6 text-gray-600">
                 <p>
-                  Founded in 2010 by <span className="font-semibold text-orange-600">Chandan</span>, 
+                  Founded in 2006 by <span className="font-semibold text-orange-600">Chandan</span>, 
                   Sri Manikanta Tours & Travels started as a small travel agency in Bangalore 
                   with just 2 buses. Today, we operate a fleet of over 50 vehicles serving 
                   destinations across South India.
@@ -82,7 +94,7 @@ export default function AboutPage() {
             </div>
             
             {/* Team Section */}
-            <TeamSection />
+            {/* <TeamSection /> */}
           </div>
           
           {/* Contact Form Sidebar */}
@@ -119,7 +131,7 @@ export default function AboutPage() {
                     placeholder="Your message..."
                   ></textarea>
                 </div>
-                <button className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold py-3.5 rounded-xl hover:from-orange-600 hover:to-amber-600 transition-all duration-300">
+                <button className="w-full bg-gradient-to-r from-red-500 to-red-800 text-white font-bold py-3.5 rounded-xl hover:from-orange-600 hover:to-amber-600 transition-all duration-300">
                   Send Message
                 </button>
               </div>
@@ -157,7 +169,7 @@ export default function AboutPage() {
                   <div>
                     <p className="text-sm text-gray-500">Personal Email</p>
                     <a href="mailto:chandan@manikanta.com" className="font-bold text-gray-900 hover:text-blue-600">
-                      chandan@manikanta.com
+                     chandan.govindraj76@gmail.com
                     </a>
                   </div>
                 </div>
@@ -170,39 +182,8 @@ export default function AboutPage() {
               </div>
             </div>
             
-            {/* Awards & Recognition */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-              <h3 className="font-bold text-xl text-gray-900 mb-6">Awards & Recognition</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-                    <span className="text-xl">🏆</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">Best Travel Agency 2022</p>
-                    <p className="text-sm text-gray-500">Karnataka Tourism Awards</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-                    <span className="text-xl">⭐</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">Customer Excellence Award</p>
-                    <p className="text-sm text-gray-500">Travel & Hospitality 2023</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-                    <span className="text-xl">🛡️</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">Safety First Certified</p>
-                    <p className="text-sm text-gray-500">Road Transport Authority</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+         
+         
           </div>
         </div>
       </div>

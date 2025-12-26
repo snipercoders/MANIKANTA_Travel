@@ -60,27 +60,7 @@ export default function ContactPage() {
               </p>
             </div>
             
-            {/* Social Media Card */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-6 border border-blue-100 shadow-lg">
-              <h3 className="font-bold text-xl text-gray-900 mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
-                  <span className="text-2xl">📘</span>
-                </a>
-                <a href="#" className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
-                  <span className="text-2xl">📷</span>
-                </a>
-                <a href="#" className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
-                  <span className="text-2xl">🐦</span>
-                </a>
-                <a href="#" className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
-                  <span className="text-2xl">💼</span>
-                </a>
-              </div>
-              <p className="text-gray-600 text-sm mt-4">
-                Stay updated with our latest travel deals, packages, and destinations.
-              </p>
-            </div>
+          
           </div>
         </div>
       </div>
