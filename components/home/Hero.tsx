@@ -291,7 +291,7 @@ export default function Hero() {
             preload="auto"
             poster="/images/hero-poster.jpg"
           >
-            <source src="/videos/herobg.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dzoxwk1jc/video/upload/v1766770795/herobg_1_lt7kzc.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           
