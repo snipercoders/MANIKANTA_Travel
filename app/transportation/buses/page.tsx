@@ -1,6 +1,6 @@
 
+// // // File Path: app/transportation/buses/page.tsx
 
-// // File Path: app/transportation/buses/page.tsx
 // 'use client';
 // import React, { useState, useEffect, useMemo } from 'react';
 // import { 
@@ -28,7 +28,8 @@
 //   Battery100Icon,
 //   PowerIcon,
 //   MusicalNoteIcon,
-//   ArrowPathIcon
+//   ArrowPathIcon,
+//   PhotoIcon
 // } from '@heroicons/react/24/outline';
 // import { StarIcon as StarIconSolid, BoltIcon as BoltIconSolid } from '@heroicons/react/24/solid';
 // import Image from 'next/image';
@@ -36,12 +37,12 @@
 
 // // Bus categories and types
 // const busTypes = [
-//   { id: 'minibus', name: 'Mini Bus', seats: '12-27', icon: '🚌', image: '/images/transportation/mini-bus.jpg' },
-//   { id: 'standard', name: 'Standard Bus', seats: '28-35', icon: '🚍', image: '/images/transportation/standard-bus.jpg' },
-//   { id: 'luxury', name: 'Luxury Bus', seats: '36-45', icon: '🚎', image: '/images/transportation/luxury-bus.jpg' },
-//   { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45', icon: '🛌', image: '/images/transportation/sleeper-bus.jpg' },
-//   { id: 'volvo', name: 'Volvo Bus', seats: '40-53', icon: '🚐', image: '/images/transportation/volvo-bus.jpg' },
-//   { id: 'double', name: 'Double Decker', seats: '60-80', icon: '🚋', image: '/images/transportation/double-decker.jpg' },
+//   { id: 'minibus', name: 'Mini Bus', seats: '12-27', icon: '🚌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+//   { id: 'standard', name: 'Standard Bus', seats: '28-35', icon: '🚍', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+//   { id: 'luxury', name: 'Luxury Bus', seats: '36-45', icon: '🚎', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+//   { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45', icon: '🛌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+//   { id: 'volvo', name: 'Volvo Bus', seats: '40-53', icon: '🚐', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+//   { id: 'double', name: 'Double Decker', seats: '60-80', icon: '🚋', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
 // ];
 
 // // Complete buses data with enhanced details
@@ -62,11 +63,11 @@
 //     badge: 'Best Value',
 //     fuel: 'Diesel',
 //     year: 2022,
-//     imageColor: 'green',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/mini-bus-1.jpg',
-//       '/images/transportation/mini-bus-2.jpg',
-//       '/images/transportation/mini-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -85,11 +86,11 @@
 //     badge: 'Night Travel',
 //     fuel: 'Diesel',
 //     year: 2023,
-//     imageColor: 'blue',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/sleeper-bus-1.jpg',
-//       '/images/transportation/sleeper-bus-2.jpg',
-//       '/images/transportation/sleeper-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -108,11 +109,11 @@
 //     badge: 'Most Comfortable',
 //     fuel: 'Diesel',
 //     year: 2024,
-//     imageColor: 'purple',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/volvo-bus-1.jpg',
-//       '/images/transportation/volvo-bus-2.jpg',
-//       '/images/transportation/volvo-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -133,9 +134,9 @@
 //     year: 2023,
 //     imageColor: 'red',
 //     images: [
-//       '/images/transportation/double-decker-1.jpg',
-//       '/images/transportation/double-decker-2.jpg',
-//       '/images/transportation/double-decker-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -154,11 +155,11 @@
 //     badge: 'Economical',
 //     fuel: 'Diesel',
 //     year: 2021,
-//     imageColor: 'yellow',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/standard-bus-1.jpg',
-//       '/images/transportation/standard-bus-2.jpg',
-//       '/images/transportation/standard-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -177,11 +178,11 @@
 //     badge: 'Party Special',
 //     fuel: 'Diesel',
 //     year: 2023,
-//     imageColor: 'pink',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/party-bus-1.jpg',
-//       '/images/transportation/party-bus-2.jpg',
-//       '/images/transportation/party-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -200,11 +201,11 @@
 //     badge: 'School Safe',
 //     fuel: 'Diesel',
 //     year: 2022,
-//     imageColor: 'orange',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/school-bus-1.jpg',
-//       '/images/transportation/school-bus-2.jpg',
-//       '/images/transportation/school-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -223,11 +224,11 @@
 //     badge: 'Corporate',
 //     fuel: 'Diesel',
 //     year: 2024,
-//     imageColor: 'gray',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/vip-coach-1.jpg',
-//       '/images/transportation/vip-coach-2.jpg',
-//       '/images/transportation/vip-coach-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 //   { 
@@ -246,11 +247,11 @@
 //     badge: 'Tour Ready',
 //     fuel: 'Diesel',
 //     year: 2022,
-//     imageColor: 'teal',
+//     imageColor: 'red',
 //     images: [
-//       '/images/transportation/tourist-bus-1.jpg',
-//       '/images/transportation/tourist-bus-2.jpg',
-//       '/images/transportation/tourist-bus-3.jpg'
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+//       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
 //     ]
 //   },
 // ];
@@ -282,6 +283,9 @@
 //   const [showACOnly, setShowACOnly] = useState(true);
 //   const [selectedRoute, setSelectedRoute] = useState<any>(null);
 //   const [showGroupBooking, setShowGroupBooking] = useState(false);
+//   const [showPhotos, setShowPhotos] = useState(false);
+//   const [selectedVehiclePhotos, setSelectedVehiclePhotos] = useState<string[]>([]);
+//   const [selectedVehicleName, setSelectedVehicleName] = useState('');
 //   const [passengerCount, setPassengerCount] = useState(40);
 //   const [hoveredVehicle, setHoveredVehicle] = useState<number | null>(null);
 //   const [isCalculating, setIsCalculating] = useState(false);
@@ -295,17 +299,9 @@
   
 //   const getGradientColor = (color: string) => {
 //     const gradients: Record<string, string> = {
-//       green: 'from-emerald-500 to-green-700',
-//       blue: 'from-blue-500 to-blue-700',
-//       purple: 'from-purple-500 to-purple-700',
 //       red: 'from-red-500 to-red-700',
-//       yellow: 'from-amber-500 to-amber-700',
-//       pink: 'from-pink-500 to-pink-700',
-//       orange: 'from-orange-500 to-orange-700',
-//       teal: 'from-teal-500 to-teal-700',
-//       gray: 'from-gray-600 to-gray-800',
 //     };
-//     return gradients[color] || 'from-green-500 to-green-700';
+//     return gradients[color] || 'from-red-500 to-red-700';
 //   };
 
 //   const calculateDistanceWithAPI = async () => {
@@ -326,7 +322,6 @@
 //         if (!km) setKm(result.distance.toString());
 //         console.log('Distance calculated:', result);
 //       } else {
-//         // Fallback calculation
 //         const mockDistance = Math.floor(Math.random() * 800) + 200;
 //         setDistance(mockDistance);
 //         setDuration(`${Math.ceil(mockDistance / 50)}-${Math.ceil(mockDistance / 40)} hrs`);
@@ -335,7 +330,6 @@
 //       }
 //     } catch (error) {
 //       console.error('Distance calculation failed:', error);
-//       // Fallback to local calculation
 //       const mockDistance = Math.floor(Math.random() * 800) + 200;
 //       setDistance(mockDistance);
 //       setDuration(`${Math.ceil(mockDistance / 50)}-${Math.ceil(mockDistance / 40)} hrs`);
@@ -364,11 +358,10 @@
 //     }
     
 //     if (maxPrice < 100) {
-//       const maxPriceValue = (maxPrice / 100) * 165; // 165 is max perKmWithTax
+//       const maxPriceValue = (maxPrice / 100) * 165;
 //       filtered = filtered.filter(v => v.perKmWithTax <= maxPriceValue);
 //     }
     
-//     // Sort vehicles
 //     filtered.sort((a, b) => {
 //       if (sortBy === 'price') return a.perKmWithTax - b.perKmWithTax;
 //       if (sortBy === 'rating') return b.rating - a.rating;
@@ -393,7 +386,6 @@
 //     setFrom(route.from);
 //     setTo(route.to);
     
-//     // Calculate distance for the selected route
 //     setLoading(true);
 //     try {
 //       const result = await calculateDistance(route.from, route.to);
@@ -408,6 +400,12 @@
 //     } finally {
 //       setLoading(false);
 //     }
+//   };
+
+//   const handleViewPhotos = (vehicle: any) => {
+//     setSelectedVehiclePhotos(vehicle.images);
+//     setSelectedVehicleName(vehicle.name);
+//     setShowPhotos(true);
 //   };
 
 //   const calculateTotal = (vehicle: any) => {
@@ -427,11 +425,11 @@
 
 //   return (
 //     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-//       {/* Hero Section */}
-//       <div className="relative overflow-hidden bg-gradient-to-r from-green-900 via-emerald-800 to-teal-900">
+//       {/* Hero Section - Red Theme */}
+//       <div className="relative overflow-hidden bg-gradient-to-r from-red-900 via-red-800 to-red-900">
 //         <div className="absolute inset-0">
 //           <div className="absolute inset-0 bg-black/40" />
-//           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(156,146,172,0.05)_1px,transparent_0)] bg-[size:20px_20px]" />
+//           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:20px_20px]" />
 //         </div>
         
 //         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
@@ -445,7 +443,7 @@
 //               Premium <span className="text-yellow-300">Buses</span> for Group Travel
 //             </h1>
             
-//             <p className="text-xl md:text-2xl text-emerald-100 mb-8 max-w-3xl mx-auto">
+//             <p className="text-xl md:text-2xl text-red-100 mb-8 max-w-3xl mx-auto">
 //               Perfect for pilgrimages, school trips, corporate events, weddings, and large group tours across India
 //             </p>
             
@@ -459,7 +457,7 @@
 //               ].map((stat, idx) => (
 //                 <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
 //                   <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-//                   <div className="text-sm text-emerald-200">{stat.label}</div>
+//                   <div className="text-sm text-red-200">{stat.label}</div>
 //                 </div>
 //               ))}
 //             </div>
@@ -471,16 +469,16 @@
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
 //         {/* Group Booking Calculator */}
 //         <div className="bg-white rounded-2xl shadow-2xl mb-8 overflow-hidden">
-//           <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+//           <div className="bg-gradient-to-r from-red-600 to-red-700 p-6">
 //             <h2 className="text-2xl font-bold text-white flex items-center gap-3">
 //               <UserGroupIcon className="h-7 w-7" />
 //               Group Travel Calculator
 //             </h2>
-//             <p className="text-emerald-100">Get instant pricing for your group size</p>
+//             <p className="text-red-100">Get instant pricing for your group size</p>
 //           </div>
           
 //           <div className="p-6">
-//             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+//             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
 //               <div>
 //                 <label className="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
 //                 <div className="relative">
@@ -490,10 +488,10 @@
 //                     max="80"
 //                     value={passengerCount}
 //                     onChange={(e) => setPassengerCount(parseInt(e.target.value))}
-//                     className="w-full"
+//                     className="w-full accent-red-600"
 //                   />
 //                   <div className="text-center mt-2">
-//                     <span className="text-2xl font-bold text-emerald-600">{passengerCount}</span>
+//                     <span className="text-2xl font-bold text-red-600">{passengerCount}</span>
 //                     <span className="text-gray-600 ml-2">passengers</span>
 //                   </div>
 //                 </div>
@@ -508,7 +506,7 @@
 //                     value={from}
 //                     onChange={(e) => setFrom(e.target.value)}
 //                     placeholder="Enter city"
-//                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+//                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
 //                   />
 //                 </div>
 //               </div>
@@ -522,7 +520,7 @@
 //                     value={to}
 //                     onChange={(e) => setTo(e.target.value)}
 //                     placeholder="Destination city"
-//                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+//                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
 //                   />
 //                 </div>
 //               </div>
@@ -534,7 +532,7 @@
 //                   value={km}
 //                   onChange={(e) => setKm(e.target.value)}
 //                   placeholder="Enter distance"
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
 //                 />
 //               </div>
 //             </div>
@@ -544,17 +542,17 @@
 //               <button
 //                 onClick={calculateDistanceWithAPI}
 //                 disabled={!from || !to || isCalculating}
-//                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+//                 className="inline-flex items-center justify-center gap-2 px-4 md:px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all w-full md:w-auto"
 //               >
 //                 {isCalculating ? (
 //                   <>
 //                     <ArrowPathIcon className="h-5 w-5 animate-spin" />
-//                     Calculating...
+//                     <span className="text-sm md:text-base">Calculating...</span>
 //                   </>
 //                 ) : (
 //                   <>
 //                     <MapPinIcon className="h-5 w-5" />
-//                     Calculate Distance & Price
+//                     <span className="text-sm md:text-base">Calculate Distance & Price</span>
 //                   </>
 //                 )}
 //               </button>
@@ -563,31 +561,31 @@
 //             {loading && (
 //               <div className="mt-6 text-center">
 //                 <div className="inline-flex items-center gap-3">
-//                   <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse"></div>
-//                   <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse delay-150"></div>
-//                   <div className="w-3 h-3 bg-emerald-600 rounded-full animate-pulse delay-300"></div>
-//                   <span className="text-gray-600">Calculating distance via AI...</span>
+//                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+//                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse delay-150"></div>
+//                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse delay-300"></div>
+//                   <span className="text-gray-600 text-sm md:text-base">Calculating distance via AI...</span>
 //                 </div>
 //               </div>
 //             )}
             
 //             {distance && !loading && (
-//               <div className="mt-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
-//                 <div className="flex items-center justify-between mb-3">
-//                   <div>
+//               <div className="mt-6 bg-gradient-to-r from-red-50 to-red-50 rounded-xl p-4 border border-red-200">
+//                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
+//                   <div className="flex-1">
 //                     <div className="text-sm text-gray-600">Route Information</div>
 //                     <div className="text-lg font-bold text-gray-900">{from} → {to}</div>
-//                     <div className="flex items-center gap-3 mt-1">
-//                       <span className="text-emerald-600 font-semibold">{distance} KM</span>
-//                       <span className="text-gray-400">•</span>
+//                     <div className="flex flex-wrap items-center gap-2 md:gap-3 mt-1">
+//                       <span className="text-red-600 font-semibold">{distance} KM</span>
+//                       <span className="text-gray-400 hidden md:inline">•</span>
 //                       <span className="text-gray-600">{duration}</span>
-//                       <span className="text-gray-400">•</span>
-//                       <span className="text-blue-600 font-medium">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
+//                       <span className="text-gray-400 hidden md:inline">•</span>
+//                       <span className="text-red-600 font-medium">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
 //                     </div>
 //                   </div>
 //                   <button
 //                     onClick={calculateDistanceWithAPI}
-//                     className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-medium hover:bg-emerald-200 transition-colors"
+//                     className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors w-full md:w-auto"
 //                   >
 //                     Recalculate
 //                   </button>
@@ -608,14 +606,14 @@
 //                   {recommendedBuses.map((bus) => {
 //                     const { total } = calculateTotal(bus);
 //                     return (
-//                       <div key={bus.id} className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
-//                         <div className="flex justify-between items-start">
-//                           <div>
+//                       <div key={bus.id} className="bg-gradient-to-r from-red-50 to-red-50 rounded-xl p-4 border border-red-200">
+//                         <div className="flex flex-col md:flex-row md:justify-between items-start gap-2">
+//                           <div className="flex-1">
 //                             <div className="font-bold text-gray-900">{bus.name}</div>
 //                             <div className="text-sm text-gray-600">{bus.seats} seats • {bus.ac ? 'AC' : 'Non-AC'}</div>
 //                           </div>
 //                           <div className="text-right">
-//                             <div className="text-lg font-bold text-emerald-600">₹{formatPrice(total)}</div>
+//                             <div className="text-lg font-bold text-red-600">₹{formatPrice(total)}</div>
 //                             <div className="text-xs text-gray-500">estimated</div>
 //                           </div>
 //                         </div>
@@ -643,8 +641,8 @@
 //                 onClick={() => setSelectedType(type.id === selectedType ? null : type.id)}
 //                 className={`p-4 rounded-xl border-2 transition-all ${
 //                   selectedType === type.id
-//                     ? 'border-emerald-500 bg-emerald-50'
-//                     : 'border-gray-200 bg-white hover:border-emerald-200'
+//                     ? 'border-red-500 bg-red-50'
+//                     : 'border-gray-200 bg-white hover:border-red-200'
 //                 }`}
 //               >
 //                 <div className="text-2xl mb-2">{type.icon}</div>
@@ -658,99 +656,101 @@
 //         {/* Popular Group Routes */}
 //         <div className="mb-8">
 //           <h3 className="text-xl font-bold text-gray-900 mb-4">Popular Group Routes</h3>
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
 //             {groupRoutes.map((route, idx) => (
 //               <button
 //                 key={idx}
 //                 onClick={() => handleGroupRouteSelect(route)}
 //                 className={`bg-white rounded-xl p-4 shadow-sm border-2 transition-all hover:shadow-md ${
-//                   selectedRoute?.route === route.route ? 'border-emerald-500' : 'border-gray-200'
+//                   selectedRoute?.route === route.route ? 'border-red-500' : 'border-gray-200'
 //                 }`}
 //               >
 //                 <div className="flex justify-between items-start mb-3">
-//                   <div>
-//                     <div className="font-bold text-gray-900">{route.route}</div>
-//                     <div className="text-sm text-emerald-600 font-medium">{route.type}</div>
+//                   <div className="flex-1">
+//                     <div className="font-bold text-gray-900 text-left">{route.route}</div>
+//                     <div className="text-sm text-red-600 font-medium text-left">{route.type}</div>
 //                   </div>
-//                   <ArrowRightIcon className="h-5 w-5 text-gray-400" />
+//                   <ArrowRightIcon className="h-5 w-5 text-gray-400 flex-shrink-0 ml-2" />
 //                 </div>
-//                 <div className="text-sm text-gray-600 mb-2">{route.groups}</div>
-//                 <div className="text-sm font-bold text-green-600">{route.price}</div>
+//                 <div className="text-sm text-gray-600 mb-2 text-left">{route.groups}</div>
+//                 <div className="text-sm font-bold text-green-600 text-left">{route.price}</div>
 //               </button>
 //             ))}
 //           </div>
 //         </div>
 
 //         {/* Controls Section */}
-//         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-//           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+//         <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-8">
+//           <div className="flex flex-col md:flex-row justify-between items-start gap-4">
 //             <div>
-//               <h3 className="text-xl font-bold text-gray-900">Available Buses ({filteredVehicles.length})</h3>
-//               <p className="text-gray-600">Perfect for groups of {passengerCount}+ people</p>
+//               <h3 className="text-lg md:text-xl font-bold text-gray-900">Available Buses ({filteredVehicles.length})</h3>
+//               <p className="text-gray-600 text-sm md:text-base">Perfect for groups of {passengerCount}+ people</p>
 //             </div>
             
-//             <div className="flex flex-wrap gap-4">
+//             <div className="flex flex-col md:flex-row flex-wrap gap-3 w-full md:w-auto">
 //               {/* Quick Filters */}
-//               <div className="flex flex-wrap gap-2">
+//               <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 md:pb-0">
 //                 <button
 //                   onClick={() => setMinSeats(20)}
-//                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-//                     minSeats === 20 ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'
+//                   className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${
+//                     minSeats === 20 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
 //                   }`}
 //                 >
 //                   20+ Seats
 //                 </button>
 //                 <button
 //                   onClick={() => setMinSeats(40)}
-//                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-//                     minSeats === 40 ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'
+//                   className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${
+//                     minSeats === 40 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
 //                   }`}
 //                 >
 //                   40+ Seats
 //                 </button>
 //                 <button
 //                   onClick={() => setShowACOnly(!showACOnly)}
-//                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-//                     showACOnly ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'
+//                   className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${
+//                     showACOnly ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
 //                   }`}
 //                 >
 //                   AC Only
 //                 </button>
 //               </div>
               
-//               {/* Filter Button */}
-//               <button
-//                 onClick={() => setShowFilters(!showFilters)}
-//                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-//               >
-//                 <FunnelIcon className="h-5 w-5" />
-//                 Advanced Filters
-//               </button>
-              
-//               {/* Sort Dropdown */}
-//               <select
-//                 value={sortBy}
-//                 onChange={(e) => setSortBy(e.target.value as any)}
-//                 className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500"
-//               >
-//                 <option value="price">Price: Low to High</option>
-//                 <option value="rating">Highest Rated</option>
-//                 <option value="seats">Most Seats</option>
-//               </select>
+//               <div className="flex gap-2">
+//                 {/* Filter Button */}
+//                 <button
+//                   onClick={() => setShowFilters(!showFilters)}
+//                   className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors text-sm md:text-base"
+//                 >
+//                   <FunnelIcon className="h-4 w-4 md:h-5 md:w-5" />
+//                   <span className="hidden md:inline">Filters</span>
+//                 </button>
+                
+//                 {/* Sort Dropdown */}
+//                 <select
+//                   value={sortBy}
+//                   onChange={(e) => setSortBy(e.target.value as any)}
+//                   className="px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 text-sm md:text-base"
+//                 >
+//                   <option value="price">Price: Low to High</option>
+//                   <option value="rating">Highest Rated</option>
+//                   <option value="seats">Most Seats</option>
+//                 </select>
+//               </div>
 //             </div>
 //           </div>
           
 //           {/* Advanced Filters */}
 //           {showFilters && (
-//             <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+//             <div className="mt-4 md:mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
 //               <div className="flex justify-between items-center mb-4">
-//                 <h4 className="font-semibold text-gray-900">Advanced Filters</h4>
+//                 <h4 className="font-semibold text-gray-900 text-sm md:text-base">Advanced Filters</h4>
 //                 <button onClick={() => setShowFilters(false)}>
 //                   <XMarkIcon className="h-5 w-5 text-gray-500" />
 //                 </button>
 //               </div>
               
-//               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 //                 <div>
 //                   <label className="block text-sm font-medium text-gray-700 mb-2">
 //                     Minimum Seats: {minSeats}
@@ -761,7 +761,7 @@
 //                     max="80"
 //                     value={minSeats}
 //                     onChange={(e) => setMinSeats(parseInt(e.target.value))}
-//                     className="w-full"
+//                     className="w-full accent-red-600"
 //                   />
 //                   <div className="flex justify-between text-xs text-gray-500 mt-1">
 //                     <span>20 Seats</span>
@@ -779,7 +779,7 @@
 //                     max="100"
 //                     value={maxPrice}
 //                     onChange={(e) => setMaxPrice(parseInt(e.target.value))}
-//                     className="w-full"
+//                     className="w-full accent-red-600"
 //                   />
 //                   <div className="flex justify-between text-xs text-gray-500 mt-1">
 //                     <span>₹33</span>
@@ -788,20 +788,20 @@
 //                 </div>
 //               </div>
               
-//               <div className="mt-4 flex justify-end gap-3">
+//               <div className="mt-4 flex flex-col sm:flex-row justify-end gap-3">
 //                 <button
 //                   onClick={() => {
 //                     setMinSeats(20);
 //                     setMaxPrice(100);
 //                     setShowACOnly(true);
 //                   }}
-//                   className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50"
+//                   className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700"
 //                 >
 //                   Reset Filters
 //                 </button>
 //                 <button
 //                   onClick={() => setShowFilters(false)}
-//                   className="px-4 py-2 text-sm bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
+//                   className="px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700"
 //                 >
 //                   Apply Filters
 //                 </button>
@@ -811,12 +811,12 @@
 //         </div>
 
 //         {/* Buses Grid */}
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
 //           {currentVehicles.map((vehicle) => {
 //             const { total, kmToCharge, baseFare, gst } = calculateTotal(vehicle);
 //             const gradient = getGradientColor(vehicle.imageColor);
 //             const currentImageIndex = hoveredVehicle === vehicle.id ? 1 : 0;
-//             const vehicleImage = vehicle.images?.[currentImageIndex] || '/images/transportation/bus-fleet.png';
+//             const vehicleImage = vehicle.images?.[currentImageIndex] || 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg';
             
 //             return (
 //               <div 
@@ -826,7 +826,7 @@
 //                 onMouseLeave={() => setHoveredVehicle(null)}
 //               >
 //                 {/* Bus Header with Image */}
-//                 <div className="relative h-48 overflow-hidden">
+//                 <div className="relative h-48 md:h-56 overflow-hidden">
 //                   <div className="absolute inset-0">
 //                     <Image
 //                       src={vehicleImage}
@@ -836,7 +836,7 @@
 //                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 //                       priority={vehicle.id <= 3}
 //                     />
-//                     <div className={`absolute inset-0 ${gradient} opacity-30`} />
+//                     <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-30`} />
 //                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 //                   </div>
                   
@@ -880,27 +880,27 @@
 //                 </div>
                 
 //                 {/* Bus Details */}
-//                 <div className="p-6">
-//                   <div className="flex justify-between items-start mb-3">
-//                     <div>
-//                       <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">
+//                 <div className="p-4 md:p-6">
+//                   <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 mb-3">
+//                     <div className="flex-1">
+//                       <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors">
 //                         {vehicle.name}
 //                       </h3>
-//                       <div className="flex items-center gap-2 mt-1">
+//                       <div className="flex flex-wrap items-center gap-2 mt-1">
 //                         <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
 //                           {vehicle.category}
 //                         </span>
 //                         {vehicle.ac && (
-//                           <span className="flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">
+//                           <span className="flex items-center gap-1 px-2 py-1 bg-red-50 text-red-700 text-xs font-medium rounded">
 //                             <span className="text-xs">❄️</span>
 //                             AC
 //                           </span>
 //                         )}
 //                       </div>
 //                     </div>
-//                     <div className="text-right">
-//                       <div className="text-2xl font-bold text-green-600">₹{vehicle.perKmWithTax}</div>
-//                       <div className="text-sm text-gray-500">per km</div>
+//                     <div className="text-left md:text-right">
+//                       <div className="text-xl md:text-2xl font-bold text-green-600">₹{vehicle.perKmWithTax}</div>
+//                       <div className="text-xs md:text-sm text-gray-500">per km</div>
 //                     </div>
 //                   </div>
                   
@@ -909,7 +909,7 @@
 //                     <div className="text-sm font-medium text-gray-700 mb-2">Features:</div>
 //                     <div className="flex flex-wrap gap-2">
 //                       {vehicle.features.slice(0, 4).map((feature, idx) => (
-//                         <span key={idx} className="px-2 py-1 bg-emerald-50 text-emerald-700 text-xs rounded">
+//                         <span key={idx} className="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">
 //                           {feature}
 //                         </span>
 //                       ))}
@@ -922,7 +922,7 @@
 //                     <div className="flex flex-wrap gap-2">
 //                       {vehicle.amenities.slice(0, 3).map((amenity, idx) => (
 //                         <div key={idx} className="flex items-center gap-1">
-//                           <CheckCircleIcon className="h-3 w-3 text-emerald-500" />
+//                           <CheckCircleIcon className="h-3 w-3 text-red-500" />
 //                           <span className="text-xs text-gray-600">{amenity}</span>
 //                         </div>
 //                       ))}
@@ -954,14 +954,18 @@
 //                   </div>
                   
 //                   {/* Action Buttons */}
-//                   <div className="flex gap-3">
+//                   <div className="flex flex-col sm:flex-row gap-3">
 //                     <button
 //                       onClick={() => setShowGroupBooking(true)}
-//                       className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-0.5"
+//                       className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:-translate-y-0.5 text-sm md:text-base"
 //                     >
 //                       Book for Group
 //                     </button>
-//                     <button className="px-4 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+//                     <button 
+//                       onClick={() => handleViewPhotos(vehicle)}
+//                       className="px-4 py-3 border-2 border-red-600 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
+//                     >
+//                       <PhotoIcon className="h-5 w-5" />
 //                       View Photos
 //                     </button>
 //                   </div>
@@ -974,7 +978,7 @@
 //         {/* Pagination */}
 //         {totalPages > 1 && (
 //           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-12">
-//             <div className="text-gray-600">
+//             <div className="text-gray-600 text-sm md:text-base">
 //               Showing {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredVehicles.length)} of {filteredVehicles.length} buses
 //             </div>
             
@@ -998,9 +1002,9 @@
 //                   <button
 //                     key={page}
 //                     onClick={() => setCurrentPage(page)}
-//                     className={`w-10 h-10 rounded-lg font-medium ${
+//                     className={`w-8 h-8 md:w-10 md:h-10 rounded-lg font-medium text-sm md:text-base ${
 //                       currentPage === page
-//                         ? 'bg-emerald-600 text-white'
+//                         ? 'bg-red-600 text-white'
 //                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
 //                     }`}
 //                   >
@@ -1021,33 +1025,33 @@
 //         )}
 
 //         {/* Features Section */}
-//         <div className="bg-gradient-to-r from-teal-900 to-emerald-900 rounded-2xl p-8 mb-12 text-white">
-//           <h3 className="text-2xl font-bold text-center mb-8">Why Choose Our Bus Service for Groups?</h3>
+//         <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-2xl p-6 md:p-8 mb-12 text-white">
+//           <h3 className="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8">Why Choose Our Bus Service for Groups?</h3>
           
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 //             {[
 //               {
-//                 icon: <UserGroupIcon className="h-12 w-12" />,
+//                 icon: <UserGroupIcon className="h-10 w-10 md:h-12 md:w-12" />,
 //                 title: "Large Group Expertise",
 //                 description: "Specialized in handling groups from 20 to 80 people with ease"
 //               },
 //               {
-//                 icon: <ShieldCheckIcon className="h-12 w-12" />,
+//                 icon: <ShieldCheckIcon className="h-10 w-10 md:h-12 md:w-12" />,
 //                 title: "Safety First",
 //                 description: "GPS tracking, emergency exits, first aid, and experienced drivers"
 //               },
 //               {
-//                 icon: <ClockIcon className="h-12 w-12" />,
+//                 icon: <ClockIcon className="h-10 w-10 md:h-12 md:w-12" />,
 //                 title: "Flexible Scheduling",
 //                 description: "Customizable itineraries and 24/7 support for your group"
 //               },
 //             ].map((feature, idx) => (
 //               <div key={idx} className="text-center">
-//                 <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-2xl mb-4">
+//                 <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white/10 rounded-2xl mb-3 md:mb-4">
 //                   {feature.icon}
 //                 </div>
-//                 <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
-//                 <p className="text-emerald-200">{feature.description}</p>
+//                 <h4 className="text-lg md:text-xl font-bold mb-2">{feature.title}</h4>
+//                 <p className="text-red-200 text-sm md:text-base">{feature.description}</p>
 //               </div>
 //             ))}
 //           </div>
@@ -1055,40 +1059,40 @@
 
 //         {/* Group Booking CTA */}
 //         <div className="text-center">
-//           <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-2xl p-8 md:p-12 text-white mb-8">
-//             <h3 className="text-3xl md:text-4xl font-bold mb-4">Need a Bus for Your Group?</h3>
-//             <p className="text-xl mb-6 opacity-90">Get special discounts for groups of 30+ people</p>
+//           <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-6 md:p-8 lg:p-12 text-white mb-8">
+//             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Need a Bus for Your Group?</h3>
+//             <p className="text-lg md:text-xl mb-6 opacity-90">Get special discounts for groups of 30+ people</p>
             
-//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
 //               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-//                 <div className="text-3xl font-bold">10% OFF</div>
-//                 <div className="text-lg">For School & College Groups</div>
+//                 <div className="text-2xl md:text-3xl font-bold">10% OFF</div>
+//                 <div className="text-base md:text-lg">For School & College Groups</div>
 //               </div>
 //               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-//                 <div className="text-3xl font-bold">15% OFF</div>
-//                 <div className="text-lg">For Corporate & Wedding Groups</div>
+//                 <div className="text-2xl md:text-3xl font-bold">15% OFF</div>
+//                 <div className="text-base md:text-lg">For Corporate & Wedding Groups</div>
 //               </div>
 //             </div>
             
 //             <div className="flex flex-col sm:flex-row gap-4 justify-center">
 //               <a 
 //                 href="tel:+919591762419"
-//                 className="inline-flex items-center justify-center gap-3 bg-white text-orange-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg"
+//                 className="inline-flex items-center justify-center gap-3 bg-white text-red-700 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-gray-100 transition-all shadow-lg"
 //               >
-//                 <PhoneIcon className="h-6 w-6" />
+//                 <PhoneIcon className="h-5 w-5 md:h-6 md:w-6" />
 //                 Call Group Coordinator
 //               </a>
               
 //               <button
 //                 onClick={() => setShowGroupBooking(true)}
-//                 className="inline-flex items-center justify-center gap-3 bg-orange-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-900 transition-all shadow-lg"
+//                 className="inline-flex items-center justify-center gap-3 bg-red-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-red-900 transition-all shadow-lg"
 //               >
-//                 <UserGroupIcon className="h-6 w-6" />
+//                 <UserGroupIcon className="h-5 w-5 md:h-6 md:w-6" />
 //                 Request Group Quote
 //               </button>
 //             </div>
             
-//             <p className="mt-6 text-sm opacity-80">Free itinerary planning • Multiple bus options • Flexible payment</p>
+//             <p className="mt-6 text-sm md:text-base opacity-80">Free itinerary planning • Multiple bus options • Flexible payment</p>
 //           </div>
 //         </div>
 //       </div>
@@ -1096,87 +1100,166 @@
 //       {/* Group Booking Modal */}
 //       {showGroupBooking && (
 //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-//           <div className="bg-white rounded-2xl max-w-lg w-full p-6">
-//             <div className="flex justify-between items-center mb-6">
+//           <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+//             <div className="flex justify-between items-center p-6 border-b">
 //               <h3 className="text-xl font-bold text-gray-900">Request Group Quote</h3>
 //               <button onClick={() => setShowGroupBooking(false)}>
 //                 <XMarkIcon className="h-6 w-6 text-gray-500" />
 //               </button>
 //             </div>
             
-//             <div className="space-y-4">
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">Group Type</label>
-//                 <select className="w-full px-4 py-3 border border-gray-300 rounded-lg">
-//                   <option>School/College Trip</option>
-//                   <option>Corporate Event</option>
-//                   <option>Pilgrimage Tour</option>
-//                   <option>Wedding</option>
-//                   <option>Family Function</option>
-//                   <option>Tour Group</option>
-//                 </select>
-//               </div>
-              
-//               <div className="grid grid-cols-2 gap-4">
+//             <div className="p-6">
+//               <div className="space-y-4">
 //                 <div>
-//                   <label className="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
-//                   <input
-//                     type="number"
-//                     value={passengerCount}
-//                     onChange={(e) => setPassengerCount(parseInt(e.target.value))}
-//                     className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-//                     min="20"
-//                     max="200"
-//                   />
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Group Type</label>
+//                   <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white">
+//                     <option>School/College Trip</option>
+//                     <option>Corporate Event</option>
+//                     <option>Pilgrimage Tour</option>
+//                     <option>Wedding</option>
+//                     <option>Family Function</option>
+//                     <option>Tour Group</option>
+//                   </select>
 //                 </div>
                 
-//                 <div>
-//                   <label className="block text-sm font-medium text-gray-700 mb-2">Trip Duration (Days)</label>
-//                   <input
-//                     type="number"
-//                     defaultValue="3"
-//                     className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-//                     min="1"
-//                   />
-//                 </div>
-//               </div>
-              
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">Travel Dates</label>
-//                 <input
-//                   type="date"
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-//                 />
-//               </div>
-              
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">Special Requirements</label>
-//                 <textarea
-//                   rows={3}
-//                   placeholder="Any special needs, amenities required, or specific requests..."
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-//                 />
-//               </div>
-              
-//               <div className="pt-4 border-t">
-//                 <div className="flex justify-between mb-4">
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 //                   <div>
-//                     <div className="font-medium text-gray-900">Estimated Quote Range</div>
-//                     <div className="text-sm text-gray-600">Based on {passengerCount} people</div>
+//                     <label className="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
+//                     <input
+//                       type="text"
+//                       inputMode="numeric"
+//                       pattern="[0-9]*"
+//                       value={passengerCount}
+//                       onChange={(e) => {
+//                         const value = e.target.value;
+//                         if (value === '' || /^\d+$/.test(value)) {
+//                           const numValue = parseInt(value);
+//                           if (!isNaN(numValue) && numValue >= 1) {
+//                             setPassengerCount(numValue);
+//                           }
+//                         }
+//                       }}
+//                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+//                       min="20"
+//                       max="200"
+//                     />
 //                   </div>
-//                   <div className="text-right">
-//                     <div className="text-2xl font-bold text-green-600">₹85,000 - ₹1,50,000</div>
-//                     <div className="text-sm text-gray-600">Final quote in 2 hours</div>
+                  
+//                   <div>
+//                     <label className="block text-sm font-medium text-gray-700 mb-2">Trip Duration (Days)</label>
+//                     <input
+//                       type="number"
+//                       defaultValue="3"
+//                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+//                       min="1"
+//                     />
 //                   </div>
 //                 </div>
                 
-//                 <button className="w-full bg-gradient-to-r from-orange-600 to-amber-600 text-white py-3 rounded-lg font-bold text-lg">
-//                   Get Special Group Quote
-//                 </button>
+//                 <div>
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Travel Dates</label>
+//                   <input
+//                     type="date"
+//                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+//                   />
+//                 </div>
                 
-//                 <p className="text-center text-sm text-gray-500 mt-3">
-//                   Our group coordinator will call you within 30 minutes
+//                 <div>
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Special Requirements</label>
+//                   <textarea
+//                     rows={3}
+//                     placeholder="Any special needs, amenities required, or specific requests..."
+//                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+//                   />
+//                 </div>
+                
+//                 <div className="pt-4 border-t">
+//                   <div className="mb-4">
+//                     <div className="flex justify-between mb-1">
+//                       <span className="text-gray-700 font-medium">Group Size:</span>
+//                       <span className="font-semibold text-gray-900">{passengerCount} people</span>
+//                     </div>
+//                     <div className="flex justify-between mb-3">
+//                       <span className="text-gray-700 font-medium">Estimated Cost Range:</span>
+//                       <div className="text-right">
+//                         <div className="text-2xl font-bold text-green-600">₹65,000 - ₹1,50,000</div>
+//                         <div className="text-sm text-gray-600">Final quote in 2 hours</div>
+//                       </div>
+//                     </div>
+//                   </div>
+                  
+//                   <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-bold text-lg hover:from-red-700 hover:to-red-800">
+//                     Get Special Group Quote
+//                   </button>
+                  
+//                   <p className="text-center text-sm text-gray-500 mt-3">
+//                     Our group coordinator will call you within 30 minutes
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Photos Modal */}
+//       {showPhotos && (
+//         <div className="fixed inset-0 bg-black/90 flex items-center justify-center p-4 z-50">
+//           <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+//             <div className="flex justify-between items-center p-6 border-b bg-gradient-to-r from-red-600 to-red-700">
+//               <h3 className="text-xl font-bold text-white flex items-center gap-3">
+//                 <PhotoIcon className="h-6 w-6" />
+//                 {selectedVehicleName} - Photo Gallery
+//               </h3>
+//               <button 
+//                 onClick={() => setShowPhotos(false)}
+//                 className="text-white hover:text-gray-200"
+//               >
+//                 <XMarkIcon className="h-6 w-6" />
+//               </button>
+//             </div>
+
+//             <div className="p-6">
+//               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+//                 {selectedVehiclePhotos.map((photo, index) => (
+//                   <div key={index} className="relative h-48 md:h-56 rounded-lg overflow-hidden">
+//                     <Image
+//                       src={photo}
+//                       alt={`${selectedVehicleName} - Image ${index + 1}`}
+//                       fill
+//                       className="object-cover hover:scale-105 transition-transform duration-300"
+//                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+//                     />
+//                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+//                     <div className="absolute bottom-3 left-3">
+//                       <span className="bg-black/60 text-white text-xs px-2 py-1 rounded">
+//                         Image {index + 1}
+//                       </span>
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+
+//               <div className="bg-gray-50 rounded-lg p-4">
+//                 <h4 className="font-semibold text-gray-900 mb-2">Bus Details</h4>
+//                 <p className="text-sm text-gray-600 mb-3">
+//                   These are actual photos of our {selectedVehicleName} fleet. All buses are maintained to the highest standards and are regularly serviced.
 //                 </p>
+//                 <div className="text-xs text-gray-500">
+//                   <p>• High-resolution photos</p>
+//                   <p>• Actual fleet vehicles</p>
+//                   <p>• Regular maintenance</p>
+//                   <p>• Professional cleaning</p>
+//                 </div>
+//               </div>
+
+//               <div className="mt-6 text-center">
+//                 <button
+//                   onClick={() => setShowPhotos(false)}
+//                   className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+//                 >
+//                   Close Gallery
+//                 </button>
 //               </div>
 //             </div>
 //           </div>
@@ -1199,7 +1282,11 @@
 
 
 
+
+
+
 // File Path: app/transportation/buses/page.tsx
+
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
@@ -1227,7 +1314,8 @@ import {
   Battery100Icon,
   PowerIcon,
   MusicalNoteIcon,
-  ArrowPathIcon
+  ArrowPathIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid, BoltIcon as BoltIconSolid } from '@heroicons/react/24/solid';
 import Image from 'next/image';
@@ -1235,12 +1323,12 @@ import { calculateDistance } from '@/lib/utils/distanceCalculator';
 
 // Bus categories and types
 const busTypes = [
-  { id: 'minibus', name: 'Mini Bus', seats: '12-27', icon: '🚌', image: '/images/transportation/mini-bus.jpg' },
-  { id: 'standard', name: 'Standard Bus', seats: '28-35', icon: '🚍', image: '/images/transportation/standard-bus.jpg' },
-  { id: 'luxury', name: 'Luxury Bus', seats: '36-45', icon: '🚎', image: '/images/transportation/luxury-bus.jpg' },
-  { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45', icon: '🛌', image: '/images/transportation/sleeper-bus.jpg' },
-  { id: 'volvo', name: 'Volvo Bus', seats: '40-53', icon: '🚐', image: '/images/transportation/volvo-bus.jpg' },
-  { id: 'double', name: 'Double Decker', seats: '60-80', icon: '🚋', image: '/images/transportation/double-decker.jpg' },
+  { id: 'minibus', name: 'Mini Bus', seats: '12-27', icon: '🚌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'standard', name: 'Standard Bus', seats: '28-35', icon: '🚍', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'luxury', name: 'Luxury Bus', seats: '36-45', icon: '🚎', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45', icon: '🛌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'volvo', name: 'Volvo Bus', seats: '40-53', icon: '🚐', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'double', name: 'Double Decker', seats: '60-80', icon: '🚋', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
 ];
 
 // Complete buses data with enhanced details
@@ -1263,9 +1351,9 @@ const vehicles = [
     year: 2022,
     imageColor: 'red',
     images: [
-      '/images/transportation/mini-bus-1.jpg',
-      '/images/transportation/mini-bus-2.jpg',
-      '/images/transportation/mini-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1286,9 +1374,9 @@ const vehicles = [
     year: 2023,
     imageColor: 'red',
     images: [
-      '/images/transportation/sleeper-bus-1.jpg',
-      '/images/transportation/sleeper-bus-2.jpg',
-      '/images/transportation/sleeper-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1309,9 +1397,9 @@ const vehicles = [
     year: 2024,
     imageColor: 'red',
     images: [
-      '/images/transportation/volvo-bus-1.jpg',
-      '/images/transportation/volvo-bus-2.jpg',
-      '/images/transportation/volvo-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1332,9 +1420,9 @@ const vehicles = [
     year: 2023,
     imageColor: 'red',
     images: [
-      '/images/transportation/double-decker-1.jpg',
-      '/images/transportation/double-decker-2.jpg',
-      '/images/transportation/double-decker-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1355,9 +1443,9 @@ const vehicles = [
     year: 2021,
     imageColor: 'red',
     images: [
-      '/images/transportation/standard-bus-1.jpg',
-      '/images/transportation/standard-bus-2.jpg',
-      '/images/transportation/standard-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1378,9 +1466,9 @@ const vehicles = [
     year: 2023,
     imageColor: 'red',
     images: [
-      '/images/transportation/party-bus-1.jpg',
-      '/images/transportation/party-bus-2.jpg',
-      '/images/transportation/party-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1401,9 +1489,9 @@ const vehicles = [
     year: 2022,
     imageColor: 'red',
     images: [
-      '/images/transportation/school-bus-1.jpg',
-      '/images/transportation/school-bus-2.jpg',
-      '/images/transportation/school-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1424,9 +1512,9 @@ const vehicles = [
     year: 2024,
     imageColor: 'red',
     images: [
-      '/images/transportation/vip-coach-1.jpg',
-      '/images/transportation/vip-coach-2.jpg',
-      '/images/transportation/vip-coach-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
   { 
@@ -1447,9 +1535,9 @@ const vehicles = [
     year: 2022,
     imageColor: 'red',
     images: [
-      '/images/transportation/tourist-bus-1.jpg',
-      '/images/transportation/tourist-bus-2.jpg',
-      '/images/transportation/tourist-bus-3.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
     ]
   },
 ];
@@ -1481,9 +1569,19 @@ export default function BusesPage() {
   const [showACOnly, setShowACOnly] = useState(true);
   const [selectedRoute, setSelectedRoute] = useState<any>(null);
   const [showGroupBooking, setShowGroupBooking] = useState(false);
+  const [showQuickQuote, setShowQuickQuote] = useState(false);
+  const [showPhotos, setShowPhotos] = useState(false);
+  const [selectedVehiclePhotos, setSelectedVehiclePhotos] = useState<string[]>([]);
+  const [selectedVehicleName, setSelectedVehicleName] = useState('');
   const [passengerCount, setPassengerCount] = useState(40);
   const [hoveredVehicle, setHoveredVehicle] = useState<number | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [quoteDetails, setQuoteDetails] = useState({
+    passengers: '',
+    days: 1,
+    date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+    vehicle: null as any
+  });
 
   const ITEMS_PER_PAGE = 6;
   const MINIMUM_KM_PER_DAY = 250;
@@ -1597,13 +1695,48 @@ export default function BusesPage() {
     }
   };
 
-  const calculateTotal = (vehicle: any) => {
-    const kmToCharge = Math.max(finalKm, minimumKmCharge);
+  const handleViewPhotos = (vehicle: any) => {
+    setSelectedVehiclePhotos(vehicle.images);
+    setSelectedVehicleName(vehicle.name);
+    setShowPhotos(true);
+  };
+
+  const calculateTotal = (vehicle: any, customDays?: number, customPassengers?: number) => {
+    const days = customDays || numberOfDays;
+    const kmToCharge = Math.max(finalKm, days * MINIMUM_KM_PER_DAY);
     const baseFare = vehicle.perKmWithTax * kmToCharge;
     const gst = (baseFare * GST_PERCENTAGE) / 100;
-    const total = baseFare + driverBataTotal + gst;
-    return { baseFare, gst, total, kmToCharge };
+    const total = baseFare + (days * DRIVER_BATA_PER_DAY) + gst;
+    return { baseFare, gst, total, kmToCharge, days };
   };
+
+  const handleQuickQuote = (vehicle: any) => {
+    setShowQuickQuote(true);
+    setQuoteDetails({
+      passengers: passengerCount.toString(),
+      days: numberOfDays,
+      date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      vehicle: vehicle
+    });
+  };
+
+  const calculateQuotePrice = () => {
+    if (!quoteDetails.vehicle) return { min: 0, max: 0, total: 0, days: 0, kmToCharge: 0 };
+    
+    const { total, days, kmToCharge } = calculateTotal(
+      quoteDetails.vehicle, 
+      quoteDetails.days,
+      quoteDetails.passengers ? parseInt(quoteDetails.passengers) : undefined
+    );
+    
+    // Add a buffer for variance (10-20%)
+    const min = total * 0.9;
+    const max = total * 1.2;
+    
+    return { min, max, total, days, kmToCharge };
+  };
+
+  const quotePrice = calculateQuotePrice();
 
   const recommendedBuses = useMemo(() => {
     return vehicles
@@ -1667,7 +1800,7 @@ export default function BusesPage() {
           </div>
           
           <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
                 <div className="relative">
@@ -1695,7 +1828,7 @@ export default function BusesPage() {
                     value={from}
                     onChange={(e) => setFrom(e.target.value)}
                     placeholder="Enter city"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
                   />
                 </div>
               </div>
@@ -1709,7 +1842,7 @@ export default function BusesPage() {
                     value={to}
                     onChange={(e) => setTo(e.target.value)}
                     placeholder="Destination city"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
                   />
                 </div>
               </div>
@@ -1721,7 +1854,7 @@ export default function BusesPage() {
                   value={km}
                   onChange={(e) => setKm(e.target.value)}
                   placeholder="Enter distance"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
                 />
               </div>
             </div>
@@ -1731,17 +1864,17 @@ export default function BusesPage() {
               <button
                 onClick={calculateDistanceWithAPI}
                 disabled={!from || !to || isCalculating}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4 md:px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all w-full md:w-auto"
               >
                 {isCalculating ? (
                   <>
                     <ArrowPathIcon className="h-5 w-5 animate-spin" />
-                    Calculating...
+                    <span className="text-sm md:text-base">Calculating...</span>
                   </>
                 ) : (
                   <>
                     <MapPinIcon className="h-5 w-5" />
-                    Calculate Distance & Price
+                    <span className="text-sm md:text-base">Calculate Distance & Price</span>
                   </>
                 )}
               </button>
@@ -1753,28 +1886,28 @@ export default function BusesPage() {
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse delay-150"></div>
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse delay-300"></div>
-                  <span className="text-gray-600">Calculating distance via AI...</span>
+                  <span className="text-gray-600 text-sm md:text-base">Calculating distance via AI...</span>
                 </div>
               </div>
             )}
             
             {distance && !loading && (
               <div className="mt-6 bg-gradient-to-r from-red-50 to-red-50 rounded-xl p-4 border border-red-200">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
+                  <div className="flex-1">
                     <div className="text-sm text-gray-600">Route Information</div>
                     <div className="text-lg font-bold text-gray-900">{from} → {to}</div>
-                    <div className="flex items-center gap-3 mt-1">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mt-1">
                       <span className="text-red-600 font-semibold">{distance} KM</span>
-                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-400 hidden md:inline">•</span>
                       <span className="text-gray-600">{duration}</span>
-                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-400 hidden md:inline">•</span>
                       <span className="text-red-600 font-medium">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
                     </div>
                   </div>
                   <button
                     onClick={calculateDistanceWithAPI}
-                    className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors"
+                    className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors w-full md:w-auto"
                   >
                     Recalculate
                   </button>
@@ -1796,8 +1929,8 @@ export default function BusesPage() {
                     const { total } = calculateTotal(bus);
                     return (
                       <div key={bus.id} className="bg-gradient-to-r from-red-50 to-red-50 rounded-xl p-4 border border-red-200">
-                        <div className="flex justify-between items-start">
-                          <div>
+                        <div className="flex flex-col md:flex-row md:justify-between items-start gap-2">
+                          <div className="flex-1">
                             <div className="font-bold text-gray-900">{bus.name}</div>
                             <div className="text-sm text-gray-600">{bus.seats} seats • {bus.ac ? 'AC' : 'Non-AC'}</div>
                           </div>
@@ -1845,7 +1978,7 @@ export default function BusesPage() {
         {/* Popular Group Routes */}
         <div className="mb-8">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Popular Group Routes</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {groupRoutes.map((route, idx) => (
               <button
                 key={idx}
@@ -1855,33 +1988,33 @@ export default function BusesPage() {
                 }`}
               >
                 <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <div className="font-bold text-gray-900">{route.route}</div>
-                    <div className="text-sm text-red-600 font-medium">{route.type}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-gray-900 text-left">{route.route}</div>
+                    <div className="text-sm text-red-600 font-medium text-left">{route.type}</div>
                   </div>
-                  <ArrowRightIcon className="h-5 w-5 text-gray-400" />
+                  <ArrowRightIcon className="h-5 w-5 text-gray-400 flex-shrink-0 ml-2" />
                 </div>
-                <div className="text-sm text-gray-600 mb-2">{route.groups}</div>
-                <div className="text-sm font-bold text-green-600">{route.price}</div>
+                <div className="text-sm text-gray-600 mb-2 text-left">{route.groups}</div>
+                <div className="text-sm font-bold text-green-600 text-left">{route.price}</div>
               </button>
             ))}
           </div>
         </div>
 
         {/* Controls Section */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-4">
             <div>
-              <h3 className="text-xl font-bold text-gray-900">Available Buses ({filteredVehicles.length})</h3>
-              <p className="text-gray-600">Perfect for groups of {passengerCount}+ people</p>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900">Available Buses ({filteredVehicles.length})</h3>
+              <p className="text-gray-600 text-sm md:text-base">Perfect for groups of {passengerCount}+ people</p>
             </div>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col md:flex-row flex-wrap gap-3 w-full md:w-auto">
               {/* Quick Filters */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 md:pb-0">
                 <button
                   onClick={() => setMinSeats(20)}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium ${
+                  className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${
                     minSeats === 20 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -1889,7 +2022,7 @@ export default function BusesPage() {
                 </button>
                 <button
                   onClick={() => setMinSeats(40)}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium ${
+                  className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${
                     minSeats === 40 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -1897,7 +2030,7 @@ export default function BusesPage() {
                 </button>
                 <button
                   onClick={() => setShowACOnly(!showACOnly)}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium ${
+                  className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ${
                     showACOnly ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -1905,39 +2038,41 @@ export default function BusesPage() {
                 </button>
               </div>
               
-              {/* Filter Button */}
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                <FunnelIcon className="h-5 w-5" />
-                Advanced Filters
-              </button>
-              
-              {/* Sort Dropdown */}
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-              >
-                <option value="price">Price: Low to High</option>
-                <option value="rating">Highest Rated</option>
-                <option value="seats">Most Seats</option>
-              </select>
+              <div className="flex gap-2">
+                {/* Filter Button */}
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors text-sm md:text-base"
+                >
+                  <FunnelIcon className="h-4 w-4 md:h-5 md:w-5" />
+                  <span className="hidden md:inline">Filters</span>
+                </button>
+                
+                {/* Sort Dropdown */}
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 text-sm md:text-base"
+                >
+                  <option value="price">Price: Low to High</option>
+                  <option value="rating">Highest Rated</option>
+                  <option value="seats">Most Seats</option>
+                </select>
+              </div>
             </div>
           </div>
           
           {/* Advanced Filters */}
           {showFilters && (
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="mt-4 md:mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
               <div className="flex justify-between items-center mb-4">
-                <h4 className="font-semibold text-gray-900">Advanced Filters</h4>
+                <h4 className="font-semibold text-gray-900 text-sm md:text-base">Advanced Filters</h4>
                 <button onClick={() => setShowFilters(false)}>
                   <XMarkIcon className="h-5 w-5 text-gray-500" />
                 </button>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Minimum Seats: {minSeats}
@@ -1975,14 +2110,14 @@ export default function BusesPage() {
                 </div>
               </div>
               
-              <div className="mt-4 flex justify-end gap-3">
+              <div className="mt-4 flex flex-col sm:flex-row justify-end gap-3">
                 <button
                   onClick={() => {
                     setMinSeats(20);
                     setMaxPrice(100);
                     setShowACOnly(true);
                   }}
-                  className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700"
                 >
                   Reset Filters
                 </button>
@@ -1998,12 +2133,12 @@ export default function BusesPage() {
         </div>
 
         {/* Buses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
           {currentVehicles.map((vehicle) => {
             const { total, kmToCharge, baseFare, gst } = calculateTotal(vehicle);
             const gradient = getGradientColor(vehicle.imageColor);
             const currentImageIndex = hoveredVehicle === vehicle.id ? 1 : 0;
-            const vehicleImage = vehicle.images?.[currentImageIndex] || '/images/transportation/bus-fleet.png';
+            const vehicleImage = vehicle.images?.[currentImageIndex] || 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg';
             
             return (
               <div 
@@ -2013,7 +2148,7 @@ export default function BusesPage() {
                 onMouseLeave={() => setHoveredVehicle(null)}
               >
                 {/* Bus Header with Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 md:h-56 overflow-hidden">
                   <div className="absolute inset-0">
                     <Image
                       src={vehicleImage}
@@ -2067,13 +2202,13 @@ export default function BusesPage() {
                 </div>
                 
                 {/* Bus Details */}
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors">
+                <div className="p-4 md:p-6">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 mb-3">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors">
                         {vehicle.name}
                       </h3>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex flex-wrap items-center gap-2 mt-1">
                         <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
                           {vehicle.category}
                         </span>
@@ -2085,9 +2220,9 @@ export default function BusesPage() {
                         )}
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-green-600">₹{vehicle.perKmWithTax}</div>
-                      <div className="text-sm text-gray-500">per km</div>
+                    <div className="text-left md:text-right">
+                      <div className="text-xl md:text-2xl font-bold text-green-600">₹{vehicle.perKmWithTax}</div>
+                      <div className="text-xs md:text-sm text-gray-500">per km</div>
                     </div>
                   </div>
                   
@@ -2125,7 +2260,7 @@ export default function BusesPage() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-600">Driver Allowance ({numberOfDays} days):</span>
-                        <span className="font-medium">₹{formatPrice(driverBataTotal)}</span>
+                        <span className="font-medium">₹{formatPrice(numberOfDays * DRIVER_BATA_PER_DAY)}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-600">GST ({GST_PERCENTAGE}%):</span>
@@ -2141,14 +2276,18 @@ export default function BusesPage() {
                   </div>
                   
                   {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <button
-                      onClick={() => setShowGroupBooking(true)}
-                      className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:-translate-y-0.5"
+                      onClick={() => handleQuickQuote(vehicle)}
+                      className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:-translate-y-0.5 text-sm md:text-base"
                     >
-                      Book for Group
+                      Get Quote
                     </button>
-                    <button className="px-4 py-3 border-2 border-red-600 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition-colors">
+                    <button 
+                      onClick={() => handleViewPhotos(vehicle)}
+                      className="px-4 py-3 border-2 border-red-600 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
+                    >
+                      <PhotoIcon className="h-5 w-5" />
                       View Photos
                     </button>
                   </div>
@@ -2161,7 +2300,7 @@ export default function BusesPage() {
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-12">
-            <div className="text-gray-600">
+            <div className="text-gray-600 text-sm md:text-base">
               Showing {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredVehicles.length)} of {filteredVehicles.length} buses
             </div>
             
@@ -2185,7 +2324,7 @@ export default function BusesPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`w-10 h-10 rounded-lg font-medium ${
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-lg font-medium text-sm md:text-base ${
                       currentPage === page
                         ? 'bg-red-600 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -2208,33 +2347,33 @@ export default function BusesPage() {
         )}
 
         {/* Features Section */}
-        <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-2xl p-8 mb-12 text-white">
-          <h3 className="text-2xl font-bold text-center mb-8">Why Choose Our Bus Service for Groups?</h3>
+        <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-2xl p-6 md:p-8 mb-12 text-white">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8">Why Choose Our Bus Service for Groups?</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
-                icon: <UserGroupIcon className="h-12 w-12" />,
+                icon: <UserGroupIcon className="h-10 w-10 md:h-12 md:w-12" />,
                 title: "Large Group Expertise",
                 description: "Specialized in handling groups from 20 to 80 people with ease"
               },
               {
-                icon: <ShieldCheckIcon className="h-12 w-12" />,
+                icon: <ShieldCheckIcon className="h-10 w-10 md:h-12 md:w-12" />,
                 title: "Safety First",
                 description: "GPS tracking, emergency exits, first aid, and experienced drivers"
               },
               {
-                icon: <ClockIcon className="h-12 w-12" />,
+                icon: <ClockIcon className="h-10 w-10 md:h-12 md:w-12" />,
                 title: "Flexible Scheduling",
                 description: "Customizable itineraries and 24/7 support for your group"
               },
             ].map((feature, idx) => (
               <div key={idx} className="text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-2xl mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white/10 rounded-2xl mb-3 md:mb-4">
                   {feature.icon}
                 </div>
-                <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
-                <p className="text-red-200">{feature.description}</p>
+                <h4 className="text-lg md:text-xl font-bold mb-2">{feature.title}</h4>
+                <p className="text-red-200 text-sm md:text-base">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -2242,128 +2381,324 @@ export default function BusesPage() {
 
         {/* Group Booking CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 md:p-12 text-white mb-8">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">Need a Bus for Your Group?</h3>
-            <p className="text-xl mb-6 opacity-90">Get special discounts for groups of 30+ people</p>
+          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-6 md:p-8 lg:p-12 text-white mb-8">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Need a Bus for Your Group?</h3>
+            <p className="text-lg md:text-xl mb-6 opacity-90">Get special discounts for groups of 30+ people</p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-3xl font-bold">10% OFF</div>
-                <div className="text-lg">For School & College Groups</div>
+                <div className="text-2xl md:text-3xl font-bold">10% OFF</div>
+                <div className="text-base md:text-lg">For School & College Groups</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-3xl font-bold">15% OFF</div>
-                <div className="text-lg">For Corporate & Wedding Groups</div>
+                <div className="text-2xl md:text-3xl font-bold">15% OFF</div>
+                <div className="text-base md:text-lg">For Corporate & Wedding Groups</div>
               </div>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="tel:+919591762419"
-                className="inline-flex items-center justify-center gap-3 bg-white text-red-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg"
+                className="inline-flex items-center justify-center gap-3 bg-white text-red-700 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-gray-100 transition-all shadow-lg"
               >
-                <PhoneIcon className="h-6 w-6" />
+                <PhoneIcon className="h-5 w-5 md:h-6 md:w-6" />
                 Call Group Coordinator
               </a>
               
               <button
                 onClick={() => setShowGroupBooking(true)}
-                className="inline-flex items-center justify-center gap-3 bg-red-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-900 transition-all shadow-lg"
+                className="inline-flex items-center justify-center gap-3 bg-red-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-red-900 transition-all shadow-lg"
               >
-                <UserGroupIcon className="h-6 w-6" />
+                <UserGroupIcon className="h-5 w-5 md:h-6 md:w-6" />
                 Request Group Quote
               </button>
             </div>
             
-            <p className="mt-6 text-sm opacity-80">Free itinerary planning • Multiple bus options • Flexible payment</p>
+            <p className="mt-6 text-sm md:text-base opacity-80">Free itinerary planning • Multiple bus options • Flexible payment</p>
           </div>
         </div>
       </div>
 
+      {/* Quick Quote Modal - Same as cars page */}
+      {showQuickQuote && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b">
+              <h3 className="text-xl font-bold text-gray-900">Get Instant Quote</h3>
+              <button onClick={() => setShowQuickQuote(false)}>
+                <XMarkIcon className="h-6 w-6 text-gray-500" />
+              </button>
+            </div>
+
+            <div className="p-6">
+              {quoteDetails.vehicle && (
+                <div className="mb-6 p-4 bg-red-50 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">{quoteDetails.vehicle.name}</h4>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">{quoteDetails.vehicle.seats} Seats • {quoteDetails.vehicle.category}</span>
+                    <span className="text-green-600 font-semibold">₹{quoteDetails.vehicle.perKmWithTax}/km</span>
+                  </div>
+                </div>
+              )}
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Number of Passengers</label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={quoteDetails.passengers}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      // Allow only numbers
+                      if (value === '' || /^\d+$/.test(value)) {
+                        setQuoteDetails({...quoteDetails, passengers: value});
+                      }
+                    }}
+                    placeholder="Enter number of passengers"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    This vehicle can accommodate up to {quoteDetails.vehicle?.seats || 80} passengers
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Trip Duration (Days)</label>
+                  <input
+                    type="number"
+                    value={quoteDetails.days}
+                    onChange={(e) => setQuoteDetails({...quoteDetails, days: parseInt(e.target.value) || 1})}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                    min="1"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
+                  <input
+                    type="date"
+                    value={quoteDetails.date}
+                    onChange={(e) => setQuoteDetails({...quoteDetails, date: e.target.value})}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                  />
+                </div>
+
+                <div className="pt-4 border-t">
+                  <div className="mb-4">
+                    <div className="flex justify-between mb-1">
+                      <span className="text-gray-600">Distance:</span>
+                      <span className="font-semibold text-gray-900">{quotePrice.kmToCharge} km</span>
+                    </div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-gray-600">Duration:</span>
+                      <span className="font-semibold text-gray-900">{quotePrice.days} {quotePrice.days === 1 ? 'Day' : 'Days'}</span>
+                    </div>
+                    <div className="flex justify-between mb-3">
+                      <span className="text-gray-600">Passengers:</span>
+                      <span className="font-semibold text-gray-900">
+                        {quoteDetails.passengers || 'Not specified'}
+                      </span>
+                    </div>
+                    
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-gray-700 font-medium">Estimated Cost:</span>
+                      <span className="text-2xl font-bold text-green-600">
+                        {quoteDetails.passengers ? `₹${formatPrice(quotePrice.min)} - ₹${formatPrice(quotePrice.max)}` : 'Enter passenger count'}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-500 mb-4">
+                      {quoteDetails.passengers 
+                        ? 'Final price depends on exact requirements and route details'
+                        : 'Please enter number of passengers to get price estimate'}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <button
+                      onClick={() => setShowQuickQuote(false)}
+                      className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button 
+                      disabled={!quoteDetails.passengers}
+                      className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-bold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Get Exact Quote Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Group Booking Modal */}
       {showGroupBooking && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6">
-            <div className="flex justify-between items-center mb-6">
+          <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b">
               <h3 className="text-xl font-bold text-gray-900">Request Group Quote</h3>
               <button onClick={() => setShowGroupBooking(false)}>
                 <XMarkIcon className="h-6 w-6 text-gray-500" />
               </button>
             </div>
             
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Group Type</label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
-                  <option>School/College Trip</option>
-                  <option>Corporate Event</option>
-                  <option>Pilgrimage Tour</option>
-                  <option>Wedding</option>
-                  <option>Family Function</option>
-                  <option>Tour Group</option>
-                </select>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
+            <div className="p-6">
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
-                  <input
-                    type="number"
-                    value={passengerCount}
-                    onChange={(e) => setPassengerCount(parseInt(e.target.value))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                    min="20"
-                    max="200"
-                  />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Group Type</label>
+                  <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white">
+                    <option>School/College Trip</option>
+                    <option>Corporate Event</option>
+                    <option>Pilgrimage Tour</option>
+                    <option>Wedding</option>
+                    <option>Family Function</option>
+                    <option>Tour Group</option>
+                  </select>
                 </div>
                 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Trip Duration (Days)</label>
-                  <input
-                    type="number"
-                    defaultValue="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                    min="1"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Travel Dates</label>
-                <input
-                  type="date"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Special Requirements</label>
-                <textarea
-                  rows={3}
-                  placeholder="Any special needs, amenities required, or specific requests..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                />
-              </div>
-              
-              <div className="pt-4 border-t">
-                <div className="flex justify-between mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <div className="font-medium text-gray-900">Estimated Quote Range</div>
-                    <div className="text-sm text-gray-600">Based on {passengerCount} people</div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      value={passengerCount}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '' || /^\d+$/.test(value)) {
+                          const numValue = parseInt(value);
+                          if (!isNaN(numValue) && numValue >= 1) {
+                            setPassengerCount(numValue);
+                          }
+                        }
+                      }}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                      min="20"
+                      max="200"
+                    />
                   </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-green-600">₹85,000 - ₹1,50,000</div>
-                    <div className="text-sm text-gray-600">Final quote in 2 hours</div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Trip Duration (Days)</label>
+                    <input
+                      type="number"
+                      defaultValue="3"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                      min="1"
+                    />
                   </div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-bold text-lg hover:from-red-700 hover:to-red-800">
-                  Get Special Group Quote
-                </button>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Travel Dates</label>
+                  <input
+                    type="date"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                  />
+                </div>
                 
-                <p className="text-center text-sm text-gray-500 mt-3">
-                  Our group coordinator will call you within 30 minutes
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Special Requirements</label>
+                  <textarea
+                    rows={3}
+                    placeholder="Any special needs, amenities required, or specific requests..."
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                  />
+                </div>
+                
+                <div className="pt-4 border-t">
+                  <div className="mb-4">
+                    <div className="flex justify-between mb-1">
+                      <span className="text-gray-700 font-medium">Group Size:</span>
+                      <span className="font-semibold text-gray-900">{passengerCount} people</span>
+                    </div>
+                    <div className="flex justify-between mb-3">
+                      <span className="text-gray-700 font-medium">Estimated Cost Range:</span>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-green-600">₹65,000 - ₹1,50,000</div>
+                        <div className="text-sm text-gray-600">Final quote in 2 hours</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-bold text-lg hover:from-red-700 hover:to-red-800">
+                    Get Special Group Quote
+                  </button>
+                  
+                  <p className="text-center text-sm text-gray-500 mt-3">
+                    Our group coordinator will call you within 30 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Photos Modal */}
+      {showPhotos && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="flex justify-between items-center p-6 border-b bg-gradient-to-r from-red-600 to-red-700">
+              <h3 className="text-xl font-bold text-white flex items-center gap-3">
+                <PhotoIcon className="h-6 w-6" />
+                {selectedVehicleName} - Photo Gallery
+              </h3>
+              <button 
+                onClick={() => setShowPhotos(false)}
+                className="text-white hover:text-gray-200"
+              >
+                <XMarkIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                {selectedVehiclePhotos.map((photo, index) => (
+                  <div key={index} className="relative h-48 md:h-56 rounded-lg overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`${selectedVehicleName} - Image ${index + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute bottom-3 left-3">
+                      <span className="bg-black/60 text-white text-xs px-2 py-1 rounded">
+                        Image {index + 1}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h4 className="font-semibold text-gray-900 mb-2">Bus Details</h4>
+                <p className="text-sm text-gray-600 mb-3">
+                  These are actual photos of our {selectedVehicleName} fleet. All buses are maintained to the highest standards and are regularly serviced.
                 </p>
+                <div className="text-xs text-gray-500">
+                  <p>• High-resolution photos</p>
+                  <p>• Actual fleet vehicles</p>
+                  <p>• Regular maintenance</p>
+                  <p>• Professional cleaning</p>
+                </div>
+              </div>
+
+              <div className="mt-6 text-center">
+                <button
+                  onClick={() => setShowPhotos(false)}
+                  className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                >
+                  Close Gallery
+                </button>
               </div>
             </div>
           </div>

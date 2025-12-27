@@ -1,17 +1,19 @@
-// // // File Path: components/layout/Header.tsx
+// // // // File Path: components/layout/Header.tsx
+
 
 
 // 'use client';
 
 // import { usePathname, useRouter } from 'next/navigation';
+// import Link from 'next/link'; // Added for better Next.js navigation
 // import { useState, useEffect, useRef } from 'react';
 
 // export default function Header() {
 //   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 //   const [transportOpen, setTransportOpen] = useState(false);
 //   const [desktopTransportOpen, setDesktopTransportOpen] = useState(false);
-//   const [hoverTimer, setHoverTimer] = useState<NodeJS.Timeout | null>(null);
 //   const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
+
 //   const pathname = usePathname();
 //   const router = useRouter();
 //   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -32,32 +34,23 @@
 //     { name: 'Contact', href: '/contact' },
 //   ];
 
-//   // Open dropdown immediately on hover
+//   // Desktop hover handlers
 //   const handleDesktopMouseEnter = () => {
-//     // Clear any existing timers
 //     if (closeTimer) {
 //       clearTimeout(closeTimer);
 //       setCloseTimer(null);
 //     }
-    
-//     // Open dropdown immediately
 //     setDesktopTransportOpen(true);
 //   };
 
-//   // Start 2-second timer to close dropdown when mouse leaves
 //   const handleDesktopMouseLeave = () => {
-//     // Clear any existing timers
 //     if (closeTimer) clearTimeout(closeTimer);
-    
-//     // Set timer to close after 2 seconds
 //     const timer = setTimeout(() => {
 //       setDesktopTransportOpen(false);
 //     }, 2000);
-    
 //     setCloseTimer(timer);
 //   };
 
-//   // Cancel close timer when hovering over dropdown
 //   const handleDropdownMouseEnter = () => {
 //     if (closeTimer) {
 //       clearTimeout(closeTimer);
@@ -65,60 +58,51 @@
 //     }
 //   };
 
-//   // Start close timer when leaving dropdown
 //   const handleDropdownMouseLeave = () => {
-//     // Set timer to close after 2 seconds
 //     const timer = setTimeout(() => {
 //       setDesktopTransportOpen(false);
 //     }, 2000);
-    
 //     setCloseTimer(timer);
 //   };
 
-//   const handleDesktopTransportClick = (e: any) => {
+//   const handleDesktopTransportClick = (e: React.MouseEvent) => {
 //     e.preventDefault();
 //     router.push('/transportation');
 //     setDesktopTransportOpen(false);
-//     // Clear any timers
 //     if (closeTimer) clearTimeout(closeTimer);
-//     if (hoverTimer) clearTimeout(hoverTimer);
 //   };
 
 //   const handleMobileTransportClick = () => {
 //     setTransportOpen(!transportOpen);
 //   };
 
-//   // Cleanup timers on unmount
+//   // Cleanup timers
 //   useEffect(() => {
 //     return () => {
-//       if (hoverTimer) clearTimeout(hoverTimer);
 //       if (closeTimer) clearTimeout(closeTimer);
 //     };
-//   }, [hoverTimer, closeTimer]);
+//   }, [closeTimer]);
 
-//   // Close mobile menu when clicking outside (optional)
+//   // Close dropdown on outside click
 //   useEffect(() => {
 //     const handleClickOutside = (event: MouseEvent) => {
 //       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
 //         setDesktopTransportOpen(false);
 //         if (closeTimer) clearTimeout(closeTimer);
-//         if (hoverTimer) clearTimeout(hoverTimer);
 //       }
 //     };
-
 //     document.addEventListener('mousedown', handleClickOutside);
 //     return () => document.removeEventListener('mousedown', handleClickOutside);
-//   }, [dropdownRef, closeTimer, hoverTimer]);
+//   }, [closeTimer]);
 
 //   return (
-// <header className="sticky top-0 z-50 bg-gradient-to-r from-red-900 via-red-800 to-red-900 backdrop-blur-sm border-b border-red-700 shadow-lg">
+//     <header className="sticky top-0 z-50 bg-gradient-to-r from-red-900 via-red-800 to-red-900 backdrop-blur-sm border-b border-red-700 shadow-lg">
 //       <nav className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8" aria-label="Main navigation">
 //         <div className="flex h-20 sm:h-24 md:h-28 items-center justify-between py-3 sm:py-4">
-
 //           {/* Logo + Name */}
 //           <div className="flex items-center gap-2 sm:gap-3">
 //             <a href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-90 transition-all duration-300">
-//               <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full overflow-hidden shadow-md ring-1 sm:ring-2 ring-red-500/30 flex-shrink-0 bg-white">
+//               <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md ring-2 sm:ring-2 ring-red-500/30 flex-shrink-0 bg-white">
 //                 <img
 //                   src="/images/logo_mani.jpeg"
 //                   alt="Manikanta Tour and Travels Logo"
@@ -141,14 +125,14 @@
 //             {navigation.map((item) => {
 //               if (item.submenu) {
 //                 return (
-//                   <div 
-//                     key={item.name} 
+//                   <div
+//                     key={item.name}
 //                     className="relative"
 //                     ref={dropdownRef}
 //                     onMouseEnter={handleDesktopMouseEnter}
 //                     onMouseLeave={handleDesktopMouseLeave}
 //                   >
-//                     <a
+//                     <Link
 //                       href={item.href}
 //                       onClick={handleDesktopTransportClick}
 //                       className={`flex items-center gap-1 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
@@ -158,18 +142,18 @@
 //                       }`}
 //                     >
 //                       {item.name}
-//                       <svg 
+//                       <svg
 //                         className={`h-3 w-3 sm:h-4 sm:w-4 transition-transform ${desktopTransportOpen ? 'rotate-180' : ''}`}
-//                         fill="none" 
-//                         viewBox="0 0 24 24" 
+//                         fill="none"
+//                         viewBox="0 0 24 24"
 //                         stroke="currentColor"
 //                       >
 //                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 //                       </svg>
-//                     </a>
+//                     </Link>
 
-//                     {/* Dropdown - Shows immediately, stays for 2 seconds after mouse leaves */}
-//                     <div 
+//                     {/* Dropdown */}
+//                     <div
 //                       className={`absolute left-1/2 -translate-x-1/2 mt-2 w-56 sm:w-60 rounded-xl shadow-2xl bg-white ring-1 ring-gray-200 transition-all duration-300 z-50 ${
 //                         desktopTransportOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
 //                       }`}
@@ -178,13 +162,12 @@
 //                     >
 //                       <div className="py-2 sm:py-3">
 //                         {item.submenu.map((sub) => (
-//                           <a
+//                           <Link
 //                             key={sub.name}
 //                             href={sub.href}
 //                             onClick={() => {
 //                               setDesktopTransportOpen(false);
 //                               if (closeTimer) clearTimeout(closeTimer);
-//                               if (hoverTimer) clearTimeout(hoverTimer);
 //                             }}
 //                             className={`block px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium transition ${
 //                               pathname === sub.href
@@ -193,7 +176,7 @@
 //                             }`}
 //                           >
 //                             {sub.name}
-//                           </a>
+//                           </Link>
 //                         ))}
 //                       </div>
 //                     </div>
@@ -202,7 +185,7 @@
 //               }
 
 //               return (
-//                 <a
+//                 <Link
 //                   key={item.name}
 //                   href={item.href}
 //                   className={`px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
@@ -212,7 +195,7 @@
 //                   }`}
 //                 >
 //                   {item.name}
-//                 </a>
+//                 </Link>
 //               );
 //             })}
 //           </div>
@@ -223,7 +206,7 @@
 //               type="button"
 //               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 //               className="p-2 sm:p-3 rounded-lg text-white hover:bg-black/20 transition"
-//               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+//               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
 //             >
 //               {mobileMenuOpen ? (
 //                 <svg className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -246,7 +229,7 @@
 //                 <div key={item.name}>
 //                   {item.submenu ? (
 //                     <>
-//                       <a
+//                       <Link
 //                         href={item.href}
 //                         onClick={(e) => {
 //                           e.preventDefault();
@@ -259,19 +242,20 @@
 //                         }`}
 //                       >
 //                         {item.name}
-//                         <svg 
+//                         <svg
 //                           className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform ${transportOpen ? 'rotate-180' : ''}`}
-//                           fill="none" 
-//                           viewBox="0 0 24 24" 
+//                           fill="none"
+//                           viewBox="0 0 24 24"
 //                           stroke="currentColor"
 //                         >
 //                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 //                         </svg>
-//                       </a>
+//                       </Link>
+
 //                       {transportOpen && (
 //                         <div className="pl-4 sm:pl-6 space-y-1 sm:space-y-1.5 mt-1.5 sm:mt-2">
 //                           {item.submenu.map((sub) => (
-//                             <a
+//                             <Link
 //                               key={sub.name}
 //                               href={sub.href}
 //                               onClick={() => {
@@ -285,13 +269,13 @@
 //                               }`}
 //                             >
 //                               {sub.name}
-//                             </a>
+//                             </Link>
 //                           ))}
 //                         </div>
 //                       )}
 //                     </>
 //                   ) : (
-//                     <a
+//                     <Link
 //                       href={item.href}
 //                       onClick={() => setMobileMenuOpen(false)}
 //                       className={`block px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition ${
@@ -301,7 +285,7 @@
 //                       }`}
 //                     >
 //                       {item.name}
-//                     </a>
+//                     </Link>
 //                   )}
 //                 </div>
 //               ))}
@@ -320,9 +304,7 @@
 
 
 
-
-
-
+// File Path: components/layout/Header.tsx
 
 'use client';
 
@@ -424,7 +406,8 @@ export default function Header() {
           {/* Logo + Name */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-90 transition-all duration-300">
-              <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md ring-2 sm:ring-2 ring-red-500/30 flex-shrink-0 bg-white">
+              {/* Mobile: Larger logo, Desktop: Normal size */}
+              <div className="relative w-18 h-18 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md ring-2 sm:ring-2 ring-red-500/30 flex-shrink-0 bg-white">
                 <img
                   src="/images/logo_mani.jpeg"
                   alt="Manikanta Tour and Travels Logo"
@@ -531,11 +514,11 @@ export default function Header() {
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileMenuOpen ? (
-                <svg className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -618,3 +601,10 @@ export default function Header() {
     </header>
   );
 }
+
+
+
+
+
+
+
