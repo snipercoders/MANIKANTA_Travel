@@ -75,7 +75,7 @@ export default function AboutPage() {
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-600">14+</div>
+                  <div className="text-3xl font-bold text-orange-600">18+</div>
                   <div className="text-gray-600">Years Experience</div>
                 </div>
                 <div className="text-center">

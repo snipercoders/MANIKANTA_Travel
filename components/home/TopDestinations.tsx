@@ -582,15 +582,7 @@ export default function TopDestinations() {
           </div>
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <button className="inline-flex items-center gap-2 bg-white border-2 border-red-600 text-red-600 font-bold px-8 py-3 rounded-full hover:bg-red-50 transition-colors">
-            View All Destinations
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
-        </div>
+
       </div>
     </section>
   );

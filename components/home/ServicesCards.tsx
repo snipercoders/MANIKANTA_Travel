@@ -1,9 +1,16 @@
+//components/home/ServicesCards.tsx
+
+//components/home/ServicesCards.tsx
+
 'use client';
 
 import { motion } from 'framer-motion';
 import { Car, Bus, Users, MapPin, Shield, Clock, Wifi, Package } from 'lucide-react';
+import Link from 'next/link';
+
 
 export default function ServicesCards() {
+
   const services = [
     { 
       icon: <Car className="h-10 w-10" />,
@@ -137,22 +144,24 @@ export default function ServicesCards() {
                 </div>
 
                 {/* Call to Action */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <span className="text-sm font-semibold text-gray-700 group-hover:text-red-600 transition-colors">
-                    Book Now →
-                  </span>
-                  <div className={`
-                    w-8 h-8 rounded-full 
-                    flex items-center justify-center 
-                    ${service.textColor} 
-                    ${service.textColor.replace('text-', 'bg-')}20
-                    group-hover:bg-red-600 group-hover:text-white transition-colors
-                  `}>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                <Link href="/contact" className="block">
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200 cursor-pointer">
+                    <span className="text-sm font-semibold text-gray-700 group-hover:text-red-600 transition-colors">
+                      Book Now →
+                    </span>
+                    <div className={`
+                      w-8 h-8 rounded-full 
+                      flex items-center justify-center 
+                      ${service.textColor} 
+                      ${service.textColor.replace('text-', 'bg-')}20
+                      group-hover:bg-red-600 group-hover:text-white transition-colors
+                    `}>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Hover Effect Line */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
