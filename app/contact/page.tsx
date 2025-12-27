@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-xl text-gray-900">24/7 Emergency</h3>
-                  <p className="text-red-600 font-semibold">+91 98765 43210</p>
+                  <p className="text-red-600 font-semibold">+91 9591762419</p>
                 </div>
               </div>
               <p className="text-gray-600 text-sm">
