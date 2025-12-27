@@ -1,216 +1,3 @@
-
-// //components/about/FounderCard.tsx
-
-// 'use client';
-
-// import { useState, useEffect } from 'react';
-// import { GalleryItem } from '@/lib/types/gallery';
-// import { 
-//   PlayCircle, 
-//   Trash2, 
-//   Loader2, 
-//   MapPin, 
-//   Calendar, 
-//   AlertTriangle, 
-//   X,
-//   Tag
-// } from 'lucide-react';
-
-// interface VideoSectionProps {
-//   videos: GalleryItem[];
-//   isDeleteMode?: boolean;
-//   onDeleteItem?: (item: GalleryItem) => Promise<void>;
-//   onItemClick?: (item: GalleryItem) => void;
-// }
-
-// export default function VideoSection({ 
-//   videos, 
-//   isDeleteMode = false, 
-//   onDeleteItem,
-//   onItemClick 
-// }: VideoSectionProps) {
-//   const [selectedVideo, setSelectedVideo] = useState<GalleryItem | null>(null);
-//   const [deletingId, setDeletingId] = useState<string | null>(null);
-//   const [hoveredVideoId, setHoveredVideoId] = useState<string | null>(null);
-
-//   useEffect(() => {
-//     const handleKeyDown = (e: KeyboardEvent) => {
-//       if (e.key === 'Escape' && selectedVideo) setSelectedVideo(null);
-//     };
-//     if (selectedVideo) window.addEventListener('keydown', handleKeyDown);
-//     return () => window.removeEventListener('keydown', handleKeyDown);
-//   }, [selectedVideo]);
-
-//   const handleDeleteVideo = async (video: GalleryItem, e: React.MouseEvent) => {
-//     e.stopPropagation();
-//     if (!onDeleteItem) return;
-//     if (!window.confirm(`Delete "${video.title}" permanently?`)) return;
-
-//     setDeletingId(video.id);
-//     try {
-//       await onDeleteItem(video);
-//     } catch (error: any) {
-//       alert(`Delete failed: ${error.message || 'Unknown error'}`);
-//     } finally {
-//       setDeletingId(null);
-//     }
-//   };
-
-//   const handleVideoClick = (video: GalleryItem, e: React.MouseEvent) => {
-//     if (isDeleteMode) {
-//       handleDeleteVideo(video, e);
-//     } else {
-//       setSelectedVideo(video);
-//       onItemClick?.(video);
-//     }
-//   };
-
-//   const handleDeleteInModal = async () => {
-//     if (!selectedVideo || !onDeleteItem) return;
-//     if (window.confirm(`Delete "${selectedVideo.title}"?`)) {
-//       await onDeleteItem(selectedVideo);
-//       setSelectedVideo(null);
-//     }
-//   };
-
-//   if (videos.length === 0) {
-//     return (
-//       <section className="py-16 text-center">
-//         <div className="inline-flex items-center gap-3 bg-red-50 px-6 py-3 rounded-full mb-6">
-//           <PlayCircle className="h-6 w-6 text-red-600" />
-//           <span className="font-medium text-red-800">VIDEO GALLERY</span>
-//         </div>
-//         <h2 className="text-4xl font-bold text-gray-900 mb-4">No Videos Yet</h2>
-//         <p className="text-gray-600">Check back soon for travel videos!</p>
-//       </section>
-//     );
-//   }
-
-//   return (
-//     <>
-//       <section className="py-16">
-//         <div className="text-center mb-12">
-//           <div className="inline-flex items-center gap-3 bg-red-50 px-6 py-3 rounded-full mb-6">
-//             <PlayCircle className="h-6 w-6 text-red-600" />
-//             <span className="font-medium text-red-800">VIDEO GALLERY</span>
-//           </div>
-//           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-//             Travel <span className="text-red-600">Videos</span>
-//           </h2>
-//           <p className="text-lg text-gray-600">{videos.length} video{videos.length > 1 ? 's' : ''}</p>
-//         </div>
-
-//         {isDeleteMode && (
-//           <div className="mb-8 bg-gradient-to-r from-red-50 to-red-100 border border-red-300 rounded-xl p-4">
-//             <div className="flex items-center gap-3">
-//               <AlertTriangle className="h-6 w-6 text-red-600" />
-//               <div>
-//                 <h4 className="font-bold text-red-800">Delete Mode Active</h4>
-//                 <p className="text-red-700">Click any video to delete it permanently.</p>
-//               </div>
-//             </div>
-//           </div>
-//         )}
-
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {videos.map((video) => (
-//             <div
-//               key={video.id}
-//               className="group cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all bg-white"
-//               onMouseEnter={() => setHoveredVideoId(video.id)}
-//               onMouseLeave={() => setHoveredVideoId(null)}
-//               onClick={(e) => handleVideoClick(video, e)}
-//             >
-//               <div className="aspect-video relative bg-black">
-//                 <div 
-//                   className="w-full h-full bg-cover bg-center"
-//                   style={{ backgroundImage: `url(${video.url.replace('/upload/', '/upload/c_thumb,w_800,h_450/')})` }}
-//                 />
-//                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-//                 <div className="absolute inset-0 flex items-center justify-center">
-//                   {!isDeleteMode ? (
-//                     <PlayCircle className="h-16 w-16 text-white opacity-90 group-hover:opacity-100 group-hover:scale-110 transition" />
-//                   ) : (
-//                     <div className="bg-red-600 p-5 rounded-full">
-//                       <Trash2 className="h-10 w-10 text-white" />
-//                     </div>
-//                   )}
-//                 </div>
-//                 <div className="absolute top-4 left-4">
-//                   <span className="bg-red-600 text-white px-3 py-1.5 rounded-full text-xs font-medium">
-//                     {video.category}
-//                   </span>
-//                 </div>
-//               </div>
-//               <div className="p-6">
-//                 <h3 className="text-xl font-bold text-gray-900 mb-2">{video.title}</h3>
-//                 {video.location && (
-//                   <p className="flex items-center gap-2 text-gray-600 mb-3">
-//                     <MapPin className="h-4 w-4" />
-//                     <span>{video.location}</span>
-//                   </p>
-//                 )}
-//                 {video.description && (
-//                   <p className="text-gray-700 text-sm line-clamp-2">{video.description}</p>
-//                 )}
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* Inline Video Modal */}
-//       {selectedVideo && (
-//         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4" onClick={() => setSelectedVideo(null)}>
-//           <div className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
-//             <button
-//               onClick={() => setSelectedVideo(null)}
-//               className="absolute -top-12 right-0 md:top-4 md:right-4 text-white hover:text-gray-300 z-20"
-//             >
-//               <X className="h-8 w-8 md:h-10 md:w-10" />
-//             </button>
-
-//             {isDeleteMode && onDeleteItem && (
-//               <button
-//                 onClick={handleDeleteInModal}
-//                 className="absolute -top-12 left-0 md:top-4 md:left-4 bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 flex items-center gap-2 z-20"
-//               >
-//                 <Trash2 className="h-5 w-5" />
-//                 Delete Video
-//               </button>
-//             )}
-
-//             <div className="bg-black rounded-2xl overflow-hidden shadow-2xl">
-//               <div className="aspect-video">
-//                 <video src={selectedVideo.url} controls autoPlay className="w-full h-full" controlsList="nodownload" />
-//               </div>
-//               <div className="p-8 text-white bg-gradient-to-t from-black/90 to-transparent">
-//                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{selectedVideo.title}</h2>
-//                 {selectedVideo.description && <p className="text-lg mb-4">{selectedVideo.description}</p>}
-//                 <div className="flex flex-wrap gap-3">
-//                   <span className="bg-red-600 px-4 py-2 rounded-full font-medium">{selectedVideo.category}</span>
-//                   {selectedVideo.tags?.map(tag => (
-//                     <span key={tag} className="bg-white/20 px-3 py-1.5 rounded-full text-sm">{tag}</span>
-//                   ))}
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
 // components/about/FounderCard.tsx - VideoSection Component
 'use client';
 
@@ -252,24 +39,56 @@ export default function VideoSection({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedVideo]);
 
-  const handleDeleteVideo = async (video: GalleryItem, e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!onDeleteItem) return;
-    if (!window.confirm(`Delete "${video.title}" permanently?`)) return;
-
-    setDeletingId(video.id);
+  // Delete function for videos
+  const handleDeleteItem = async (item: GalleryItem) => {
     try {
-      await onDeleteItem(video);
+      console.log('🗑️ Deleting video:', item.id);
+      
+      const response = await fetch(`/api/gallery/${item.id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Video delete successful:', result);
+        return result;
+      } else {
+        throw new Error(result.message || 'Delete failed');
+      }
     } catch (error: any) {
-      alert(`Delete failed: ${error.message || 'Unknown error'}`);
-    } finally {
-      setDeletingId(null);
+      console.error('❌ Video delete error:', error);
+      throw error;
+    }
+  };
+
+  // Handle video click - delete if in delete mode
+  const handleDelete = async (video: GalleryItem, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!isDeleteMode || !onDeleteItem) return;
+    
+    if (!window.confirm(`Are you sure you want to delete "${video.title}"?\n\nThis action is permanent and cannot be undone!`)) {
+      return;
+    }
+
+    try {
+      await handleDeleteItem(video);
+      // Call the parent's onDeleteItem if provided
+      await onDeleteItem(video);
+      // Refresh the page to update the list
+      window.location.reload();
+    } catch (error: any) {
+      alert(`❌ Delete failed: ${error.message || 'Unknown error'}`);
     }
   };
 
   const handleVideoClick = (video: GalleryItem, e: React.MouseEvent) => {
     if (isDeleteMode) {
-      handleDeleteVideo(video, e);
+      handleDelete(video, e); // Fixed: Changed from handleDeleteVideo to handleDelete
     } else {
       setSelectedVideo(video);
       onItemClick?.(video);
@@ -279,8 +98,14 @@ export default function VideoSection({
   const handleDeleteInModal = async () => {
     if (!selectedVideo || !onDeleteItem) return;
     if (window.confirm(`Delete "${selectedVideo.title}"?`)) {
-      await onDeleteItem(selectedVideo);
-      setSelectedVideo(null);
+      try {
+        await handleDeleteItem(selectedVideo);
+        await onDeleteItem(selectedVideo);
+        setSelectedVideo(null);
+        window.location.reload();
+      } catch (error: any) {
+        alert(`❌ Delete failed: ${error.message || 'Unknown error'}`);
+      }
     }
   };
 

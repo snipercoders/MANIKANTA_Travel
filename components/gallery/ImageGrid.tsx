@@ -218,20 +218,24 @@ export default function ImageGrid({
 
   const safeItems = items || [];
 
-  const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!isDeleteMode) return;
-    if (!window.confirm(`Are you sure you want to delete "${item.title}"?\n\nThis action is permanent!`)) return;
+ 
+  // Update the handleDelete function in ImageGrid
+const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
+  e.stopPropagation();
+  if (!isDeleteMode) return;
+  if (!window.confirm(`Are you sure you want to delete "${item.title}"?\n\nThis action is permanent!`)) return;
 
-    setDeletingId(item.id);
-    try {
-      await onDeleteItem(item);
-    } catch (error: any) {
-      alert(`Failed to delete: ${error.message || 'Unknown error'}`);
-    } finally {
-      setDeletingId(null);
-    }
-  };
+  setDeletingId(item.id);
+  try {
+    await onDeleteItem(item);
+    alert(`✅ Successfully deleted "${item.title}"`);
+  } catch (error: any) {
+    alert(`❌ Failed to delete: ${error.message || 'Unknown error'}`);
+  } finally {
+    setDeletingId(null);
+  }
+};
+
 
   const handleItemClick = (item: GalleryItem, e: React.MouseEvent) => {
     if (isDeleteMode) {

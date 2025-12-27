@@ -1,3 +1,4 @@
+// lib/models/GalleryMedia.ts
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IGalleryMedia extends Document {
