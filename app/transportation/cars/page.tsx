@@ -49,9 +49,9 @@ const vehicles = [
     imageColor: 'blue',
     badge: 'Most Popular',
     images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
+'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270643/swift_dzire_qnnioo.jpg',
+'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270643/swift_dzire_qnnioo.jpg',
+'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270643/swift_dzire_qnnioo.jpg'
     ]
   },
   {
@@ -69,9 +69,9 @@ const vehicles = [
     imageColor: 'green',
     badge: 'Family Favorite',
     images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
+ 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270413/innova_crysta_ehwsj7.jpg',
+ 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270413/innova_crysta_ehwsj7.jpg',
+ 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270413/innova_crysta_ehwsj7.jpg'
     ]
   },
   {
@@ -89,9 +89,9 @@ const vehicles = [
     imageColor: 'purple',
     badge: 'Group Choice',
     images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767269077/WhatsApp_Image_2026-01-01_at_17.29.35_2_nl5pi5.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766669955/WhatsApp_Image_2025-12-25_at_18.55.01_1_ye8qpm.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767269078/WhatsApp_Image_2026-01-01_at_17.29.34_mmgz4g.jpg'
     ]
   },
   {
@@ -109,31 +109,12 @@ const vehicles = [
     imageColor: 'indigo',
     badge: 'Corporate',
     images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270050/WhatsApp_Image_2026-01-01_at_17.29.37_bgfd7y.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270050/WhatsApp_Image_2026-01-01_at_17.29.34_1_fdgc5y.jpg',
+      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270050/WhatsApp_Image_2026-01-01_at_17.29.35_sxcamz.jpg'
     ]
   },
-  {
-    id: 5,
-    name: 'Toyota Fortuner',
-    seats: 7,
-    perKm: 35,
-    perKmWithTax: 42,
-    category: 'Luxury SUV',
-    ac: true,
-    rating: 4.7,
-    trips: 320,
-    features: ['4x4', 'Premium Sound', 'Sunroof', 'Leather Seats'],
-    amenities: ['VIP Service', 'WiFi Hotspot', 'Refreshments'],
-    imageColor: 'gray',
-    badge: 'Premium',
-    images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
-    ]
-  },
+
   {
     id: 6,
     name: 'Ertiga',
@@ -148,99 +129,23 @@ const vehicles = [
     amenities: ['Phone Charger', 'Magazines', 'Basic Kit'],
     imageColor: 'teal',
     images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
+'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270526/ertiga_iap3pi.jpg',
+'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270526/ertiga_iap3pi.jpg',    
+'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270526/ertiga_iap3pi.jpg'
     ]
   },
-  {
-    id: 7,
-    name: 'Mercedes Benz',
-    seats: 4,
-    perKm: 60,
-    perKmWithTax: 72,
-    category: 'Ultra Luxury',
-    ac: true,
-    rating: 4.9,
-    trips: 150,
-    features: ['Premium AC', 'Massage Seats', 'Ambient Lighting', 'Privacy'],
-    amenities: ['Champagne', 'Butler Service', 'Luxury Kit'],
-    imageColor: 'black',
-    badge: 'VIP',
-    images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
-    ]
-  },
-  {
-    id: 8,
-    name: 'Kia Carnival',
-    seats: 7,
-    perKm: 40,
-    perKmWithTax: 48,
-    category: 'Luxury MPV',
-    ac: true,
-    rating: 4.6,
-    trips: 280,
-    features: ['Premium AC', 'Entertainment', 'Business Class Seats'],
-    amenities: ['Tablets', 'Gourmet Snacks', 'Entertainment Package'],
-    imageColor: 'blue',
-    images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
-    ]
-  },
-  {
-    id: 9,
-    name: 'Mahindra Thar',
-    seats: 4,
-    perKm: 25,
-    perKmWithTax: 30,
-    category: 'Adventure',
-    ac: true,
-    rating: 4.4,
-    trips: 380,
-    features: ['4x4', 'Off-road', 'Adventure Ready', 'Rugged'],
-    amenities: ['Adventure Kit', 'GPS Tracker', 'Safety Gear'],
-    imageColor: 'orange',
-    badge: 'Adventure',
-    images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
-    ]
-  },
-  {
-    id: 10,
-    name: 'Honda City',
-    seats: 4,
-    perKm: 15,
-    perKmWithTax: 18,
-    category: 'Premium Sedan',
-    ac: true,
-    rating: 4.3,
-    trips: 750,
-    features: ['AC', 'Premium Audio', 'Comfort', 'Style'],
-    amenities: ['Premium Kit', 'Travel Guide', 'Refreshments'],
-    imageColor: 'red',
-    images: [
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg',
-      'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg'
-    ]
-  },
+ 
+
 ];
 
 // Popular routes
 const popularRoutes = [
-  { from: 'Bangalore', to: 'Chennai', distance: 350, time: '6-7 hrs', priceRange: '₹4,500 - ₹9,000' },
-  { from: 'Mumbai', to: 'Goa', distance: 600, time: '10-12 hrs', priceRange: '₹7,800 - ₹15,600' },
-  { from: 'Delhi', to: 'Jaipur', distance: 280, time: '5-6 hrs', priceRange: '₹3,600 - ₹7,200' },
-  { from: 'Hyderabad', to: 'Vijayawada', distance: 270, time: '5-6 hrs', priceRange: '₹3,500 - ₹7,000' },
-  { from: 'Chennai', to: 'Pondicherry', distance: 160, time: '3-4 hrs', priceRange: '₹2,100 - ₹4,200' },
-  { from: 'Kolkata', to: 'Digha', distance: 180, time: '4-5 hrs', priceRange: '₹2,300 - ₹4,600' },
+{ from: 'Bangalore', to: 'Sabarimala', distance: 450, time: '9-10 hrs', priceRange: '₹5,800 - ₹11,600' },
+{ from: 'Bangalore', to: 'Gokarna', distance: 530, time: '10-11 hrs', priceRange: '₹6,900 - ₹13,800' },
+{ from: 'Bangalore', to: 'Ooty/Coonoor', distance: 280, time: '6-7 hrs', priceRange: '₹3,600 - ₹7,200' },
+{ from: 'Bangalore', to: 'Karnataka Round Trip', distance: 1200, time: 'Multi-day', priceRange: '₹15,600 - ₹31,200' },
+{ from: 'Karnataka', to: 'Kochi-Chennai-Mumbai Circuit', distance: 1800, time: 'Multi-day Tour', priceRange: '₹23,400 - ₹46,800' },
+{ from: 'Bangalore', to: 'Tirupati', distance: 250, time: '5-6 hrs', priceRange: '₹3,250 - ₹6,500' },
 ];
 
 export default function CarsPage() {

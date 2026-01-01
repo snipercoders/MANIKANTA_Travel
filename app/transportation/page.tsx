@@ -89,12 +89,11 @@ export default function TransportationPage() {
   ];
 
   const popularRoutes = [
-    "Delhi - Agra - Jaipur (Golden Triangle)",
-    "Hyderabad - Tirupati - Chennai",
-    "Bangalore - Goa - Mumbai",
-    "Kolkata - Puri - Bhubaneswar",
-    "Kerala Backwaters Tour",
-    "Leh Ladakh Adventure"
+    "Bangalore - Sabarimala",
+    "Bangalore - Gokarna",
+    "Bangalore - Ooty/Coonor",
+    "Karnataka roud trip",
+    "Karnataka - Kochi - Chennai - Mumbai"
   ];
 
   return (
