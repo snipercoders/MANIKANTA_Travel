@@ -259,13 +259,13 @@ export default function ReviewSection() {
         <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mb-6">
           Real experiences from real travelers who explored with us
         </p>
-        
+{/*         
         <button
           onClick={() => setShowForm(!showForm)}
           className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-amber-600 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           {showForm ? 'Close Review Form' : '✍️ Write a Review'}
-        </button>
+        </button> */}
       </div>
 
       {/* Error Message */}
