@@ -1086,7 +1086,6 @@
 
 
 
-
 // File Path: app/transportation/cars/page.tsx
 
 'use client';
@@ -1105,11 +1104,11 @@ import {
   PhoneIcon,
   ChatBubbleLeftRightIcon,
   ArrowPathIcon,
-  PhotoIcon
+  PhotoIcon,
+  CalculatorIcon
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import { calculateDistance } from '@/lib/utils/distanceCalculator';
 
 // Complete cars data with enhanced details
 const vehicles = [
@@ -1214,14 +1213,24 @@ const vehicles = [
   },
 ];
 
-// Popular routes - We'll calculate distances dynamically
+// Popular routes with pre-defined distances
 const popularRoutes = [
-  { from: 'Bangalore', to: 'Sabarimala' },
-  { from: 'Bangalore', to: 'Gokarna' },
-  { from: 'Bangalore', to: 'Ooty' },
-  { from: 'Bangalore', to: 'Tirupati' },
-  { from: 'Bangalore', to: 'Chennai' },
-  { from: 'Bangalore', to: 'Mysore' },
+  { from: 'Bangalore', to: 'Sabarimala', distance: 550, duration: '10 hours' },
+  { from: 'Bangalore', to: 'Gokarna', distance: 520, duration: '9 hours 30 minutes' },
+  { from: 'Bangalore', to: 'Ooty', distance: 280, duration: '6 hours' },
+  { from: 'Bangalore', to: 'Tirupati', distance: 250, duration: '4 hours 30 minutes' },
+  { from: 'Bangalore', to: 'Chennai', distance: 350, duration: '6 hours' },
+  { from: 'Bangalore', to: 'Mysore', distance: 150, duration: '3 hours' },
+];
+
+// Sample route suggestions with estimated distances
+const routeSuggestions = [
+  { name: 'Delhi to Jaipur', distance: 280 },
+  { name: 'Mumbai to Pune', distance: 150 },
+  { name: 'Chennai to Pondicherry', distance: 160 },
+  { name: 'Hyderabad to Vijayawada', distance: 270 },
+  { name: 'Kolkata to Durgapur', distance: 170 },
+  { name: 'Ahmedabad to Vadodara', distance: 110 },
 ];
 
 export default function CarsPage() {
@@ -1252,8 +1261,8 @@ export default function CarsPage() {
   });
   const [hoveredVehicle, setHoveredVehicle] = useState<number | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
-  const [popularRoutesWithData, setPopularRoutesWithData] = useState<any[]>([]);
-  const [loadingRoutes, setLoadingRoutes] = useState(true);
+  const [manualMode, setManualMode] = useState(true);
+  const [estimatedDuration, setEstimatedDuration] = useState<string>('');
 
   const ITEMS_PER_PAGE = 6;
   const MINIMUM_KM_PER_DAY = 250;
@@ -1268,44 +1277,29 @@ export default function CarsPage() {
     return 'from-red-500 to-red-700';
   };
 
-  // Load popular routes data on component mount
-  useEffect(() => {
-    const loadPopularRoutes = async () => {
-      setLoadingRoutes(true);
-      const routesWithData = await Promise.all(
-        popularRoutes.map(async (route) => {
-          try {
-            const result = await calculateDistance(route.from, route.to);
-            if (result) {
-              const { total } = calculateTotalForRoute(result.distance, vehicles[0]);
-              const priceRange = `₹${formatPrice(Math.round(total * 0.8))} - ₹${formatPrice(Math.round(total * 1.2))}`;
-              
-              return {
-                ...route,
-                distance: result.distance,
-                time: result.duration,
-                priceRange: priceRange
-              };
-            }
-          } catch (error) {
-            console.error('Error calculating distance for route:', route, error);
-          }
-          // If calculation fails, return route without distance
-          return {
-            ...route,
-            distance: null,
-            time: 'Click to calculate',
-            priceRange: 'Click to calculate'
-          };
-        })
-      );
-      setPopularRoutesWithData(routesWithData);
-      setLoadingRoutes(false);
-    };
+  // Calculate estimated duration based on distance
+  const calculateEstimatedDuration = (distance: number) => {
+    const averageSpeed = 60; // km/h
+    const hours = Math.round(distance / averageSpeed);
+    
+    if (hours < 1) {
+      return 'Less than 1 hour';
+    } else if (hours === 1) {
+      return '1 hour';
+    } else if (hours < 24) {
+      return `${hours} hours`;
+    } else {
+      const days = Math.floor(hours / 24);
+      const remainingHours = hours % 24;
+      if (remainingHours === 0) {
+        return `${days} day${days > 1 ? 's' : ''}`;
+      } else {
+        return `${days} day${days > 1 ? 's' : ''} ${remainingHours} hour${remainingHours > 1 ? 's' : ''}`;
+      }
+    }
+  };
 
-    loadPopularRoutes();
-  }, []);
-
+  // Calculate price for a given distance and vehicle
   const calculateTotalForRoute = (distance: number, vehicle: any) => {
     const numberOfDays = Math.ceil(distance / MINIMUM_KM_PER_DAY);
     const kmToCharge = Math.max(distance, numberOfDays * MINIMUM_KM_PER_DAY);
@@ -1315,7 +1309,8 @@ export default function CarsPage() {
     return { baseFare, gst, total, kmToCharge, days: numberOfDays };
   };
 
-  const calculateDistanceWithAPI = async () => {
+  // Manual distance calculation
+  const calculateDistanceManually = () => {
     if (!from || !to || from.trim() === '' || to.trim() === '') {
       alert('Please enter both pickup and destination locations');
       return;
@@ -1324,34 +1319,40 @@ export default function CarsPage() {
     setIsCalculating(true);
     setLoading(true);
     
-    try {
-      const result = await calculateDistance(from, to);
-
-      if (result) {
-        setDistance(result.distance);
-        setDuration(result.duration);
-        setRouteDetails(result.route);
-        setKm(result.distance.toString());
+    // Simulate API call delay
+    setTimeout(() => {
+      if (km && !isNaN(parseFloat(km)) && parseFloat(km) > 0) {
+        const distanceValue = parseFloat(km);
+        setDistance(distanceValue);
+        const estimatedTime = calculateEstimatedDuration(distanceValue);
+        setDuration(estimatedTime);
+        setEstimatedDuration(estimatedTime);
+        setRouteDetails([from, to]);
+        setManualMode(true);
       } else {
-        alert('Unable to calculate distance. Please check the location names and try again.');
+        alert('Please enter a valid distance in kilometers');
         setDistance(null);
         setDuration('');
         setRouteDetails([]);
-        setKm('');
       }
-    } catch (error) {
-      console.error('Distance calculation failed:', error);
-      alert('Error calculating distance. Please try again.');
-      setDistance(null);
-      setDuration('');
-      setRouteDetails([]);
-      setKm('');
-    } finally {
       setLoading(false);
       setIsCalculating(false);
+    }, 500);
+  };
+
+  // Handle manual distance update
+  const handleManualDistanceUpdate = () => {
+    if (km && !isNaN(parseFloat(km)) && parseFloat(km) > 0) {
+      const distanceValue = parseFloat(km);
+      setDistance(distanceValue);
+      const estimatedTime = calculateEstimatedDuration(distanceValue);
+      setDuration(estimatedTime);
+      setEstimatedDuration(estimatedTime);
+      setManualMode(true);
     }
   };
 
+  // Filter vehicles based on filters
   const filteredVehicles = useMemo(() => {
     let filtered = [...vehicles];
 
@@ -1389,49 +1390,33 @@ export default function CarsPage() {
   const finalKm = distance ? Number(km || distance) : 0;
   const numberOfDays = distance ? Math.ceil(finalKm / MINIMUM_KM_PER_DAY) : 0;
 
-  const handleRouteSelect = async (route: any) => {
+  // Handle popular route selection
+  const handleRouteSelect = (route: any) => {
     setFrom(route.from);
     setTo(route.to);
     setSelectedRoute(route);
-    
-    // If route already has distance data, use it immediately
-    if (route.distance) {
-      setDistance(route.distance);
-      setDuration(route.time);
-      setKm(route.distance.toString());
-      // We don't have detailed route steps from the cached data, so keep it empty
-      setRouteDetails([route.from, route.to]);
-      return;
-    }
-    
-    // Otherwise, calculate it
-    setLoading(true);
-    try {
-      const result = await calculateDistance(route.from, route.to);
-      if (result) {
-        setDistance(result.distance);
-        setDuration(result.duration);
-        setRouteDetails(result.route);
-        setKm(result.distance.toString());
-      } else {
-        alert('Unable to calculate distance for this route. Please try another route.');
-        setDistance(null);
-        setDuration('');
-        setRouteDetails([]);
-        setKm('');
-      }
-    } catch (error) {
-      console.error('Error calculating route distance:', error);
-      alert('Error calculating distance. Please try again.');
-      setDistance(null);
-      setDuration('');
-      setRouteDetails([]);
-      setKm('');
-    } finally {
-      setLoading(false);
-    }
+    setKm(route.distance.toString());
+    setDistance(route.distance);
+    setDuration(route.duration);
+    setRouteDetails([route.from, route.to]);
+    setManualMode(false);
   };
 
+  // Handle route suggestion selection
+  const handleRouteSuggestion = (suggestion: any) => {
+    const [fromCity, toCity] = suggestion.name.split(' to ');
+    setFrom(fromCity);
+    setTo(toCity);
+    setKm(suggestion.distance.toString());
+    setDistance(suggestion.distance);
+    const estimatedTime = calculateEstimatedDuration(suggestion.distance);
+    setDuration(estimatedTime);
+    setEstimatedDuration(estimatedTime);
+    setRouteDetails([fromCity, toCity]);
+    setManualMode(true);
+  };
+
+  // Calculate total price for a vehicle
   const calculateTotal = (vehicle: any, customDays?: number, customPassengers?: number) => {
     const days = customDays || numberOfDays || 1;
     const kmToCharge = Math.max(finalKm, days * MINIMUM_KM_PER_DAY);
@@ -1525,7 +1510,7 @@ export default function CarsPage() {
               <MapPinIcon className="h-7 w-7" />
               Plan Your Journey
             </h2>
-            <p className="text-red-100">Get instant pricing with accurate Google Maps distance calculation</p>
+            <p className="text-red-100">Enter your route and distance manually for accurate pricing</p>
           </div>
 
           <div className="p-6">
@@ -1560,21 +1545,34 @@ export default function CarsPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Distance (KM)</label>
-                <input
-                  type="number"
-                  value={km}
-                  onChange={(e) => setKm(e.target.value)}
-                  placeholder="Auto-calculated"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
-                  disabled={loading}
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    value={km}
+                    onChange={(e) => setKm(e.target.value)}
+                    onBlur={handleManualDistanceUpdate}
+                    placeholder="Enter distance"
+                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white"
+                    disabled={loading}
+                    min="1"
+                    step="1"
+                  />
+                  <button
+                    onClick={handleManualDistanceUpdate}
+                    className="px-4 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                    title="Update distance"
+                  >
+                    <CalculatorIcon className="h-5 w-5" />
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Enter distance in kilometers</p>
               </div>
             </div>
 
             <div className="mt-6 text-center">
               <button
-                onClick={calculateDistanceWithAPI}
-                disabled={!from || !to || isCalculating}
+                onClick={calculateDistanceManually}
+                disabled={!from || !to || !km || isCalculating}
                 className="inline-flex items-center justify-center gap-2 px-4 md:px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all w-full md:w-auto"
               >
                 {isCalculating ? (
@@ -1585,7 +1583,7 @@ export default function CarsPage() {
                 ) : (
                   <>
                     <MapPinIcon className="h-5 w-5" />
-                    <span className="text-sm md:text-base">Calculate Distance & Price</span>
+                    <span className="text-sm md:text-base">Calculate Price</span>
                   </>
                 )}
               </button>
@@ -1597,7 +1595,7 @@ export default function CarsPage() {
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '150ms' }}></div>
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '300ms' }}></div>
-                  <span className="text-gray-600 text-sm md:text-base">Calculating distance via Google Maps API...</span>
+                  <span className="text-gray-600 text-sm md:text-base">Calculating price...</span>
                 </div>
               </div>
             )}
@@ -1618,37 +1616,56 @@ export default function CarsPage() {
                       )}
                     </div>
                   </div>
-                  <button
-                    onClick={calculateDistanceWithAPI}
-                    className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors w-full md:w-auto"
-                  >
-                    Recalculate
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={calculateDistanceManually}
+                      className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors"
+                    >
+                      Recalculate
+                    </button>
+                    {manualMode && (
+                      <span className="px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium">
+                        Manual Distance
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {routeDetails.length > 2 && (
-                  <div className="text-sm text-gray-600 mt-2">
-                    <span className="font-medium">Suggested Route:</span> {routeDetails.join(' → ')}
-                  </div>
-                )}
+                <div className="text-sm text-gray-600 mt-2">
+                  <span className="font-medium">Route:</span> {routeDetails.join(' → ')}
+                </div>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* Route Suggestions */}
+        <div className="mb-8">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Distance Suggestions</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+            {routeSuggestions.map((suggestion, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleRouteSuggestion(suggestion)}
+                className="bg-white rounded-lg p-3 shadow-sm border border-gray-200 hover:border-red-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="font-medium text-gray-900 text-sm">{suggestion.name}</div>
+                <div className="text-sm text-red-600 font-semibold">{suggestion.distance} km</div>
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Popular Routes */}
         <div className="mb-8">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Popular Routes</h3>
-          {loadingRoutes ? (
-            <div className="text-center py-8">
-              <div className="inline-flex items-center gap-3">
-                <ArrowPathIcon className="h-5 w-5 animate-spin text-red-600" />
-                <span className="text-gray-600">Loading popular routes...</span>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-              {popularRoutesWithData.map((route, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+            {popularRoutes.map((route, idx) => {
+              const sampleVehicle = vehicles[0];
+              const { total } = calculateTotalForRoute(route.distance, sampleVehicle);
+              const priceRange = `₹${formatPrice(Math.round(total * 0.8))} - ₹${formatPrice(Math.round(total * 1.2))}`;
+              
+              return (
                 <button
                   key={idx}
                   onClick={() => handleRouteSelect(route)}
@@ -1660,18 +1677,18 @@ export default function CarsPage() {
                     <div className="flex-1">
                       <div className="font-bold text-gray-900 text-left">{route.from} → {route.to}</div>
                       <div className="text-sm text-gray-600 text-left">
-                        {route.distance ? `${route.distance} km • ${route.time}` : 'Click to calculate'}
+                        {route.distance} km • {route.duration}
                       </div>
                     </div>
                     <ArrowRightIcon className="h-5 w-5 text-gray-400 flex-shrink-0 ml-2" />
                   </div>
                   <div className="text-sm font-semibold text-green-600 text-left">
-                    {route.priceRange}
+                    {priceRange}
                   </div>
                 </button>
-              ))}
-            </div>
-          )}
+              );
+            })}
+          </div>
         </div>
 
         {/* Controls Section */}
@@ -1806,7 +1823,7 @@ export default function CarsPage() {
         {/* Vehicles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
           {currentVehicles.map((vehicle) => {
-            const { total, kmToCharge } = calculateTotal(vehicle);
+            const { total, kmToCharge } = distance ? calculateTotal(vehicle) : { total: 0, kmToCharge: 0 };
             const gradient = getGradientColor(vehicle.imageColor);
             const currentImageIndex = hoveredVehicle === vehicle.id ? 1 : 0;
             const vehicleImage = vehicle.images?.[currentImageIndex] || 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg';
@@ -1906,16 +1923,16 @@ export default function CarsPage() {
                   <div className="mb-4 bg-gray-50 rounded-lg p-3">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
                       <span className="text-sm text-gray-600">
-                        {distance ? `Estimated for ${kmToCharge} km:` : 'Enter route to see price'}
+                        {distance ? `Estimated for ${kmToCharge} km:` : 'Enter distance to see price'}
                       </span>
                       {distance ? (
                         <span className="text-lg font-bold text-gray-900">₹{formatPrice(total)}</span>
                       ) : (
-                        <span className="text-lg font-bold text-red-600">Calculate Distance</span>
+                        <span className="text-lg font-bold text-red-600">Enter Distance</span>
                       )}
                     </div>
                     <div className="text-xs text-gray-500">
-                      {distance ? 'Includes driver allowance, taxes, and minimum KM charges' : 'Enter route details to see price estimate'}
+                      {distance ? 'Includes driver allowance, taxes, and minimum KM charges' : 'Enter distance in KM to see price estimate'}
                     </div>
                   </div>
 

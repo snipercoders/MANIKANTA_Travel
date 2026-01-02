@@ -95,17 +95,22 @@
 
 
 
+
 // File Path: lib/utils/distanceCalculator.ts
 
-interface DistanceResponse {
+export interface DistanceResult {
   distance: number;
   duration: string;
   route: string[];
 }
 
-export async function calculateDistance(from: string, to: string): Promise<DistanceResponse | null> {
+export async function calculateDistance(from: string, to: string): Promise<DistanceResult | null> {
   try {
-    // Call our API route instead of calling Google Maps directly
+    if (!from.trim() || !to.trim()) {
+      console.error('Empty locations provided');
+      return null;
+    }
+
     const response = await fetch('/api/calculate-distance', {
       method: 'POST',
       headers: {
@@ -115,13 +120,24 @@ export async function calculateDistance(from: string, to: string): Promise<Dista
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      console.error('Distance calculation error:', error);
+      const errorData = await response.json();
+      console.error('API Error:', errorData);
       return null;
     }
 
-    const data: DistanceResponse = await response.json();
-    return data;
+    const data = await response.json();
+    
+    // Check if we got valid data
+    if (!data || typeof data.distance !== 'number') {
+      console.error('Invalid data received:', data);
+      return null;
+    }
+
+    return {
+      distance: data.distance,
+      duration: data.duration,
+      route: data.route || []
+    };
 
   } catch (error) {
     console.error('Error calculating distance:', error);
