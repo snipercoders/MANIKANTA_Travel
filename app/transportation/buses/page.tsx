@@ -32,7 +32,7 @@ const allPlaces = [
   // A
   'Adilabad', 'Agumbe', 'Aihole', 'Aland', 'Alappuzha', 'Ankola', 'Anekal', 'Araku Valley', 'Arani', 'Attingal',
   // B
-  'Badami', 'Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
+  'Badami',  'Bangalore','Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
   // C
   'Chalakudy', 'Chamarajanagar', 'Chandravalli', 'Channapatna', 'Chikmagalur', 'Chitradurga', 'Chittoor', 'Coorg', 'Coonoor', 'Cuddalore',
   // D
@@ -93,7 +93,7 @@ const busTypes = [
 const vehicles = [
   {
     id: 1,
-    name: 'AC Mini Bus (21 Seater)',
+    name: 'AC Mini Bus ',
     seats: 21,
     perKm: 40,
     perKmWithTax: 48,
@@ -116,7 +116,7 @@ const vehicles = [
   },
   {
     id: 2,
-    name: 'Luxury Sleeper (35 Seater)',
+    name: 'Luxury Sleeper ',
     seats: 35,
     perKm: 65,
     perKmWithTax: 75,
@@ -139,7 +139,7 @@ const vehicles = [
   },
   {
     id: 3,
-    name: 'Volvo Multi-Axle (53 Seater)',
+    name: 'Volvo Multi-Axle ',
     seats: 25,
     perKm: 110,
     perKmWithTax: 128,
@@ -162,7 +162,7 @@ const vehicles = [
   },
   {
     id: 4,
-    name: 'Double Decker (65 Seater)',
+    name: 'Bus',
     seats: 50,
     perKm: 140,
     perKmWithTax: 165,
@@ -387,7 +387,7 @@ export default function BusesPage() {
   } | null>(null);
 
   const ITEMS_PER_PAGE = 6;
-  const MINIMUM_KM_PER_DAY = 250;
+  const MINIMUM_KM_PER_DAY = 300;
   const DRIVER_BATA_PER_DAY = 1500;
   const GST_PERCENTAGE = 18;
 
@@ -1588,6 +1588,13 @@ export default function BusesPage() {
                     <span className="text-green-500">✓</span>
                     <span>Basic vehicle amenities</span>
                   </li>
+
+                                 <li className="flex items-center gap-0.5">
+  <span className="text-red-500 font-bold">✗</span>
+  <span>
+    Outside Karnataka taxes are different, so please inquire
+  </span>
+</li>
                 </ul>
               </div>
               

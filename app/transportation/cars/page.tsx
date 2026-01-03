@@ -30,7 +30,7 @@ const allPlaces = [
   // A
   'Adilabad', 'Agumbe', 'Aihole', 'Aland', 'Alappuzha', 'Ankola', 'Anekal', 'Araku Valley', 'Arani', 'Attingal',
   // B
-  'Badami', 'Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
+  'Badami', 'Bangalore','Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
   // C
   'Chalakudy', 'Chamarajanagar', 'Chandravalli', 'Channapatna', 'Chikmagalur', 'Chitradurga', 'Chittoor', 'Coorg', 'Coonoor', 'Cuddalore',
   // D
@@ -383,7 +383,7 @@ export default function CarsPage() {
   } | null>(null);
 
   const ITEMS_PER_PAGE = 6;
-  const MINIMUM_KM_PER_DAY = 250;
+  const MINIMUM_KM_PER_DAY = 300;
   const DRIVER_BATA_PER_DAY = 1000;
   const GST_PERCENTAGE = 18;
 
@@ -1577,6 +1577,13 @@ export default function CarsPage() {
                     <span className="text-green-500">✓</span>
                     <span>Basic vehicle amenities</span>
                   </li>
+                  <li className="flex items-center gap-0.5">
+  <span className="text-red-500 font-bold">✗</span>
+  <span>
+    Outside Karnataka taxes are different, so please inquire
+  </span>
+</li>
+
                 </ul>
               </div>
               
