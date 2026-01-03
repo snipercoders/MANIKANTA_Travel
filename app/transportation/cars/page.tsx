@@ -77,31 +77,12 @@ const allPlaces = [
 
 // Car categories and types
 const carTypes = [
-  { id: 'sedan', name: 'Sedan', seats: '4-5', icon: '🚗', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270643/swift_dzire_qnnioo.jpg' },
-  { id: 'suv', name: 'SUV', seats: '6-7', icon: '🚙', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270526/ertiga_iap3pi.jpg' },
-  { id: 'mpv', name: 'MPV', seats: '7-8', icon: '🚐', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270413/innova_crysta_ehwsj7.jpg' },
-  { id: 'tempo', name: 'Tempo Traveller', seats: '12-17', icon: '🚌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767269077/WhatsApp_Image_2026-01-01_at_17.29.35_2_nl5pi5.jpg' },
+  { id: 'sedan', name: 'Sedan', seats: '4-5', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270643/swift_dzire_qnnioo.jpg' },
+  { id: 'suv', name: 'SUV', seats: '6-7',image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270526/ertiga_iap3pi.jpg' },
+  { id: 'mpv', name: 'MPV', seats: '7-8',  image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767270413/innova_crysta_ehwsj7.jpg' },
+  { id: 'tempo', name: 'Tempo Traveller', seats: '12-17',  image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767269077/WhatsApp_Image_2026-01-01_at_17.29.35_2_nl5pi5.jpg' },
 ];
 
-// Popular routes with pre-defined distances
-const popularRoutes = [
-  { from: 'Bangalore', to: 'Sabarimala', distance: 550, duration: '10 hours' },
-  { from: 'Bangalore', to: 'Gokarna', distance: 520, duration: '9 hours 30 minutes' },
-  { from: 'Bangalore', to: 'Ooty', distance: 280, duration: '6 hours' },
-  { from: 'Bangalore', to: 'Tirupati', distance: 250, duration: '4 hours 30 minutes' },
-  { from: 'Bangalore', to: 'Chennai', distance: 350, duration: '6 hours' },
-  { from: 'Bangalore', to: 'Mysore', distance: 150, duration: '3 hours' },
-];
-
-// Route suggestions with estimated distances
-const routeSuggestions = [
-  { name: 'Delhi to Jaipur', distance: 280 },
-  { name: 'Mumbai to Pune', distance: 150 },
-  { name: 'Chennai to Pondicherry', distance: 160 },
-  { name: 'Hyderabad to Vijayawada', distance: 270 },
-  { name: 'Kolkata to Durgapur', distance: 170 },
-  { name: 'Ahmedabad to Vadodara', distance: 110 },
-];
 
 // Complete cars data with enhanced details
 const vehicles = [
@@ -177,7 +158,7 @@ const vehicles = [
   {
     id: 4,
     name: 'Tempo Traveller (17 Seater)',
-    seats: 17,
+    seats: 12,
     perKm: 26,
     perKmWithTax: 30,
     category: 'Luxury',
@@ -888,57 +869,9 @@ export default function CarsPage() {
           </div>
         </div>
 
-        {/* Route Suggestions */}
-        <div className="mb-4 sm:mb-6">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Quick Distance Suggestions</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1.5 sm:gap-2">
-            {routeSuggestions.map((suggestion, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleRouteSuggestion(suggestion)}
-                className="bg-white rounded p-2 sm:p-2.5 shadow-sm border border-gray-200 hover:border-red-300 hover:shadow-md transition-all text-left"
-              >
-                <div className="font-medium text-gray-900 text-xs sm:text-sm truncate">{suggestion.name}</div>
-                <div className="text-red-600 font-semibold text-xs">{suggestion.distance} km</div>
-              </button>
-            ))}
-          </div>
-        </div>
+ 
 
-        {/* Popular Routes */}
-        <div className="mb-4 sm:mb-6">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Popular Routes</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-            {popularRoutes.map((route, idx) => {
-              const sampleVehicle = vehicles[0];
-              const { total } = calculateTotal(sampleVehicle);
-              const priceRange = `₹${formatPrice(Math.round(total * 0.8))} - ₹${formatPrice(Math.round(total * 1.2))}`;
-             
-              return (
-                <button
-                  key={idx}
-                  onClick={() => handleRouteSelect(route)}
-                  className={`bg-white rounded-lg p-2 sm:p-3 shadow-sm border transition-all hover:shadow-md ${
-                    selectedRoute?.from === route.from && selectedRoute?.to === route.to ? 'border-red-500' : 'border-gray-200'
-                  }`}
-                >
-                  <div className="flex justify-between items-start mb-1">
-                    <div className="flex-1">
-                      <div className="font-bold text-gray-900 text-sm text-left truncate">{route.from} → {route.to}</div>
-                      <div className="text-gray-600 text-xs text-left">
-                        {route.distance} km • {route.duration}
-                      </div>
-                    </div>
-                    <ArrowRightIcon className="h-4 w-4 text-gray-400 flex-shrink-0 ml-1" />
-                  </div>
-                  <div className="text-green-600 font-semibold text-xs text-left">
-                    {priceRange}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      
 
         {/* Car Type Selector */}
         <div className="mb-4 sm:mb-6">
@@ -954,7 +887,7 @@ export default function CarsPage() {
                     : 'border-gray-200 bg-white hover:border-red-200'
                 }`}
               >
-                <div className="text-xl sm:text-2xl mb-0.5 sm:mb-1">{type.icon}</div>
+               
                 <div className="font-medium text-gray-900 text-xs sm:text-sm">{type.name}</div>
                 <div className="text-gray-600 text-xs">{type.seats} seats</div>
               </button>

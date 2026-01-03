@@ -79,32 +79,15 @@ const allPlaces = [
 
 // Bus categories and types
 const busTypes = [
-  { id: 'minibus', name: 'Mini Bus', seats: '12-27', icon: '🚌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271104/WhatsApp_Image_2026-01-01_at_18.07.21_zq4kdj.jpg' },
-  { id: 'standard', name: 'Standard Bus', seats: '28-35', icon: '🚍', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
-  { id: 'luxury', name: 'Luxury Bus', seats: '36-45', icon: '🚎', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
-  { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45', icon: '🛌', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
-  { id: 'volvo', name: 'Volvo Bus', seats: '40-53', icon: '🚐', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'minibus', name: 'Mini Bus', seats: '12-27', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271104/WhatsApp_Image_2026-01-01_at_18.07.21_zq4kdj.jpg' },
+  { id: 'standard', name: 'Standard Bus', seats: '28-35', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'luxury', name: 'Luxury Bus', seats: '36-45',  image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45',  image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'volvo', name: 'Volvo Bus', seats: '40-53', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
 ];
 
-// Popular routes with pre-defined distances
-const popularRoutes = [
-  { from: 'Bangalore', to: 'Sabarimala', distance: 550, duration: '10 hours' },
-  { from: 'Bangalore', to: 'Gokarna', distance: 520, duration: '9 hours 30 minutes' },
-  { from: 'Bangalore', to: 'Ooty', distance: 280, duration: '6 hours' },
-  { from: 'Bangalore', to: 'Tirupati', distance: 250, duration: '4 hours 30 minutes' },
-  { from: 'Bangalore', to: 'Chennai', distance: 350, duration: '6 hours' },
-  { from: 'Bangalore', to: 'Mysore', distance: 150, duration: '3 hours' },
-];
 
-// Route suggestions with estimated distances
-const routeSuggestions = [
-  { name: 'Delhi to Jaipur', distance: 280 },
-  { name: 'Mumbai to Pune', distance: 150 },
-  { name: 'Chennai to Pondicherry', distance: 160 },
-  { name: 'Hyderabad to Vijayawada', distance: 270 },
-  { name: 'Kolkata to Durgapur', distance: 170 },
-  { name: 'Ahmedabad to Vadodara', distance: 110 },
-];
+
 
 // Complete buses data with enhanced details
 const vehicles = [
@@ -157,7 +140,7 @@ const vehicles = [
   {
     id: 3,
     name: 'Volvo Multi-Axle (53 Seater)',
-    seats: 53,
+    seats: 25,
     perKm: 110,
     perKmWithTax: 128,
     category: 'Premium Luxury',
@@ -180,7 +163,7 @@ const vehicles = [
   {
     id: 4,
     name: 'Double Decker (65 Seater)',
-    seats: 65,
+    seats: 50,
     perKm: 140,
     perKmWithTax: 165,
     category: 'Premium',
@@ -203,7 +186,7 @@ const vehicles = [
   {
     id: 5,
     name: 'Standard Bus (45 Seater)',
-    seats: 45,
+    seats: 50,
     perKm: 60,
     perKmWithTax: 70,
     category: 'Standard',
@@ -226,7 +209,7 @@ const vehicles = [
   {
     id: 8,
     name: 'VIP Coach (20 Seater)',
-    seats: 20,
+    seats: 21,
     perKm: 75,
     perKmWithTax: 88,
     category: 'VIP',
@@ -890,58 +873,8 @@ export default function BusesPage() {
           </div>
         </div>
 
-        {/* Route Suggestions */}
-        <div className="mb-4 sm:mb-6">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Quick Distance Suggestions</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1.5 sm:gap-2">
-            {routeSuggestions.map((suggestion, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleRouteSuggestion(suggestion)}
-                className="bg-white rounded p-2 sm:p-2.5 shadow-sm border border-gray-200 hover:border-red-300 hover:shadow-md transition-all text-left"
-              >
-                <div className="font-medium text-gray-900 text-xs sm:text-sm truncate">{suggestion.name}</div>
-                <div className="text-red-600 font-semibold text-xs">{suggestion.distance} km</div>
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* Popular Routes */}
-        <div className="mb-4 sm:mb-6">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Popular Routes</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-            {popularRoutes.map((route, idx) => {
-              const sampleVehicle = vehicles[0];
-              const { total } = calculateTotal(sampleVehicle);
-              const priceRange = `₹${formatPrice(Math.round(total * 0.8))} - ₹${formatPrice(Math.round(total * 1.2))}`;
-             
-              return (
-                <button
-                  key={idx}
-                  onClick={() => handleRouteSelect(route)}
-                  className={`bg-white rounded-lg p-2 sm:p-3 shadow-sm border transition-all hover:shadow-md ${
-                    selectedRoute?.from === route.from && selectedRoute?.to === route.to ? 'border-red-500' : 'border-gray-200'
-                  }`}
-                >
-                  <div className="flex justify-between items-start mb-1">
-                    <div className="flex-1">
-                      <div className="font-bold text-gray-900 text-sm text-left truncate">{route.from} → {route.to}</div>
-                      <div className="text-gray-600 text-xs text-left">
-                        {route.distance} km • {route.duration}
-                      </div>
-                    </div>
-                    <ArrowRightIcon className="h-4 w-4 text-gray-400 flex-shrink-0 ml-1" />
-                  </div>
-                  <div className="text-green-600 font-semibold text-xs text-left">
-                    {priceRange}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
+       
         {/* Bus Type Selector */}
         <div className="mb-4 sm:mb-6">
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Select Bus Type</h3>
@@ -956,7 +889,7 @@ export default function BusesPage() {
                     : 'border-gray-200 bg-white hover:border-red-200'
                 }`}
               >
-                <div className="text-xl sm:text-2xl mb-0.5 sm:mb-1">{type.icon}</div>
+
                 <div className="font-medium text-gray-900 text-xs sm:text-sm">{type.name}</div>
                 <div className="text-gray-600 text-xs">{type.seats} seats</div>
               </button>
