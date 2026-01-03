@@ -95,7 +95,7 @@ const vehicles = [
     id: 1,
     name: 'AC Mini Bus ',
     seats: 21,
-    perKm: 40,
+    perKm: 30,
     perKmWithTax: 48,
     category: 'Premium Mini',
     ac: true,
@@ -118,7 +118,7 @@ const vehicles = [
     id: 2,
     name: 'Luxury Sleeper ',
     seats: 35,
-    perKm: 65,
+    perKm: 45,
     perKmWithTax: 75,
     category: 'Luxury Sleeper',
     ac: true,
@@ -141,7 +141,7 @@ const vehicles = [
     id: 3,
     name: 'Volvo Multi-Axle ',
     seats: 25,
-    perKm: 110,
+    perKm: 40,
     perKmWithTax: 128,
     category: 'Premium Luxury',
     ac: true,
@@ -164,7 +164,7 @@ const vehicles = [
     id: 4,
     name: 'Bus',
     seats: 50,
-    perKm: 140,
+    perKm: 50,
     perKmWithTax: 165,
     category: 'Premium',
     ac: true,
@@ -185,15 +185,15 @@ const vehicles = [
   },
   {
     id: 5,
-    name: 'Standard Bus (45 Seater)',
-    seats: 50,
-    perKm: 60,
+    name: 'Standard Bus ',
+    seats: 55,
+    perKm: 50,
     perKmWithTax: 70,
     category: 'Standard',
     ac: false,
     rating: 4.2,
     trips: 890,
-    features: ['Spacious', 'Reliable', 'Large Windows', 'Storage'],
+    features: ['AC','Spacious', 'Reliable', 'Large Windows', 'Storage'],
     amenities: ['Water', 'Basic First Aid', 'Driver Assistant'],
     type: 'standard',
     badge: 'Economical',
@@ -208,9 +208,9 @@ const vehicles = [
   },
   {
     id: 8,
-    name: 'VIP Coach (20 Seater)',
+    name: 'VIP Coach ',
     seats: 21,
-    perKm: 75,
+    perKm: 30,
     perKmWithTax: 88,
     category: 'VIP',
     ac: true,
@@ -314,7 +314,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
               key={index}
               onClick={() => handleSelect(place)}
               onMouseDown={(e) => e.preventDefault()}
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left hover:bg-red-50 hover:text-red-600 transition-colors flex items-center gap-2 border-b border-gray-100 last:border-b-0 text-sm sm:text-base"
+className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-gray-900 hover:bg-red-50 hover:text-red-600 transition-colors flex items-center gap-2 border-b border-gray-100 last:border-b-0 text-sm sm:text-base"
               type="button"
             >
               <MagnifyingGlassIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 flex-shrink-0" />
@@ -1384,9 +1384,9 @@ export default function BusesPage() {
                 <input
                   type="number"
                   value={quoteDetails.days}
-                  onChange={(e) => setQuoteDetails({...quoteDetails, days: parseInt(e.target.value) || 1})}
+                  onChange={(e) => setQuoteDetails({...quoteDetails, days: parseInt(e.target.value) || 0})}
                   className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
-                  min="1"
+                  // min="0"
                 />
               </div>
               <div>
@@ -1677,12 +1677,14 @@ export default function BusesPage() {
                   <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-0.5">Trip Duration (Days)</label>
                   <input
                     type="number"
-                    defaultValue="3"
+                    // defaultValue="0"
                     className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
-                    min="1"
+                    // min="0"
                   />
                 </div>
               </div>
+             
+
              
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-0.5">Travel Dates</label>

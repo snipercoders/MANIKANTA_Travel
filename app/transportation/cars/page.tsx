@@ -113,7 +113,7 @@ const vehicles = [
     id: 2,
     name: 'Innova Crysta',
     seats: 7,
-    perKm: 18,
+    perKm: 17,
     perKmWithTax: 21,
     category: 'Premium',
     ac: true,
@@ -136,7 +136,7 @@ const vehicles = [
     id: 3,
     name: 'Tempo Traveller (12 Seater)',
     seats: 12,
-    perKm: 22,
+    perKm: 23,
     perKmWithTax: 26,
     category: 'Luxury',
     ac: true,
@@ -157,9 +157,9 @@ const vehicles = [
   },
   {
     id: 4,
-    name: 'Tempo Traveller (17 Seater)',
+    name: 'Tempo Traveller ',
     seats: 12,
-    perKm: 26,
+    perKm: 2,
     perKmWithTax: 30,
     category: 'Luxury',
     ac: true,
@@ -310,7 +310,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
               key={index}
               onClick={() => handleSelect(place)}
               onMouseDown={(e) => e.preventDefault()}
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left hover:bg-red-50 hover:text-red-600 transition-colors flex items-center gap-2 border-b border-gray-100 last:border-b-0 text-sm sm:text-base"
+           className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-gray-900 hover:bg-red-50 hover:text-red-600 transition-colors flex items-center gap-2 border-b border-gray-100 last:border-b-0 text-sm sm:text-base"
               type="button"
             >
               <MagnifyingGlassIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 flex-shrink-0" />
