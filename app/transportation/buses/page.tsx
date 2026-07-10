@@ -1,7 +1,3 @@
-
-
-// components/transportation/buses/page.tsx
-
 'use client';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
@@ -26,74 +22,47 @@ import {
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Combine all places into a single array
 const allPlaces = [
-  // A
   'Adilabad', 'Agumbe', 'Aihole', 'Aland', 'Alappuzha', 'Ankola', 'Anekal', 'Araku Valley', 'Arani', 'Attingal',
-  // B
-  'Badami',  'Bangalore','Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
-  // C
+  'Badami', 'Bangalore','Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
   'Chalakudy', 'Chamarajanagar', 'Chandravalli', 'Channapatna', 'Chikmagalur', 'Chitradurga', 'Chittoor', 'Coorg', 'Coonoor', 'Cuddalore',
-  // D
   'Dandeli', 'Devarayanadurga', 'Devikulam', 'Dhanushkodi', 'Dharwad', 'Dharmavaram', 'Dindigul', 'Doddaballapur', 'Dudhsagar',
-  // E
   'Elagiri', 'Eravikulam', 'Erode',
-  // F
   'Falaknuma Palace',
-  // G
   'Gadag', 'Gandikota', 'Gangavathi', 'Gajendragad', 'Gokarna', 'Gudalur', 'Gudavi', 'Gubbi', 'Guntur', 'Guruvayur',
-  // H
   'Halebidu', 'Hampi', 'Hassan', 'Haveri', 'Honnavar', 'Horanadu', 'Horsley Hills', 'Hosur', 'Hubballi',
-  // I
   'Idukki', 'Ilkal', 'Irinjalakuda',
-  // J
   'Jadcherla', 'Jamkhandi', 'Jatayu Earth Center', 'Jewargi', 'Jhari Falls', 'Jog Falls', 'Jogimatti', 'Jolarpettai',
-  // K
   'Kalaburagi', 'Kalasa', 'Kanakapura', 'Kanyakumari', 'Karur', 'Karkala', 'Karwar', 'Kemmannugundi', 'Kochi', 'Kodachadri', 'Kodaikanal', 'Kolar', 'Koppal', 'Kottayam', 'Kudremukh', 'Kundapura',
-  // L
   'Lakkidi', 'Lalgudi', 'Lakshmeshwar', 'Latur', 'Lepakshi', 'Lingsugur',
-  // M
   'Madikeri', 'Mahabalipuram', 'Malappuram', 'Mandagadde', 'Mandya', 'Manipal', 'Maravanthe', 'Mayiladuthurai', 'Moodbidri', 'Mudigere', 'Mulbagal', 'Munnar', 'Murudeshwar', 'Mysuru',
-  // N
   'Nagarhole', 'Nagercoil', 'Nandi Hills', 'Nanjangud', 'Narasaraopet', 'Navalgund', 'Nilambur',
-  // O
   'Om Beach', 'Ongole', 'Ooty',
-  // P
   'Panchalingeshwara', 'Pandavapura', 'Pattadakal', 'Pavagada', 'Perundurai', 'Pollachi', 'Proddatur', 'Puducherry', 'Puttur', 'Puttaparthi',
-  // R
   'Raichur', 'Raichur Fort', 'Ramanagara', 'Rameswaram', 'Ranipet', 'Ranganathittu', 'Ron', 'Rippanpet',
-  // S
   'Sagara', 'Sakleshpur', 'Sankarankovil', 'Sattur', 'Sedam', 'Shorapur', 'Siddipet', 'Sirsi', 'Sivakasi', 'Somnathpur', 'Srisailam', 'Sringeri', 'St. Mary\'s Island', 'Surathkal',
-  // T
   'Talakadu', 'Tannirbhavi', 'Tarikere', 'Tenkasi', 'Thanjavur', 'Tirunelveli', 'Tirupati', 'Tiruvannamalai', 'Tiptur', 'Tumakuru',
-  // U
   'Udupi', 'Ulundurpet', 'Uppala',
-  // V
   'Valparai', 'Vanadurga', 'Varkala', 'Vellore', 'Vidhana Soudha', 'Vijayapura', 'Virajpet', 'Virudhunagar', 'Vizianagaram',
-  // W
   'Wadakkanchery', 'Wayanad',
-  // Y
   'Yana Caves', 'Yelandur', 'Yellapur', 'Yelahanka', 'Yercaud'
 ].sort();
 
-// Bus categories and types
 const busTypes = [
   { id: 'minibus', name: 'Mini Bus', seats: '12-27', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271104/WhatsApp_Image_2026-01-01_at_18.07.21_zq4kdj.jpg' },
   { id: 'standard', name: 'Standard Bus', seats: '28-35', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
-  { id: 'luxury', name: 'Luxury Bus', seats: '36-45',  image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
-  { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45',  image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'luxury', name: 'Luxury Bus', seats: '36-45', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
+  { id: 'sleeper', name: 'Sleeper Bus', seats: '20-45', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
   { id: 'volvo', name: 'Volvo Bus', seats: '40-53', image: 'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1766668266/26-seater-travller_dir8rp.jpg' },
 ];
 
-
-
-
-// Complete buses data with enhanced details
 const vehicles = [
   {
     id: 1,
-    name: 'AC Mini Bus ',
+    name: 'AC Mini Bus',
     seats: 21,
     perKm: 35,
     perKmWithTax: 35,
@@ -107,7 +76,7 @@ const vehicles = [
     badge: 'Best Value',
     fuel: 'Diesel',
     year: 2022,
-    imageColor: 'red',
+    imageColor: 'black',
     images: [
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271104/WhatsApp_Image_2026-01-01_at_18.07.21_zq4kdj.jpg',
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271099/WhatsApp_Image_2026-01-01_at_18.07.20_swijmv.jpg',
@@ -116,7 +85,7 @@ const vehicles = [
   },
   {
     id: 2,
-    name: 'Luxury Sleeper ',
+    name: 'Luxury Sleeper',
     seats: 35,
     perKm: 45,
     perKmWithTax: 45,
@@ -130,7 +99,7 @@ const vehicles = [
     badge: 'Night Travel',
     fuel: 'Diesel',
     year: 2023,
-    imageColor: 'red',
+    imageColor: 'black',
     images: [
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271097/WhatsApp_Image_2026-01-01_at_18.07.20_1_ha9vxx.jpg',
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271089/WhatsApp_Image_2026-01-01_at_18.07.18_3_qcbdkt.jpg',
@@ -139,7 +108,7 @@ const vehicles = [
   },
   {
     id: 3,
-    name: 'Volvo Multi-Axle ',
+    name: 'Volvo Multi-Axle',
     seats: 25,
     perKm: 40,
     perKmWithTax: 40,
@@ -153,7 +122,7 @@ const vehicles = [
     badge: 'Most Comfortable',
     fuel: 'Diesel',
     year: 2024,
-    imageColor: 'red',
+    imageColor: 'black',
     images: [
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271756/multi_1_o7uex6.jpg',
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271749/multi_2_etntfp.jpg',
@@ -162,7 +131,7 @@ const vehicles = [
   },
   {
     id: 4,
-    name: 'Bus',
+    name: 'Premium Bus',
     seats: 50,
     perKm: 55,
     perKmWithTax: 55,
@@ -176,7 +145,7 @@ const vehicles = [
     badge: 'Tour Special',
     fuel: 'Diesel',
     year: 2023,
-    imageColor: 'red',
+    imageColor: 'black',
     images: [
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271089/WhatsApp_Image_2026-01-01_at_18.07.18_2_x1lfc6.jpg',
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271089/WhatsApp_Image_2026-01-01_at_18.07.18_2_x1lfc6.jpg',
@@ -185,7 +154,7 @@ const vehicles = [
   },
   {
     id: 5,
-    name: 'Standard Bus ',
+    name: 'Standard Bus',
     seats: 50,
     perKm: 50,
     perKmWithTax: 50,
@@ -193,13 +162,13 @@ const vehicles = [
     ac: false,
     rating: 4.2,
     trips: 890,
-    features: ['Non-AC','Spacious', 'Reliable', 'Large Windows', 'Storage'],
+    features: ['Non-AC', 'Spacious', 'Reliable', 'Large Windows', 'Storage'],
     amenities: ['Water', 'Basic First Aid', 'Driver Assistant'],
     type: 'standard',
     badge: 'Economical',
     fuel: 'Diesel',
     year: 2021,
-    imageColor: 'red',
+    imageColor: 'black',
     images: [
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271089/WhatsApp_Image_2026-01-01_at_18.07.18_2_x1lfc6.jpg',
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767271089/WhatsApp_Image_2026-01-01_at_18.07.18_2_x1lfc6.jpg',
@@ -208,7 +177,7 @@ const vehicles = [
   },
   {
     id: 8,
-    name: 'VIP Coach ',
+    name: 'VIP Coach',
     seats: 21,
     perKm: 30,
     perKmWithTax: 30,
@@ -222,7 +191,7 @@ const vehicles = [
     badge: 'Corporate',
     fuel: 'Diesel',
     year: 2024,
-    imageColor: 'red',
+    imageColor: 'black',
     images: [
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767272037/vip_1_clz7mk.jpg',
       'https://res.cloudinary.com/dzoxwk1jc/image/upload/v1767272035/vip_2_ninlag.jpg',
@@ -230,7 +199,6 @@ const vehicles = [
   }
 ];
 
-// FIXED Autocomplete component - Fully responsive
 interface AutocompleteProps {
   value: string;
   onChange: (value: string) => void;
@@ -259,7 +227,6 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
   const handleSelect = (place: string) => {
     onSelect(place);
     onChange(place);
-    // Focus back on input after selection
     setTimeout(() => {
       inputRef.current?.focus();
     }, 0);
@@ -285,7 +252,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
           onFocus={onFocus}
           onBlur={handleBlur}
           placeholder={placeholder}
-          className="w-full pl-9 sm:pl-10 pr-8 sm:pr-10 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white relative z-20 text-sm sm:text-base"
+          className="w-full pl-9 sm:pl-10 pr-8 sm:pr-10 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white relative z-20 text-sm sm:text-base"
           autoComplete="off"
         />
         {value && (
@@ -314,7 +281,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
               key={index}
               onClick={() => handleSelect(place)}
               onMouseDown={(e) => e.preventDefault()}
-className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-gray-900 hover:bg-red-50 hover:text-red-600 transition-colors flex items-center gap-2 border-b border-gray-100 last:border-b-0 text-sm sm:text-base"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-gray-900 hover:bg-gray-100 hover:text-black transition-colors flex items-center gap-2 border-b border-gray-100 last:border-b-0 text-sm sm:text-base"
               type="button"
             >
               <MagnifyingGlassIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 flex-shrink-0" />
@@ -327,7 +294,6 @@ className="w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-gray-900 hover:bg-red
   );
 };
 
-// CheckCircleIcon component
 const CheckCircleIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -395,12 +361,11 @@ export default function BusesPage() {
 
   const getGradientColor = (color: string) => {
     const gradients: Record<string, string> = {
-      red: 'from-red-500 to-red-700',
+      black: 'from-gray-800 to-black',
     };
-    return gradients[color] || 'from-red-500 to-red-700';
+    return gradients[color] || 'from-gray-800 to-black';
   };
 
-  // Filter places based on input
   const filterPlaces = (input: string) => {
     if (!input.trim()) return allPlaces.slice(0, 8);
     const searchTerm = input.toLowerCase();
@@ -412,7 +377,6 @@ export default function BusesPage() {
   const fromSuggestions = filterPlaces(from);
   const toSuggestions = filterPlaces(to);
 
-  // Calculate estimated duration based on distance
   const calculateEstimatedDuration = (distance: number) => {
     const averageSpeed = 60;
     const hours = Math.round(distance / averageSpeed);
@@ -434,7 +398,6 @@ export default function BusesPage() {
     }
   };
 
-  // Manual distance calculation
   const calculateDistanceManually = () => {
     if (!from || !to || from.trim() === '' || to.trim() === '') {
       alert('Please enter both pickup and destination locations');
@@ -464,7 +427,6 @@ export default function BusesPage() {
     }, 500);
   };
 
-  // Handle manual distance update
   const handleManualDistanceUpdate = () => {
     if (km && !isNaN(parseFloat(km)) && parseFloat(km) > 0) {
       const distanceValue = parseFloat(km);
@@ -476,7 +438,6 @@ export default function BusesPage() {
     }
   };
 
-  // Handle popular route selection
   const handleRouteSelect = (route: any) => {
     setFrom(route.from);
     setTo(route.to);
@@ -490,7 +451,6 @@ export default function BusesPage() {
     setShowToSuggestions(false);
   };
 
-  // Handle route suggestion selection
   const handleRouteSuggestion = (suggestion: any) => {
     const [fromCity, toCity] = suggestion.name.split(' to ');
     setFrom(fromCity);
@@ -506,7 +466,6 @@ export default function BusesPage() {
     setShowToSuggestions(false);
   };
 
-  // Filter and sort vehicles
   const filteredVehicles = useMemo(() => {
     let filtered = [...vehicles];
    
@@ -548,7 +507,6 @@ export default function BusesPage() {
     setShowPhotos(true);
   };
 
-  // Calculate total with minimum km per day logic
   const calculateTotal = (vehicle: any, customDays?: number, customPassengers?: number) => {
     const days = customDays || numberOfDays || 1;
     const totalKmToCharge = days * MINIMUM_KM_PER_DAY;
@@ -583,7 +541,6 @@ export default function BusesPage() {
   const calculateQuotePrice = () => {
     if (!quoteDetails.vehicle) return { total: 0, days: 0, actualKm: 0, kmToCharge: 0, baseFare: 0, gst: 0, minimumApplied: false };
     
-    // Use the user-entered days value, or fallback to calculated days if 0
     const days = quoteDetails.days > 0 ? quoteDetails.days : (numberOfDays || 1);
     const { total, actualKm, kmToCharge, baseFare, gst, minimumApplied } = calculateTotal(
       quoteDetails.vehicle,
@@ -629,7 +586,6 @@ export default function BusesPage() {
       .slice(0, 3);
   }, [passengerCount, vehicles]);
 
-  // Close modals when pressing Escape key
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -644,9 +600,9 @@ export default function BusesPage() {
   }, [showQuickQuote, exactQuote, showGroupBooking, showPhotos]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-red-900 via-red-800 to-red-900">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section - Black & White */}
+      <div className="relative overflow-hidden bg-black">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:20px_20px]" />
@@ -654,20 +610,19 @@ export default function BusesPage() {
        
         <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 md:py-12 lg:py-16">
           <div className="text-center">
-            <div className="inline-flex items-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4">
-              <SparklesIcon className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-300" />
+            <div className="inline-flex items-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 border border-white/20">
+              <SparklesIcon className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
               <span className="text-xs sm:text-sm font-semibold text-white">GROUP TRAVEL SPECIALISTS</span>
             </div>
            
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 px-2">
-              Premium <span className="text-yellow-300">Buses</span> for Group Travel
+              Premium <span className="text-gray-300">Buses</span> for Group Travel
             </h1>
            
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-red-100 mb-4 sm:mb-6 max-w-3xl mx-auto px-2">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-4 sm:mb-6 max-w-3xl mx-auto px-2">
               Perfect for pilgrimages, school trips, corporate events, weddings, and large group tours across India
             </p>
            
-            {/* Quick Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
               {[
                 { label: 'Bus Fleet', value: '100+' },
@@ -675,9 +630,9 @@ export default function BusesPage() {
                 { label: 'Cities', value: '200+' },
                 { label: 'Happy Groups', value: '2K+' },
               ].map((stat, idx) => (
-                <div key={idx} className="bg-white/10 backdrop-blur-sm rounded sm:rounded-lg p-2 sm:p-3">
+                <div key={idx} className="bg-white/10 backdrop-blur-sm rounded sm:rounded-lg p-2 sm:p-3 border border-white/10">
                   <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-red-200">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -687,14 +642,14 @@ export default function BusesPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4 -mt-4 sm:-mt-6 md:-mt-8 relative z-10">
-        {/* Group Booking Calculator */}
+        {/* Group Booking Calculator - Black & White */}
         <div className="bg-white rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl mb-4 sm:mb-6 overflow-hidden">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 p-3 sm:p-4">
+          <div className="bg-black p-3 sm:p-4">
             <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-1 sm:gap-2">
               <UserGroupIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               <span className="text-sm sm:text-base">Group Travel Calculator</span>
             </h2>
-            <p className="text-red-100 text-xs sm:text-sm mt-1">Enter your route and distance manually for accurate pricing</p>
+            <p className="text-gray-300 text-xs sm:text-sm mt-1">Enter your route and distance manually for accurate pricing</p>
           </div>
          
           <div className="p-3 sm:p-4">
@@ -708,10 +663,10 @@ export default function BusesPage() {
                     max="80"
                     value={passengerCount}
                     onChange={(e) => setPassengerCount(parseInt(e.target.value))}
-                    className="w-full accent-red-600"
+                    className="w-full accent-black"
                   />
                   <div className="text-center mt-1">
-                    <span className="text-lg sm:text-xl font-bold text-red-600">{passengerCount}</span>
+                    <span className="text-lg sm:text-xl font-bold text-black">{passengerCount}</span>
                     <span className="text-gray-600 text-xs ml-1">passengers</span>
                   </div>
                 </div>
@@ -760,7 +715,7 @@ export default function BusesPage() {
                     onChange={(e) => setKm(e.target.value)}
                     onBlur={handleManualDistanceUpdate}
                     placeholder="Enter distance"
-                    className="flex-1 px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                    className="flex-1 px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                     min="1"
                     step="1"
                   />
@@ -776,12 +731,11 @@ export default function BusesPage() {
               </div>
             </div>
            
-            {/* Calculate Button */}
             <div className="mt-3 sm:mt-4 text-center">
               <button
                 onClick={calculateDistanceManually}
                 disabled={!from || !to || !km || isCalculating}
-                className="inline-flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all w-full sm:w-auto text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all w-full sm:w-auto text-sm sm:text-base"
               >
                 {isCalculating ? (
                   <>
@@ -800,37 +754,37 @@ export default function BusesPage() {
             {loading && (
               <div className="mt-3 sm:mt-4 text-center">
                 <div className="inline-flex items-center gap-2">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-600 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '150ms' }}></div>
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '300ms' }}></div>
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black rounded-full animate-pulse" style={{ animationDelay: '150ms' }}></div>
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black rounded-full animate-pulse" style={{ animationDelay: '300ms' }}></div>
                   <span className="text-gray-600 text-xs sm:text-sm">Calculating price...</span>
                 </div>
               </div>
             )}
            
             {distance && !loading && (
-              <div className="mt-3 sm:mt-4 bg-gradient-to-r from-red-50 to-red-50 rounded-lg p-2 sm:p-3 border border-red-200">
+              <div className="mt-3 sm:mt-4 bg-gray-50 rounded-lg p-2 sm:p-3 border border-gray-200">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-1 sm:mb-2">
                   <div className="flex-1">
                     <div className="text-xs text-gray-600">Route Information</div>
                     <div className="text-base sm:text-lg font-bold text-gray-900 truncate">{from} → {to}</div>
                     <div className="flex flex-wrap items-center gap-1 sm:gap-2 mt-0.5">
-                      <span className="text-red-600 font-semibold text-xs sm:text-sm">{distance} KM</span>
+                      <span className="text-black font-semibold text-xs sm:text-sm">{distance} KM</span>
                       <span className="text-gray-400">•</span>
                       <span className="text-gray-600 text-xs sm:text-sm">{duration}</span>
                       <span className="text-gray-400">•</span>
-                      <span className="text-red-600 font-medium text-xs sm:text-sm">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
+                      <span className="text-black font-medium text-xs sm:text-sm">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
                     </div>
                   </div>
                   <div className="flex gap-1 sm:gap-2 mt-1 sm:mt-0">
                     <button
                       onClick={calculateDistanceManually}
-                      className="px-2 py-1 sm:px-3 sm:py-1.5 bg-red-100 text-red-700 rounded-lg text-xs font-medium hover:bg-red-200 transition-colors"
+                      className="px-2 py-1 sm:px-3 sm:py-1.5 bg-gray-100 text-black rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors"
                     >
                       Recalculate
                     </button>
                     {manualMode && (
-                      <span className="px-2 py-1 sm:px-2 sm:py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium">
+                      <span className="px-2 py-1 sm:px-2 sm:py-1.5 bg-gray-100 text-black rounded-lg text-xs font-medium">
                         Manual Distance
                       </span>
                     )}
@@ -850,19 +804,19 @@ export default function BusesPage() {
                   {recommendedBuses.map((bus) => {
                     const { total } = calculateTotal(bus);
                     return (
-                      <div key={bus.id} className="bg-gradient-to-r from-red-50 to-red-50 rounded-lg p-2 sm:p-3 border border-red-200">
+                      <div key={bus.id} className="bg-gray-50 rounded-lg p-2 sm:p-3 border border-gray-200">
                         <div className="flex flex-col sm:flex-row sm:justify-between items-start gap-1">
                           <div className="flex-1">
                             <div className="font-bold text-gray-900 text-sm truncate">{bus.name}</div>
                             <div className="text-gray-600 text-xs">{bus.seats} seats • {bus.ac ? 'AC' : 'Non-AC'}</div>
                           </div>
                           <div className="text-right mt-0.5 sm:mt-0">
-                            <div className="text-sm sm:text-base font-bold text-red-600">₹{formatPrice(total)}</div>
+                            <div className="text-sm sm:text-base font-bold text-black">₹{formatPrice(total)}</div>
                             <div className="text-xs text-gray-500">estimated</div>
                           </div>
                         </div>
                         <div className="mt-1 flex items-center gap-1">
-                          <StarIconSolid className="h-3 w-3 text-amber-500" />
+                          <StarIconSolid className="h-3 w-3 text-yellow-500" />
                           <span className="text-xs font-medium">{bus.rating}</span>
                           <span className="text-xs text-gray-500">({bus.trips} trips)</span>
                         </div>
@@ -875,9 +829,7 @@ export default function BusesPage() {
           </div>
         </div>
 
-
-       
-        {/* Bus Type Selector */}
+        {/* Bus Type Selector - Black & White */}
         <div className="mb-4 sm:mb-6">
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Select Bus Type</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2">
@@ -887,11 +839,10 @@ export default function BusesPage() {
                 onClick={() => setSelectedType(type.id === selectedType ? null : type.id)}
                 className={`p-2 sm:p-3 rounded border transition-all ${
                   selectedType === type.id
-                    ? 'border-red-500 bg-red-50'
-                    : 'border-gray-200 bg-white hover:border-red-200'
+                    ? 'border-black bg-gray-100'
+                    : 'border-gray-200 bg-white hover:border-black'
                 }`}
               >
-
                 <div className="font-medium text-gray-900 text-xs sm:text-sm">{type.name}</div>
                 <div className="text-gray-600 text-xs">{type.seats} seats</div>
               </button>
@@ -899,8 +850,8 @@ export default function BusesPage() {
           </div>
         </div>
 
-        {/* Controls Section */}
-        <div className="bg-white rounded-lg shadow p-2 sm:p-3 md:p-4 mb-4 sm:mb-6">
+        {/* Controls Section - Black & White */}
+        <div className="bg-white rounded-lg shadow p-2 sm:p-3 md:p-4 mb-4 sm:mb-6 border border-gray-200">
           <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-3">
             <div>
               <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">Available Buses ({filteredVehicles.length})</h3>
@@ -908,12 +859,11 @@ export default function BusesPage() {
             </div>
            
             <div className="flex flex-col sm:flex-row flex-wrap gap-1 sm:gap-2 w-full sm:w-auto">
-              {/* Quick Filters */}
               <div className="flex flex-wrap gap-1 overflow-x-auto pb-1 sm:pb-0">
                 <button
                   onClick={() => setMinSeats(20)}
                   className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
-                    minSeats === 20 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
+                    minSeats === 20 ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   20+ Seats
@@ -921,7 +871,7 @@ export default function BusesPage() {
                 <button
                   onClick={() => setMinSeats(40)}
                   className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
-                    minSeats === 40 ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
+                    minSeats === 40 ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   40+ Seats
@@ -929,7 +879,7 @@ export default function BusesPage() {
                 <button
                   onClick={() => setShowACOnly(!showACOnly)}
                   className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
-                    showACOnly ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'
+                    showACOnly ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   AC Only
@@ -937,7 +887,6 @@ export default function BusesPage() {
               </div>
              
               <div className="flex gap-1 sm:gap-2">
-                {/* Filter Button */}
                 <button
                   onClick={() => setShowFilters(!showFilters)}
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 rounded hover:bg-gray-200 transition-colors text-xs sm:text-sm"
@@ -946,11 +895,10 @@ export default function BusesPage() {
                   <span className="hidden sm:inline">Filters</span>
                 </button>
                
-                {/* Sort Dropdown */}
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="px-2 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 text-xs sm:text-sm"
+                  className="px-2 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-black text-xs sm:text-sm"
                 >
                   <option value="price">Price: Low to High</option>
                   <option value="rating">Highest Rated</option>
@@ -960,7 +908,6 @@ export default function BusesPage() {
             </div>
           </div>
          
-          {/* Advanced Filters */}
           {showFilters && (
             <div className="mt-2 sm:mt-3 p-2 sm:p-3 bg-gray-50 rounded border border-gray-200">
               <div className="flex justify-between items-center mb-2">
@@ -981,7 +928,7 @@ export default function BusesPage() {
                     max="80"
                     value={minSeats}
                     onChange={(e) => setMinSeats(parseInt(e.target.value))}
-                    className="w-full accent-red-600"
+                    className="w-full accent-black"
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-0.5">
                     <span>20 Seats</span>
@@ -999,7 +946,7 @@ export default function BusesPage() {
                     max="100"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(parseInt(e.target.value))}
-                    className="w-full accent-red-600"
+                    className="w-full accent-black"
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-0.5">
                     <span>₹33</span>
@@ -1021,7 +968,7 @@ export default function BusesPage() {
                 </button>
                 <button
                   onClick={() => setShowFilters(false)}
-                  className="px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700"
+                  className="px-2 py-1 text-xs bg-black text-white rounded hover:bg-gray-800"
                 >
                   Apply Filters
                 </button>
@@ -1030,7 +977,7 @@ export default function BusesPage() {
           )}
         </div>
 
-        {/* Buses Grid */}
+        {/* Buses Grid - Black & White */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
           {currentVehicles.map((vehicle) => {
             const { total, kmToCharge, baseFare, gst, actualKm, minimumApplied } = distance ? calculateTotal(vehicle) : { total: 0, kmToCharge: 0, baseFare: 0, gst: 0, actualKm: 0, minimumApplied: false };
@@ -1041,11 +988,10 @@ export default function BusesPage() {
             return (
               <div
                 key={vehicle.id}
-                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-200"
+                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-200 hover:border-black"
                 onMouseEnter={() => setHoveredVehicle(vehicle.id)}
                 onMouseLeave={() => setHoveredVehicle(null)}
               >
-                {/* Bus Header with Image */}
                 <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden">
                   <div className="absolute inset-0">
                     <Image
@@ -1060,7 +1006,6 @@ export default function BusesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   </div>
                  
-                  {/* Image Gallery Indicator */}
                   <div className="absolute top-2 left-2 flex gap-0.5">
                     {vehicle.images?.map((_, idx) => (
                       <div
@@ -1070,7 +1015,6 @@ export default function BusesPage() {
                     ))}
                   </div>
                  
-                  {/* Badge */}
                   {vehicle.badge && (
                     <div className="absolute top-2 right-2">
                       <span className="px-1.5 py-0.5 bg-white/20 backdrop-blur-sm text-white text-xs font-bold rounded-full">
@@ -1079,7 +1023,6 @@ export default function BusesPage() {
                     </div>
                   )}
                  
-                  {/* Seats Overlay */}
                   <div className="absolute bottom-2 left-2">
                     <div className="bg-black/60 backdrop-blur-sm rounded px-1.5 py-1">
                       <div className="text-lg sm:text-xl font-bold text-white">{vehicle.seats}</div>
@@ -1087,7 +1030,6 @@ export default function BusesPage() {
                     </div>
                   </div>
                  
-                  {/* Vehicle Info */}
                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
                     <div className="flex items-center gap-0.5 bg-black/60 backdrop-blur-sm px-1.5 py-0.5 rounded-full">
                       <StarIconSolid className="h-2 w-2 sm:h-2.5 sm:w-2.5 text-yellow-400" />
@@ -1099,11 +1041,10 @@ export default function BusesPage() {
                   </div>
                 </div>
                
-                {/* Bus Details */}
                 <div className="p-2 sm:p-3 md:p-4">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 mb-1 sm:mb-2">
                     <div className="flex-1">
-                      <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors truncate">
+                      <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 group-hover:text-black transition-colors truncate">
                         {vehicle.name}
                       </h3>
                       <div className="flex flex-wrap items-center gap-1 mt-0.5">
@@ -1111,7 +1052,7 @@ export default function BusesPage() {
                           {vehicle.category}
                         </span>
                         {vehicle.ac && (
-                          <span className="flex items-center gap-0.5 px-1 py-0.5 bg-red-50 text-red-700 text-xs font-medium rounded">
+                          <span className="flex items-center gap-0.5 px-1 py-0.5 bg-gray-100 text-gray-700 text-xs font-medium rounded">
                             <span className="text-xs">❄️</span>
                             AC
                           </span>
@@ -1119,37 +1060,34 @@ export default function BusesPage() {
                       </div>
                     </div>
                     <div className="text-left sm:text-right mt-0.5 sm:mt-0">
-                      <div className="text-base sm:text-lg md:text-xl font-bold text-green-600">₹{vehicle.perKmWithTax}</div>
+                      <div className="text-base sm:text-lg md:text-xl font-bold text-black">₹{vehicle.perKmWithTax}</div>
                       <div className="text-xs text-gray-500">per km</div>
                     </div>
                   </div>
                  
-                  {/* Features */}
                   <div className="mb-2 sm:mb-3">
                     <div className="text-xs font-medium text-gray-700 mb-0.5">Features:</div>
                     <div className="flex flex-wrap gap-1">
                       {vehicle.features.slice(0, 3).map((feature, idx) => (
-                        <span key={idx} className="px-1.5 py-0.5 bg-red-50 text-red-700 text-xs rounded">
+                        <span key={idx} className="px-1.5 py-0.5 bg-gray-100 text-gray-700 text-xs rounded">
                           {feature}
                         </span>
                       ))}
                     </div>
                   </div>
                  
-                  {/* Amenities */}
                   <div className="mb-2 sm:mb-3">
                     <div className="text-xs font-medium text-gray-700 mb-0.5">Amenities:</div>
                     <div className="flex flex-wrap gap-1">
                       {vehicle.amenities.slice(0, 2).map((amenity, idx) => (
                         <div key={idx} className="flex items-center gap-0.5">
-                          <CheckCircleIcon className="h-2.5 w-2.5 text-red-500" />
+                          <CheckCircleIcon className="h-2.5 w-2.5 text-black" />
                           <span className="text-xs text-gray-600">{amenity}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                  
-                  {/* Price Breakdown */}
                   <div className="mb-2 sm:mb-3 bg-gray-50 rounded p-1.5 sm:p-2">
                     <div className="space-y-1">
                       {distance ? (
@@ -1161,7 +1099,7 @@ export default function BusesPage() {
                           {minimumApplied && (
                             <div className="flex justify-between text-xs">
                               <span className="text-gray-600">Min KM Charge:</span>
-                              <span className="font-medium text-amber-600">{kmToCharge} km</span>
+                              <span className="font-medium text-gray-600">{kmToCharge} km</span>
                             </div>
                           )}
                           <div className="flex justify-between text-xs">
@@ -1179,10 +1117,10 @@ export default function BusesPage() {
                           <div className="border-t pt-1 mt-1">
                             <div className="flex justify-between font-bold">
                               <span className="text-gray-900 text-sm">Total Estimated:</span>
-                              <span className="text-base text-green-600">₹{formatPrice(total)}</span>
+                              <span className="text-base text-black">₹{formatPrice(total)}</span>
                             </div>
                             {minimumApplied && (
-                              <div className="text-xs text-amber-600 mt-0.5">
+                              <div className="text-xs text-gray-600 mt-0.5">
                                 *Minimum {MINIMUM_KM_PER_DAY} km per day
                               </div>
                             )}
@@ -1190,24 +1128,23 @@ export default function BusesPage() {
                         </>
                       ) : (
                         <div className="text-center py-1.5">
-                          <div className="text-sm font-bold text-red-600 mb-0.5">Enter Distance</div>
+                          <div className="text-sm font-bold text-black mb-0.5">Enter Distance</div>
                           <p className="text-xs text-gray-600">Enter distance in KM to see price estimate</p>
                         </div>
                       )}
                     </div>
                   </div>
                  
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap=1.5">
+                  <div className="flex flex-col sm:flex-row gap-1.5">
                     <button
                       onClick={() => handleQuickQuote(vehicle)}
-                      className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-1.5 sm:py-2 rounded font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 text-sm"
+                      className="flex-1 bg-black text-white py-1.5 sm:py-2 rounded font-semibold hover:bg-gray-800 transition-all duration-300 text-sm"
                     >
                       Get Quote
                     </button>
                     <button
                       onClick={() => handleViewPhotos(vehicle)}
-                      className="px-2 sm:px-3 py-1.5 sm:py-2 border border-red-600 text-red-600 rounded font-semibold hover:bg-red-50 transition-colors text-xs sm:text-sm flex items-center justify-center gap-1"
+                      className="px-2 sm:px-3 py-1.5 sm:py-2 border border-black text-black rounded font-semibold hover:bg-gray-100 transition-colors text-xs sm:text-sm flex items-center justify-center gap-1"
                     >
                       <PhotoIcon className="h-3 w-3" />
                       <span>View Photos</span>
@@ -1248,7 +1185,7 @@ export default function BusesPage() {
                     onClick={() => setCurrentPage(page)}
                     className={`w-6 h-6 sm:w-7 sm:h-7 rounded font-medium text-xs ${
                       currentPage === page
-                        ? 'bg-red-600 text-white'
+                        ? 'bg-black text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -1268,8 +1205,8 @@ export default function BusesPage() {
           </div>
         )}
 
-        {/* Features Section */}
-        <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-lg p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 text-white">
+        {/* Features Section - Black & White */}
+        <div className="bg-black rounded-lg p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 text-white">
           <h3 className="text-base sm:text-lg md:text-xl font-bold text-center mb-3 sm:mb-4">Why Choose Our Bus Service for Groups?</h3>
          
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
@@ -1295,33 +1232,33 @@ export default function BusesPage() {
                   {feature.icon}
                 </div>
                 <h4 className="text-sm sm:text-base md:text-lg font-bold mb-0.5 sm:mb-1">{feature.title}</h4>
-                <p className="text-red-200 text-xs sm:text-sm">{feature.description}</p>
+                <p className="text-gray-300 text-xs sm:text-sm">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Group Booking CTA */}
+        {/* Group Booking CTA - Black & White */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-lg p-3 sm:p-4 md:p-6 text-white mb-4 sm:mb-6">
+          <div className="bg-black rounded-lg p-3 sm:p-4 md:p-6 text-white mb-4 sm:mb-6">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">Need a Bus for Your Group?</h3>
             <p className="text-sm sm:text-base mb-3 sm:mb-4 opacity-90">Get special discounts for groups of 30+ people</p>
            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded p-2 sm:p-3">
+              <div className="bg-white/10 backdrop-blur-sm rounded p-2 sm:p-3 border border-white/20">
                 <div className="text-lg sm:text-xl md:text-2xl font-bold">10% OFF</div>
-                <div className="text-xs sm:text-sm">For School & College Groups</div>
+                <div className="text-xs sm:text-sm text-gray-300">For School & College Groups</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded p-2 sm:p-3">
+              <div className="bg-white/10 backdrop-blur-sm rounded p-2 sm:p-3 border border-white/20">
                 <div className="text-lg sm:text-xl md:text-2xl font-bold">15% OFF</div>
-                <div className="text-xs sm:text-sm">For Corporate & Wedding Groups</div>
+                <div className="text-xs sm:text-sm text-gray-300">For Corporate & Wedding Groups</div>
               </div>
             </div>
            
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
               <a
                 href="tel:+919591762419"
-                className="inline-flex items-center justify-center gap-1 sm:gap-2 bg-white text-red-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded font-bold text-xs sm:text-sm hover:bg-gray-100 transition-all shadow"
+                className="inline-flex items-center justify-center gap-1 sm:gap-2 bg-white text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded font-bold text-xs sm:text-sm hover:bg-gray-100 transition-all shadow"
               >
                 <PhoneIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>Call Group Coordinator</span>
@@ -1329,7 +1266,7 @@ export default function BusesPage() {
              
               <button
                 onClick={() => setShowGroupBooking(true)}
-                className="inline-flex items-center justify-center gap-1 sm:gap-2 bg-red-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded font-bold text-xs sm:text-sm hover:bg-red-900 transition-all shadow"
+                className="inline-flex items-center justify-center gap-1 sm:gap-2 bg-gray-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded font-bold text-xs sm:text-sm hover:bg-gray-600 transition-all shadow"
               >
                 <UserGroupIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>Request Group Quote</span>
@@ -1341,7 +1278,7 @@ export default function BusesPage() {
         </div>
       </div>
 
-      {/* Quick Quote Modal */}
+      {/* Quick Quote Modal - Black & White */}
       {showQuickQuote && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-4 z-50">
           <div className="bg-white rounded-lg max-w-md w-full mx-2">
@@ -1353,11 +1290,11 @@ export default function BusesPage() {
             </div>
             <div className="p-3 sm:p-4 space-y-3 max-h-[80vh] overflow-y-auto">
               {quoteDetails.vehicle && (
-                <div className="p-2 sm:p-3 bg-red-50 rounded">
+                <div className="p-2 sm:p-3 bg-gray-50 rounded border border-gray-200">
                   <h4 className="font-bold text-gray-900 text-sm mb-0.5 truncate">{quoteDetails.vehicle.name}</h4>
                   <div className="flex justify-between text-xs">
                     <span className="text-gray-600">{quoteDetails.vehicle.seats} Seats • {quoteDetails.vehicle.category}</span>
-                    <span className="text-green-600 font-semibold">₹{quoteDetails.vehicle.perKmWithTax}/km</span>
+                    <span className="text-black font-semibold">₹{quoteDetails.vehicle.perKmWithTax}/km</span>
                   </div>
                 </div>
               )}
@@ -1375,7 +1312,7 @@ export default function BusesPage() {
                     }
                   }}
                   placeholder="Enter number of passengers"
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                 />
                 <p className="text-xs text-gray-500 mt-0.5">
                   This vehicle can accommodate up to {quoteDetails.vehicle?.seats || 80} passengers
@@ -1390,14 +1327,13 @@ export default function BusesPage() {
                   value={quoteDetails.days === 0 ? '' : quoteDetails.days.toString()}
                   onChange={(e) => {
                     const value = e.target.value;
-                    // Allow empty string or numbers
                     if (value === '' || /^\d+$/.test(value)) {
                       const numValue = value === '' ? 0 : parseInt(value);
                       setQuoteDetails({...quoteDetails, days: numValue});
                     }
                   }}
                   placeholder="Enter number of days"
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                 />
               </div>
               <div>
@@ -1406,7 +1342,7 @@ export default function BusesPage() {
                   type="date"
                   value={quoteDetails.date}
                   onChange={(e) => setQuoteDetails({...quoteDetails, date: e.target.value})}
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                 />
               </div>
               <div className="pt-2 border-t">
@@ -1428,17 +1364,17 @@ export default function BusesPage() {
                  
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-gray-700 font-medium text-sm">Estimated Cost:</span>
-                    <span className="text-lg font-bold text-green-600">
+                    <span className="text-lg font-bold text-black">
                       {quoteDetails.passengers ? `₹${formatPrice(Math.round(quotePrice.total))}` : 'Enter passenger count'}
                     </span>
                   </div>
                   {quotePrice.minimumApplied && (
-                    <div className="bg-amber-50 border border-amber-200 rounded p-1.5 sm:p-2 mb-2">
+                    <div className="bg-gray-50 border border-gray-200 rounded p-1.5 sm:p-2 mb-2">
                       <div className="flex items-start gap-1">
-                        <InformationCircleIcon className="h-3 w-3 sm:h-4 sm:w-4 text-amber-600 mt-0.5 flex-shrink-0" />
+                        <InformationCircleIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-600 mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-xs font-medium text-amber-800">Minimum KM Applied</p>
-                          <p className="text-xs text-amber-700">
+                          <p className="text-xs font-medium text-gray-800">Minimum KM Applied</p>
+                          <p className="text-xs text-gray-600">
                             Minimum {MINIMUM_KM_PER_DAY} km per day applies. You'll be charged for {quotePrice.kmToCharge} km instead of {quotePrice.actualKm} km.
                           </p>
                         </div>
@@ -1461,7 +1397,7 @@ export default function BusesPage() {
                   <button
                     onClick={handleExactQuote}
                     disabled={!quoteDetails.passengers}
-                    className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-1.5 rounded font-bold hover:from-red-700 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
+                    className="flex-1 bg-black text-white py-1.5 rounded font-bold hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
                   >
                     Get Exact Quote Now
                   </button>
@@ -1472,27 +1408,24 @@ export default function BusesPage() {
         </div>
       )}
 
-      {/* Exact Quote Modal */}
+      {/* Exact Quote Modal - Black & White */}
       {exactQuote && exactQuote.show && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-3 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-2">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 p-2 sm:p-3 rounded-t-lg">
+            <div className="bg-black p-2 sm:p-3 rounded-t-lg">
               <div className="flex justify-between items-center">
                 <h3 className="text-sm sm:text-base font-bold text-white">Exact Quote Details</h3>
                 <button 
                   onClick={() => setExactQuote(null)}
-                  className="text-white hover:text-gray-200 transition-colors"
+                  className="text-white hover:text-gray-300 transition-colors"
                 >
                   <XMarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </div>
             </div>
             
-            {/* Content */}
             <div className="p-2 sm:p-3 space-y-2">
-              {/* Vehicle Info */}
-              <div className="bg-red-50 rounded p-2">
+              <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5">
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-900 text-xs sm:text-sm truncate">{exactQuote.details.vehicle.name}</h4>
@@ -1503,13 +1436,12 @@ export default function BusesPage() {
                     </div>
                   </div>
                   <div className="mt-0.5 sm:mt-0">
-                    <span className="text-green-600 font-bold text-xs sm:text-sm">₹{exactQuote.details.vehicle.perKmWithTax}/km</span>
+                    <span className="text-black font-bold text-xs sm:text-sm">₹{exactQuote.details.vehicle.perKmWithTax}/km</span>
                   </div>
                 </div>
               </div>
               
-              {/* Trip Details */}
-              <div className="bg-gray-50 rounded p-2">
+              <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-1">Trip Details</h4>
                 <div className="grid grid-cols-2 gap-1 text-xs">
                   <div>
@@ -1527,7 +1459,7 @@ export default function BusesPage() {
                   {exactQuote.details.chargedDistance > exactQuote.details.actualDistance && (
                     <div>
                       <span className="text-gray-600">Charged:</span>
-                      <div className="font-medium text-amber-600">{exactQuote.details.chargedDistance} km</div>
+                      <div className="font-medium text-gray-600">{exactQuote.details.chargedDistance} km</div>
                     </div>
                   )}
                   <div>
@@ -1544,18 +1476,16 @@ export default function BusesPage() {
                   </div>
                 </div>
                 
-                {/* Minimum KM Notice */}
                 {exactQuote.details.chargedDistance > exactQuote.details.actualDistance && (
-                  <div className="mt-1 bg-amber-50 border border-amber-200 rounded p-1">
-                    <p className="text-xs text-amber-700">
+                  <div className="mt-1 bg-gray-100 border border-gray-200 rounded p-1">
+                    <p className="text-xs text-gray-600">
                       <span className="font-medium">Note:</span> Minimum {MINIMUM_KM_PER_DAY} km per day applies
                     </p>
                   </div>
                 )}
               </div>
               
-              {/* Price Breakdown */}
-              <div className="bg-green-50 rounded p-2">
+              <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-1">Price Breakdown</h4>
                 <div className="space-y-0.5 text-xs">
                   <div className="flex justify-between">
@@ -1570,17 +1500,16 @@ export default function BusesPage() {
                     <span className="text-gray-600">GST ({GST_PERCENTAGE}%):</span>
                     <span className="font-medium">₹{formatPrice(exactQuote.breakdown.gst)}</span>
                   </div>
-                  <div className="border-t border-green-200 pt-0.5 mt-0.5">
+                  <div className="border-t border-gray-200 pt-0.5 mt-0.5">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-900 font-bold text-xs sm:text-sm">Total Price:</span>
-                      <span className="text-base font-bold text-green-600">₹{formatPrice(exactQuote.price)}</span>
+                      <span className="text-base font-bold text-black">₹{formatPrice(exactQuote.price)}</span>
                     </div>
                   </div>
                 </div>
               </div>
               
-              {/* What's Included */}
-              <div className="bg-yellow-50 rounded p-2">
+              <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-0.5">What's Included</h4>
                 <ul className="text-xs text-gray-600 space-y-0.5">
                   <li className="flex items-center gap-0.5">
@@ -1599,17 +1528,13 @@ export default function BusesPage() {
                     <span className="text-green-500">✓</span>
                     <span>Basic vehicle amenities</span>
                   </li>
-
-                                 <li className="flex items-center gap-0.5">
-  <span className="text-red-500 font-bold">✗</span>
-  <span>
-    Outside Karnataka taxes are different, so please inquire
-  </span>
-</li>
+                  <li className="flex items-center gap-0.5">
+                    <span className="text-red-500 font-bold">✗</span>
+                    <span>Outside Karnataka taxes are different, so please inquire</span>
+                  </li>
                 </ul>
               </div>
               
-              {/* Action Buttons */}
               <div className="space-y-1">
                 <p className="text-center text-xs text-gray-500">
                   This is your exact quote. Contact us to confirm booking.
@@ -1625,7 +1550,7 @@ export default function BusesPage() {
                     href={`https://wa.me/919591762419?text=Hi! I want to book the ${encodeURIComponent(exactQuote.details.vehicle.name)} for ${exactQuote.details.passengers} passengers from ${encodeURIComponent(from)} to ${encodeURIComponent(to)} for ${exactQuote.details.days} days. Actual Distance: ${exactQuote.details.actualDistance} km. Total: ₹${formatPrice(exactQuote.price)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-1.5 rounded font-bold hover:from-green-700 hover:to-green-800 text-center flex items-center justify-center gap-1 text-xs"
+                    className="flex-1 bg-black text-white py-1.5 rounded font-bold hover:bg-gray-800 text-center flex items-center justify-center gap-1 text-xs"
                   >
                     <ChatBubbleLeftRightIcon className="h-3 w-3" />
                     <span>Book on WhatsApp</span>
@@ -1637,7 +1562,7 @@ export default function BusesPage() {
         </div>
       )}
 
-      {/* Group Booking Modal */}
+      {/* Group Booking Modal - Black & White */}
       {showGroupBooking && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-3 z-50">
           <div className="bg-white rounded-lg max-w-md w-full mx-2">
@@ -1648,10 +1573,10 @@ export default function BusesPage() {
               </button>
             </div>
            
-            <div className="p-3 sm:p-4 space-y=2 max-h-[80vh] overflow-y-auto">
+            <div className="p-3 sm:p-4 space-y-2 max-h-[80vh] overflow-y-auto">
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-0.5">Group Type</label>
-                <select className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm">
+                <select className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm">
                   <option>School/College Trip</option>
                   <option>Corporate Event</option>
                   <option>Pilgrimage Tour</option>
@@ -1678,31 +1603,29 @@ export default function BusesPage() {
                         }
                       }
                     }}
-                    className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                    className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                     min="20"
                     max="200"
                   />
                 </div>
                
-               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-0.5">Trip Duration (Days)</label>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  placeholder="Enter number of days"
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
-                />
+                <div>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-0.5">Trip Duration (Days)</label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    placeholder="Enter number of days"
+                    className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
+                  />
+                </div>
               </div>
-              </div>
-             
-
              
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-0.5">Travel Dates</label>
                 <input
                   type="date"
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                 />
               </div>
              
@@ -1711,7 +1634,7 @@ export default function BusesPage() {
                 <textarea
                   rows={2}
                   placeholder="Any special needs, amenities required, or specific requests..."
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:border-transparent text-gray-900 bg-white text-sm"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded focus:ring-2 focus:ring-black focus:border-transparent text-gray-900 bg-white text-sm"
                 />
               </div>
              
@@ -1724,13 +1647,13 @@ export default function BusesPage() {
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700 font-medium text-sm">Estimated Cost Range:</span>
                     <div className="text-right">
-                      <div className="text-lg font-bold text-green-600">₹65,000 - ₹1,50,000</div>
+                      <div className="text-lg font-bold text-black">₹65,000 - ₹1,50,000</div>
                       <div className="text-xs text-gray-600">Final quote in 2 hours</div>
                     </div>
                   </div>
                 </div>
                
-                <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-1.5 sm:py-2 rounded font-bold text-sm">
+                <button className="w-full bg-black text-white py-1.5 sm:py-2 rounded font-bold text-sm hover:bg-gray-800 transition">
                   Get Special Group Quote
                 </button>
                
@@ -1743,18 +1666,18 @@ export default function BusesPage() {
         </div>
       )}
 
-      {/* Photos Modal */}
+      {/* Photos Modal - Black & White */}
       {showPhotos && (
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center p-2 sm:p-3 z-50">
           <div className="bg-white rounded-lg max-w-4xl w-full h-[85vh] sm:h-auto sm:max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-2 sm:p-3 border-b bg-gradient-to-r from-red-600 to-red-700 sticky top-0 bg-white rounded-t-lg">
+            <div className="flex justify-between items-center p-2 sm:p-3 border-b bg-black sticky top-0 rounded-t-lg">
               <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-1 sm:gap-2">
                 <PhotoIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span className="text-sm sm:text-base truncate">{selectedVehicleName} - Photo Gallery</span>
               </h3>
               <button
                 onClick={() => setShowPhotos(false)}
-                className="text-white hover:text-gray-200"
+                className="text-white hover:text-gray-300"
               >
                 <XMarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
@@ -1779,7 +1702,7 @@ export default function BusesPage() {
                   </div>
                 ))}
               </div>
-              <div className="bg-gray-50 rounded p-2 sm:p-3">
+              <div className="bg-gray-50 rounded p-2 sm:p-3 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-sm mb-0.5">Bus Details</h4>
                 <p className="text-xs text-gray-600 mb-1 sm:mb-2">
                   These are actual photos of our {selectedVehicleName} fleet. All buses are maintained to the highest standards and are regularly serviced.
@@ -1794,7 +1717,7 @@ export default function BusesPage() {
               <div className="mt-3 sm:mt-4 text-center">
                 <button
                   onClick={() => setShowPhotos(false)}
-                  className="px=3 sm:px-4 py-1.5 sm:py-2 bg-red-600 text-white rounded font-semibold hover:bg-red-700 transition-colors text-sm"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded font-semibold hover:bg-gray-800 transition-colors text-sm"
                 >
                   Close Gallery
                 </button>

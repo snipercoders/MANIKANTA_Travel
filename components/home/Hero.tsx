@@ -1,6 +1,3 @@
-
-//components/home/Hero.tsx
-
 'use client';
 
 import { useState } from 'react';
@@ -28,12 +25,11 @@ export default function Hero() {
             Your browser does not support the video tag.
           </video>
           
-          {/* Gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 md:from-black/50 md:via-black/40 md:to-black/50"></div>
+          {/* Gradient overlay - Black & White */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 md:from-black/60 md:via-black/50 md:to-black/60"></div>
         </div>
       ) : (
-        // Fallback gradient if video fails
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
       )}
 
       {/* Content Container */}
@@ -43,79 +39,79 @@ export default function Hero() {
             {/* Main Content - Centered */}
             <div className="text-center space-y-4 sm:space-y-6 md:space-y-8 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]">
               
-              {/* Tagline - South India Focus */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                
-                
+              {/* Tagline - Black & White */}
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                <span className="text-white text-xs sm:text-sm font-medium tracking-wider">
+                  🚐 SOUTH INDIA'S TRUSTED TRAVEL PARTNER
+                </span>
               </div>
 
-              {/* Main Heading - South India Focus with SEO Keywords */}
+              {/* Main Heading - Black & White */}
               <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight drop-shadow-2xl">
-                <span className="bg-gradient-to-r from-red-500 to-amber-300 bg-clip-text text-transparent">
+                <span className="text-white">
                   South India's Trusted
                 </span>
                 <br className="xs:block" />
-                <span>Travel Partner</span>
+                <span className="text-white">Travel Partner</span>
               </h1>
 
-              {/* Sub-heading with South India Destinations */}
+              {/* Sub-heading - Black & White */}
               <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white/90 drop-shadow-lg">
-                From <span className="bg-gradient-to-r from-red-500 to-amber-300 bg-clip-text text-transparent">Tirupati</span> to{' '}
-                <span className="text-amber-300">Kerala</span>,{' '}
-                <span className="text-amber-300">Goa</span> to{' '}
-                <span className="bg-gradient-to-r from-amber-300 to-red-500 bg-clip-text text-transparent">Kanyakumari</span>
+                From <span className="text-gray-300">Tirupati</span> to{' '}
+                <span className="text-gray-300">Kerala</span>,{' '}
+                <span className="text-gray-300">Goa</span> to{' '}
+                <span className="text-gray-300">Kanyakumari</span>
               </h2>
 
-              {/* Description - SEO Optimized for South India */}
-              <p className="mt-2 sm:mt-4 text-sm xs:text-base sm:text-lg md:text-xl text-gray-100 max-w-3xl mx-auto drop-shadow-md leading-relaxed px-2 sm:px-0">
-                Experience hassle-free travel across South India with Manikanta Tour & Travels. 
+              {/* Description - Black & White */}
+              <p className="mt-2 sm:mt-4 text-sm xs:text-base sm:text-lg md:text-xl text-gray-200 max-w-3xl mx-auto drop-shadow-md leading-relaxed px-2 sm:px-0">
+                Experience hassle-free travel across South India with <strong className="text-white">Manikanta Tour & Travels</strong>. 
                 Book premium cars, tempo travellers & buses for temple tours, family vacations, 
-                corporate trips across Andhra Pradesh, Telangana, Tamil Nadu, Karnataka, Kerala & Goa.
+                corporate trips across <strong className="text-white">Andhra Pradesh, Telangana, Tamil Nadu, Karnataka, Kerala & Goa</strong>.
               </p>
 
-              {/* Key Features - South India Specific */}
+              {/* Key Features - Black & White */}
               <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6">
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg">
-                  <FaRupeeSign className="text-red-400" />
-                  <span className="text-white text-xs sm:text-sm">Best Price Guarantee</span>
+                <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/20">
+                  <FaRupeeSign className="text-white" />
+                  <span className="text-white text-xs sm:text-sm font-medium">Best Price Guarantee</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg">
-                  <FaMapMarkedAlt className="text-red-400" />
-                  <span className="text-white text-xs sm:text-sm">All South India Routes</span>
+                <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/20">
+                  <FaMapMarkedAlt className="text-white" />
+                  <span className="text-white text-xs sm:text-sm font-medium">All South India Routes</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg">
-                  <FaStar className="text-red-400" />
-                  <span className="text-white text-xs sm:text-sm">5-Star Rated Service</span>
+                <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/20">
+                  <FaStar className="text-white" />
+                  <span className="text-white text-xs sm:text-sm font-medium">5-Star Rated Service</span>
                 </div>
               </div>
 
-              {/* CTA Buttons - Centered */}
+              {/* CTA Buttons - Black & White */}
               <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-2 sm:px-0">
                 <a
                   href="/transportation"
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-400 text-white text-sm sm:text-base font-bold rounded-full hover:from-red-700 hover:to-amber-600 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform active:scale-95 duration-300"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black text-sm sm:text-base font-bold rounded-full hover:bg-gray-200 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform active:scale-95 duration-300"
                 >
                   Book Your Vehicle Now
                 </a>
                 <a
                   href="tel:+919591762419"
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-white text-white text-sm sm:text-base font-bold rounded-full hover:bg-white/10 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform active:scale-95 duration-300 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-black/60 backdrop-blur-sm border-2 border-white/50 text-white text-sm sm:text-base font-bold rounded-full hover:bg-white/20 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform active:scale-95 duration-300 flex items-center justify-center gap-2"
                 >
-                  <FaPhoneAlt /> Call: +91 9591762419
+                  <FaPhoneAlt className="text-white" /> Call: +91 9591762419
                 </a>
               </div>
 
-             
-
-              {/* Popular Destinations Quick Links */}
+              {/* Popular Destinations Quick Links - Black & White */}
               <div className="mt-4 sm:mt-6">
-                <p className="text-white/80 text-xs sm:text-sm mb-3">Popular South India Destinations:</p>
+                <p className="text-white/70 text-xs sm:text-sm mb-3 font-medium tracking-wider">POPULAR SOUTH INDIA DESTINATIONS:</p>
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                  {['Tirupati', 'Chennai', 'Bangalore', 'Hyderabad', 'Kerala', 'Goa', 'Kanyakumari', 'Ooty', 'Mysore', 'Pondicherry'].map((city) => (
+                  {['Tirupati', 'Chennai', 'Bangalore', 'Hyderabad', 'Kerala', 'Goa', 'Kanyakumari', 'Ooty', 'Mysore', 'Pondicherry', 'Coorg', 'Munnar'].map((city) => (
                     <a
                       key={city}
                       href={`/destinations/${city.toLowerCase()}`}
-                      className="text-xs sm:text-sm px-3 sm:px-4 py-1.5 bg-white/5 hover:bg-white/10 rounded-full text-white/90 hover:text-white transition-colors duration-200"
+                      className="text-xs sm:text-sm px-3 sm:px-4 py-1.5 bg-black/30 hover:bg-white/20 rounded-full text-white/80 hover:text-white transition-colors duration-200 border border-white/10 hover:border-white/30"
                     >
                       {city}
                     </a>
@@ -126,8 +122,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-   
 
       <style jsx>{`
         @keyframes fadeInUp {
@@ -141,56 +135,24 @@ export default function Hero() {
           }
         }
 
-        @keyframes scrollDown {
-          0% {
-            transform: translateY(0);
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(20px);
-            opacity: 0;
-          }
-        }
-
-        /* Extra small devices (phones, less than 375px) */
         @media (max-width: 374px) {
-          h1 {
-            font-size: 1.5rem;
-            line-height: 1.3;
-          }
-          h2 {
-            font-size: 1.1rem;
-          }
+          h1 { font-size: 1.5rem; line-height: 1.3; }
+          h2 { font-size: 1.1rem; }
         }
 
-        /* Small devices (phones, 375px and up) */
         @media (min-width: 375px) and (max-width: 639px) {
-          h1 {
-            font-size: 1.75rem;
-          }
-          h2 {
-            font-size: 1.25rem;
-          }
+          h1 { font-size: 1.75rem; }
+          h2 { font-size: 1.25rem; }
         }
 
-        /* Medium devices (tablets, 768px and up) */
         @media (min-width: 768px) {
-          section {
-            min-height: 700px;
-          }
+          section { min-height: 700px; }
         }
 
-        /* Large devices (desktops, 1024px and up) */
         @media (min-width: 1024px) {
-          section {
-            min-height: 800px;
-          }
+          section { min-height: 800px; }
         }
 
-        /* Prevent text overflow on very small screens */
         @media (max-width: 640px) {
           h1, h2 {
             word-break: break-word;
@@ -198,33 +160,17 @@ export default function Hero() {
           }
         }
 
-        /* Optimize video performance on mobile */
         @media (max-width: 768px) {
-          video {
-            transform: scale(1.15);
-          }
+          video { transform: scale(1.15); }
         }
 
-        /* iOS specific fixes */
         @supports (-webkit-touch-callout: none) {
-          section {
-            min-height: -webkit-fill-available;
-          }
+          section { min-height: -webkit-fill-available; }
           video {
             object-fit: cover;
             width: 100%;
             height: 100%;
           }
-        }
-
-        /* Improve readability on all devices */
-        .text-shadow-lg {
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Smooth animations */
-        * {
-          -webkit-tap-highlight-color: transparent;
         }
       `}</style>
     </section>

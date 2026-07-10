@@ -1,5 +1,3 @@
-// // app/reviews/page.tsx - Updated
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -177,9 +175,9 @@ export default function ReviewsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <RefreshCw className="h-12 w-12 text-red-600 animate-spin mx-auto mb-4" />
+          <RefreshCw className="h-12 w-12 text-black animate-spin mx-auto mb-4" />
           <p className="text-gray-600 text-lg">Loading reviews...</p>
         </div>
       </div>
@@ -187,23 +185,27 @@ export default function ReviewsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section - Red Theme */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-red-900 via-red-800 to-red-900 text-white py-16">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section - Black & White */}
+      <section className="relative overflow-hidden bg-black text-white py-16">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4 border border-white/20">
+                <Star className="h-4 w-4 text-yellow-300 fill-yellow-300" />
+                <span className="text-sm font-semibold">CUSTOMER REVIEWS</span>
+              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                Customer <span className="text-yellow-300">Reviews</span>
+                Customer <span className="text-gray-300">Reviews</span>
               </h1>
-              <p className="text-xl md:text-2xl text-red-100 max-w-3xl">
-                Real experiences from real travelers. Read and share your journey.
+              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl">
+                Real experiences from real travelers. Read and share your journey with us.
               </p>
             </div>
             <button
               onClick={() => setShowReviewForm(true)}
-              className="px-8 py-4 bg-white text-red-700 font-bold text-lg rounded-xl hover:bg-gray-100 transition shadow-lg"
+              className="px-8 py-4 bg-white text-black font-bold text-lg rounded-xl hover:bg-gray-200 transition shadow-lg"
             >
               Write a Review
             </button>
@@ -216,11 +218,11 @@ export default function ReviewsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar - Stats */}
           <aside className="lg:col-span-1 space-y-6">
-            {/* Overall Rating */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Overall Rating</h2>
+            {/* Overall Rating - Black & White */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+              <h2 className="text-2xl font-bold text-black mb-4">Overall Rating</h2>
               <div className="flex items-center gap-4">
-                <div className="text-5xl font-bold text-red-600">{stats.averageRating.toFixed(1)}</div>
+                <div className="text-5xl font-bold text-black">{stats.averageRating.toFixed(1)}</div>
                 <div>
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
@@ -235,9 +237,9 @@ export default function ReviewsPage() {
               </div>
             </div>
 
-            {/* Rating Distribution */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Rating Breakdown</h3>
+            {/* Rating Distribution - Black & White */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-black mb-4">Rating Breakdown</h3>
               <div className="space-y-3">
                 {getRatingStats().map(({ rating, count, percentage }) => (
                   <div key={rating} className="flex items-center gap-3">
@@ -247,7 +249,7 @@ export default function ReviewsPage() {
                     </div>
                     <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-red-600 to-red-700 rounded-full transition-all"
+                        className="h-full bg-black rounded-full transition-all"
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
@@ -257,31 +259,30 @@ export default function ReviewsPage() {
               </div>
             </div>
 
-            {/* Quick Stats */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Stats</h3>
+            {/* Quick Stats - Black & White */}
+            <div className="bg-black rounded-2xl shadow-lg p-6 border border-white/10">
+              <h3 className="text-xl font-bold text-white mb-4">Quick Stats</h3>
               <div className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Verified Reviews</span>
-                  <span className="font-bold text-green-600">{stats.verifiedCount}</span>
+                  <span className="text-gray-400">Verified Reviews</span>
+                  <span className="font-bold text-green-400">{stats.verifiedCount}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">5-Star Reviews</span>
-                  <span className="font-bold text-red-600">{stats.ratingsDistribution[5]}</span>
+                  <span className="text-gray-400">5-Star Reviews</span>
+                  <span className="font-bold text-white">{stats.ratingsDistribution[5]}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Most Helpful</span>
-                  <span className="font-bold">{reviews.length > 0 ? Math.max(...reviews.map(r => r.helpful)) : 0} votes</span>
+                  <span className="text-gray-400">Most Helpful</span>
+                  <span className="font-bold text-white">{reviews.length > 0 ? Math.max(...reviews.map(r => r.helpful)) : 0} votes</span>
                 </div>
               </div>
             </div>
           </aside>
 
           {/* Main Reviews */}
-         
- <div className="lg:col-span-3">
-            {/* Filters */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+          <div className="lg:col-span-3">
+            {/* Filters - Black & White */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-200">
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1 relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -290,13 +291,13 @@ export default function ReviewsPage() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search reviews..."
-                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition"
                   />
                 </div>
                 <select
                   value={filters.sortBy}
                   onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
-                  className="px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500"
+                  className="px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black"
                 >
                   <option value="newest">Newest First</option>
                   <option value="oldest">Oldest First</option>
@@ -311,7 +312,7 @@ export default function ReviewsPage() {
                   <select
                     value={filters.rating}
                     onChange={(e) => setFilters({ ...filters, rating: e.target.value })}
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500"
+                    className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-black"
                   >
                     <option value="all">All Ratings</option>
                     {[5, 4, 3, 2, 1].map(n => (
@@ -322,7 +323,7 @@ export default function ReviewsPage() {
                 <select
                   value={filters.travelerType}
                   onChange={(e) => setFilters({ ...filters, travelerType: e.target.value })}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500"
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-black"
                 >
                   <option value="all">All Travelers</option>
                   {travelerTypes.map(type => <option key={type}>{type}</option>)}
@@ -332,30 +333,30 @@ export default function ReviewsPage() {
 
             {/* Reviews Count */}
             <div className="mb-6">
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-black">
                 {filteredReviews.length} Review{filteredReviews.length !== 1 ? 's' : ''}
               </h2>
             </div>
 
-            {/* Reviews List */}
+            {/* Reviews List - Black & White */}
             <div className="space-y-8">
               {filteredReviews.length === 0 ? (
-                <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+                <div className="bg-white rounded-2xl shadow-lg p-12 text-center border border-gray-200">
                   <MessageSquare className="h-16 w-16 text-gray-300 mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">No Reviews Found</h3>
+                  <h3 className="text-2xl font-bold text-black mb-3">No Reviews Found</h3>
                   <p className="text-gray-600 mb-6 max-w-md mx-auto">
                     {searchQuery ? `No results for "${searchQuery}"` : 'Be the first to share your experience!'}
                   </p>
                   <button
                     onClick={() => setShowReviewForm(true)}
-                    className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-xl hover:from-red-700 hover:to-red-800 transition shadow-lg"
+                    className="px-8 py-4 bg-black text-white font-bold rounded-xl hover:bg-gray-800 transition shadow-lg"
                   >
                     Write the First Review
                   </button>
                 </div>
               ) : (
                 filteredReviews.map((review) => (
-                  <div key={review.id} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+                  <div key={review.id} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition border border-gray-200">
                     <div className="flex justify-between items-start mb-5">
                       <div>
                         <div className="flex items-center gap-2 mb-3">
@@ -365,9 +366,9 @@ export default function ReviewsPage() {
                               className={`h-6 w-6 ${i < review.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
                             />
                           ))}
-                          <span className="ml-3 text-2xl font-bold text-gray-900">{review.rating}.0</span>
+                          <span className="ml-3 text-2xl font-bold text-black">{review.rating}.0</span>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900">{review.title}</h3>
+                        <h3 className="text-2xl font-bold text-black">{review.title}</h3>
                       </div>
                       <div className="text-right">
                         <p className="text-sm text-gray-500">{review.date}</p>
@@ -407,22 +408,22 @@ export default function ReviewsPage() {
                     </div>
 
                     {review.tourPackageName && (
-                      <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
-                        <p className="text-red-800 font-medium">
+                      <div className="bg-gray-100 border border-gray-200 rounded-xl p-4 mb-6">
+                        <p className="text-black font-medium">
                           Package: {review.tourPackageName}
                         </p>
-                        {review.location && <p className="text-red-700 text-sm mt-1">{review.location}</p>}
+                        {review.location && <p className="text-gray-600 text-sm mt-1">{review.location}</p>}
                       </div>
                     )}
 
-                    <div className="flex justify-between items-center pt-5 border-t">
-                      <p className="font-bold text-gray-900 text-lg">{review.author}</p>
+                    <div className="flex justify-between items-center pt-5 border-t border-gray-200">
+                      <p className="font-bold text-black text-lg">{review.author}</p>
                       <button
                         onClick={() => handleMarkHelpful(review.id)}
                         disabled={helpfulClicked.has(review.id)}
                         className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition ${
                           helpfulClicked.has(review.id)
-                            ? 'bg-green-100 text-green-700'
+                            ? 'bg-gray-100 text-gray-700'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                         }`}
                       >
@@ -435,7 +436,6 @@ export default function ReviewsPage() {
               )}
             </div>
           </div>
-
         </div>
       </div>
 

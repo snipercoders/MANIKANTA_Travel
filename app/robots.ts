@@ -1,0 +1,40 @@
+// app/robots.ts
+import { MetadataRoute } from 'next'
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/admin/', '/snipercoders/admin/'],
+      },
+      // Explicitly allow AI bots
+      {
+        userAgent: 'GPTBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'Applebot',
+        allow: '/',
+      },
+      {
+        userAgent: 'FacebookBot',
+        allow: '/',
+      },
+    ],
+    sitemap: 'https://manikantatours.com/sitemap.xml',
+  }
+}
