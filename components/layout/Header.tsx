@@ -93,11 +93,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <nav className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8" aria-label="Main navigation">
-        <div className="flex h-20 sm:h-24 md:h-28 items-center justify-between py-3 sm:py-4">
+        <div className="flex h-16 sm:h-20 md:h-24 items-center justify-between py-2 sm:py-3">
           {/* Logo + Name - Black & White */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-all duration-300">
-              <div className="relative h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 rounded-full overflow-hidden shadow-md ring-2 ring-black/10 flex-shrink-0 bg-white">
+              <div className="relative h-11 w-11 sm:h-14 sm:w-14 lg:h-20 lg:w-20 rounded-full overflow-hidden shadow-md ring-2 ring-black/10 flex-shrink-0 bg-white">
                 <img
                   src="/images/logo_mani.jpeg"
                   alt="Sri Manikanta Tour and Travels Logo"
@@ -205,7 +205,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 sm:p-3 rounded-lg text-black hover:bg-gray-100 transition"
+              className="p-2 rounded-lg text-black hover:bg-gray-100 transition"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileMenuOpen ? (
