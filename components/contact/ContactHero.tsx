@@ -6,7 +6,7 @@
 
 export default function ContactHero() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-red-600 via-red-700 to-red-800 py-12 sm:py-16 lg:py-24">
+    <div className="relative overflow-hidden bg-gradient-to-r from-gray-700 via-black to-black py-12 sm:py-16 lg:py-24">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -49,7 +49,7 @@ export default function ContactHero() {
           </p>
           <div className="mt-6 sm:mt-8 flex justify-center space-x-1 sm:space-x-2">
             <div className="w-20 sm:w-32 h-1 sm:h-1.5 bg-white rounded-full"></div>
-            <div className="w-6 sm:w-8 h-1 sm:h-1.5 bg-amber-300 rounded-full"></div>
+            <div className="w-6 sm:w-8 h-1 sm:h-1.5 bg-gray-300 rounded-full"></div>
             <div className="w-20 sm:w-32 h-1 sm:h-1.5 bg-white rounded-full"></div>
           </div>
         </div>

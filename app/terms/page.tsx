@@ -1,355 +1,131 @@
-'use client';
+// app/terms/page.tsx
+import type { Metadata } from 'next';
 
-import React from 'react';
-import { FileText, Shield, AlertTriangle, CheckCircle, Clock, UserCheck } from 'lucide-react';
+// ✅ Enhanced metadata for AI discovery
+export const metadata: Metadata = {
+  title: 'Terms & Conditions | Sri Manikanta Tours & Travels',
+  description: 'Read our terms and conditions for using Sri Manikanta Tours & Travels services. Understand your rights and responsibilities when booking with us.',
+  keywords: [
+    'terms and conditions',
+    'travel terms',
+    'Sri Manikanta Tours terms',
+    'booking terms',
+    'service conditions',
+  ],
+  alternates: {
+    canonical: 'https://manikantatours.com/terms',
+  },
+};
 
-const TermsPage = () => {
+export default function TermsPage() {
+  const sections = [
+    {
+      title: "Acceptance of Terms",
+      content: [
+        "By using our website and booking our services, you agree to these terms and conditions.",
+        "These terms apply to all bookings made through our website, phone, or in-person.",
+        "We reserve the right to update these terms at any time without prior notice.",
+        "Continued use of our services constitutes acceptance of the updated terms."
+      ]
+    },
+    {
+      title: "Booking and Payment",
+      content: [
+        "A valid ID proof is required for all bookings.",
+        "Full payment or deposit may be required to confirm your booking.",
+        "Prices are subject to change without notice. Once booked, the price is locked.",
+        "We accept payments through UPI, Credit/Debit Cards, Net Banking, and Cash."
+      ]
+    },
+    {
+      title: "Responsibilities",
+      content: [
+        "You are responsible for providing accurate information during booking.",
+        "You must carry valid identification documents during travel.",
+        "You are responsible for your luggage and personal belongings.",
+        "You must follow the instructions of the driver and staff during the journey."
+      ]
+    },
+    {
+      title: "Limitation of Liability",
+      content: [
+        "We are not liable for delays, accidents, or damages caused by third parties.",
+        "We are not responsible for lost or stolen personal belongings.",
+        "We reserve the right to cancel or reschedule trips due to unforeseen circumstances.",
+        "Our liability is limited to the total amount paid for the service."
+      ]
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Header Banner */}
-      <div className="bg-gradient-to-r from-red-900 via-red-800 to-red-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <FileText className="h-16 w-16 mx-auto mb-6" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Terms & Conditions
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Please read these terms carefully before using our travel booking services. 
-              By accessing or using our website, you agree to be bound by these terms.
-            </p>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - Black & White - Fully Responsive */}
+      <section className="relative overflow-hidden bg-black text-white py-10 sm:py-12 md:py-16 lg:py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-3 sm:mb-4 border border-white/20">
+            <span className="text-[10px] sm:text-xs font-semibold tracking-wider">TERMS & CONDITIONS</span>
           </div>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4">
+            Terms & Conditions
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto px-2 sm:px-4">
+            Please read these terms carefully before booking our services.
+          </p>
         </div>
-      </div>
+      </section>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-          <div className="px-6 py-8 sm:px-10 sm:py-12">
-            {/* Acceptance of Terms */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <UserCheck className="h-8 w-8 text-red-700" />
-                <h2 className="text-3xl font-bold text-gray-900">1. Acceptance of Terms</h2>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <p className="text-gray-800 text-lg">
-                  By accessing and using <span className="font-bold text-red-700">Manikanta Tour and Travels</span> website 
-                  and services, you accept and agree to be bound by these Terms and Conditions. 
-                  If you do not agree to these terms, please do not use our website or services.
-                </p>
-              </div>
-            </div>
-
-            {/* Booking Terms */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <CheckCircle className="h-8 w-8 text-red-700" />
-                <h2 className="text-3xl font-bold text-gray-900">2. Booking & Reservations</h2>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-red-50 p-6 rounded-xl border border-red-100">
-                  <h3 className="font-bold text-red-800 text-lg mb-3">Booking Process</h3>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">•</span>
-                      <span>All bookings subject to availability & confirmation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">•</span>
-                      <span>Prices may change until payment confirmation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">•</span>
-                      <span>Accurate passenger details required</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="bg-red-50 p-6 rounded-xl border border-red-100">
-                  <h3 className="font-bold text-red-800 text-lg mb-3">Payment Terms</h3>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">•</span>
-                      <span>Full payment required for confirmation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">•</span>
-                      <span>Service fees apply to all bookings</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">•</span>
-                      <span>Multiple payment methods accepted</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Travel Requirements */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <Shield className="h-8 w-8 text-red-700" />
-                <h2 className="text-3xl font-bold text-gray-900">3. Travel Documents & Requirements</h2>
-              </div>
-              
-              <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="font-bold text-red-900 text-xl mb-4">International Travel</h3>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Valid passport (6+ months validity)</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Required visas for destination</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Vaccination certificates</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Return/onward ticket proof</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-bold text-red-900 text-xl mb-4">Domestic Travel</h3>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Government-issued photo ID</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Booking confirmation copy</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Age proof for children/seniors</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <span className="text-red-700 font-bold">✓</span>
-                        </div>
-                        <span className="text-gray-800">Special permits if required</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Liability Disclaimer */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <AlertTriangle className="h-8 w-8 text-red-700" />
-                <h2 className="text-3xl font-bold text-gray-900">4. Liability & Responsibility</h2>
-              </div>
-              
-              <div className="bg-red-900/10 border-2 border-red-800 rounded-2xl p-8">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-red-900 mb-4">Important Disclaimer</h3>
-                  <p className="text-red-800 text-lg font-medium">
-                    Manikanta Tour and Travels acts as a booking agent only. We are not liable for any acts, 
-                    omissions, or breaches of contract by travel service providers.
-                  </p>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white p-6 rounded-xl">
-                    <h4 className="font-bold text-red-700 mb-3">We Are Not Responsible For:</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Flight delays or cancellations</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Hotel overbooking issues</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Lost luggage or personal items</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Travel restrictions changes</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-white p-6 rounded-xl">
-                    <h4 className="font-bold text-red-700 mb-3">Customer Responsibilities:</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Verify all travel documents</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Arrive at airports/stations on time</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Follow local laws & regulations</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-1">•</span>
-                        <span>Purchase adequate travel insurance</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Privacy & Data */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <Shield className="h-8 w-8 text-red-700" />
-                <h2 className="text-3xl font-bold text-gray-900">5. Privacy & Data Protection</h2>
-              </div>
-              
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="font-bold text-blue-900 text-xl mb-4">Data Collection</h3>
-                    <p className="text-gray-800 mb-4">
-                      We collect and process personal data in accordance with our Privacy Policy. 
-                      Your information is used solely for booking and travel services.
-                    </p>
-                    <div className="bg-white p-4 rounded-lg">
-                      <h4 className="font-bold text-blue-700 mb-2">Data Shared With:</h4>
-                      <ul className="text-gray-700 text-sm">
-                        <li>✓ Airlines & Hotels</li>
-                        <li>✓ Tour Operators</li>
-                        <li>✓ Visa Processing Agencies</li>
-                        <li>✓ Insurance Providers</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-bold text-blue-900 text-xl mb-4">Your Rights</h3>
-                    <p className="text-gray-800 mb-4">
-                      You have the right to access, correct, or delete your personal information 
-                      stored with us.
-                    </p>
-                    <div className="bg-white p-4 rounded-lg">
-                      <h4 className="font-bold text-blue-700 mb-2">Data Security:</h4>
-                      <ul className="text-gray-700 text-sm">
-                        <li>✓ SSL encrypted transactions</li>
-                        <li>✓ Secure payment gateways</li>
-                        <li>✓ Regular security audits</li>
-                        <li>✓ GDPR compliant practices</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Changes to Terms */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <Clock className="h-8 w-8 text-red-700" />
-                <h2 className="text-3xl font-bold text-gray-900">6. Changes to Terms</h2>
-              </div>
-              
-              <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-8">
-                <div className="flex items-center gap-4">
-                  <div className="bg-yellow-100 p-4 rounded-xl">
-                    <AlertTriangle className="h-8 w-8 text-yellow-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-yellow-800 text-xl mb-2">Important Notice</h3>
-                    <p className="text-gray-800">
-                      We reserve the right to modify these Terms and Conditions at any time. 
-                      Changes will be effective immediately upon posting to our website. 
-                      It is your responsibility to review these terms periodically for updates.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className="bg-gradient-to-r from-red-900 to-red-800 text-white rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6 text-center">Contact & Support</h2>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="bg-white/10 p-4 rounded-xl mb-4 inline-block">
-                    <svg className="h-8 w-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Corporate Office</h3>
-                  <p className="text-white/90">Bangalore, Karnataka</p>
-                  <p className="text-white/80 text-sm mt-1">South India | Pan India Operations</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="bg-white/10 p-4 rounded-xl mb-4 inline-block">
-                    <svg className="h-8 w-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">24/7 Support</h3>
-                  <p className="text-white/90">+91 95917 62419</p>
-                  <p className="text-white/80 text-sm mt-1">Emergency contact available</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="bg-white/10 p-4 rounded-xl mb-4 inline-block">
-                    <svg className="h-8 w-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Email Support</h3>
-                  <p className="text-white/90">support@manikantatravels.com</p>
-                  <p className="text-white/80 text-sm mt-1">legal@manikantatravels.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16">
+        
+        {/* Last Updated - Responsive */}
+        <div className="bg-gray-50 rounded-xl p-3 sm:p-4 mb-6 sm:mb-8 border border-gray-200">
+          <p className="text-gray-600 text-xs sm:text-sm">
+            <span className="font-semibold">Last Updated:</span> July 10, 2026
+          </p>
         </div>
 
-        {/* Last Updated */}
-        <div className="mt-8 text-center">
-          <p className="text-gray-600 text-sm">
-            Last Updated: December 1, 2023 • Terms are subject to change without prior notice
+        {/* Terms Sections - Responsive */}
+        <div className="space-y-4 sm:space-y-6">
+          {sections.map((section, index) => (
+            <div key={index} className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 border border-gray-200 hover:border-black transition">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-3 sm:mb-4">
+                {section.title}
+              </h2>
+              <ul className="space-y-2 sm:space-y-3">
+                {section.content.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 sm:gap-3 text-gray-600 text-sm sm:text-base leading-relaxed">
+                    <span className="text-black font-bold mt-0.5">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Contact Section - Responsive */}
+        <div className="mt-6 sm:mt-8 md:mt-10 bg-black rounded-2xl p-4 sm:p-6 md:p-8 border border-white/10">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
+            Questions About Our Terms?
+          </h2>
+          <p className="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6">
+            If you have any questions about our terms and conditions, please don't hesitate to contact us.
           </p>
-          <p className="text-gray-500 text-xs mt-2">
-            © {new Date().getFullYear()} Manikanta Tour and Travels. All rights reserved.
-          </p>
-          <p className="text-gray-400 text-xs mt-1">
-            Website crafted by SniperCoders
-          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a
+              href="mailto:support@manikantatravels.com"
+              className="inline-flex items-center justify-center gap-2 bg-white text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-200 transition"
+            >
+              Email Us
+            </a>
+            <a
+              href="tel:+919591762419"
+              className="inline-flex items-center justify-center gap-2 bg-gray-800 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-700 transition"
+            >
+              Call Us
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default TermsPage;
+}

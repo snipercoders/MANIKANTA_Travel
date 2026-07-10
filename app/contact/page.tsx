@@ -57,7 +57,7 @@ export default function ContactPage() {
       
       <div className="min-h-screen bg-white">
         {/* Hero Section - Black & White - Fully Responsive */}
-        <section className="relative overflow-hidden bg-black text-white py-12 sm:py-16 md:py-20 lg:py-24">
+        <section className="relative overflow-hidden bg-black text-white py-10 sm:py-12 md:py-16 lg:py-20">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-3 sm:mb-4 border border-white/20">
               <span className="text-[10px] sm:text-xs font-semibold tracking-wider">CONTACT US</span>
@@ -71,7 +71,7 @@ export default function ContactPage() {
           </div>
         </section>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             
             {/* Contact Form - Left Column (2/3 on desktop) */}

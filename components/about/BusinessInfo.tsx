@@ -14,22 +14,22 @@
     {
       title: 'Tour Packages',
       description: 'Customized itineraries for individuals, families, and groups',
-      icon: '🗺️'
+      icon: 'ðŸ—ºï¸'
     },
     {
       title: 'Transportation',
       description: 'Cars, Tempo Travellers, Buses for all travel needs',
-      icon: '🚗'
+      icon: 'ðŸš—'
     },
     {
       title: 'Hotel Bookings',
       description: 'Best deals on accommodations across South India',
-      icon: '🏨'
+      icon: 'ðŸ¨'
     },
     {
       title: '24/7 Support',
       description: 'Round-the-clock assistance during your journey',
-      icon: '📱'
+      icon: 'ðŸ“±'
     },
   ];
 
@@ -44,9 +44,9 @@
           {businessStats.map((stat, index) => (
             <div 
               key={index} 
-              className="bg-gradient-to-br from-red-50 to-amber-50 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 text-center border border-red-100"
+              className="bg-gradient-to-br from-gray-50 to-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 text-center border border-gray-100"
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600 mb-1 sm:mb-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 mb-1 sm:mb-2">
                 {stat.value}
               </div>
               <div className="text-xs sm:text-sm md:text-base text-gray-700 font-medium">
@@ -64,7 +64,7 @@
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="bg-white border border-gray-200 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 hover:shadow-lg transition-shadow duration-300 hover:border-red-200"
+              className="bg-white border border-gray-200 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 hover:shadow-lg transition-shadow duration-300 hover:border-gray-200"
             >
               <div className="text-3xl sm:text-4xl mb-2 sm:mb-3 md:mb-4">{service.icon}</div>
               <h4 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
@@ -83,22 +83,22 @@
         <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 mb-4 sm:mb-6 text-center">Why Choose Us</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           <div className="text-center">
-            <div className="inline-block bg-red-100 rounded-full p-2 sm:p-3 mb-2 sm:mb-3 md:mb-4">
-              <span className="text-xl sm:text-2xl">⭐</span>
+            <div className="inline-block bg-gray-100 rounded-full p-2 sm:p-3 mb-2 sm:mb-3 md:mb-4">
+              <span className="text-xl sm:text-2xl">â­</span>
             </div>
             <h4 className="font-bold text-base sm:text-lg lg:text-xl text-gray-900 mb-1 sm:mb-2">Expert Guidance</h4>
             <p className="text-gray-600 text-xs sm:text-sm md:text-base">Since 2006 with deep South India destination knowledge</p>
           </div>
           <div className="text-center">
-            <div className="inline-block bg-red-100 rounded-full p-2 sm:p-3 mb-2 sm:mb-3 md:mb-4">
-              <span className="text-xl sm:text-2xl">💎</span>
+            <div className="inline-block bg-gray-100 rounded-full p-2 sm:p-3 mb-2 sm:mb-3 md:mb-4">
+              <span className="text-xl sm:text-2xl">ðŸ’Ž</span>
             </div>
             <h4 className="font-bold text-base sm:text-lg lg:text-xl text-gray-900 mb-1 sm:mb-2">Best Value</h4>
             <p className="text-gray-600 text-xs sm:text-sm md:text-base">Competitive prices without compromising quality and safety</p>
           </div>
           <div className="text-center">
-            <div className="inline-block bg-red-100 rounded-full p-2 sm:p-3 mb-2 sm:mb-3 md:mb-4">
-              <span className="text-xl sm:text-2xl">🛡️</span>
+            <div className="inline-block bg-gray-100 rounded-full p-2 sm:p-3 mb-2 sm:mb-3 md:mb-4">
+              <span className="text-xl sm:text-2xl">ðŸ›¡ï¸</span>
             </div>
             <h4 className="font-bold text-base sm:text-lg lg:text-xl text-gray-900 mb-1 sm:mb-2">Trust & Safety</h4>
             <p className="text-gray-600 text-xs sm:text-sm md:text-base">Licensed, insured, and experienced drivers for your peace of mind</p>
@@ -108,11 +108,11 @@
 
       {/* Founder's Note */}
       <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
-        <div className="bg-gradient-to-r from-red-50 to-amber-50 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-red-100">
+        <div className="bg-gradient-to-r from-gray-50 to-gray-50 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-100">
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-red-500 to-amber-500 rounded-full flex items-center justify-center">
-                <span className="text-2xl sm:text-3xl text-white">👑</span>
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-gray-500 to-gray-500 rounded-full flex items-center justify-center">
+                <span className="text-2xl sm:text-3xl text-white">ðŸ‘‘</span>
               </div>
             </div>
             <div className="text-center sm:text-left">
@@ -121,7 +121,7 @@
                 "Since 2006, our commitment has been to provide safe, reliable, and memorable travel experiences. 
                 Your satisfaction is our success."
               </p>
-              <p className="text-red-600 font-medium mt-2 text-sm sm:text-base">— Ashok R, Founder & CEO</p>
+              <p className="text-gray-700 font-medium mt-2 text-sm sm:text-base">â€” Ashok R, Founder & CEO</p>
             </div>
           </div>
         </div>

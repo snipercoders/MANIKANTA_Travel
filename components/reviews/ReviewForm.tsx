@@ -394,7 +394,7 @@
 //                   Click to upload up to 5 photos
 //                 </p>
 //                 <p className="text-xs sm:text-sm text-gray-600">
-//                   Max 5MB each • JPEG, PNG, WebP
+//                   Max 5MB each â€¢ JPEG, PNG, WebP
 //                 </p>
 //               </label>
 //             </div>
@@ -627,8 +627,8 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
 
         {submitSuccess ? (
           <div className="p-8 md:p-12 text-center">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check className="h-10 w-10 text-green-600" />
+            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Check className="h-10 w-10 text-gray-700" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Thank You!</h3>
             <p className="text-gray-600 text-lg">Your review has been submitted successfully.</p>
@@ -645,7 +645,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                   onChange={e => handleInputChange('author', e.target.value)}
                   required
                   placeholder="John Doe"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition text-black placeholder-gray-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent transition text-black placeholder-gray-500"
                 />
               </div>
               <div>
@@ -656,7 +656,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                   onChange={e => handleInputChange('email', e.target.value)}
                   required
                   placeholder="john@example.com"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition text-black placeholder-gray-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent transition text-black placeholder-gray-500"
                 />
               </div>
             </div>
@@ -673,7 +673,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                     className="transition-transform hover:scale-110"
                   >
                     <Star
-                      className={`h-12 w-12 ${star <= formData.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+                      className={`h-12 w-12 ${star <= formData.rating ? 'text-gray-400 fill-gray-400' : 'text-gray-300'}`}
                     />
                   </button>
                 ))}
@@ -691,7 +691,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                 required
                 maxLength={100}
                 placeholder="Amazing trip to Goa!"
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition text-black placeholder-gray-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent transition text-black placeholder-gray-500"
               />
               <p className="text-sm text-gray-500 text-right mt-1">{formData.title.length}/100</p>
             </div>
@@ -706,7 +706,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                 rows={5}
                 maxLength={500}
                 placeholder="Share your journey, highlights, and tips..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none transition text-black placeholder-gray-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-none transition text-black placeholder-gray-500"
               />
               <p className="text-sm text-gray-500 text-right mt-1">{formData.content.length}/500</p>
             </div>
@@ -719,7 +719,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                   value={formData.travelerType}
                   onChange={e => handleInputChange('travelerType', e.target.value)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent text-black bg-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent text-black bg-white"
                 >
                   {travelerTypes.map(type => (
                     <option key={type} value={type}>{type}</option>
@@ -733,7 +733,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                   value={formData.monthOfTravel}
                   onChange={e => handleInputChange('monthOfTravel', e.target.value)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent text-black bg-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent text-black bg-white"
                 >
                   <option value="">Select month</option>
                   {months.map(month => (
@@ -750,7 +750,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                   onChange={e => handleInputChange('tripDuration', e.target.value)}
                   required
                   placeholder="e.g., 7 days"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition text-black placeholder-gray-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent transition text-black placeholder-gray-500"
                 />
               </div>
             </div>
@@ -763,7 +763,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                 value={formData.tourPackage}
                 onChange={e => handleInputChange('tourPackage', e.target.value)}
                 placeholder="e.g., Goa Beach Package, Custom Trip"
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition text-black placeholder-gray-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent transition text-black placeholder-gray-500"
               />
               <p className="text-sm text-gray-500 mt-2">Leave blank if not part of a specific package</p>
             </div>
@@ -780,7 +780,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                       <button
                         type="button"
                         onClick={() => removeImage(i)}
-                        className="absolute top-2 right-2 bg-red-600 text-white rounded-full p-1.5 opacity-90 group-hover:opacity-100 transition shadow-lg"
+                        className="absolute top-2 right-2 bg-gray-700 text-white rounded-full p-1.5 opacity-90 group-hover:opacity-100 transition shadow-lg"
                       >
                         <XCircle className="h-5 w-5" />
                       </button>
@@ -793,11 +793,11 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                 <div className="mb-6">
                   <div className="flex justify-between text-sm mb-2">
                     <span className="text-gray-600">Uploading images...</span>
-                    <span className="font-medium text-red-600">{uploadProgress}%</span>
+                    <span className="font-medium text-gray-700">{uploadProgress}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
                     <div
-                      className="bg-gradient-to-r from-red-600 to-red-700 h-3 rounded-full transition-all"
+                      className="bg-gradient-to-r from-gray-700 to-black h-3 rounded-full transition-all"
                       style={{ width: `${uploadProgress}%` }}
                     />
                   </div>
@@ -820,12 +820,12 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
                 className={`block border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-all ${
                   isSubmitting || uploadingImages
                     ? 'border-gray-300 bg-gray-50 cursor-not-allowed'
-                    : 'border-red-300 hover:border-red-500 hover:bg-red-50'
+                    : 'border-gray-300 hover:border-gray-500 hover:bg-gray-50'
                 }`}
               >
-                <Upload className="h-12 w-12 mx-auto mb-4 text-red-600" />
+                <Upload className="h-12 w-12 mx-auto mb-4 text-gray-700" />
                 <p className="font-medium text-gray-900 mb-2">Click to upload photos</p>
-                <p className="text-sm text-gray-600">Max 5 images • 5MB each • JPEG, PNG, WebP</p>
+                <p className="text-sm text-gray-600">Max 5 images â€¢ 5MB each â€¢ JPEG, PNG, WebP</p>
               </label>
             </div>
 
@@ -833,7 +833,7 @@ export default function ReviewForm({ isOpen, onClose, onReviewAdded }: ReviewFor
             <button
               type="submit"
               disabled={isSubmitting || uploadingImages}
-              className="w-full py-4 bg-gradient-to-r from-red-600 to-red-700 text-white text-lg font-bold rounded-xl hover:from-red-700 hover:to-red-800 disabled:opacity-70 disabled:cursor-not-allowed transition shadow-xl"
+              className="w-full py-4 bg-gradient-to-r from-gray-700 to-black text-white text-lg font-bold rounded-xl hover:from-black hover:to-black disabled:opacity-70 disabled:cursor-not-allowed transition shadow-xl"
             >
               {uploadingImages ? 'Uploading Images...' : isSubmitting ? 'Submitting...' : 'Submit Review'}
             </button>

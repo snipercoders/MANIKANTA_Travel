@@ -70,7 +70,7 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
     
     // Show logout message
     setTimeout(() => {
-      alert('✅ Admin logged out successfully');
+      alert('âœ… Admin logged out successfully');
     }, 100);
   };
 
@@ -88,10 +88,10 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
     
     if (newDeleteMode) {
       setTimeout(() => {
-        alert('🛡️ DELETE MODE ACTIVATED\n\nClick on any gallery item to delete it permanently.');
+        alert('ðŸ›¡ï¸ DELETE MODE ACTIVATED\n\nClick on any gallery item to delete it permanently.');
       }, 300);
     } else {
-      alert('✅ Delete mode deactivated');
+      alert('âœ… Delete mode deactivated');
     }
   };
 
@@ -105,8 +105,8 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
           <div className="absolute right-full top-1/2 -translate-y-1/2 mr-2 bg-white rounded-xl shadow-2xl border border-gray-200 min-w-56 overflow-hidden animate-in slide-in-from-right-2">
             <div className="p-4 space-y-3">
               {/* Header */}
-              <div className="flex items-center gap-3 px-2 py-2 mb-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-                <div className={`w-3 h-3 rounded-full ${isDeleteMode ? 'bg-red-500 animate-pulse' : 'bg-green-500'}`}></div>
+              <div className="flex items-center gap-3 px-2 py-2 mb-2 bg-gradient-to-r from-gray-50 to-gray-50 rounded-lg">
+                <div className={`w-3 h-3 rounded-full ${isDeleteMode ? 'bg-gray-500 animate-pulse' : 'bg-gray-500'}`}></div>
                 <div>
                   <div className="text-sm font-bold text-gray-800">Admin Panel</div>
                   <div className="text-xs text-gray-500">Authenticated</div>
@@ -119,9 +119,9 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
                   setShowUploadModal(true);
                   setShowMenu(false);
                 }}
-                className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-blue-50 rounded-lg transition-all duration-200 text-gray-800 hover:text-blue-700"
+                className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 rounded-lg transition-all duration-200 text-gray-800 hover:text-black"
               >
-                <Upload className="h-5 w-5 text-blue-500" />
+                <Upload className="h-5 w-5 text-gray-500" />
                 <div>
                   <div className="font-medium">Upload Media</div>
                   <div className="text-xs text-gray-500">Add new images/videos</div>
@@ -133,8 +133,8 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
                 onClick={toggleDeleteMode}
                 className={`w-full flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-all duration-200 ${
                   isDeleteMode 
-                    ? 'bg-red-50 text-red-700 hover:bg-red-100' 
-                    : 'text-gray-800 hover:bg-gray-100 hover:text-red-600'
+                    ? 'bg-gray-50 text-black hover:bg-gray-100' 
+                    : 'text-gray-800 hover:bg-gray-100 hover:text-gray-700'
                 }`}
               >
                 <Trash2 className="h-5 w-5" />
@@ -152,7 +152,7 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
               <div className="border-t border-gray-200 pt-3 mt-2">
                 <button
                   onClick={handleLogout}
-                  className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-100 rounded-lg transition-all duration-200 text-gray-800 hover:text-red-600"
+                  className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-100 rounded-lg transition-all duration-200 text-gray-800 hover:text-gray-700"
                 >
                   <LogOut className="h-5 w-5 text-gray-500" />
                   <div>
@@ -185,8 +185,8 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
               border-2 border-white
               ${isAuthenticated 
                 ? isDeleteMode 
-                  ? 'bg-gradient-to-br from-red-500 via-red-600 to-red-700 text-white shadow-red-500/50' 
-                  : 'bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 text-white shadow-blue-500/50'
+                  ? 'bg-gradient-to-br from-gray-500 via-gray-700 to-black text-white shadow-red-500/50' 
+                  : 'bg-gradient-to-br from-gray-700 via-gray-700 to-gray-700 text-white shadow-blue-500/50'
                 : 'bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white shadow-gray-500/50'
               }
             `}
@@ -210,7 +210,7 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
               w-4 h-4 
               rounded-full 
               border-2 border-white
-              ${isDeleteMode ? 'bg-red-500 animate-pulse' : 'bg-green-500'}
+              ${isDeleteMode ? 'bg-gray-500 animate-pulse' : 'bg-gray-500'}
             `}></span>
           )}
         </div>
@@ -218,7 +218,7 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
 
       {/* Delete Mode Indicator */}
       {isDeleteMode && (
-        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9998] bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 animate-pulse">
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9998] bg-gradient-to-r from-gray-700 to-black text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 animate-pulse">
           <Trash2 className="h-5 w-5" />
           <span className="font-bold text-sm">DELETE MODE ACTIVE</span>
           <span className="text-xs bg-white/20 px-2 py-1 rounded">Click items to delete</span>
@@ -243,7 +243,7 @@ export default function AdminButton({ onDeleteModeToggle }: AdminButtonProps) {
         <UploadModal 
           onClose={() => setShowUploadModal(false)} 
           onUploadSuccess={() => {
-            alert('✅ Upload successful! Refreshing gallery...');
+            alert('âœ… Upload successful! Refreshing gallery...');
             window.location.reload();
           }} 
         />

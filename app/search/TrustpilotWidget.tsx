@@ -58,7 +58,7 @@ export default function TrustpilotWidget() {
                     key={i}
                     className={`h-6 w-6 ${
                       i < Math.floor(reviews.rating)
-                        ? 'text-green-500'
+                        ? 'text-gray-500'
                         : 'text-gray-300'
                     }`}
                   />
@@ -80,11 +80,11 @@ export default function TrustpilotWidget() {
             <div key={stars} className="flex items-center space-x-2">
               <div className="flex items-center space-x-1 w-16">
                 <span className="text-sm font-medium text-gray-700">{stars}</span>
-                <StarIcon className="h-4 w-4 text-green-500" />
+                <StarIcon className="h-4 w-4 text-gray-500" />
               </div>
               <div className="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-green-500 h-full rounded-full transition-all duration-500"
+                  className="bg-gray-500 h-full rounded-full transition-all duration-500"
                   style={{ width: `${calculatePercentage(reviews.breakdown[stars as keyof typeof reviews.breakdown])}%` }}
                 />
               </div>
@@ -105,7 +105,7 @@ export default function TrustpilotWidget() {
           href="https://www.trustpilot.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+          className="inline-block bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-black transition-colors"
         >
           Read All Reviews on Trustpilot
         </a>
@@ -119,7 +119,7 @@ export default function TrustpilotWidget() {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center space-x-1">
               {[...Array(5)].map((_, i) => (
-                <StarIcon key={i} className="h-4 w-4 text-green-500" />
+                <StarIcon key={i} className="h-4 w-4 text-gray-500" />
               ))}
             </div>
             <span className="text-sm text-gray-500">2 days ago</span>
@@ -135,7 +135,7 @@ export default function TrustpilotWidget() {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center space-x-1">
               {[...Array(5)].map((_, i) => (
-                <StarIcon key={i} className="h-4 w-4 text-green-500" />
+                <StarIcon key={i} className="h-4 w-4 text-gray-500" />
               ))}
             </div>
             <span className="text-sm text-gray-500">5 days ago</span>

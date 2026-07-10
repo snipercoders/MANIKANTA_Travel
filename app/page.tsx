@@ -43,7 +43,7 @@ export default function Home() {
       <ReviewSection />
       
       {/* ✅ NEW: Red Theme CTA Section */}
-      <section className="bg-gradient-to-r from-red-700 to-red-900 py-16">
+      <section className="bg-black py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Book Your Journey?
@@ -55,7 +55,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+919591762419"
-              className="inline-flex items-center justify-center gap-2 bg-white text-red-700 font-bold px-8 py-4 rounded-full hover:bg-gray-100 transition shadow-lg"
+              className="inline-flex items-center justify-center gap-2 bg-white text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-100 transition shadow-lg"
             >
               📞 Call +91 95917 62419
             </a>
@@ -63,7 +63,7 @@ export default function Home() {
               href="https://wa.me/919591762419"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-black text-white font-bold px-8 py-4 rounded-full hover:bg-gray-900 transition shadow-lg"
+              className="inline-flex items-center justify-center gap-2 border border-white bg-black text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-900 transition shadow-lg"
             >
               💬 WhatsApp Us
             </a>

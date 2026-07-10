@@ -228,9 +228,9 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
   setDeletingId(item.id);
   try {
     await onDeleteItem(item);
-    alert(`✅ Successfully deleted "${item.title}"`);
+    alert(`âœ… Successfully deleted "${item.title}"`);
   } catch (error: any) {
-    alert(`❌ Failed to delete: ${error.message || 'Unknown error'}`);
+    alert(`âŒ Failed to delete: ${error.message || 'Unknown error'}`);
   } finally {
     setDeletingId(null);
   }
@@ -249,8 +249,8 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
     return (
       <div className="min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex flex-col items-center justify-center py-12 sm:py-16 md:py-20 px-3 sm:px-4">
         <div className="relative">
-          <Loader2 className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 animate-spin text-red-600 mb-3 sm:mb-4" />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-700/20 blur-xl"></div>
+          <Loader2 className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 animate-spin text-gray-700 mb-3 sm:mb-4" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-700/20 to-black/20 blur-xl"></div>
         </div>
         <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700">Loading gallery...</p>
       </div>
@@ -260,8 +260,8 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
   if (safeItems.length === 0) {
     return (
       <div className="text-center py-12 sm:py-16 md:py-20 px-3 sm:px-4">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-          <Grid3x3 className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-red-600" />
+        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+          <Grid3x3 className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-gray-700" />
         </div>
         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
           No items found
@@ -283,7 +283,7 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
           </h3>
           <p className="text-xs sm:text-sm text-gray-600 mt-1">
             {isDeleteMode ? (
-              <span className="flex items-center gap-1 sm:gap-2 text-red-600 font-medium">
+              <span className="flex items-center gap-1 sm:gap-2 text-gray-700 font-medium">
                 <Shield className="h-3 w-3 sm:h-4 sm:w-4" />
                 Delete Mode Active
               </span>
@@ -299,7 +299,7 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
             onClick={() => setViewMode('grid')}
             className={`p-1.5 sm:p-2 rounded-lg transition ${
               viewMode === 'grid' 
-                ? 'bg-red-100 text-red-600' 
+                ? 'bg-gray-100 text-gray-700' 
                 : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
             }`}
             aria-label="Grid view"
@@ -310,7 +310,7 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
             onClick={() => setViewMode('masonry')}
             className={`p-1.5 sm:p-2 rounded-lg transition ${
               viewMode === 'masonry' 
-                ? 'bg-red-100 text-red-600' 
+                ? 'bg-gray-100 text-gray-700' 
                 : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
             }`}
             aria-label="Masonry view"
@@ -322,14 +322,14 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
 
       {/* Delete Mode Warning */}
       {isDeleteMode && (
-        <div className="mb-4 sm:mb-6 bg-gradient-to-r from-red-50 to-red-100 border border-red-300 rounded-lg sm:rounded-xl p-3 sm:p-4">
+        <div className="mb-4 sm:mb-6 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg sm:rounded-xl p-3 sm:p-4">
           <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-            <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+            <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-gray-700 flex-shrink-0 mt-0.5 sm:mt-0" />
             <div>
-              <h4 className="text-sm sm:text-base font-bold text-red-800 mb-0.5 sm:mb-1">
+              <h4 className="text-sm sm:text-base font-bold text-black mb-0.5 sm:mb-1">
                 Delete Mode Active
               </h4>
-              <p className="text-xs sm:text-sm text-red-700">
+              <p className="text-xs sm:text-sm text-black">
                 Click any item to permanently delete it.
               </p>
             </div>
@@ -374,8 +374,8 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
 
               {/* Delete Mode Overlay */}
               {isDeleteMode && (
-                <div className="absolute inset-0 bg-red-600/30 flex items-center justify-center">
-                  <div className="bg-red-600 text-white p-3 sm:p-4 md:p-5 rounded-full shadow-xl sm:shadow-2xl">
+                <div className="absolute inset-0 bg-gray-700/30 flex items-center justify-center">
+                  <div className="bg-gray-700 text-white p-3 sm:p-4 md:p-5 rounded-full shadow-xl sm:shadow-2xl">
                     <Trash2 className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 lg:h-10 lg:w-10" />
                   </div>
                 </div>
@@ -392,7 +392,7 @@ const handleDelete = async (item: GalleryItem, e: React.MouseEvent) => {
               <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 flex justify-between z-10">
                 <span className={`px-2 py-1 sm:px-2.5 sm:py-1.5 md:px-3 md:py-1.5 rounded-full text-xs font-medium ${
                   isDeleteMode 
-                    ? 'bg-red-600 text-white' 
+                    ? 'bg-gray-700 text-white' 
                     : 'bg-black/70 text-white backdrop-blur-sm'
                 }`}>
                   {item.category}

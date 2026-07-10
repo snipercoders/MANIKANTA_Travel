@@ -8,7 +8,7 @@ import Image from 'next/image';
 const packages = [
   {
     title: "Bangalore to Coorg Tour",
-    price: "₹12,999",
+    price: "â‚¹12,999",
     duration: "3 Days",
     passengers: "6-8 Persons",
     vehicle: "Innova Crysta",
@@ -21,7 +21,7 @@ const packages = [
   },
   {
     title: "South India Temple Tour",
-    price: "₹24,999",
+    price: "â‚¹24,999",
     duration: "7 Days",
     passengers: "12 Persons",
     vehicle: "Tempo Traveller",
@@ -34,7 +34,7 @@ const packages = [
   },
   {
     title: "Mysuru-Ooty Luxury Trip",
-    price: "₹18,499",
+    price: "â‚¹18,499",
     duration: "4 Days",
     passengers: "4-6 Persons",
     vehicle: "Toyota Fortuner",
@@ -119,14 +119,14 @@ export default function BestSellersSection() {
               
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="inline-flex items-center gap-1 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold mb-3">
+                <div className="inline-flex items-center gap-1 bg-gray-500 text-black px-3 py-1 rounded-full text-xs font-bold mb-3">
                   <Star className="h-3 w-3 fill-current" />
                   BESTSELLER
                 </div>
                 
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                    <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star className="h-4 w-4 text-gray-400 fill-current" />
                     <span className="text-white font-bold">{packages[currentSlide].rating}</span>
                   </div>
                   <div className="bg-black text-white px-4 py-2 rounded-lg font-bold text-lg">
@@ -210,7 +210,7 @@ export default function BestSellersSection() {
                   <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-black relative h-full">
                     {/* Bestseller Badge */}
                     {pkg.bestseller && (
-                      <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1 bg-yellow-500 text-black px-3 py-1.5 rounded-full text-xs font-bold">
+                      <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1 bg-gray-500 text-black px-3 py-1.5 rounded-full text-xs font-bold">
                         <Star className="h-3 w-3 fill-current" />
                         BESTSELLER
                       </div>
@@ -240,7 +240,7 @@ export default function BestSellersSection() {
                           {pkg.title}
                         </h3>
                         <div className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-lg">
-                          <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                          <Star className="h-4 w-4 text-gray-500 fill-current" />
                           <span className="font-bold text-black">{pkg.rating}</span>
                         </div>
                       </div>

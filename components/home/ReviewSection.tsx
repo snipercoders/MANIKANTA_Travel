@@ -9,14 +9,14 @@ import { StarIcon } from '@heroicons/react/24/solid';
 // ReviewCard component with hero theme
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-orange-100">
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100">
       <div className="flex justify-between items-start mb-4">
         <div>
           <div className="flex items-center gap-2">
             <h3 className="font-bold text-lg text-gray-900">{review.author || 'Anonymous'}</h3>
             {review.verified && (
-              <span className="bg-gradient-to-r from-orange-400 to-amber-400 text-white text-xs px-2 py-1 rounded-full">
-                ✓ Verified
+              <span className="bg-gradient-to-r from-gray-400 to-gray-400 text-white text-xs px-2 py-1 rounded-full">
+                âœ“ Verified
               </span>
             )}
           </div>
@@ -24,10 +24,10 @@ function ReviewCard({ review }: { review: Review }) {
             {[...Array(5)].map((_, index) => (
               <StarIcon
                 key={index}
-                className={`h-4 w-4 ${index < (review.rating || 5) ? 'text-yellow-400' : 'text-gray-300'}`}
+                className={`h-4 w-4 ${index < (review.rating || 5) ? 'text-gray-400' : 'text-gray-300'}`}
               />
             ))}
-            <span className="ml-2 text-sm text-orange-600 font-semibold">{(review.rating || 5).toFixed(1)}</span>
+            <span className="ml-2 text-sm text-gray-700 font-semibold">{(review.rating || 5).toFixed(1)}</span>
           </div>
         </div>
         <div className="text-sm text-gray-500">
@@ -37,8 +37,8 @@ function ReviewCard({ review }: { review: Review }) {
       <h4 className="font-semibold text-gray-800 mb-2 text-lg">{review.title || 'Great Experience!'}</h4>
       <p className="text-gray-600 mb-4">{review.content || 'Excellent service!'}</p>
       {review.location && (
-        <div className="text-sm text-orange-600 font-medium">
-          📍 {review.location}
+        <div className="text-sm text-gray-700 font-medium">
+          ðŸ“ {review.location}
         </div>
       )}
     </div>
@@ -100,17 +100,17 @@ function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-200">
+    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
       <h3 className="text-2xl font-bold text-gray-900 mb-6">Share Your Experience</h3>
       
       {error && (
-        <div className="bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4">
+        <div className="bg-gradient-to-r from-gray-50 to-gray-50 border border-gray-200 text-black px-4 py-3 rounded-lg mb-4">
           {error}
         </div>
       )}
       
       {success && (
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-4">
+        <div className="bg-gradient-to-r from-gray-50 to-gray-50 border border-gray-200 text-black px-4 py-3 rounded-lg mb-4">
           {success}
         </div>
       )}
@@ -130,7 +130,7 @@ function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
                 className="focus:outline-none hover:scale-110 transition-transform"
               >
                 <StarIcon
-                  className={`h-8 w-8 ${star <= formData.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                  className={`h-8 w-8 ${star <= formData.rating ? 'text-gray-400' : 'text-gray-300'}`}
                 />
               </button>
             ))}
@@ -140,7 +140,7 @@ function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
         <input
           type="text"
           placeholder="Your Name *"
-          className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           value={formData.author}
           onChange={(e) => setFormData({...formData, author: e.target.value})}
           required
@@ -149,7 +149,7 @@ function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
         <input
           type="text"
           placeholder="Review Title *"
-          className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           value={formData.title}
           onChange={(e) => setFormData({...formData, title: e.target.value})}
           required
@@ -158,14 +158,14 @@ function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
         <input
           type="text"
           placeholder="Location (Optional)"
-          className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           value={formData.location}
           onChange={(e) => setFormData({...formData, location: e.target.value})}
         />
         
         <textarea
           placeholder="Your Review *"
-          className="w-full px-4 py-2 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           rows={4}
           value={formData.content}
           onChange={(e) => setFormData({...formData, content: e.target.value})}
@@ -175,7 +175,7 @@ function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
         <button 
           type="submit" 
           disabled={submitting}
-          className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-amber-600 transition-all duration-300 disabled:opacity-50"
+          className="w-full bg-gradient-to-r from-gray-500 to-gray-500 text-white py-3 rounded-lg font-semibold hover:from-gray-700 hover:to-gray-700 transition-all duration-300 disabled:opacity-50"
         >
           {submitting ? 'Submitting...' : 'Submit Review'}
         </button>
@@ -244,12 +244,12 @@ export default function ReviewSection() {
   };
 
   return (
-    <section id="reviews" className="py-12 px-4 sm:py-16 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gradient-to-b from-amber-50 via-orange-50 to-pink-50">
+    <section id="reviews" className="py-12 px-4 sm:py-16 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gradient-to-b from-gray-50 via-gray-50 to-gray-50">
       <div className="text-center mb-10 sm:mb-12">
         <div className="flex justify-center mb-4">
           <div className="flex space-x-1">
             {[...Array(5)].map((_, i) => (
-              <StarIcon key={i} className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-400" />
+              <StarIcon key={i} className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400" />
             ))}
           </div>
         </div>
@@ -262,15 +262,15 @@ export default function ReviewSection() {
 {/*         
         <button
           onClick={() => setShowForm(!showForm)}
-          className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-amber-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="bg-gradient-to-r from-gray-500 to-gray-500 text-white px-6 py-3 rounded-full font-semibold hover:from-gray-700 hover:to-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          {showForm ? 'Close Review Form' : '✍️ Write a Review'}
+          {showForm ? 'Close Review Form' : 'âœï¸ Write a Review'}
         </button> */}
       </div>
 
       {/* Error Message */}
       {error && !loading && (
-        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded-lg mb-6 text-center max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-gray-50 to-gray-50 border border-gray-200 text-black px-4 py-3 rounded-lg mb-6 text-center max-w-2xl mx-auto">
           {error}
         </div>
       )}
@@ -283,7 +283,7 @@ export default function ReviewSection() {
 
       {loading ? (
         <div className="text-center py-8 sm:py-12">
-          <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-orange-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-gray-700 mx-auto"></div>
           <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base">Loading reviews...</p>
         </div>
       ) : reviews.length > 0 ? (
@@ -297,14 +297,14 @@ export default function ReviewSection() {
           <div className="text-center mt-10">
             <button
               onClick={fetchReviews}
-              className="bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-50 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="bg-white border-2 border-gray-500 text-gray-500 hover:bg-gray-50 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
             >
-              🔄 Load More Reviews
+              ðŸ”„ Load More Reviews
             </button>
           </div>
         </>
       ) : (
-        <div className="text-center py-8 sm:py-12 bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg border border-orange-200">
+        <div className="text-center py-8 sm:py-12 bg-gradient-to-r from-gray-50 to-gray-50 rounded-lg border border-gray-200">
           <p className="text-gray-600 text-sm sm:text-base">No reviews yet. Be the first to share your experience!</p>
         </div>
       )}

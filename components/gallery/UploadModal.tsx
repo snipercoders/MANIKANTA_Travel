@@ -380,7 +380,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
 
         {/* Header */}
         <div className="text-center mb-4 sm:mb-6 md:mb-8">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-gray-700 to-black rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
             <CloudArrowUpIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
           </div>
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Upload Media</h2>
@@ -402,7 +402,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               />
               <div className={`px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 rounded-lg flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base transition-all ${
                 formData.type === 'image' 
-                  ? 'bg-red-600 text-white' 
+                  ? 'bg-gray-700 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}>
                 <PhotoIcon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
@@ -420,7 +420,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               />
               <div className={`px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 rounded-lg flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base transition-all ${
                 formData.type === 'video' 
-                  ? 'bg-red-600 text-white' 
+                  ? 'bg-gray-700 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}>
                 <VideoCameraIcon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
@@ -439,7 +439,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               accept={formData.type === 'image' ? 'image/*' : 'video/*'}
               onChange={handleFileChange}
               required
-              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-red-600 focus:ring-2 focus:ring-red-500 focus:outline-none transition file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs sm:file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
+              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none transition file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs sm:file:text-sm file:font-semibold file:bg-gray-50 file:text-black hover:file:bg-gray-100"
             />
           </div>
 
@@ -465,7 +465,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               value={formData.title}
               onChange={handleInputChange}
               placeholder="e.g., Golden Temple at Sunrise (optional)"
-              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-red-600 focus:ring-2 focus:ring-red-500 focus:outline-none transition"
+              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none transition"
             />
             <p className="text-xs text-gray-500 mt-1">Leave empty for auto-generated title</p>
           </div>
@@ -479,7 +479,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               name="category"
               value={formData.category}
               onChange={handleInputChange}
-              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-red-600 focus:ring-2 focus:ring-red-500 focus:outline-none transition bg-white"
+              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none transition bg-white"
             >
               <option value="destination">Destination</option>
               <option value="vehicle">Vehicle</option>
@@ -501,7 +501,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
                 value={formData.vehicleName}
                 onChange={handleInputChange}
                 placeholder="e.g., Luxury Coach, Toyota Innova"
-                className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-red-600 focus:ring-2 focus:ring-red-500 focus:outline-none transition"
+                className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none transition"
               />
             </div>
           )}
@@ -517,7 +517,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               value={formData.location}
               onChange={handleInputChange}
               placeholder="e.g., Amritsar, Punjab"
-              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-red-600 focus:ring-2 focus:ring-red-500 focus:outline-none transition"
+              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none transition"
             />
           </div>
 
@@ -532,20 +532,20 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
               onChange={handleInputChange}
               placeholder="Brief description..."
               rows={3}
-              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-red-600 focus:ring-2 focus:ring-red-500 focus:outline-none transition resize-none"
+              className="w-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg sm:rounded-xl focus:border-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none transition resize-none"
             />
           </div>
 
           {/* Error/Success Messages */}
           {error && (
-            <div className="p-2 sm:p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-xs sm:text-sm text-red-600 font-medium text-center">{error}</p>
+            <div className="p-2 sm:p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <p className="text-xs sm:text-sm text-gray-700 font-medium text-center">{error}</p>
             </div>
           )}
 
           {success && (
-            <div className="p-2 sm:p-3 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-xs sm:text-sm text-green-600 font-medium text-center">{success}</p>
+            <div className="p-2 sm:p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <p className="text-xs sm:text-sm text-gray-700 font-medium text-center">{success}</p>
             </div>
           )}
 
@@ -554,7 +554,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
             <button
               type="submit"
               disabled={uploading}
-              className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-2 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-medium sm:font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-60 transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base shadow-lg hover:shadow-xl"
+              className="w-full bg-gradient-to-r from-gray-700 to-black text-white py-2 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-medium sm:font-semibold hover:from-black hover:to-black disabled:opacity-60 transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base shadow-lg hover:shadow-xl"
             >
               {uploading ? (
                 <>

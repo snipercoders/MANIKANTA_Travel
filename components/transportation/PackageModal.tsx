@@ -32,7 +32,7 @@ export default function PackageModal({ package: pkg, onClose }: PackageModalProp
           className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4 flex justify-between items-center">
+          <div className="bg-gradient-to-r from-gray-700 to-black px-6 py-4 flex justify-between items-center">
             <h2 className="text-2xl font-bold text-white">{pkg.title}</h2>
             <button
               onClick={onClose}
@@ -77,7 +77,7 @@ export default function PackageModal({ package: pkg, onClose }: PackageModalProp
                 <div className="grid grid-cols-2 gap-2">
                   {pkg.highlights.map((highlight, index) => (
                     <div key={index} className="flex items-center text-gray-700">
-                      <span className="text-blue-600 mr-2">✓</span>
+                      <span className="text-gray-700 mr-2">âœ“</span>
                       {highlight}
                     </div>
                   ))}
@@ -91,7 +91,7 @@ export default function PackageModal({ package: pkg, onClose }: PackageModalProp
               <div className="space-y-2">
                 {pkg.features.map((feature, index) => (
                   <div key={index} className="flex items-center text-gray-700">
-                    <span className="text-green-600 mr-2">✓</span>
+                    <span className="text-gray-700 mr-2">âœ“</span>
                     {feature}
                   </div>
                 ))}
@@ -99,8 +99,8 @@ export default function PackageModal({ package: pkg, onClose }: PackageModalProp
             </div>
 
             {/* Accommodation */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-blue-800">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+              <p className="text-sm text-black">
                 <strong>Accommodation:</strong> {pkg.includesBox ? 'Included in package' : 'Not included - can be arranged separately'}
               </p>
             </div>
@@ -111,13 +111,13 @@ export default function PackageModal({ package: pkg, onClose }: PackageModalProp
             <div className="text-center sm:text-left">
               {pkg.price > 0 ? (
                 <>
-                  <div className="text-3xl font-bold text-blue-600">
-                    ₹{pkg.price.toLocaleString('en-IN')}
+                  <div className="text-3xl font-bold text-gray-700">
+                    â‚¹{pkg.price.toLocaleString('en-IN')}
                   </div>
                   <p className="text-sm text-gray-500">per person</p>
                 </>
               ) : (
-                <div className="text-2xl font-bold text-blue-600">
+                <div className="text-2xl font-bold text-gray-700">
                   Custom Pricing Available
                 </div>
               )}
@@ -125,14 +125,14 @@ export default function PackageModal({ package: pkg, onClose }: PackageModalProp
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="tel:+911234567890"
-                className="flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                className="flex items-center justify-center bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-black transition-colors"
               >
                 <PhoneIcon className="h-5 w-5 mr-2" />
                 Call Now
               </a>
               <a
                 href="mailto:info@chandantour.com?subject=Inquiry about ${pkg.title}"
-                className="flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                className="flex items-center justify-center bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-black transition-colors"
               >
                 <EnvelopeIcon className="h-5 w-5 mr-2" />
                 Book Now

@@ -75,7 +75,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
       <h3 className="text-2xl font-bold text-gray-900 mb-6">Share Your Experience</h3>
       
       {message && (
-        <div className={`mb-4 p-4 rounded-lg ${message.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+        <div className={`mb-4 p-4 rounded-lg ${message.type === 'success' ? 'bg-gray-100 text-black' : 'bg-gray-100 text-black'}`}>
           {message.text}
         </div>
       )}
@@ -91,7 +91,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             placeholder="Your name"
           />
         </div>
@@ -106,7 +106,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             placeholder="your.email@example.com"
           />
         </div>
@@ -119,7 +119,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
           <select
             value={formData.tripType}
             onChange={(e) => setFormData({ ...formData, tripType: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           >
             <option value="">Select trip type</option>
             <option value="Tour">Tour Package</option>
@@ -145,7 +145,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
                 className="focus:outline-none"
               >
                 {(hoveredRating || formData.rating) >= star ? (
-                  <StarIcon className="h-8 w-8 text-yellow-400" />
+                  <StarIcon className="h-8 w-8 text-gray-400" />
                 ) : (
                   <StarOutlineIcon className="h-8 w-8 text-gray-300" />
                 )}
@@ -164,7 +164,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
             value={formData.comment}
             onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
             rows={4}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             placeholder="Share your experience with us..."
           />
         </div>
@@ -174,11 +174,11 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Photos (Max 3)
           </label>
-          <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-blue-400 transition-colors">
+          <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-gray-400 transition-colors">
             <div className="space-y-1 text-center">
               <PhotoIcon className="mx-auto h-12 w-12 text-gray-400" />
               <div className="flex text-sm text-gray-600">
-                <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500">
+                <label className="relative cursor-pointer bg-white rounded-md font-medium text-gray-700 hover:text-gray-500">
                   <span>Upload files</span>
                   <input
                     type="file"
@@ -192,7 +192,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
               </div>
               <p className="text-xs text-gray-500">PNG, JPG up to 10MB</p>
               {images.length > 0 && (
-                <p className="text-sm text-green-600">{images.length} file(s) selected</p>
+                <p className="text-sm text-gray-700">{images.length} file(s) selected</p>
               )}
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function ReviewForm({ onSuccess }: ReviewFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+          className="w-full bg-gray-700 text-white py-3 rounded-lg font-semibold hover:bg-black disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
         >
           {loading ? 'Submitting...' : 'Submit Review'}
         </button>

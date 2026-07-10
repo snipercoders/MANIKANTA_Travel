@@ -9,7 +9,7 @@ const destinations = [
   {
     title: "Coorg - Scotland of India",
     days: "3 Days Trip",
-    price: "₹12,999",
+    price: "â‚¹12,999",
     rating: 4.8,
     reviews: "3.4k reviews",
     description: "Coffee plantations, waterfalls, and misty mountains in Karnataka",
@@ -20,7 +20,7 @@ const destinations = [
   {
     title: "Munnar - Tea Gardens",
     days: "4 Days Trip",
-    price: "₹14,999",
+    price: "â‚¹14,999",
     rating: 4.9,
     reviews: "2.8k reviews",
     description: "Rolling tea plantations and cool climate in Kerala",
@@ -31,7 +31,7 @@ const destinations = [
   {
     title: "Chikmagalur - Hill Station",
     days: "3 Days Trip",
-    price: "₹11,999",
+    price: "â‚¹11,999",
     rating: 4.7,
     reviews: "1.9k reviews",
     description: "Coffee plantations and scenic beauty in Karnataka",
@@ -115,7 +115,7 @@ export default function TopDestinations() {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                    <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star className="h-4 w-4 text-gray-400 fill-current" />
                     <span className="text-white font-bold">{destinations[currentSlide].rating}</span>
                     <span className="text-white/80 text-sm ml-1">({destinations[currentSlide].reviews})</span>
                   </div>
@@ -213,7 +213,7 @@ export default function TopDestinations() {
                       </div>
                       
                       <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-lg flex items-center gap-1 border border-white/20">
-                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                        <Star className="h-4 w-4 text-gray-500 fill-current" />
                         <span className="font-bold text-white">{dest.rating}</span>
                       </div>
                     </div>

@@ -187,10 +187,10 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
       // Check if password matches EXACTLY
       if (password.trim() === validPassword) {
         // Successful authentication
-        console.log('✅ Authentication successful');
+        console.log('âœ… Authentication successful');
         onSuccess();
       } else {
-        console.log('❌ Authentication failed. Entered:', password.trim(), 'Expected:', validPassword);
+        console.log('âŒ Authentication failed. Entered:', password.trim(), 'Expected:', validPassword);
         setError('Incorrect password. Please try "chandan@12345"');
       }
     } catch (err) {
@@ -220,7 +220,7 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
 
         {/* Header */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center mb-4">
+          <div className="w-14 h-14 bg-gradient-to-r from-gray-700 to-black rounded-full flex items-center justify-center mb-4">
             <Shield className="h-7 w-7 text-white" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 text-center">
@@ -244,7 +244,7 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter: password"
-                className="w-full pl-10 pr-4 py-3 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                className="w-full pl-10 pr-4 py-3 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition"
                 required
                 autoFocus
                 disabled={loading}
@@ -254,10 +254,10 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-start gap-3">
-              <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-start gap-3">
+              <AlertCircle className="h-5 w-5 text-gray-500 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm text-red-700 font-medium mb-1">{error}</p>
+                <p className="text-sm text-black font-medium mb-1">{error}</p>
               
               </div>
             </div>
@@ -267,7 +267,7 @@ export default function AuthModal({ onClose, onSuccess }: AuthModalProps) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3.5 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 disabled:opacity-60 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+              className="w-full bg-gradient-to-r from-gray-700 to-black text-white py-3.5 rounded-lg font-semibold hover:from-black hover:to-black disabled:opacity-60 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
             >
               {loading ? (
                 <>

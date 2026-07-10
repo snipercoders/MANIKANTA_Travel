@@ -15,7 +15,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       <div className="flex space-x-1">
         {[...Array(5)].map((_, i) => (
           i < rating ? (
-            <StarIcon key={i} className="h-5 w-5 text-yellow-400" />
+            <StarIcon key={i} className="h-5 w-5 text-gray-400" />
           ) : (
             <StarOutlineIcon key={i} className="h-5 w-5 text-gray-300" />
           )

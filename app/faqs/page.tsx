@@ -1,7 +1,4 @@
 // app/faqs/page.tsx
-
-
-
 'use client';
 
 import { useState } from 'react';
@@ -10,7 +7,7 @@ import { ChevronDown, Car, Phone, User, Clock, MapPin, Shield, CreditCard } from
 const faqCategories = [
   {
     title: 'Booking & Reservations',
-    icon: <CreditCard className="h-6 w-6" />,
+    icon: <CreditCard className="h-5 w-5 sm:h-6 sm:w-6" />,
     faqs: [
       {
         question: 'How can I book a vehicle with Manikanta Tour and Travels?',
@@ -32,7 +29,7 @@ const faqCategories = [
   },
   {
     title: 'Vehicles & Services',
-    icon: <Car className="h-6 w-6" />,
+    icon: <Car className="h-5 w-5 sm:h-6 sm:w-6" />,
     faqs: [
       {
         question: 'What types of vehicles do you provide?',
@@ -54,7 +51,7 @@ const faqCategories = [
   },
   {
     title: 'Pricing & Payments',
-    icon: <CreditCard className="h-6 w-6" />,
+    icon: <CreditCard className="h-5 w-5 sm:h-6 sm:w-6" />,
     faqs: [
       {
         question: 'How is the pricing calculated?',
@@ -76,7 +73,7 @@ const faqCategories = [
   },
   {
     title: 'Cancellation & Refunds',
-    icon: <Shield className="h-6 w-6" />,
+    icon: <Shield className="h-5 w-5 sm:h-6 sm:w-6" />,
     faqs: [
       {
         question: 'What is your cancellation policy?',
@@ -98,7 +95,7 @@ const faqCategories = [
   },
   {
     title: 'Travel & Safety',
-    icon: <MapPin className="h-6 w-6" />,
+    icon: <MapPin className="h-5 w-5 sm:h-6 sm:w-6" />,
     faqs: [
       {
         question: 'What safety measures do you follow?',
@@ -120,7 +117,7 @@ const faqCategories = [
   },
   {
     title: 'Corporate & Special Services',
-    icon: <User className="h-6 w-6" />,
+    icon: <User className="h-5 w-5 sm:h-6 sm:w-6" />,
     faqs: [
       {
         question: 'Do you provide corporate travel solutions?',
@@ -158,30 +155,30 @@ export default function FAQsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Header Banner */}
-      <div className="bg-gradient-to-r from-red-900 via-red-800 to-red-900 text-white py-16">
+    <div className="min-h-screen bg-white">
+      {/* Header Banner - Black & White - Fully Responsive */}
+      <div className="bg-black text-white py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6">
-              <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white/10 rounded-full mb-4 sm:mb-6 border border-white/20">
+              <svg className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto px-2">
               Find answers to common questions about our transportation services, booking process, and policies.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <Phone className="h-4 w-4" />
-                <span>+91 95917 62419</span>
+            <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-3 sm:gap-4">
+              <div className="flex items-center gap-2 bg-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
+                <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="text-xs sm:text-sm">+91 95917 62419</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <Clock className="h-4 w-4" />
-                <span>24/7 Support Available</span>
+              <div className="flex items-center gap-2 bg-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="text-xs sm:text-sm">24/7 Support Available</span>
               </div>
             </div>
           </div>
@@ -189,29 +186,29 @@ export default function FAQsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Categories */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Browse by Category</h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Categories - Responsive Grid */}
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black text-center mb-6 sm:mb-8">Browse by Category</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {faqCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="bg-gradient-to-br from-white to-red-50 border-2 border-red-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-red-100 rounded-lg text-red-700">
+              <div key={categoryIndex} className="bg-white border-2 border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:shadow-lg transition-shadow hover:border-black">
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                  <div className="p-2 sm:p-3 bg-gray-100 rounded-lg text-black">
                     {category.icon}
                   </div>
-                  <h3 className="font-bold text-red-900 text-lg">{category.title}</h3>
+                  <h3 className="font-bold text-black text-base sm:text-lg">{category.title}</h3>
                 </div>
-                <p className="text-gray-700 text-sm mb-4">
+                <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
                   {category.faqs.length} questions about {category.title.toLowerCase()}
                 </p>
                 <button
                   onClick={() => toggleCategory(categoryIndex)}
-                  className="w-full flex items-center justify-between text-red-700 font-semibold hover:text-red-800 transition-colors"
+                  className="w-full flex items-center justify-between text-black font-semibold hover:text-gray-600 transition-colors text-sm sm:text-base"
                 >
                   <span>View Questions</span>
-                  <ChevronDown className={`h-5 w-5 transition-transform ${openCategory === categoryIndex ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform ${openCategory === categoryIndex ? 'rotate-180' : ''}`} />
                 </button>
               </div>
             ))}
@@ -219,79 +216,79 @@ export default function FAQsPage() {
         </div>
 
         {/* FAQ Sections */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {faqCategories.map((category, categoryIndex) => (
             <div 
               key={categoryIndex} 
-              className={`bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden transition-all duration-300 ${
+              className={`bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 ${
                 openCategory === null || openCategory === categoryIndex ? 'block' : 'hidden'
               }`}
             >
               {/* Category Header */}
               <button
                 onClick={() => toggleCategory(categoryIndex)}
-                className="w-full bg-gradient-to-r from-red-50 to-orange-50 p-6 text-left"
+                className="w-full bg-gray-50 p-4 sm:p-5 md:p-6 text-left"
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-red-100 rounded-lg text-red-700">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="p-2 sm:p-3 bg-gray-100 rounded-lg text-black">
                       {category.icon}
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900">{category.title}</h2>
-                      <p className="text-gray-600 mt-1">{category.faqs.length} questions available</p>
+                      <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black">{category.title}</h2>
+                      <p className="text-gray-600 text-xs sm:text-sm mt-1">{category.faqs.length} questions available</p>
                     </div>
                   </div>
-                  <ChevronDown className={`h-6 w-6 text-red-700 transition-transform ${openCategory === categoryIndex ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-5 w-5 sm:h-6 sm:w-6 text-black transition-transform ${openCategory === categoryIndex ? 'rotate-180' : ''}`} />
                 </div>
               </button>
 
               {/* FAQ Items */}
               {(openCategory === null || openCategory === categoryIndex) && (
-                <div className="p-6">
-                  <div className="space-y-4">
+                <div className="p-4 sm:p-5 md:p-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {category.faqs.map((faq, faqIndex) => (
-                      <div key={faqIndex} className="border border-gray-200 rounded-xl overflow-hidden hover:border-red-300 transition-colors">
+                      <div key={faqIndex} className="border border-gray-200 rounded-xl overflow-hidden hover:border-black transition-colors">
                         <button
                           onClick={() => toggleFaq(categoryIndex, faqIndex)}
-                          className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors"
+                          className="w-full flex justify-between items-center p-4 sm:p-5 text-left hover:bg-gray-50 transition-colors"
                         >
-                          <div className="flex items-start gap-4">
+                          <div className="flex items-start gap-3 sm:gap-4">
                             <div className="mt-1">
-                              <div className="w-6 h-6 flex items-center justify-center bg-red-100 text-red-700 rounded-full text-sm font-bold">
+                              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center bg-gray-100 text-black rounded-full text-xs sm:text-sm font-bold">
                                 Q
                               </div>
                             </div>
                             <div className="text-left">
-                              <h3 className="font-bold text-gray-900 text-lg">{faq.question}</h3>
+                              <h3 className="font-bold text-black text-sm sm:text-base md:text-lg">{faq.question}</h3>
                             </div>
                           </div>
                           <ChevronDown 
-                            className={`h-5 w-5 text-red-600 flex-shrink-0 transition-transform ${
+                            className={`h-4 w-4 sm:h-5 sm:w-5 text-black flex-shrink-0 transition-transform ${
                               openFaqs[categoryIndex] === faqIndex ? 'rotate-180' : ''
                             }`}
                           />
                         </button>
                         
                         {openFaqs[categoryIndex] === faqIndex && (
-                          <div className="px-6 pb-6 pt-2">
-                            <div className="flex gap-4">
+                          <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1 sm:pt-2">
+                            <div className="flex gap-3 sm:gap-4">
                               <div className="mt-1">
-                                <div className="w-6 h-6 flex items-center justify-center bg-green-100 text-green-700 rounded-full text-sm font-bold">
+                                <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center bg-gray-200 text-black rounded-full text-xs sm:text-sm font-bold">
                                   A
                                 </div>
                               </div>
                               <div>
-                                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                                <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{faq.answer}</p>
                                 {faqIndex === 0 && categoryIndex === 0 && (
-                                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    <div className="bg-red-50 p-3 rounded-lg">
-                                      <div className="font-semibold text-red-800">Phone Booking</div>
-                                      <div className="text-gray-700">+91 95917 62419</div>
+                                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div className="bg-gray-100 p-3 rounded-lg">
+                                      <div className="font-semibold text-black text-sm">Phone Booking</div>
+                                      <div className="text-gray-700 text-sm">+91 95917 62419</div>
                                     </div>
-                                    <div className="bg-red-50 p-3 rounded-lg">
-                                      <div className="font-semibold text-red-800">Email Support</div>
-                                      <div className="text-gray-700">booking@manikantatravels.com</div>
+                                    <div className="bg-gray-100 p-3 rounded-lg">
+                                      <div className="font-semibold text-black text-sm">Email Support</div>
+                                      <div className="text-gray-700 text-sm">booking@manikantatravels.com</div>
                                     </div>
                                   </div>
                                 )}
@@ -308,80 +305,80 @@ export default function FAQsPage() {
           ))}
         </div>
 
-        {/* Contact Section */}
-        <div className="mt-12 bg-gradient-to-r from-red-900 to-red-800 text-white rounded-2xl p-8">
+        {/* Contact Section - Black & White - Responsive */}
+        <div className="mt-8 sm:mt-10 md:mt-12 bg-black text-white rounded-2xl p-6 sm:p-8 md:p-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Still Have Questions?</h2>
-            <p className="text-xl text-white/90 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Still Have Questions?</h2>
+            <p className="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8">
               Our customer support team is available 24/7 to assist you with any queries.
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center">
-                <div className="bg-white/10 p-4 rounded-xl mb-4 inline-block">
-                  <Phone className="h-8 w-8" />
+                <div className="bg-white/10 p-3 sm:p-4 rounded-xl mb-3 inline-block border border-white/20">
+                  <Phone className="h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
-                <h3 className="font-bold text-lg mb-2">Call Us</h3>
-                <p className="text-white/90">+91 95917 62419</p>
-                <p className="text-white/80 text-sm mt-1">24/7 Helpline</p>
+                <h3 className="font-bold text-white text-base sm:text-lg mb-1">Call Us</h3>
+                <p className="text-gray-300 text-sm">+91 95917 62419</p>
+                <p className="text-gray-400 text-xs mt-1">24/7 Helpline</p>
               </div>
               
               <div className="text-center">
-                <div className="bg-white/10 p-4 rounded-xl mb-4 inline-block">
-                  <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-white/10 p-3 sm:p-4 rounded-xl mb-3 inline-block border border-white/20">
+                  <svg className="h-6 w-6 sm:h-8 sm:w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-lg mb-2">WhatsApp</h3>
-                <p className="text-white/90">+91 95917 62419</p>
-                <p className="text-white/80 text-sm mt-1">Instant Response</p>
+                <h3 className="font-bold text-white text-base sm:text-lg mb-1">WhatsApp</h3>
+                <p className="text-gray-300 text-sm">+91 95917 62419</p>
+                <p className="text-gray-400 text-xs mt-1">Instant Response</p>
               </div>
               
               <div className="text-center">
-                <div className="bg-white/10 p-4 rounded-xl mb-4 inline-block">
-                  <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-white/10 p-3 sm:p-4 rounded-xl mb-3 inline-block border border-white/20">
+                  <svg className="h-6 w-6 sm:h-8 sm:w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-lg mb-2">Email</h3>
-                <p className="text-white/90">support@manikantatravels.com</p>
-                <p className="text-white/80 text-sm mt-1">Response within 4 hours</p>
+                <h3 className="font-bold text-white text-base sm:text-lg mb-1">Email</h3>
+                <p className="text-gray-300 text-sm break-all">support@manikantatravels.com</p>
+                <p className="text-gray-400 text-xs mt-1">Response within 4 hours</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* FAQ Tips */}
-        <div className="mt-10 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-blue-900 mb-6 text-center">FAQ Tips</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl">
-              <div className="text-blue-600 font-bold text-lg mb-2">✓ Quick Booking</div>
-              <p className="text-gray-700 text-sm">Have your travel details ready when calling for faster service</p>
+        {/* FAQ Tips - Black & White - Responsive */}
+        <div className="mt-8 sm:mt-10 bg-gray-50 border-2 border-gray-200 rounded-2xl p-6 sm:p-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-black mb-6 text-center">FAQ Tips</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+              <div className="text-black font-bold text-base sm:text-lg mb-2">Quick Booking</div>
+              <p className="text-gray-600 text-sm">Have your travel details ready when calling for faster service</p>
             </div>
-            <div className="bg-white p-6 rounded-xl">
-              <div className="text-blue-600 font-bold text-lg mb-2">✓ Early Planning</div>
-              <p className="text-gray-700 text-sm">Book at least 3 days in advance for best vehicle availability</p>
+            <div className="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+              <div className="text-black font-bold text-base sm:text-lg mb-2">Early Planning</div>
+              <p className="text-gray-600 text-sm">Book at least 3 days in advance for best vehicle availability</p>
             </div>
-            <div className="bg-white p-6 rounded-xl">
-              <div className="text-blue-600 font-bold text-lg mb-2">✓ Clear Communication</div>
-              <p className="text-gray-700 text-sm">Share exact pickup points and special requirements upfront</p>
+            <div className="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+              <div className="text-black font-bold text-base sm:text-lg mb-2">Clear Communication</div>
+              <p className="text-gray-600 text-sm">Share exact pickup points and special requirements upfront</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Last Updated */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="mt-8 text-center">
-          <p className="text-gray-600 text-sm">
+      {/* Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+        <div className="mt-6 sm:mt-8 text-center">
+          <p className="text-gray-500 text-xs sm:text-sm">
             Last Updated: December 1, 2023 • FAQs are regularly updated
           </p>
-          <p className="text-gray-500 text-xs mt-2">
+          <p className="text-gray-400 text-xs mt-2">
             © {new Date().getFullYear()} Manikanta Tour and Travels. All rights reserved.
           </p>
           <p className="text-gray-400 text-xs mt-1">
-            Website crafted by SniperCoders
+            Website crafted by <a href="https://www.snipercoders.in" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">SniperCoders</a>
           </p>
         </div>
       </div>

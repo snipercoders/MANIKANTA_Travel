@@ -137,7 +137,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <MessageSquare className="h-6 w-6 text-green-600" />
+            <MessageSquare className="h-6 w-6 text-gray-700" />
             <h2 className="text-2xl font-bold text-gray-900">
               Customer Reviews & Ratings
             </h2>
@@ -149,7 +149,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                   key={i}
                   className={`h-6 w-6 ${
                     i < Math.floor(stats.averageRating)
-                      ? 'text-yellow-400 fill-yellow-400'
+                      ? 'text-gray-400 fill-gray-400'
                       : 'text-gray-300'
                   }`}
                 />
@@ -167,7 +167,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
         
         <div className="flex items-center space-x-6 mt-4 md:mt-0">
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{stats.excellentPercentage}%</div>
+            <div className="text-3xl font-bold text-gray-700">{stats.excellentPercentage}%</div>
             <div className="text-sm text-gray-600">Excellent</div>
           </div>
           <div className="text-center">
@@ -184,12 +184,12 @@ const handleSubmitReview = async (e: React.FormEvent) => {
           <div key={rating} className="flex items-center mb-3">
             <div className="flex items-center w-20">
               <span className="text-sm text-gray-700 font-medium w-6">{rating}</span>
-              <Star className="h-4 w-4 text-yellow-400 fill-yellow-400 ml-2" />
+              <Star className="h-4 w-4 text-gray-400 fill-gray-400 ml-2" />
             </div>
             <div className="flex-1 mx-4">
               <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-yellow-400 to-orange-400"
+                  className="h-full bg-gradient-to-r from-gray-400 to-gray-400"
                   style={{ 
                     width: `${stats.totalReviews > 0 ? (stats.ratingsDistribution[rating as keyof typeof stats.ratingsDistribution] / stats.totalReviews) * 100 : 0}%` 
                   }}
@@ -208,7 +208,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
         <h3 className="text-lg font-bold text-gray-900">Recent Reviews</h3>
         <button 
           onClick={() => setShowReviewForm(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-black transition-colors"
         >
           <Star className="h-4 w-4" />
           Write a Review
@@ -224,7 +224,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
             <p className="text-gray-600 mb-4">Be the first to share your experience!</p>
             <button 
               onClick={() => setShowReviewForm(true)}
-              className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-black transition-colors"
             >
               Write First Review
             </button>
@@ -248,7 +248,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                                 key={i}
                                 className={`h-4 w-4 ${
                                   i < review.rating
-                                    ? 'text-yellow-400 fill-yellow-400'
+                                    ? 'text-gray-400 fill-gray-400'
                                     : 'text-gray-300'
                                 }`}
                               />
@@ -261,7 +261,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                         <div className="text-right">
                           <div className="text-sm text-gray-600">{review.date}</div>
                           {review.verified && (
-                            <div className="text-xs text-green-600 font-medium flex items-center justify-end mt-1">
+                            <div className="text-xs text-gray-700 font-medium flex items-center justify-end mt-1">
                               <Check className="h-3 w-3 mr-1" />
                               Verified
                             </div>
@@ -284,10 +284,10 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                           </div>
                           <div className="text-sm text-gray-600 flex items-center gap-2">
                             <Users className="h-3 w-3" />
-                            {review.travelerType} • {review.monthOfTravel} • {review.tripDuration}
+                            {review.travelerType} â€¢ {review.monthOfTravel} â€¢ {review.tripDuration}
                           </div>
                           {review.tourPackageName && (
-                            <div className="text-xs text-blue-600 mt-1">
+                            <div className="text-xs text-gray-700 mt-1">
                               Package: {review.tourPackageName}
                             </div>
                           )}
@@ -297,7 +297,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                           disabled={helpfulClicked.has(review.id)}
                           className={`flex items-center gap-1 px-3 py-1 rounded-lg transition-colors ${
                             helpfulClicked.has(review.id)
-                              ? 'bg-green-100 text-green-700 cursor-default'
+                              ? 'bg-gray-100 text-black cursor-default'
                               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                           }`}
                         >
@@ -335,7 +335,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                       onClick={() => setCurrentSlide(index)}
                       className={`w-2 h-2 rounded-full transition-colors ${
                         index === currentSlide
-                          ? 'bg-green-600'
+                          ? 'bg-gray-700'
                           : 'bg-gray-300 hover:bg-gray-400'
                       }`}
                       aria-label={`Go to slide ${index + 1}`}
@@ -364,8 +364,8 @@ const handleSubmitReview = async (e: React.FormEvent) => {
 
             {submitSuccess ? (
               <div className="p-8 text-center">
-                <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                  <Check className="h-8 w-8 text-green-600" />
+                <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                  <Check className="h-8 w-8 text-gray-700" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   Thank You for Your Review!
@@ -375,7 +375,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                 </p>
                 <button
                   onClick={() => setShowReviewForm(false)}
-                  className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                  className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-black transition-colors"
                 >
                   Close
                 </button>
@@ -394,7 +394,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                         value={formData.author}
                         onChange={(e) => setFormData({...formData, author: e.target.value})}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                         placeholder="Enter your name"
                       />
                     </div>
@@ -407,7 +407,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                         placeholder="Enter your email"
                       />
                     </div>
@@ -429,7 +429,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                           <Star
                             className={`h-10 w-10 ${
                               star <= formData.rating
-                                ? 'text-yellow-400 fill-yellow-400'
+                                ? 'text-gray-400 fill-gray-400'
                                 : 'text-gray-300'
                             }`}
                           />
@@ -451,7 +451,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                       value={formData.title}
                       onChange={(e) => setFormData({...formData, title: e.target.value})}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                       placeholder="Summarize your experience in a few words"
                       maxLength={100}
                     />
@@ -467,7 +467,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                       onChange={(e) => setFormData({...formData, content: e.target.value})}
                       required
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 resize-none"
                       placeholder="Tell us about your experience with Chandan Tours. What did you like? What could be improved?"
                       maxLength={500}
                     />
@@ -486,7 +486,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                         value={formData.travelerType}
                         onChange={(e) => setFormData({...formData, travelerType: e.target.value as Review['travelerType']})}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                       >
                         {travelerTypes.map(type => (
                           <option key={type} value={type}>{type}</option>
@@ -501,7 +501,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                         value={formData.monthOfTravel}
                         onChange={(e) => setFormData({...formData, monthOfTravel: e.target.value})}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                       >
                         <option value="">Select month</option>
                         {months.map(month => (
@@ -518,7 +518,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                         value={formData.tripDuration}
                         onChange={(e) => setFormData({...formData, tripDuration: e.target.value})}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                         placeholder="e.g., 7 Days, 2 Weeks"
                       />
                     </div>
@@ -532,7 +532,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                     <select
                       value={formData.tourPackageId}
                       onChange={(e) => setFormData({...formData, tourPackageId: e.target.value})}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                     >
                       <option value="">Select package (if applicable)</option>
                       {tourPackages.map(pkg => (
@@ -548,8 +548,8 @@ const handleSubmitReview = async (e: React.FormEvent) => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full py-3 px-6 bg-gradient-to-r from-green-600 to-teal-600 text-white font-semibold rounded-lg transition-all duration-300 ${
-                        isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:from-green-700 hover:to-teal-700 hover:shadow-lg'
+                      className={`w-full py-3 px-6 bg-gradient-to-r from-gray-700 to-gray-700 text-white font-semibold rounded-lg transition-all duration-300 ${
+                        isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:from-black hover:to-black hover:shadow-lg'
                       }`}
                     >
                       {isSubmitting ? (

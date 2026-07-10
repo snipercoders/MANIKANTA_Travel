@@ -67,7 +67,7 @@ export default function MediaModal({
         {onDelete && (
           <button
             onClick={handleDelete}
-            className="absolute -top-12 left-0 md:top-4 md:left-4 bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-lg font-medium hover:from-red-700 hover:to-red-800 transition flex items-center gap-2 z-20 shadow-lg"
+            className="absolute -top-12 left-0 md:top-4 md:left-4 bg-gradient-to-r from-gray-700 to-black text-white px-4 py-2 rounded-lg font-medium hover:from-black hover:to-black transition flex items-center gap-2 z-20 shadow-lg"
           >
             <TrashIcon className="h-5 w-5" />
             Delete Image
@@ -131,7 +131,7 @@ export default function MediaModal({
                 </p>
               )}
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="bg-red-600 text-white px-4 py-1.5 rounded-full text-sm font-medium">
+                <span className="bg-gray-700 text-white px-4 py-1.5 rounded-full text-sm font-medium">
                   {item.category}
                 </span>
                 {item.tags?.slice(0, 4).map(tag => (
@@ -145,7 +145,7 @@ export default function MediaModal({
         </motion.div>
 
         <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-xs md:text-sm">
-          ← → arrows to navigate • ESC to close
+          â† â†’ arrows to navigate â€¢ ESC to close
         </p>
       </div>
     </motion.div>

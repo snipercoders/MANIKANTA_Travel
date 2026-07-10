@@ -59,8 +59,8 @@ export default function SearchResults({ results, searchQuery }: SearchResultsPro
             <div className="absolute top-3 left-3">
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                 item.type === 'package' 
-                  ? 'bg-green-600 text-white'
-                  : 'bg-blue-600 text-white'
+                  ? 'bg-gray-700 text-white'
+                  : 'bg-gray-700 text-white'
               }`}>
                 {item.type === 'package' ? 'Tour Package' : 'Photo Gallery'}
               </span>
@@ -99,7 +99,7 @@ export default function SearchResults({ results, searchQuery }: SearchResultsPro
                   
                   {item.rating !== undefined && (
                     <div className="flex items-center">
-                      <Star className="h-4 w-4 text-yellow-500 fill-yellow-500 mr-1" />
+                      <Star className="h-4 w-4 text-gray-500 fill-gray-500 mr-1" />
                       <span className="text-sm font-semibold">{item.rating}</span>
                       <span className="text-xs text-gray-500 ml-1">
                         ({item.reviewCount})
@@ -110,8 +110,8 @@ export default function SearchResults({ results, searchQuery }: SearchResultsPro
                 
                 {item.price && (
                   <div className="flex items-center justify-between">
-                    <div className="text-lg font-bold text-green-700">
-                      ₹{item.price.toLocaleString()}
+                    <div className="text-lg font-bold text-black">
+                      â‚¹{item.price.toLocaleString()}
                       <span className="text-sm text-gray-500 font-normal"> / person</span>
                     </div>
                   </div>
@@ -122,12 +122,12 @@ export default function SearchResults({ results, searchQuery }: SearchResultsPro
             <div className="flex items-center justify-between">
               <Link
                 href={item.type === 'package' ? `/package/${item.id}` : `/gallery/${item.id}`}
-                className="px-4 py-2 bg-gradient-to-r from-green-500 to-teal-500 text-white font-medium rounded-lg hover:from-green-600 hover:to-teal-600 transition-colors"
+                className="px-4 py-2 bg-gradient-to-r from-gray-500 to-gray-500 text-white font-medium rounded-lg hover:from-gray-700 hover:to-gray-700 transition-colors"
               >
                 {item.type === 'package' ? 'View Package' : 'View Gallery'}
               </Link>
               
-              <button className="p-2 text-gray-500 hover:text-green-600 transition-colors">
+              <button className="p-2 text-gray-500 hover:text-gray-700 transition-colors">
                 <HeartIcon className="h-5 w-5" />
               </button>
             </div>

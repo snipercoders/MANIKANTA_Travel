@@ -314,14 +314,14 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-gray-50 py-8 md:py-12">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-50 py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-blue-700 mb-8 md:mb-12">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-black mb-8 md:mb-12">
           {vehicleType === 'cars' ? 'Cars & Tempo Traveller Fleet' : 'Buses & Mini Buses Fleet'}
         </h1>
 
         {/* AI Planner */}
-        <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl p-6 md:p-8 mb-8 md:mb-12 text-white">
+        <div className="bg-gradient-to-r from-gray-700 via-gray-700 to-gray-700 rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl p-6 md:p-8 mb-8 md:mb-12 text-white">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8 text-center flex items-center justify-center gap-3 md:gap-4">
             <SparklesIcon className="h-8 w-8 md:h-12 md:w-12 animate-pulse" />
             Plan Your {vehicleType === 'buses' ? 'Group ' : ''}Trip with AI
@@ -331,7 +331,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-end">
             <div className="space-y-2 md:space-y-3">
               <label className="flex items-center gap-2 text-base md:text-lg font-medium">
-                <MapPinIcon className="h-5 w-5 md:h-6 md:w-6 text-yellow-300" />
+                <MapPinIcon className="h-5 w-5 md:h-6 md:w-6 text-gray-300" />
                 Pickup Location
               </label>
               <input
@@ -339,20 +339,20 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}
                 placeholder="e.g. Bangalore, Chennai, Mumbai"
-                className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg md:rounded-xl bg-white/20 backdrop-blur border border-white/30 text-white placeholder-white/70 focus:ring-2 md:focus:ring-4 focus:ring-yellow-300 focus:outline-none text-base md:text-lg transition-all"
+                className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg md:rounded-xl bg-white/20 backdrop-blur border border-white/30 text-white placeholder-white/70 focus:ring-2 md:focus:ring-4 focus:ring-gray-300 focus:outline-none text-base md:text-lg transition-all"
               />
             </div>
 
             <div className="hidden md:flex justify-center items-center">
-              <ArrowRightIcon className="h-12 w-12 md:h-16 md:w-16 text-yellow-300 animate-pulse" />
+              <ArrowRightIcon className="h-12 w-12 md:h-16 md:w-16 text-gray-300 animate-pulse" />
             </div>
             <div className="md:hidden flex justify-center items-center py-2">
-              <ArrowRightIcon className="h-10 w-10 text-yellow-300 rotate-90 animate-pulse" />
+              <ArrowRightIcon className="h-10 w-10 text-gray-300 rotate-90 animate-pulse" />
             </div>
 
             <div className="space-y-2 md:space-y-3">
               <label className="flex items-center gap-2 text-base md:text-lg font-medium">
-                <MapPinIcon className="h-5 w-5 md:h-6 md:w-6 text-green-300" />
+                <MapPinIcon className="h-5 w-5 md:h-6 md:w-6 text-gray-300" />
                 Destination
               </label>
               <input
@@ -360,7 +360,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 value={to}
                 onChange={(e) => setTo(e.target.value)}
                 placeholder="e.g. Kerala, Goa, Rajasthan"
-                className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg md:rounded-xl bg-white/20 backdrop-blur border border-white/30 text-white placeholder-white/70 focus:ring-2 md:focus:ring-4 focus:ring-green-300 focus:outline-none text-base md:text-lg transition-all"
+                className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg md:rounded-xl bg-white/20 backdrop-blur border border-white/30 text-white placeholder-white/70 focus:ring-2 md:focus:ring-4 focus:ring-gray-300 focus:outline-none text-base md:text-lg transition-all"
               />
             </div>
           </div>
@@ -368,9 +368,9 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
           {loading && (
             <div className="mt-6 md:mt-8 text-center">
               <div className="inline-flex items-center gap-3">
-                <div className="w-4 h-4 bg-yellow-300 rounded-full animate-pulse"></div>
-                <div className="w-4 h-4 bg-yellow-300 rounded-full animate-pulse delay-150"></div>
-                <div className="w-4 h-4 bg-yellow-300 rounded-full animate-pulse delay-300"></div>
+                <div className="w-4 h-4 bg-gray-300 rounded-full animate-pulse"></div>
+                <div className="w-4 h-4 bg-gray-300 rounded-full animate-pulse delay-150"></div>
+                <div className="w-4 h-4 bg-gray-300 rounded-full animate-pulse delay-300"></div>
                 <p className="text-lg md:text-xl">Calculating route and charges...</p>
               </div>
             </div>
@@ -380,9 +380,9 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
             <>
               <div className="mt-6 md:mt-10 bg-white/20 backdrop-blur-lg rounded-xl md:rounded-2xl p-6 md:p-8 text-center border border-white/40">
                 <p className="text-lg md:text-xl lg:text-2xl font-bold mb-2">
-                  Trip: <span className="text-yellow-300">{from || 'Your Location'}</span> → <span className="text-green-300">{to || 'Destination'}</span>
+                  Trip: <span className="text-gray-300">{from || 'Your Location'}</span> â†’ <span className="text-gray-300">{to || 'Destination'}</span>
                 </p>
-                <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold mt-2 md:mt-4 text-yellow-300">
+                <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold mt-2 md:mt-4 text-gray-300">
                   {distance} KM
                 </p>
                 <p className="text-sm md:text-base mt-2 opacity-90">
@@ -395,11 +395,11 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
 
               {/* Permit Notice */}
               {permitRequired && (
-                <div className="mt-4 md:mt-6 bg-amber-500/20 backdrop-blur-lg rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-amber-400">
+                <div className="mt-4 md:mt-6 bg-gray-500/20 backdrop-blur-lg rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-gray-400">
                   <div className="flex items-start gap-3 md:gap-4">
-                    <InformationCircleIcon className="h-6 w-6 md:h-8 md:w-8 text-amber-300 flex-shrink-0 mt-1" />
+                    <InformationCircleIcon className="h-6 w-6 md:h-8 md:w-8 text-gray-300 flex-shrink-0 mt-1" />
                     <div className="flex-1">
-                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-1 md:mb-2 text-amber-100">
+                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-1 md:mb-2 text-gray-100">
                         Interstate Travel to {getStateName(permitRequired)}
                       </h3>
                       <p className="text-sm md:text-base text-white mb-2 md:mb-3">
@@ -416,13 +416,13 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                   </div>
                   
                   {showPermitInfo && permitRequired && statePermits[permitRequired as keyof typeof statePermits] && (
-                    <div className="mt-4 p-4 bg-black/20 rounded-lg border border-amber-300/30">
-                      <h4 className="font-bold text-amber-200 mb-2">Permit Charges for {getStateName(permitRequired)}:</h4>
+                    <div className="mt-4 p-4 bg-black/20 rounded-lg border border-gray-300/30">
+                      <h4 className="font-bold text-gray-200 mb-2">Permit Charges for {getStateName(permitRequired)}:</h4>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                         {Object.entries(statePermits[permitRequired as keyof typeof statePermits].vehicles).map(([key, value]) => (
-                          <div key={key} className="bg-amber-900/30 p-2 rounded">
-                            <p className="text-xs md:text-sm font-medium text-amber-100 capitalize">{key.replace(/([A-Z])/g, ' $1')}:</p>
-                            <p className="text-sm md:text-base font-bold text-white">₹{value}</p>
+                          <div key={key} className="bg-black/30 p-2 rounded">
+                            <p className="text-xs md:text-sm font-medium text-gray-100 capitalize">{key.replace(/([A-Z])/g, ' $1')}:</p>
+                            <p className="text-sm md:text-base font-bold text-white">â‚¹{value}</p>
                           </div>
                         ))}
                       </div>
@@ -443,7 +443,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                     onClick={() => handlePlaceClick(place)}
                     className={`px-4 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4 rounded-full font-semibold text-sm md:text-base lg:text-lg transition-all transform hover:scale-105 active:scale-95 hover:shadow-lg ${
                       selectedPlace === place
-                        ? 'bg-green-400 text-white ring-4 ring-green-300'
+                        ? 'bg-gray-400 text-white ring-4 ring-gray-300'
                         : 'bg-white/30 backdrop-blur text-white hover:bg-white/40 border border-white/50'
                     }`}
                   >
@@ -459,42 +459,42 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
         {finalKm > 0 && (
           <div className="mb-8 md:mb-12 bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-4 md:p-6 lg:p-8">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
-              <InformationCircleIcon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+              <InformationCircleIcon className="h-6 w-6 md:h-8 md:w-8 text-gray-700" />
               Additional Charges & Terms
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-              <div className="bg-blue-50 p-4 rounded-lg md:rounded-xl border border-blue-100">
+              <div className="bg-gray-50 p-4 rounded-lg md:rounded-xl border border-gray-100">
                 <p className="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Minimum KM per Day</p>
-                <p className="text-xl md:text-2xl font-bold text-blue-600">{MINIMUM_KM_PER_DAY} KM</p>
+                <p className="text-xl md:text-2xl font-bold text-gray-700">{MINIMUM_KM_PER_DAY} KM</p>
                 <p className="text-xs text-gray-500 mt-1 md:mt-2">
                   For {numberOfDays} day{numberOfDays > 1 ? 's' : ''}: {minimumKmCharge} KM minimum
                 </p>
               </div>
-              <div className="bg-green-50 p-4 rounded-lg md:rounded-xl border border-green-100">
+              <div className="bg-gray-50 p-4 rounded-lg md:rounded-xl border border-gray-100">
                 <p className="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Driver Allowance</p>
-                <p className="text-xl md:text-2xl font-bold text-green-600">₹{DRIVER_BATA_PER_DAY}/day</p>
+                <p className="text-xl md:text-2xl font-bold text-gray-700">â‚¹{DRIVER_BATA_PER_DAY}/day</p>
                 <p className="text-xs text-gray-500 mt-1 md:mt-2">
-                  Total: ₹{formatPrice(driverBataTotal)} for {numberOfDays} day{numberOfDays > 1 ? 's' : ''}
+                  Total: â‚¹{formatPrice(driverBataTotal)} for {numberOfDays} day{numberOfDays > 1 ? 's' : ''}
                 </p>
               </div>
-              <div className="bg-purple-50 p-4 rounded-lg md:rounded-xl border border-purple-100">
+              <div className="bg-gray-50 p-4 rounded-lg md:rounded-xl border border-gray-100">
                 <p className="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Driver Duty Hours</p>
-                <p className="text-xl md:text-2xl font-bold text-purple-600">6 AM - 9 PM</p>
+                <p className="text-xl md:text-2xl font-bold text-gray-700">6 AM - 9 PM</p>
                 <p className="text-xs text-gray-500 mt-1 md:mt-2">
-                  Extra hours: +₹{DRIVER_BATA_PER_DAY} per driver
+                  Extra hours: +â‚¹{DRIVER_BATA_PER_DAY} per driver
                 </p>
               </div>
-              <div className="bg-amber-50 p-4 rounded-lg md:rounded-xl border border-amber-100">
+              <div className="bg-gray-50 p-4 rounded-lg md:rounded-xl border border-gray-100">
                 <p className="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Night Charges</p>
-                <p className="text-xl md:text-2xl font-bold text-amber-600">₹500/night</p>
+                <p className="text-xl md:text-2xl font-bold text-gray-700">â‚¹500/night</p>
                 <p className="text-xs text-gray-500 mt-1 md:mt-2">
                   Applicable if driver stays overnight
                 </p>
               </div>
             </div>
-            <div className="mt-4 md:mt-6 p-3 md:p-4 bg-yellow-50 rounded-lg md:rounded-xl border-2 border-yellow-200">
+            <div className="mt-4 md:mt-6 p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl border-2 border-gray-200">
               <p className="text-sm md:text-base font-semibold text-gray-800">
-                <span className="text-yellow-700">⚠️ Note:</span> Toll charges, parking fees, and state taxes are additional and borne by the customer. Prices may vary based on season and availability.
+                <span className="text-black">âš ï¸ Note:</span> Toll charges, parking fees, and state taxes are additional and borne by the customer. Prices may vary based on season and availability.
               </p>
             </div>
           </div>
@@ -506,7 +506,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
             Showing {currentVehicles.length} of {vehicles.length} Vehicles
           </div>
           <div className="flex items-center gap-3">
-            <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+            <div className="bg-gray-100 text-black px-3 py-1 rounded-full text-sm font-medium">
               Page {currentPage} of {totalPages}
             </div>
           </div>
@@ -528,15 +528,15 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 key={v.id}
                 className="bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-500 group border border-gray-100"
               >
-                <div className="h-48 md:h-56 bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden flex items-center justify-center">
+                <div className="h-48 md:h-56 bg-gradient-to-br from-gray-400 to-gray-700 relative overflow-hidden flex items-center justify-center">
                   <div className="text-white text-center z-10 p-4">
                     <p className="text-4xl md:text-5xl font-bold mb-1 md:mb-2">{v.seats}</p>
                     <p className="text-lg md:text-xl">Seater</p>
                     <div className="mt-2">
-                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${v.ac ? 'bg-green-500' : 'bg-gray-600'}`}>
+                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${v.ac ? 'bg-gray-500' : 'bg-gray-600'}`}>
                         {v.ac ? 'AC' : 'Non-AC'}
                       </span>
-                      <span className="ml-2 px-2 py-1 bg-purple-500 rounded-full text-xs font-semibold">
+                      <span className="ml-2 px-2 py-1 bg-gray-500 rounded-full text-xs font-semibold">
                         {v.category}
                       </span>
                     </div>
@@ -545,21 +545,21 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 </div>
 
                 <div className="p-4 md:p-6">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4 group-hover:text-blue-600 transition-colors">{v.name}</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4 group-hover:text-gray-700 transition-colors">{v.name}</h3>
 
                   <div className="space-y-2 text-sm mb-4 md:mb-5">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">Rate (Excl. Tax):</span>
-                      <span className="font-semibold text-gray-800">₹{v.perKm}/km</span>
+                      <span className="font-semibold text-gray-800">â‚¹{v.perKm}/km</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">Rate (Incl. Tax):</span>
-                      <span className="font-bold text-green-600 text-base md:text-lg">₹{v.perKmWithTax}/km</span>
+                      <span className="font-bold text-gray-700 text-base md:text-lg">â‚¹{v.perKmWithTax}/km</span>
                     </div>
                     {v.features && (
                       <div className="flex flex-wrap gap-1 mt-3">
                         {v.features.slice(0, 2).map((feature, idx) => (
-                          <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md">
+                          <span key={idx} className="px-2 py-1 bg-gray-50 text-black text-xs rounded-md">
                             {feature}
                           </span>
                         ))}
@@ -575,44 +575,44 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                       onChange={(e) => setKm(e.target.value)}
                       placeholder={distance?.toString() || 'Enter KM'}
                       min="1"
-                      className="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-2 focus:ring-purple-400 focus:border-purple-600 transition text-center font-semibold text-gray-800"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-2 focus:ring-gray-400 focus:border-gray-700 transition text-center font-semibold text-gray-800"
                     />
                   </div>
 
                   {finalKm > 0 && (
-                    <div className="mt-4 md:mt-5 p-4 md:p-5 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg md:rounded-xl border-2 border-purple-200">
+                    <div className="mt-4 md:mt-5 p-4 md:p-5 bg-gradient-to-r from-gray-50 to-gray-50 rounded-lg md:rounded-xl border-2 border-gray-200">
                       <div className="space-y-3 md:space-y-4">
-                        <div className="text-center pb-3 border-b border-purple-100">
+                        <div className="text-center pb-3 border-b border-gray-100">
                           <p className="text-xs text-gray-600 mb-1">Base Fare (Incl. Tax)</p>
-                          <p className="text-lg md:text-xl font-bold text-gray-800">₹{formatPrice(baseIncl)}</p>
+                          <p className="text-lg md:text-xl font-bold text-gray-800">â‚¹{formatPrice(baseIncl)}</p>
                           <p className="text-xs text-gray-500">for {kmToCharge} KM</p>
                         </div>
                         
                         {permitCharge > 0 && permitRequired && (
-                          <div className="text-center pb-3 border-b border-amber-100">
+                          <div className="text-center pb-3 border-b border-gray-100">
                             <p className="text-xs text-gray-600 mb-1">
                               State Permit ({getStateName(permitRequired)})
                             </p>
-                            <p className="text-base md:text-lg font-bold text-amber-600">₹{formatPrice(permitCharge)}</p>
+                            <p className="text-base md:text-lg font-bold text-gray-700">â‚¹{formatPrice(permitCharge)}</p>
                           </div>
                         )}
                         
-                        <div className="text-center pb-3 border-b border-blue-100">
+                        <div className="text-center pb-3 border-b border-gray-100">
                           <p className="text-xs text-gray-600 mb-1">
                             Driver Allowance ({numberOfDays} day{numberOfDays > 1 ? 's' : ''})
                           </p>
-                          <p className="text-base md:text-lg font-bold text-blue-600">₹{formatPrice(driverBataTotal)}</p>
+                          <p className="text-base md:text-lg font-bold text-gray-700">â‚¹{formatPrice(driverBataTotal)}</p>
                         </div>
                         
                         <div className="text-center pt-2">
                           <p className="text-xs text-gray-600 mb-1">Total Estimated Cost</p>
-                          <p className="text-2xl md:text-3xl font-extrabold text-green-600">₹{formatPrice(totalIncl)}</p>
+                          <p className="text-2xl md:text-3xl font-extrabold text-gray-700">â‚¹{formatPrice(totalIncl)}</p>
                           <p className="text-xs text-gray-500 mt-1">(Including all charges)</p>
                         </div>
                         
                         {selectedPlace && (
-                          <p className="text-sm text-purple-700 text-center font-medium bg-purple-50 p-2 rounded-md">
-                            ✅ Includes visit to {selectedPlace}
+                          <p className="text-sm text-black text-center font-medium bg-gray-50 p-2 rounded-md">
+                            âœ… Includes visit to {selectedPlace}
                           </p>
                         )}
                         
@@ -620,7 +620,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                           + Toll, Parking & State Taxes (actual)
                         </p>
                         
-                        <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 md:py-3 rounded-lg font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 mt-2">
+                        <button className="w-full bg-gradient-to-r from-gray-700 to-gray-700 text-white py-2 md:py-3 rounded-lg font-bold hover:from-black hover:to-black transition-all duration-300 mt-2">
                           Book This Vehicle
                         </button>
                       </div>
@@ -646,7 +646,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 className="p-3 md:p-4 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
                 aria-label="Previous page"
               >
-                <ChevronLeftIcon className="h-6 w-6 md:h-8 md:w-8 text-purple-600" />
+                <ChevronLeftIcon className="h-6 w-6 md:h-8 md:w-8 text-gray-700" />
               </button>
               
               <div className="flex items-center gap-2">
@@ -668,7 +668,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                       onClick={() => setCurrentPage(pageNum)}
                       className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl font-bold transition-all ${
                         currentPage === pageNum
-                          ? 'bg-purple-600 text-white'
+                          ? 'bg-gray-700 text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -678,7 +678,7 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 })}
               </div>
               
-              <span className="text-lg md:text-xl font-bold text-purple-700 mx-2">
+              <span className="text-lg md:text-xl font-bold text-black mx-2">
                 Page {currentPage} of {totalPages}
               </span>
               
@@ -688,23 +688,23 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 className="p-3 md:p-4 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
                 aria-label="Next page"
               >
-                <ChevronRightIcon className="h-6 w-6 md:h-8 md:w-8 text-purple-600" />
+                <ChevronRightIcon className="h-6 w-6 md:h-8 md:w-8 text-gray-700" />
               </button>
             </div>
           </div>
         )}
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-purple-800 via-blue-700 to-indigo-800 text-white py-12 md:py-16 rounded-2xl md:rounded-3xl shadow-2xl">
+        <div className="text-center bg-gradient-to-r from-black via-black to-black text-white py-12 md:py-16 rounded-2xl md:rounded-3xl shadow-2xl">
           <div className="max-w-4xl mx-auto px-4">
             <p className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
               {vehicleType === 'cars' ? 'Book Your Comfort Ride Now!' : 'Ready to Travel With Your Group?'}
             </p>
             <p className="text-xl md:text-2xl lg:text-3xl mb-4 md:mb-6">
               Call or WhatsApp:{' '}
-              <span className="font-bold text-yellow-300 text-2xl md:text-3xl lg:text-4xl">+91 98765 43210</span>
+              <span className="font-bold text-gray-300 text-2xl md:text-3xl lg:text-4xl">+91 98765 43210</span>
             </p>
-            <p className="text-base md:text-lg lg:text-xl mt-4 opacity-90">24×7 Instant Booking • All India Service</p>
+            <p className="text-base md:text-lg lg:text-xl mt-4 opacity-90">24Ã—7 Instant Booking â€¢ All India Service</p>
             <p className="text-sm md:text-base mt-2 opacity-70">Email: booking@manikantatravels.com</p>
             
             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -712,15 +712,15 @@ export function VehiclePage({ vehicleType = 'cars' }: VehiclePageProps) {
                 href="https://wa.me/919876543210" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all hover:scale-105 shadow-lg"
+                className="bg-gray-500 hover:bg-gray-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all hover:scale-105 shadow-lg"
               >
-                📱 WhatsApp Instant Quote
+                ðŸ“± WhatsApp Instant Quote
               </a>
               <a 
                 href="tel:+919876543210" 
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all hover:scale-105 shadow-lg"
+                className="bg-gray-500 hover:bg-gray-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all hover:scale-105 shadow-lg"
               >
-                📞 Call Now for Booking
+                ðŸ“ž Call Now for Booking
               </a>
             </div>
           </div>

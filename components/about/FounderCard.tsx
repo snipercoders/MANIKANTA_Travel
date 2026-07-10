@@ -10,19 +10,19 @@ export default function FounderCard() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="bg-gradient-to-br from-red-50 to-amber-50 rounded-lg sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl xl:shadow-2xl p-4 sm:p-6 md:p-8 border border-red-100">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-50 rounded-lg sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl xl:shadow-2xl p-4 sm:p-6 md:p-8 border border-gray-100">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 sm:gap-8">
         {/* Founder Image */}
         <div className="flex-shrink-0 w-full lg:w-auto">
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl mx-auto lg:mx-0">
             {imageError ? (
               // Fallback if image fails to load
-              <div className="w-full h-full bg-gradient-to-br from-red-500 to-amber-500 flex items-center justify-center">
+              <div className="w-full h-full bg-gradient-to-br from-gray-500 to-gray-500 flex items-center justify-center">
                 <div className="text-center">
-                  <span className="text-4xl sm:text-5xl lg:text-6xl text-white">👨‍💼</span>
+                  <span className="text-4xl sm:text-5xl lg:text-6xl text-white">ðŸ‘¨â€ðŸ’¼</span>
                   <div className="mt-3 sm:mt-4">
                     <div className="w-12 h-1.5 sm:w-16 sm:h-2 bg-white rounded-full mx-auto mb-2"></div>
-                    <div className="w-8 h-1 sm:w-12 sm:h-1.5 bg-amber-200 rounded-full mx-auto"></div>
+                    <div className="w-8 h-1 sm:w-12 sm:h-1.5 bg-gray-200 rounded-full mx-auto"></div>
                   </div>
                 </div>
               </div>
@@ -58,10 +58,10 @@ export default function FounderCard() {
         <div className="flex-1">
           <div className="mb-4 sm:mb-6">
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-red-100 text-red-700 rounded-full text-xs sm:text-sm font-medium">
+              <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-gray-100 text-black rounded-full text-xs sm:text-sm font-medium">
                 Founder & CEO
               </span>
-              <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-amber-100 text-amber-700 rounded-full text-xs sm:text-sm font-medium">
+              <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-gray-100 text-black rounded-full text-xs sm:text-sm font-medium">
                 Since 2006
               </span>
             </div>
@@ -77,14 +77,14 @@ export default function FounderCard() {
           <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-2 gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6">
             {/* Direct Contact */}
             <div className="flex items-center space-x-2 sm:space-x-3 bg-white p-2 sm:p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm xs:text-base sm:text-lg">📱</span>
+              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-sm xs:text-base sm:text-lg">ðŸ“±</span>
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 leading-tight">Direct Contact</p>
                 <a 
                   href="tel:+919591762419" 
-                  className="font-bold text-gray-900 hover:text-red-600 text-xs xs:text-sm sm:text-base truncate block transition-colors"
+                  className="font-bold text-gray-900 hover:text-gray-700 text-xs xs:text-sm sm:text-base truncate block transition-colors"
                 >
                   +91 95917 62419
                 </a>
@@ -93,8 +93,8 @@ export default function FounderCard() {
             
             {/* Co-founder */}
             <div className="flex items-center space-x-2 sm:space-x-3 bg-white p-2 sm:p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm xs:text-base sm:text-lg">👑</span>
+              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-sm xs:text-base sm:text-lg">ðŸ‘‘</span>
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 leading-tight">Co-founder</p>
@@ -104,8 +104,8 @@ export default function FounderCard() {
             
             {/* WhatsApp */}
             <div className="flex items-center space-x-2 sm:space-x-3 bg-white p-2 sm:p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm xs:text-base sm:text-lg">💬</span>
+              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-sm xs:text-base sm:text-lg">ðŸ’¬</span>
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 leading-tight">WhatsApp</p>
@@ -113,7 +113,7 @@ export default function FounderCard() {
                   href="https://wa.me/919591762419" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="font-bold text-gray-900 hover:text-green-600 text-xs xs:text-sm sm:text-base truncate block transition-colors"
+                  className="font-bold text-gray-900 hover:text-gray-700 text-xs xs:text-sm sm:text-base truncate block transition-colors"
                 >
                   Message on WhatsApp
                 </a>
@@ -122,8 +122,8 @@ export default function FounderCard() {
             
             {/* Business Since */}
             <div className="flex items-center space-x-2 sm:space-x-3 bg-white p-2 sm:p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm xs:text-base sm:text-lg">🏢</span>
+              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-sm xs:text-base sm:text-lg">ðŸ¢</span>
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 leading-tight">Business Since</p>
@@ -133,20 +133,20 @@ export default function FounderCard() {
           </div>
           
           {/* Quote */}
-          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-red-100">
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-100">
             <p className="text-base sm:text-lg italic text-gray-700 leading-relaxed">
               "Travel is not just about reaching a destination, it's about creating 
               memories that last a lifetime. We're here to make that journey comfortable, 
               safe, and memorable for every traveler."
             </p>
-            <p className="text-right text-red-600 font-medium mt-2 text-sm sm:text-base">— Ashok R, Founder & CEO</p>
+            <p className="text-right text-gray-700 font-medium mt-2 text-sm sm:text-base">â€” Ashok R, Founder & CEO</p>
           </div>
           
           {/* Experience Badge */}
-          <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-red-100">
+          <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-100">
             <div className="flex items-center justify-center sm:justify-start">
-              <div className="flex items-center space-x-2 bg-gradient-to-r from-red-100 to-amber-100 px-3 sm:px-4 py-2 rounded-lg">
-                <span className="text-red-500 text-lg">⭐</span>
+              <div className="flex items-center space-x-2 bg-gradient-to-r from-gray-100 to-gray-100 px-3 sm:px-4 py-2 rounded-lg">
+                <span className="text-gray-500 text-lg">â­</span>
                 <div>
                   <p className="text-xs sm:text-sm text-gray-700 font-medium">18+ Years Experience</p>
                   <p className="text-xs text-gray-500">Trusted travel partner since 2006</p>

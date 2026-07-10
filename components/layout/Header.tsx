@@ -97,7 +97,7 @@ export default function Header() {
           {/* Logo + Name - Black & White */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-all duration-300">
-              <div className="relative w-18 h-18 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md ring-2 ring-black/10 flex-shrink-0 bg-white">
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 rounded-full overflow-hidden shadow-md ring-2 ring-black/10 flex-shrink-0 bg-white">
                 <img
                   src="/images/logo_mani.jpeg"
                   alt="Sri Manikanta Tour and Travels Logo"

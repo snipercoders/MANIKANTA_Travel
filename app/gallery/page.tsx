@@ -101,52 +101,52 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero - Black & White */}
-      <section className="relative overflow-hidden bg-black text-white pt-20 pb-16 px-4">
+      {/* Hero - Black & White - Fully Responsive */}
+      <section className="relative overflow-hidden bg-black text-white pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20 px-4">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
-            <Sparkles className="h-5 w-5 text-white" />
-            <span className="text-sm font-semibold">CAPTURED MEMORIES</span>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 border border-white/20">
+            <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+            <span className="text-xs sm:text-sm font-semibold">CAPTURED MEMORIES</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6">
             Travel <span className="text-gray-300">Gallery</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
-            Thousands of moments from pilgrimages, tours, weddings & group journeys across India
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 px-2">
+            Explore moments from pilgrimages, tours, weddings & group journeys across India
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-3xl mx-auto">
             {[
-              { label: 'Total Items', value: items.length, icon: <Grid3x3 className="h-5 w-5" /> },
-              { label: 'Photos', value: images.length, icon: <ImageIcon className="h-5 w-5" /> },
-              { label: 'Videos', value: videos.length, icon: <Video className="h-5 w-5" /> },
-              { label: 'Categories', value: allCategories.length - 1, icon: <Filter className="h-5 w-5" /> },
+              { label: 'Total Items', value: items.length },
+              { label: 'Photos', value: images.length },
+              { label: 'Videos', value: videos.length },
+              { label: 'Categories', value: allCategories.length - 1 },
             ].map((stat) => (
-              <div key={stat.label} className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
-                <div className="text-3xl font-bold">{stat.value}</div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+              <div key={stat.label} className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 border border-white/10">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Filters & Controls - Black & White */}
-        <div className="mb-10">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Filters & Controls - Black & White - Responsive */}
+        <div className="mb-6 sm:mb-8 md:mb-10">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
             <div>
-              <h2 className="text-3xl font-bold text-black flex items-center gap-3">
-                <Grid3x3 className="h-8 w-8 text-black" />
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black flex items-center gap-2 sm:gap-3">
+                <Grid3x3 className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-black" />
                 Gallery Collection
               </h2>
-              <p className="text-gray-600 mt-1">{filteredItems.length} items displayed</p>
+              <p className="text-sm sm:text-base text-gray-600 mt-1">{filteredItems.length} items displayed</p>
             </div>
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="sm:hidden flex items-center gap-2 px-5 py-3 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition"
+              className="sm:hidden flex items-center gap-2 px-4 py-2.5 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition text-sm"
             >
-              <Filter className="h-5 w-5" />
+              <Filter className="h-4 w-4" />
               Filters
             </button>
           </div>
@@ -162,7 +162,7 @@ export default function GalleryPage() {
           </div>
 
           {showFilters && (
-            <div className="sm:hidden bg-white rounded-2xl shadow-lg p-5 border border-gray-200">
+            <div className="sm:hidden bg-white rounded-2xl shadow-lg p-4 border border-gray-200">
               <GalleryFilters
                 filters={filters}
                 onFilterChange={handleFilterChange}
@@ -177,7 +177,7 @@ export default function GalleryPage() {
 
         {loading ? (
           <div className="flex justify-center items-center py-20">
-            <Loader2 className="h-12 w-12 text-black animate-spin" />
+            <Loader2 className="h-10 w-10 sm:h-12 sm:w-12 text-black animate-spin" />
           </div>
         ) : (
           <>
@@ -188,9 +188,9 @@ export default function GalleryPage() {
       </div>
 
       {isDeleteMode && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-4 animate-pulse">
-          <span className="font-bold text-lg">DELETE MODE ACTIVE</span>
-          <button onClick={() => setIsDeleteMode(false)} className="bg-white text-black px-4 py-2 rounded-lg font-medium">
+        <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 sm:px-6 py-3 sm:py-4 rounded-full shadow-2xl flex items-center gap-3 sm:gap-4 animate-pulse">
+          <span className="font-bold text-sm sm:text-base md:text-lg">DELETE MODE ACTIVE</span>
+          <button onClick={() => setIsDeleteMode(false)} className="bg-white text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-sm sm:text-base">
             Exit
           </button>
         </div>

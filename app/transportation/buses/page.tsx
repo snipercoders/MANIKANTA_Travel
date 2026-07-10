@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   MapPinIcon,
-  ArrowRightIcon,
   SparklesIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -24,7 +23,7 @@ import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Combine all places into a single array
+// All places array
 const allPlaces = [
   'Adilabad', 'Agumbe', 'Aihole', 'Aland', 'Alappuzha', 'Ankola', 'Anekal', 'Araku Valley', 'Arani', 'Attingal',
   'Badami', 'Bangalore','Bagalkot', 'Ballari', 'Banavasi', 'Bandipur', 'Bantwal', 'Belagavi', 'Belur', 'Bekal', 'Bhadravati', 'Bhadrachalam', 'Bylakuppe',
@@ -139,7 +138,7 @@ const vehicles = [
     ac: true,
     rating: 4.6,
     trips: 180,
-    features: ['Double Deck', 'AC', 'Panoramic View', 'Café'],
+    features: ['Double Deck', 'AC', 'Panoramic View', 'CafÃ©'],
     amenities: ['Tour Guide', 'WiFi', 'Charging', 'Toilet'],
     type: 'double',
     badge: 'Tour Special',
@@ -199,6 +198,7 @@ const vehicles = [
   }
 ];
 
+// Autocomplete Component
 interface AutocompleteProps {
   value: string;
   onChange: (value: string) => void;
@@ -438,34 +438,6 @@ export default function BusesPage() {
     }
   };
 
-  const handleRouteSelect = (route: any) => {
-    setFrom(route.from);
-    setTo(route.to);
-    setSelectedRoute(route);
-    setKm(route.distance.toString());
-    setDistance(route.distance);
-    setDuration(route.duration);
-    setRouteDetails([route.from, route.to]);
-    setManualMode(false);
-    setShowFromSuggestions(false);
-    setShowToSuggestions(false);
-  };
-
-  const handleRouteSuggestion = (suggestion: any) => {
-    const [fromCity, toCity] = suggestion.name.split(' to ');
-    setFrom(fromCity);
-    setTo(toCity);
-    setKm(suggestion.distance.toString());
-    setDistance(suggestion.distance);
-    const estimatedTime = calculateEstimatedDuration(suggestion.distance);
-    setDuration(estimatedTime);
-    setEstimatedDuration(estimatedTime);
-    setRouteDetails([fromCity, toCity]);
-    setManualMode(true);
-    setShowFromSuggestions(false);
-    setShowToSuggestions(false);
-  };
-
   const filteredVehicles = useMemo(() => {
     let filtered = [...vehicles];
    
@@ -601,21 +573,21 @@ export default function BusesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section - Black & White */}
+      {/* Hero Section - Black & White - Fully Responsive */}
       <div className="relative overflow-hidden bg-black">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:20px_20px]" />
         </div>
        
-        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 md:py-12 lg:py-16">
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 md:py-10 lg:py-16">
           <div className="text-center">
-            <div className="inline-flex items-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 border border-white/20">
+            <div className="inline-flex items-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full mb-2 sm:mb-3 md:mb-4 border border-white/20">
               <SparklesIcon className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
-              <span className="text-xs sm:text-sm font-semibold text-white">GROUP TRAVEL SPECIALISTS</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-white">GROUP TRAVEL SPECIALISTS</span>
             </div>
            
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 px-2">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-2 sm:mb-3 px-2">
               Premium <span className="text-gray-300">Buses</span> for Group Travel
             </h1>
            
@@ -623,7 +595,7 @@ export default function BusesPage() {
               Perfect for pilgrimages, school trips, corporate events, weddings, and large group tours across India
             </p>
            
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 max-w-2xl mx-auto mb-4 sm:mb-6 md:mb-8 px-2">
               {[
                 { label: 'Bus Fleet', value: '100+' },
                 { label: 'Group Trips', value: '5K+' },
@@ -631,8 +603,8 @@ export default function BusesPage() {
                 { label: 'Happy Groups', value: '2K+' },
               ].map((stat, idx) => (
                 <div key={idx} className="bg-white/10 backdrop-blur-sm rounded sm:rounded-lg p-2 sm:p-3 border border-white/10">
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
+                  <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-[10px] sm:text-xs text-gray-300">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -642,10 +614,10 @@ export default function BusesPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4 -mt-4 sm:-mt-6 md:-mt-8 relative z-10">
-        {/* Group Booking Calculator - Black & White */}
+        {/* Group Booking Calculator - Black & White - Responsive */}
         <div className="bg-white rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl mb-4 sm:mb-6 overflow-hidden">
           <div className="bg-black p-3 sm:p-4">
-            <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-1 sm:gap-2">
+            <h2 className="text-base sm:text-lg md:text-xl font-bold text-white flex items-center gap-1 sm:gap-2">
               <UserGroupIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               <span className="text-sm sm:text-base">Group Travel Calculator</span>
             </h2>
@@ -666,7 +638,7 @@ export default function BusesPage() {
                     className="w-full accent-black"
                   />
                   <div className="text-center mt-1">
-                    <span className="text-lg sm:text-xl font-bold text-black">{passengerCount}</span>
+                    <span className="text-base sm:text-lg md:text-xl font-bold text-black">{passengerCount}</span>
                     <span className="text-gray-600 text-xs ml-1">passengers</span>
                   </div>
                 </div>
@@ -767,12 +739,12 @@ export default function BusesPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-1 sm:mb-2">
                   <div className="flex-1">
                     <div className="text-xs text-gray-600">Route Information</div>
-                    <div className="text-base sm:text-lg font-bold text-gray-900 truncate">{from} → {to}</div>
+                    <div className="text-sm sm:text-base md:text-lg font-bold text-gray-900 truncate">{from} â†’ {to}</div>
                     <div className="flex flex-wrap items-center gap-1 sm:gap-2 mt-0.5">
                       <span className="text-black font-semibold text-xs sm:text-sm">{distance} KM</span>
-                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-400">â€¢</span>
                       <span className="text-gray-600 text-xs sm:text-sm">{duration}</span>
-                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-400">â€¢</span>
                       <span className="text-black font-medium text-xs sm:text-sm">{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}</span>
                     </div>
                   </div>
@@ -792,7 +764,7 @@ export default function BusesPage() {
                 </div>
                
                 <div className="text-xs text-gray-600 mt-1 truncate">
-                  <span className="font-medium">Route:</span> {routeDetails.join(' → ')}
+                  <span className="font-medium">Route:</span> {routeDetails.join(' â†’ ')}
                 </div>
               </div>
             )}
@@ -807,18 +779,18 @@ export default function BusesPage() {
                       <div key={bus.id} className="bg-gray-50 rounded-lg p-2 sm:p-3 border border-gray-200">
                         <div className="flex flex-col sm:flex-row sm:justify-between items-start gap-1">
                           <div className="flex-1">
-                            <div className="font-bold text-gray-900 text-sm truncate">{bus.name}</div>
-                            <div className="text-gray-600 text-xs">{bus.seats} seats • {bus.ac ? 'AC' : 'Non-AC'}</div>
+                            <div className="font-bold text-gray-900 text-xs sm:text-sm truncate">{bus.name}</div>
+                            <div className="text-gray-600 text-[10px] sm:text-xs">{bus.seats} seats â€¢ {bus.ac ? 'AC' : 'Non-AC'}</div>
                           </div>
                           <div className="text-right mt-0.5 sm:mt-0">
-                            <div className="text-sm sm:text-base font-bold text-black">₹{formatPrice(total)}</div>
-                            <div className="text-xs text-gray-500">estimated</div>
+                            <div className="text-sm sm:text-base font-bold text-black">â‚¹{formatPrice(total)}</div>
+                            <div className="text-[10px] sm:text-xs text-gray-500">estimated</div>
                           </div>
                         </div>
                         <div className="mt-1 flex items-center gap-1">
-                          <StarIconSolid className="h-3 w-3 text-yellow-500" />
-                          <span className="text-xs font-medium">{bus.rating}</span>
-                          <span className="text-xs text-gray-500">({bus.trips} trips)</span>
+                          <StarIconSolid className="h-3 w-3 text-gray-500" />
+                          <span className="text-[10px] sm:text-xs font-medium">{bus.rating}</span>
+                          <span className="text-[10px] sm:text-xs text-gray-500">({bus.trips} trips)</span>
                         </div>
                       </div>
                     );
@@ -829,9 +801,9 @@ export default function BusesPage() {
           </div>
         </div>
 
-        {/* Bus Type Selector - Black & White */}
+        {/* Bus Type Selector - Responsive */}
         <div className="mb-4 sm:mb-6">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Select Bus Type</h3>
+          <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Select Bus Type</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2">
             {busTypes.map((type) => (
               <button
@@ -844,13 +816,13 @@ export default function BusesPage() {
                 }`}
               >
                 <div className="font-medium text-gray-900 text-xs sm:text-sm">{type.name}</div>
-                <div className="text-gray-600 text-xs">{type.seats} seats</div>
+                <div className="text-gray-600 text-[10px] sm:text-xs">{type.seats} seats</div>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Controls Section - Black & White */}
+        {/* Controls Section - Responsive */}
         <div className="bg-white rounded-lg shadow p-2 sm:p-3 md:p-4 mb-4 sm:mb-6 border border-gray-200">
           <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-3">
             <div>
@@ -862,7 +834,7 @@ export default function BusesPage() {
               <div className="flex flex-wrap gap-1 overflow-x-auto pb-1 sm:pb-0">
                 <button
                   onClick={() => setMinSeats(20)}
-                  className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+                  className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium whitespace-nowrap ${
                     minSeats === 20 ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -870,7 +842,7 @@ export default function BusesPage() {
                 </button>
                 <button
                   onClick={() => setMinSeats(40)}
-                  className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+                  className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium whitespace-nowrap ${
                     minSeats === 40 ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -878,7 +850,7 @@ export default function BusesPage() {
                 </button>
                 <button
                   onClick={() => setShowACOnly(!showACOnly)}
-                  className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+                  className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium whitespace-nowrap ${
                     showACOnly ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -889,7 +861,7 @@ export default function BusesPage() {
               <div className="flex gap-1 sm:gap-2">
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 rounded hover:bg-gray-200 transition-colors text-xs sm:text-sm"
+                  className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 rounded hover:bg-gray-200 transition-colors text-[10px] sm:text-xs"
                 >
                   <FunnelIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">Filters</span>
@@ -898,7 +870,7 @@ export default function BusesPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="px-2 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-black text-xs sm:text-sm"
+                  className="px-2 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-black text-[10px] sm:text-xs"
                 >
                   <option value="price">Price: Low to High</option>
                   <option value="rating">Highest Rated</option>
@@ -938,7 +910,7 @@ export default function BusesPage() {
                
                 <div>
                   <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
-                    Max Price per KM: ₹{((maxPrice / 100) * 165).toFixed(0)}
+                    Max Price per KM: â‚¹{((maxPrice / 100) * 165).toFixed(0)}
                   </label>
                   <input
                     type="range"
@@ -949,8 +921,8 @@ export default function BusesPage() {
                     className="w-full accent-black"
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-0.5">
-                    <span>₹33</span>
-                    <span>₹165</span>
+                    <span>â‚¹33</span>
+                    <span>â‚¹165</span>
                   </div>
                 </div>
               </div>
@@ -977,7 +949,7 @@ export default function BusesPage() {
           )}
         </div>
 
-        {/* Buses Grid - Black & White */}
+        {/* Buses Grid - Responsive */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
           {currentVehicles.map((vehicle) => {
             const { total, kmToCharge, baseFare, gst, actualKm, minimumApplied } = distance ? calculateTotal(vehicle) : { total: 0, kmToCharge: 0, baseFare: 0, gst: 0, actualKm: 0, minimumApplied: false };
@@ -1017,7 +989,7 @@ export default function BusesPage() {
                  
                   {vehicle.badge && (
                     <div className="absolute top-2 right-2">
-                      <span className="px-1.5 py-0.5 bg-white/20 backdrop-blur-sm text-white text-xs font-bold rounded-full">
+                      <span className="px-1.5 py-0.5 bg-white/20 backdrop-blur-sm text-white text-[10px] sm:text-xs font-bold rounded-full">
                         {vehicle.badge}
                       </span>
                     </div>
@@ -1025,18 +997,18 @@ export default function BusesPage() {
                  
                   <div className="absolute bottom-2 left-2">
                     <div className="bg-black/60 backdrop-blur-sm rounded px-1.5 py-1">
-                      <div className="text-lg sm:text-xl font-bold text-white">{vehicle.seats}</div>
-                      <div className="text-xs text-white/80">Seats</div>
+                      <div className="text-base sm:text-lg md:text-xl font-bold text-white">{vehicle.seats}</div>
+                      <div className="text-[10px] sm:text-xs text-white/80">Seats</div>
                     </div>
                   </div>
                  
                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
                     <div className="flex items-center gap-0.5 bg-black/60 backdrop-blur-sm px-1.5 py-0.5 rounded-full">
-                      <StarIconSolid className="h-2 w-2 sm:h-2.5 sm:w-2.5 text-yellow-400" />
-                      <span className="text-white text-xs font-semibold">{vehicle.rating}</span>
+                      <StarIconSolid className="h-2 w-2 sm:h-2.5 sm:w-2.5 text-gray-400" />
+                      <span className="text-white text-[10px] sm:text-xs font-semibold">{vehicle.rating}</span>
                     </div>
                     <div className="bg-black/60 backdrop-blur-sm px-1.5 py-0.5 rounded-full">
-                      <span className="text-white text-xs">{vehicle.year}</span>
+                      <span className="text-white text-[10px] sm:text-xs">{vehicle.year}</span>
                     </div>
                   </div>
                 </div>
@@ -1048,28 +1020,28 @@ export default function BusesPage() {
                         {vehicle.name}
                       </h3>
                       <div className="flex flex-wrap items-center gap-1 mt-0.5">
-                        <span className="px-1 py-0.5 bg-gray-100 text-gray-700 text-xs font-medium rounded">
+                        <span className="px-1 py-0.5 bg-gray-100 text-gray-700 text-[10px] sm:text-xs font-medium rounded">
                           {vehicle.category}
                         </span>
                         {vehicle.ac && (
-                          <span className="flex items-center gap-0.5 px-1 py-0.5 bg-gray-100 text-gray-700 text-xs font-medium rounded">
-                            <span className="text-xs">❄️</span>
+                          <span className="flex items-center gap-0.5 px-1 py-0.5 bg-gray-100 text-gray-700 text-[10px] sm:text-xs font-medium rounded">
+                            <span className="text-[10px] sm:text-xs">â„ï¸</span>
                             AC
                           </span>
                         )}
                       </div>
                     </div>
                     <div className="text-left sm:text-right mt-0.5 sm:mt-0">
-                      <div className="text-base sm:text-lg md:text-xl font-bold text-black">₹{vehicle.perKmWithTax}</div>
-                      <div className="text-xs text-gray-500">per km</div>
+                      <div className="text-base sm:text-lg md:text-xl font-bold text-black">â‚¹{vehicle.perKmWithTax}</div>
+                      <div className="text-[10px] sm:text-xs text-gray-500">per km</div>
                     </div>
                   </div>
                  
                   <div className="mb-2 sm:mb-3">
-                    <div className="text-xs font-medium text-gray-700 mb-0.5">Features:</div>
+                    <div className="text-[10px] sm:text-xs font-medium text-gray-700 mb-0.5">Features:</div>
                     <div className="flex flex-wrap gap-1">
                       {vehicle.features.slice(0, 3).map((feature, idx) => (
-                        <span key={idx} className="px-1.5 py-0.5 bg-gray-100 text-gray-700 text-xs rounded">
+                        <span key={idx} className="px-1.5 py-0.5 bg-gray-100 text-gray-700 text-[10px] sm:text-xs rounded">
                           {feature}
                         </span>
                       ))}
@@ -1077,12 +1049,12 @@ export default function BusesPage() {
                   </div>
                  
                   <div className="mb-2 sm:mb-3">
-                    <div className="text-xs font-medium text-gray-700 mb-0.5">Amenities:</div>
+                    <div className="text-[10px] sm:text-xs font-medium text-gray-700 mb-0.5">Amenities:</div>
                     <div className="flex flex-wrap gap-1">
                       {vehicle.amenities.slice(0, 2).map((amenity, idx) => (
                         <div key={idx} className="flex items-center gap-0.5">
                           <CheckCircleIcon className="h-2.5 w-2.5 text-black" />
-                          <span className="text-xs text-gray-600">{amenity}</span>
+                          <span className="text-[10px] sm:text-xs text-gray-600">{amenity}</span>
                         </div>
                       ))}
                     </div>
@@ -1092,35 +1064,35 @@ export default function BusesPage() {
                     <div className="space-y-1">
                       {distance ? (
                         <>
-                          <div className="flex justify-between text-xs">
+                          <div className="flex justify-between text-[10px] sm:text-xs">
                             <span className="text-gray-600">Distance:</span>
                             <span className="font-medium text-gray-900">{actualKm} km</span>
                           </div>
                           {minimumApplied && (
-                            <div className="flex justify-between text-xs">
+                            <div className="flex justify-between text-[10px] sm:text-xs">
                               <span className="text-gray-600">Min KM Charge:</span>
                               <span className="font-medium text-gray-600">{kmToCharge} km</span>
                             </div>
                           )}
-                          <div className="flex justify-between text-xs">
+                          <div className="flex justify-between text-[10px] sm:text-xs">
                             <span className="text-gray-600">Base Fare:</span>
-                            <span className="font-medium">₹{formatPrice(baseFare)}</span>
+                            <span className="font-medium">â‚¹{formatPrice(baseFare)}</span>
                           </div>
-                          <div className="flex justify-between text-xs">
+                          <div className="flex justify-between text-[10px] sm:text-xs">
                             <span className="text-gray-600">Driver Allowance:</span>
-                            <span className="font-medium">₹{formatPrice(numberOfDays * DRIVER_BATA_PER_DAY)}</span>
+                            <span className="font-medium">â‚¹{formatPrice(numberOfDays * DRIVER_BATA_PER_DAY)}</span>
                           </div>
-                          <div className="flex justify-between text-xs">
+                          <div className="flex justify-between text-[10px] sm:text-xs">
                             <span className="text-gray-600">GST ({GST_PERCENTAGE}%):</span>
-                            <span className="font-medium">₹{formatPrice(gst)}</span>
+                            <span className="font-medium">â‚¹{formatPrice(gst)}</span>
                           </div>
                           <div className="border-t pt-1 mt-1">
                             <div className="flex justify-between font-bold">
-                              <span className="text-gray-900 text-sm">Total Estimated:</span>
-                              <span className="text-base text-black">₹{formatPrice(total)}</span>
+                              <span className="text-gray-900 text-xs sm:text-sm">Total Estimated:</span>
+                              <span className="text-sm sm:text-base text-black">â‚¹{formatPrice(total)}</span>
                             </div>
                             {minimumApplied && (
-                              <div className="text-xs text-gray-600 mt-0.5">
+                              <div className="text-[10px] sm:text-xs text-gray-600 mt-0.5">
                                 *Minimum {MINIMUM_KM_PER_DAY} km per day
                               </div>
                             )}
@@ -1129,7 +1101,7 @@ export default function BusesPage() {
                       ) : (
                         <div className="text-center py-1.5">
                           <div className="text-sm font-bold text-black mb-0.5">Enter Distance</div>
-                          <p className="text-xs text-gray-600">Enter distance in KM to see price estimate</p>
+                          <p className="text-[10px] sm:text-xs text-gray-600">Enter distance in KM to see price estimate</p>
                         </div>
                       )}
                     </div>
@@ -1138,13 +1110,13 @@ export default function BusesPage() {
                   <div className="flex flex-col sm:flex-row gap-1.5">
                     <button
                       onClick={() => handleQuickQuote(vehicle)}
-                      className="flex-1 bg-black text-white py-1.5 sm:py-2 rounded font-semibold hover:bg-gray-800 transition-all duration-300 text-sm"
+                      className="flex-1 bg-black text-white py-1.5 sm:py-2 rounded font-semibold hover:bg-gray-800 transition-all duration-300 text-xs sm:text-sm"
                     >
                       Get Quote
                     </button>
                     <button
                       onClick={() => handleViewPhotos(vehicle)}
-                      className="px-2 sm:px-3 py-1.5 sm:py-2 border border-black text-black rounded font-semibold hover:bg-gray-100 transition-colors text-xs sm:text-sm flex items-center justify-center gap-1"
+                      className="px-2 sm:px-3 py-1.5 sm:py-2 border border-black text-black rounded font-semibold hover:bg-gray-100 transition-colors text-[10px] sm:text-xs flex items-center justify-center gap-1"
                     >
                       <PhotoIcon className="h-3 w-3" />
                       <span>View Photos</span>
@@ -1156,7 +1128,7 @@ export default function BusesPage() {
           })}
         </div>
 
-        {/* Pagination */}
+        {/* Pagination - Responsive */}
         {totalPages > 1 && (
           <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
             <div className="text-gray-600 text-xs sm:text-sm">
@@ -1205,9 +1177,9 @@ export default function BusesPage() {
           </div>
         )}
 
-        {/* Features Section - Black & White */}
+        {/* Features Section - Responsive */}
         <div className="bg-black rounded-lg p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 text-white">
-          <h3 className="text-base sm:text-lg md:text-xl font-bold text-center mb-3 sm:mb-4">Why Choose Our Bus Service for Groups?</h3>
+          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-center mb-3 sm:mb-4">Why Choose Our Bus Service for Groups?</h3>
          
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {[
@@ -1238,20 +1210,20 @@ export default function BusesPage() {
           </div>
         </div>
 
-        {/* Group Booking CTA - Black & White */}
+        {/* Group Booking CTA - Responsive */}
         <div className="text-center">
           <div className="bg-black rounded-lg p-3 sm:p-4 md:p-6 text-white mb-4 sm:mb-6">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">Need a Bus for Your Group?</h3>
+            <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3">Need a Bus for Your Group?</h3>
             <p className="text-sm sm:text-base mb-3 sm:mb-4 opacity-90">Get special discounts for groups of 30+ people</p>
            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
               <div className="bg-white/10 backdrop-blur-sm rounded p-2 sm:p-3 border border-white/20">
-                <div className="text-lg sm:text-xl md:text-2xl font-bold">10% OFF</div>
-                <div className="text-xs sm:text-sm text-gray-300">For School & College Groups</div>
+                <div className="text-base sm:text-lg md:text-xl font-bold">10% OFF</div>
+                <div className="text-[10px] sm:text-xs text-gray-300">For School & College Groups</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded p-2 sm:p-3 border border-white/20">
-                <div className="text-lg sm:text-xl md:text-2xl font-bold">15% OFF</div>
-                <div className="text-xs sm:text-sm text-gray-300">For Corporate & Wedding Groups</div>
+                <div className="text-base sm:text-lg md:text-xl font-bold">15% OFF</div>
+                <div className="text-[10px] sm:text-xs text-gray-300">For Corporate & Wedding Groups</div>
               </div>
             </div>
            
@@ -1273,17 +1245,17 @@ export default function BusesPage() {
               </button>
             </div>
            
-            <p className="mt-2 sm:mt-3 text-xs opacity-80">Free itinerary planning • Multiple bus options • Flexible payment</p>
+            <p className="mt-2 sm:mt-3 text-xs opacity-80">Free itinerary planning â€¢ Multiple bus options â€¢ Flexible payment</p>
           </div>
         </div>
       </div>
 
-      {/* Quick Quote Modal - Black & White */}
+      {/* Quick Quote Modal - Responsive */}
       {showQuickQuote && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-4 z-50">
           <div className="bg-white rounded-lg max-w-md w-full mx-2">
             <div className="flex justify-between items-center p-3 sm:p-4 border-b bg-white rounded-t-lg">
-              <h3 className="text-base sm:text-lg font-bold text-gray-900">Get Instant Quote</h3>
+              <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">Get Instant Quote</h3>
               <button onClick={() => setShowQuickQuote(false)}>
                 <XMarkIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
               </button>
@@ -1291,10 +1263,10 @@ export default function BusesPage() {
             <div className="p-3 sm:p-4 space-y-3 max-h-[80vh] overflow-y-auto">
               {quoteDetails.vehicle && (
                 <div className="p-2 sm:p-3 bg-gray-50 rounded border border-gray-200">
-                  <h4 className="font-bold text-gray-900 text-sm mb-0.5 truncate">{quoteDetails.vehicle.name}</h4>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-gray-600">{quoteDetails.vehicle.seats} Seats • {quoteDetails.vehicle.category}</span>
-                    <span className="text-black font-semibold">₹{quoteDetails.vehicle.perKmWithTax}/km</span>
+                  <h4 className="font-bold text-gray-900 text-xs sm:text-sm mb-0.5 truncate">{quoteDetails.vehicle.name}</h4>
+                  <div className="flex justify-between text-[10px] sm:text-xs">
+                    <span className="text-gray-600">{quoteDetails.vehicle.seats} Seats â€¢ {quoteDetails.vehicle.category}</span>
+                    <span className="text-black font-semibold">â‚¹{quoteDetails.vehicle.perKmWithTax}/km</span>
                   </div>
                 </div>
               )}
@@ -1347,15 +1319,15 @@ export default function BusesPage() {
               </div>
               <div className="pt-2 border-t">
                 <div className="mb-2">
-                  <div className="flex justify-between text-xs mb-0.5">
+                  <div className="flex justify-between text-[10px] sm:text-xs mb-0.5">
                     <span className="text-gray-600">Actual Distance:</span>
                     <span className="font-semibold text-gray-900">{quotePrice.actualKm} km</span>
                   </div>
-                  <div className="flex justify-between text-xs mb-0.5">
+                  <div className="flex justify-between text-[10px] sm:text-xs mb-0.5">
                     <span className="text-gray-600">Duration:</span>
                     <span className="font-semibold text-gray-900">{quotePrice.days} {quotePrice.days === 1 ? 'Day' : 'Days'}</span>
                   </div>
-                  <div className="flex justify-between text-xs mb-1">
+                  <div className="flex justify-between text-[10px] sm:text-xs mb-1">
                     <span className="text-gray-600">Passengers:</span>
                     <span className="font-semibold text-gray-900">
                       {quoteDetails.passengers || 'Not specified'}
@@ -1363,9 +1335,9 @@ export default function BusesPage() {
                   </div>
                  
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-gray-700 font-medium text-sm">Estimated Cost:</span>
-                    <span className="text-lg font-bold text-black">
-                      {quoteDetails.passengers ? `₹${formatPrice(Math.round(quotePrice.total))}` : 'Enter passenger count'}
+                    <span className="text-gray-700 font-medium text-xs sm:text-sm">Estimated Cost:</span>
+                    <span className="text-base sm:text-lg font-bold text-black">
+                      {quoteDetails.passengers ? `â‚¹${formatPrice(Math.round(quotePrice.total))}` : 'Enter passenger count'}
                     </span>
                   </div>
                   {quotePrice.minimumApplied && (
@@ -1373,15 +1345,15 @@ export default function BusesPage() {
                       <div className="flex items-start gap-1">
                         <InformationCircleIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-600 mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-xs font-medium text-gray-800">Minimum KM Applied</p>
-                          <p className="text-xs text-gray-600">
+                          <p className="text-[10px] sm:text-xs font-medium text-gray-800">Minimum KM Applied</p>
+                          <p className="text-[10px] sm:text-xs text-gray-600">
                             Minimum {MINIMUM_KM_PER_DAY} km per day applies. You'll be charged for {quotePrice.kmToCharge} km instead of {quotePrice.actualKm} km.
                           </p>
                         </div>
                       </div>
                     </div>
                   )}
-                  <p className="text-xs text-gray-500">
+                  <p className="text-[10px] sm:text-xs text-gray-500">
                     {quoteDetails.passengers
                       ? 'Based on entered details. Click "Get Exact Quote Now" for final price.'
                       : 'Please enter number of passengers to get price estimate'}
@@ -1408,7 +1380,7 @@ export default function BusesPage() {
         </div>
       )}
 
-      {/* Exact Quote Modal - Black & White */}
+      {/* Exact Quote Modal - Responsive */}
       {exactQuote && exactQuote.show && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-3 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-2">
@@ -1429,21 +1401,21 @@ export default function BusesPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-0.5">
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-900 text-xs sm:text-sm truncate">{exactQuote.details.vehicle.name}</h4>
-                    <div className="flex items-center gap-1 text-xs text-gray-600">
+                    <div className="flex items-center gap-1 text-[10px] sm:text-xs text-gray-600">
                       <span>{exactQuote.details.vehicle.seats} Seats</span>
-                      <span>•</span>
+                      <span>â€¢</span>
                       <span>{exactQuote.details.vehicle.category}</span>
                     </div>
                   </div>
                   <div className="mt-0.5 sm:mt-0">
-                    <span className="text-black font-bold text-xs sm:text-sm">₹{exactQuote.details.vehicle.perKmWithTax}/km</span>
+                    <span className="text-black font-bold text-xs sm:text-sm">â‚¹{exactQuote.details.vehicle.perKmWithTax}/km</span>
                   </div>
                 </div>
               </div>
               
               <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-1">Trip Details</h4>
-                <div className="grid grid-cols-2 gap-1 text-xs">
+                <div className="grid grid-cols-2 gap-1 text-[10px] sm:text-xs">
                   <div>
                     <span className="text-gray-600">From:</span>
                     <div className="font-medium text-gray-900 truncate" title={from}>{from || 'Not specified'}</div>
@@ -1478,7 +1450,7 @@ export default function BusesPage() {
                 
                 {exactQuote.details.chargedDistance > exactQuote.details.actualDistance && (
                   <div className="mt-1 bg-gray-100 border border-gray-200 rounded p-1">
-                    <p className="text-xs text-gray-600">
+                    <p className="text-[10px] sm:text-xs text-gray-600">
                       <span className="font-medium">Note:</span> Minimum {MINIMUM_KM_PER_DAY} km per day applies
                     </p>
                   </div>
@@ -1487,23 +1459,23 @@ export default function BusesPage() {
               
               <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-1">Price Breakdown</h4>
-                <div className="space-y-0.5 text-xs">
+                <div className="space-y-0.5 text-[10px] sm:text-xs">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Base Fare:</span>
-                    <span className="font-medium">₹{formatPrice(exactQuote.breakdown.baseFare)}</span>
+                    <span className="font-medium">â‚¹{formatPrice(exactQuote.breakdown.baseFare)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Driver Allowance:</span>
-                    <span className="font-medium">₹{formatPrice(exactQuote.breakdown.driverAllowance)}</span>
+                    <span className="font-medium">â‚¹{formatPrice(exactQuote.breakdown.driverAllowance)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">GST ({GST_PERCENTAGE}%):</span>
-                    <span className="font-medium">₹{formatPrice(exactQuote.breakdown.gst)}</span>
+                    <span className="font-medium">â‚¹{formatPrice(exactQuote.breakdown.gst)}</span>
                   </div>
                   <div className="border-t border-gray-200 pt-0.5 mt-0.5">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-900 font-bold text-xs sm:text-sm">Total Price:</span>
-                      <span className="text-base font-bold text-black">₹{formatPrice(exactQuote.price)}</span>
+                      <span className="text-sm sm:text-base font-bold text-black">â‚¹{formatPrice(exactQuote.price)}</span>
                     </div>
                   </div>
                 </div>
@@ -1511,32 +1483,32 @@ export default function BusesPage() {
               
               <div className="bg-gray-50 rounded p-2 border border-gray-200">
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-0.5">What's Included</h4>
-                <ul className="text-xs text-gray-600 space-y-0.5">
+                <ul className="text-[10px] sm:text-xs text-gray-600 space-y-0.5">
                   <li className="flex items-center gap-0.5">
-                    <span className="text-green-500">✓</span>
+                    <span className="text-gray-500">âœ“</span>
                     <span>Vehicle rental for {exactQuote.details.days} {exactQuote.details.days === 1 ? 'day' : 'days'}</span>
                   </li>
                   <li className="flex items-center gap-0.5">
-                    <span className="text-green-500">✓</span>
+                    <span className="text-gray-500">âœ“</span>
                     <span>Professional driver with allowance</span>
                   </li>
                   <li className="flex items-center gap-0.5">
-                    <span className="text-green-500">✓</span>
+                    <span className="text-gray-500">âœ“</span>
                     <span>All taxes included</span>
                   </li>
                   <li className="flex items-center gap-0.5">
-                    <span className="text-green-500">✓</span>
+                    <span className="text-gray-500">âœ“</span>
                     <span>Basic vehicle amenities</span>
                   </li>
                   <li className="flex items-center gap-0.5">
-                    <span className="text-red-500 font-bold">✗</span>
+                    <span className="text-gray-500 font-bold">âœ—</span>
                     <span>Outside Karnataka taxes are different, so please inquire</span>
                   </li>
                 </ul>
               </div>
               
               <div className="space-y-1">
-                <p className="text-center text-xs text-gray-500">
+                <p className="text-center text-[10px] sm:text-xs text-gray-500">
                   This is your exact quote. Contact us to confirm booking.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-1">
@@ -1547,7 +1519,7 @@ export default function BusesPage() {
                     Close
                   </button>
                   <a
-                    href={`https://wa.me/919591762419?text=Hi! I want to book the ${encodeURIComponent(exactQuote.details.vehicle.name)} for ${exactQuote.details.passengers} passengers from ${encodeURIComponent(from)} to ${encodeURIComponent(to)} for ${exactQuote.details.days} days. Actual Distance: ${exactQuote.details.actualDistance} km. Total: ₹${formatPrice(exactQuote.price)}`}
+                    href={`https://wa.me/919591762419?text=Hi! I want to book the ${encodeURIComponent(exactQuote.details.vehicle.name)} for ${exactQuote.details.passengers} passengers from ${encodeURIComponent(from)} to ${encodeURIComponent(to)} for ${exactQuote.details.days} days. Actual Distance: ${exactQuote.details.actualDistance} km. Total: â‚¹${formatPrice(exactQuote.price)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-black text-white py-1.5 rounded font-bold hover:bg-gray-800 text-center flex items-center justify-center gap-1 text-xs"
@@ -1562,12 +1534,12 @@ export default function BusesPage() {
         </div>
       )}
 
-      {/* Group Booking Modal - Black & White */}
+      {/* Group Booking Modal - Responsive */}
       {showGroupBooking && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-3 z-50">
           <div className="bg-white rounded-lg max-w-md w-full mx-2">
             <div className="flex justify-between items-center p-3 sm:p-4 border-b bg-white rounded-t-lg">
-              <h3 className="text-base sm:text-lg font-bold text-gray-900">Request Group Quote</h3>
+              <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">Request Group Quote</h3>
               <button onClick={() => setShowGroupBooking(false)}>
                 <XMarkIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
               </button>
@@ -1647,7 +1619,7 @@ export default function BusesPage() {
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700 font-medium text-sm">Estimated Cost Range:</span>
                     <div className="text-right">
-                      <div className="text-lg font-bold text-black">₹65,000 - ₹1,50,000</div>
+                      <div className="text-base sm:text-lg font-bold text-black">â‚¹65,000 - â‚¹1,50,000</div>
                       <div className="text-xs text-gray-600">Final quote in 2 hours</div>
                     </div>
                   </div>
@@ -1666,14 +1638,14 @@ export default function BusesPage() {
         </div>
       )}
 
-      {/* Photos Modal - Black & White */}
+      {/* Photos Modal - Responsive */}
       {showPhotos && (
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center p-2 sm:p-3 z-50">
           <div className="bg-white rounded-lg max-w-4xl w-full h-[85vh] sm:h-auto sm:max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center p-2 sm:p-3 border-b bg-black sticky top-0 rounded-t-lg">
-              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-1 sm:gap-2">
+              <h3 className="text-sm sm:text-base md:text-lg font-bold text-white flex items-center gap-1 sm:gap-2">
                 <PhotoIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="text-sm sm:text-base truncate">{selectedVehicleName} - Photo Gallery</span>
+                <span className="text-xs sm:text-sm md:text-base truncate">{selectedVehicleName} - Photo Gallery</span>
               </h3>
               <button
                 onClick={() => setShowPhotos(false)}
@@ -1695,7 +1667,7 @@ export default function BusesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute bottom-1 left-1 sm:bottom-2 sm:left-2">
-                      <span className="bg-black/60 text-white text-xs px-1 py-0.5 rounded">
+                      <span className="bg-black/60 text-white text-[10px] sm:text-xs px-1 py-0.5 rounded">
                         Image {index + 1}
                       </span>
                     </div>
@@ -1703,21 +1675,21 @@ export default function BusesPage() {
                 ))}
               </div>
               <div className="bg-gray-50 rounded p-2 sm:p-3 border border-gray-200">
-                <h4 className="font-semibold text-gray-900 text-sm mb-0.5">Bus Details</h4>
-                <p className="text-xs text-gray-600 mb-1 sm:mb-2">
+                <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-0.5">Bus Details</h4>
+                <p className="text-[10px] sm:text-xs text-gray-600 mb-1 sm:mb-2">
                   These are actual photos of our {selectedVehicleName} fleet. All buses are maintained to the highest standards and are regularly serviced.
                 </p>
-                <div className="text-xs text-gray-500 space-y-0.5">
-                  <p>• High-resolution photos</p>
-                  <p>• Actual fleet vehicles</p>
-                  <p>• Regular maintenance</p>
-                  <p>• Professional cleaning</p>
+                <div className="text-[10px] sm:text-xs text-gray-500 space-y-0.5">
+                  <p>â€¢ High-resolution photos</p>
+                  <p>â€¢ Actual fleet vehicles</p>
+                  <p>â€¢ Regular maintenance</p>
+                  <p>â€¢ Professional cleaning</p>
                 </div>
               </div>
               <div className="mt-3 sm:mt-4 text-center">
                 <button
                   onClick={() => setShowPhotos(false)}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded font-semibold hover:bg-gray-800 transition-colors text-sm"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded font-semibold hover:bg-gray-800 transition-colors text-xs sm:text-sm"
                 >
                   Close Gallery
                 </button>

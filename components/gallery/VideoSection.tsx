@@ -42,7 +42,7 @@ export default function VideoSection({
   // Delete function for videos
   const handleDeleteItem = async (item: GalleryItem) => {
     try {
-      console.log('🗑️ Deleting video:', item.id);
+      console.log('ðŸ—‘ï¸ Deleting video:', item.id);
       
       const response = await fetch(`/api/gallery/${item.id}`, {
         method: 'DELETE',
@@ -55,13 +55,13 @@ export default function VideoSection({
       const result = await response.json();
       
       if (result.success) {
-        console.log('✅ Video delete successful:', result);
+        console.log('âœ… Video delete successful:', result);
         return result;
       } else {
         throw new Error(result.message || 'Delete failed');
       }
     } catch (error: any) {
-      console.error('❌ Video delete error:', error);
+      console.error('âŒ Video delete error:', error);
       throw error;
     }
   };
@@ -82,7 +82,7 @@ export default function VideoSection({
       // Refresh the page to update the list
       window.location.reload();
     } catch (error: any) {
-      alert(`❌ Delete failed: ${error.message || 'Unknown error'}`);
+      alert(`âŒ Delete failed: ${error.message || 'Unknown error'}`);
     }
   };
 
@@ -104,7 +104,7 @@ export default function VideoSection({
         setSelectedVideo(null);
         window.location.reload();
       } catch (error: any) {
-        alert(`❌ Delete failed: ${error.message || 'Unknown error'}`);
+        alert(`âŒ Delete failed: ${error.message || 'Unknown error'}`);
       }
     }
   };
@@ -112,9 +112,9 @@ export default function VideoSection({
   if (videos.length === 0) {
     return (
       <section className="py-8 sm:py-12 md:py-16 lg:py-20 text-center px-3 sm:px-4 md:px-6">
-        <div className="inline-flex items-center gap-2 sm:gap-3 bg-red-50 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6">
-          <PlayCircle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600" />
-          <span className="text-xs sm:text-sm md:text-base font-medium text-red-800">VIDEO GALLERY</span>
+        <div className="inline-flex items-center gap-2 sm:gap-3 bg-gray-50 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6">
+          <PlayCircle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-gray-700" />
+          <span className="text-xs sm:text-sm md:text-base font-medium text-black">VIDEO GALLERY</span>
         </div>
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">No Videos Yet</h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600">Check back soon for travel videos!</p>
@@ -126,23 +126,23 @@ export default function VideoSection({
     <>
       <section className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <div className="inline-flex items-center gap-2 sm:gap-3 bg-red-50 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6">
-            <PlayCircle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600" />
-            <span className="text-xs sm:text-sm md:text-base font-medium text-red-800">VIDEO GALLERY</span>
+          <div className="inline-flex items-center gap-2 sm:gap-3 bg-gray-50 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6">
+            <PlayCircle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-gray-700" />
+            <span className="text-xs sm:text-sm md:text-base font-medium text-black">VIDEO GALLERY</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Travel <span className="text-red-600">Videos</span>
+            Travel <span className="text-gray-700">Videos</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-600">{videos.length} video{videos.length > 1 ? 's' : ''}</p>
         </div>
 
         {isDeleteMode && (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-red-50 to-red-100 border border-red-300 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5">
             <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-              <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-red-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+              <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-gray-700 flex-shrink-0 mt-0.5 sm:mt-0" />
               <div>
-                <h4 className="text-sm sm:text-base md:text-lg font-bold text-red-800 mb-1">Delete Mode Active</h4>
-                <p className="text-xs sm:text-sm md:text-base text-red-700">Click any video to delete it permanently.</p>
+                <h4 className="text-sm sm:text-base md:text-lg font-bold text-black mb-1">Delete Mode Active</h4>
+                <p className="text-xs sm:text-sm md:text-base text-black">Click any video to delete it permanently.</p>
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function VideoSection({
                       hoveredVideoId === video.id ? 'scale-110' : ''
                     }`} />
                   ) : (
-                    <div className="bg-red-600 p-3 sm:p-4 md:p-5 rounded-full shadow-lg">
+                    <div className="bg-gray-700 p-3 sm:p-4 md:p-5 rounded-full shadow-lg">
                       <Trash2 className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-white" />
                     </div>
                   )}
@@ -182,7 +182,7 @@ export default function VideoSection({
                 
                 {/* Category Badge */}
                 <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4">
-                  <span className="bg-red-600 text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 rounded-full text-xs font-medium">
+                  <span className="bg-gray-700 text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 rounded-full text-xs font-medium">
                     {video.category}
                   </span>
                 </div>
@@ -229,7 +229,7 @@ export default function VideoSection({
             {isDeleteMode && onDeleteItem && (
               <button
                 onClick={handleDeleteInModal}
-                className="absolute -top-8 sm:-top-10 md:-top-12 left-0 sm:left-2 md:left-4 lg:top-4 lg:left-4 bg-gradient-to-r from-red-600 to-red-700 text-white px-3 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg font-medium hover:opacity-90 flex items-center gap-1 sm:gap-2 z-20 transition text-xs sm:text-sm"
+                className="absolute -top-8 sm:-top-10 md:-top-12 left-0 sm:left-2 md:left-4 lg:top-4 lg:left-4 bg-gradient-to-r from-gray-700 to-black text-white px-3 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg font-medium hover:opacity-90 flex items-center gap-1 sm:gap-2 z-20 transition text-xs sm:text-sm"
               >
                 <Trash2 className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                 <span>Delete</span>
@@ -263,7 +263,7 @@ export default function VideoSection({
                 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 sm:gap-3">
-                  <span className="bg-red-600 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full font-medium text-xs sm:text-sm md:text-base">
+                  <span className="bg-gray-700 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full font-medium text-xs sm:text-sm md:text-base">
                     {selectedVideo.category}
                   </span>
                   {selectedVideo.tags?.map(tag => (

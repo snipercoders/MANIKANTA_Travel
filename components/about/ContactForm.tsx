@@ -554,15 +554,15 @@ const ContactForm = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Contact Information Card */}
         <div className="lg:col-span-1">
-          <div className="bg-gradient-to-br from-red-50 to-amber-50 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 h-full border border-red-100">
+          <div className="bg-gradient-to-br from-gray-50 to-gray-50 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 h-full border border-gray-100">
             <div className="mb-6 sm:mb-8">
               <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-red-500 to-amber-500 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-gray-500 to-gray-500 rounded-lg flex items-center justify-center">
                   <FiPackage className="text-white text-sm sm:text-base lg:text-lg" />
                 </div>
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Manikanta</h2>
               </div>
-              <div className="w-8 h-1 sm:w-12 sm:h-1.5 bg-gradient-to-r from-red-500 to-amber-500 rounded-full"></div>
+              <div className="w-8 h-1 sm:w-12 sm:h-1.5 bg-gradient-to-r from-gray-500 to-gray-500 rounded-full"></div>
               <p className="text-gray-600 text-sm sm:text-base mt-3 sm:mt-4">Get in touch with us for your travel needs</p>
             </div>
 
@@ -570,7 +570,7 @@ const ContactForm = () => {
               {/* Address */}
               <div className="flex items-start space-x-3 sm:space-x-4">
                 <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center shadow-md">
-                  <HiOutlineLocationMarker className="text-lg sm:text-xl lg:text-2xl text-red-500" />
+                  <HiOutlineLocationMarker className="text-lg sm:text-xl lg:text-2xl text-gray-500" />
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-base sm:text-lg lg:text-xl text-gray-900 mb-1 sm:mb-2">Visit Our Office</h3>
@@ -584,14 +584,14 @@ const ContactForm = () => {
               {/* Phone */}
               <div className="flex items-start space-x-3 sm:space-x-4">
                 <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center shadow-md">
-                  <HiOutlinePhone className="text-lg sm:text-xl lg:text-2xl text-red-500" />
+                  <HiOutlinePhone className="text-lg sm:text-xl lg:text-2xl text-gray-500" />
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-base sm:text-lg lg:text-xl text-gray-900 mb-1 sm:mb-2">Call Us Anytime</h3>
                   <p className="text-gray-600 text-sm sm:text-base">
                     <a 
                       href="tel:+919591762419" 
-                      className="hover:text-red-600 transition-colors font-medium"
+                      className="hover:text-gray-700 transition-colors font-medium"
                     >
                       +91 95917 62419
                     </a>
@@ -603,14 +603,14 @@ const ContactForm = () => {
               {/* Email */}
               <div className="flex items-start space-x-3 sm:space-x-4">
                 <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center shadow-md">
-                  <HiOutlineMail className="text-lg sm:text-xl lg:text-2xl text-red-500" />
+                  <HiOutlineMail className="text-lg sm:text-xl lg:text-2xl text-gray-500" />
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-base sm:text-lg lg:text-xl text-gray-900 mb-1 sm:mb-2">Email Us</h3>
                   <p className="text-gray-600 text-sm sm:text-base">
                     <a 
                       href="mailto:chandan.govindraj76@gmail.com" 
-                      className="hover:text-red-600 transition-colors font-medium"
+                      className="hover:text-gray-700 transition-colors font-medium"
                     >
                       chandan.govindraj76@gmail.com
                     </a>
@@ -620,15 +620,15 @@ const ContactForm = () => {
               </div>
 
               {/* WhatsApp Direct */}
-              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-red-100">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg sm:rounded-xl lg:rounded-2xl p-4 sm:p-5 border border-green-100">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-100">
+                <div className="bg-gradient-to-r from-gray-50 to-gray-50 rounded-lg sm:rounded-xl lg:rounded-2xl p-4 sm:p-5 border border-gray-100">
                   <div className="flex items-center space-x-3 mb-2 sm:mb-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-500 rounded-full flex items-center justify-center">
                       <HiOutlinePhone className="text-white text-sm sm:text-base" />
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-bold text-gray-900 text-sm sm:text-base">WhatsApp Direct</h4>
-                      <p className="text-green-600 font-medium text-xs sm:text-sm">+91 95917 62419</p>
+                      <p className="text-gray-700 font-medium text-xs sm:text-sm">+91 95917 62419</p>
                     </div>
                   </div>
                   <p className="text-gray-600 text-xs sm:text-sm">Quick responses via WhatsApp for instant booking assistance</p>
@@ -647,24 +647,24 @@ const ContactForm = () => {
             <div className="mb-6 sm:mb-8 lg:mb-10">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 gap-3">
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Book Your Journey</h2>
-                <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-red-500 to-amber-500 rounded-full text-white text-xs sm:text-sm font-medium whitespace-nowrap">
+                <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-gray-500 to-gray-500 rounded-full text-white text-xs sm:text-sm font-medium whitespace-nowrap">
                   Quick Booking
                 </div>
               </div>
               <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">Fill out the form below and we'll contact you on WhatsApp for confirmation</p>
-              <div className="w-12 h-1 sm:w-16 sm:h-1.5 bg-gradient-to-r from-red-500 to-amber-500 rounded-full"></div>
+              <div className="w-12 h-1 sm:w-16 sm:h-1.5 bg-gradient-to-r from-gray-500 to-gray-500 rounded-full"></div>
             </div>
 
             {isSubmitted ? (
               <div className="text-center py-8 sm:py-12 lg:py-16">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <FiCheck className="text-2xl sm:text-3xl lg:text-4xl text-green-500" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-gray-100 to-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <FiCheck className="text-2xl sm:text-3xl lg:text-4xl text-gray-500" />
                 </div>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">Request Sent Successfully!</h3>
                 <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8 max-w-md mx-auto px-2">
                   Your booking request has been sent to our WhatsApp. We'll contact you shortly for confirmation.
                 </p>
-                <div className="animate-pulse text-xs sm:text-sm text-green-600">
+                <div className="animate-pulse text-xs sm:text-sm text-gray-700">
                   Opening WhatsApp...
                 </div>
               </div>
@@ -675,9 +675,9 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiUser className="text-red-500 text-sm sm:text-base" />
+                        <FiUser className="text-gray-500 text-sm sm:text-base" />
                         <span>Full Name</span>
-                        <span className="text-red-500">*</span>
+                        <span className="text-gray-500">*</span>
                       </div>
                     </label>
                     <input
@@ -685,7 +685,7 @@ const ContactForm = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
                       placeholder="Enter your name"
                       required
                     />
@@ -695,9 +695,9 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiMail className="text-red-500 text-sm sm:text-base" />
+                        <FiMail className="text-gray-500 text-sm sm:text-base" />
                         <span>Email Address</span>
-                        <span className="text-red-500">*</span>
+                        <span className="text-gray-500">*</span>
                       </div>
                     </label>
                     <input
@@ -705,7 +705,7 @@ const ContactForm = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
                       placeholder="you@example.com"
                       required
                     />
@@ -715,9 +715,9 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiPhone className="text-red-500 text-sm sm:text-base" />
+                        <FiPhone className="text-gray-500 text-sm sm:text-base" />
                         <span>Mobile Number</span>
-                        <span className="text-red-500">*</span>
+                        <span className="text-gray-500">*</span>
                       </div>
                     </label>
                     <input
@@ -725,7 +725,7 @@ const ContactForm = () => {
                       name="mobile"
                       value={formData.mobile}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
                       placeholder="+91 98765 43210"
                       required
                     />
@@ -735,7 +735,7 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiPackage className="text-red-500 text-sm sm:text-base" />
+                        <FiPackage className="text-gray-500 text-sm sm:text-base" />
                         <span>Service Type</span>
                       </div>
                     </label>
@@ -743,7 +743,7 @@ const ContactForm = () => {
                       name="type"
                       value={formData.type}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base appearance-none"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base appearance-none"
                     >
                       <option value="packages">Tour Packages</option>
                       <option value="bus">Bus Tickets</option>
@@ -758,7 +758,7 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiMapPin className="text-red-500 text-sm sm:text-base" />
+                        <FiMapPin className="text-gray-500 text-sm sm:text-base" />
                         <span>From</span>
                       </div>
                     </label>
@@ -767,7 +767,7 @@ const ContactForm = () => {
                       name="from"
                       value={formData.from}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
                       placeholder="Departure city"
                     />
                   </div>
@@ -776,7 +776,7 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiMapPin className="text-red-500 text-sm sm:text-base" />
+                        <FiMapPin className="text-gray-500 text-sm sm:text-base" />
                         <span>To</span>
                       </div>
                     </label>
@@ -785,7 +785,7 @@ const ContactForm = () => {
                       name="to"
                       value={formData.to}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
                       placeholder="Destination city"
                     />
                   </div>
@@ -796,9 +796,9 @@ const ContactForm = () => {
                   <div className="space-y-1 sm:space-y-2">
                     <label className="block text-gray-700 font-medium text-sm sm:text-base">
                       <div className="flex items-center space-x-1 sm:space-x-2">
-                        <FiUsers className="text-red-500 text-sm sm:text-base" />
+                        <FiUsers className="text-gray-500 text-sm sm:text-base" />
                         <span>Number of Seats</span>
-                        <span className="text-red-500">*</span>
+                        <span className="text-gray-500">*</span>
                       </div>
                     </label>
                     <input
@@ -807,7 +807,7 @@ const ContactForm = () => {
                       value={formData.seats}
                       onChange={handleChange}
                       min="1"
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base"
                       placeholder="Number of passengers"
                       required
                     />
@@ -826,7 +826,7 @@ const ContactForm = () => {
                           onChange={handleRadioChange}
                           className="hidden peer"
                         />
-                        <div className="px-3 sm:px-4 md:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border-2 border-gray-200 peer-checked:border-red-500 peer-checked:bg-red-50 text-center cursor-pointer transition-all duration-300 hover:border-red-300">
+                        <div className="px-3 sm:px-4 md:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border-2 border-gray-200 peer-checked:border-gray-500 peer-checked:bg-gray-50 text-center cursor-pointer transition-all duration-300 hover:border-gray-300">
                           <span className="font-medium text-gray-900 text-xs sm:text-sm md:text-base">AC Bus</span>
                         </div>
                       </label>
@@ -839,7 +839,7 @@ const ContactForm = () => {
                           onChange={handleRadioChange}
                           className="hidden peer"
                         />
-                        <div className="px-3 sm:px-4 md:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border-2 border-gray-200 peer-checked:border-red-500 peer-checked:bg-red-50 text-center cursor-pointer transition-all duration-300 hover:border-red-300">
+                        <div className="px-3 sm:px-4 md:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border-2 border-gray-200 peer-checked:border-gray-500 peer-checked:bg-gray-50 text-center cursor-pointer transition-all duration-300 hover:border-gray-300">
                           <span className="font-medium text-gray-900 text-xs sm:text-sm md:text-base">Non-AC Bus</span>
                         </div>
                       </label>
@@ -851,9 +851,9 @@ const ContactForm = () => {
                 <div className="space-y-1 sm:space-y-2">
                   <label className="block text-gray-700 font-medium text-sm sm:text-base">
                     <div className="flex items-center space-x-1 sm:space-x-2">
-                      <FiMessageSquare className="text-red-500 text-sm sm:text-base" />
+                      <FiMessageSquare className="text-gray-500 text-sm sm:text-base" />
                       <span>Additional Requirements</span>
-                      <span className="text-red-500">*</span>
+                      <span className="text-gray-500">*</span>
                     </div>
                   </label>
                   <textarea
@@ -861,7 +861,7 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={3}
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base resize-none"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all duration-300 bg-gray-50 text-sm sm:text-base resize-none"
                     placeholder="Tell us about your travel preferences, special requirements, or any questions..."
                     required
                   ></textarea>
@@ -875,7 +875,7 @@ const ContactForm = () => {
                     className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base md:text-lg transition-all duration-300 transform hover:scale-[1.02] ${
                       isSubmitting 
                         ? 'bg-gray-300 cursor-not-allowed' 
-                        : 'bg-gradient-to-r from-red-500 to-amber-500 hover:from-red-600 hover:to-amber-600 shadow-lg hover:shadow-xl'
+                        : 'bg-gradient-to-r from-gray-500 to-gray-500 hover:from-gray-700 hover:to-gray-700 shadow-lg hover:shadow-xl'
                     }`}
                   >
                     {isSubmitting ? (

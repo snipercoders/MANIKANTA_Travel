@@ -253,7 +253,7 @@ export default function GalleryFilters({
           <Filter className="h-5 w-5 text-gray-500" />
           <span className="font-medium text-gray-900">Filters</span>
           {activeFilterCount > 0 && (
-            <span className="bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">
+            <span className="bg-gray-700 text-white text-xs px-2 py-0.5 rounded-full">
               {activeFilterCount}
             </span>
           )}
@@ -271,7 +271,7 @@ export default function GalleryFilters({
               onClick={() => onFilterChange({ category })}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
                 filters.category === category
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md'
+                  ? 'bg-gradient-to-r from-gray-700 to-black text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -294,7 +294,7 @@ export default function GalleryFilters({
               onClick={() => onFilterChange({ type: 'all' })}
               className={`flex-1 py-2 rounded-lg text-sm font-medium transition ${
                 filters.type === 'all'
-                  ? 'bg-red-100 text-red-700 border border-red-300'
+                  ? 'bg-gray-100 text-black border border-gray-300'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -304,7 +304,7 @@ export default function GalleryFilters({
               onClick={() => onFilterChange({ type: 'image' })}
               className={`flex-1 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-1 ${
                 filters.type === 'image'
-                  ? 'bg-red-100 text-red-700 border border-red-300'
+                  ? 'bg-gray-100 text-black border border-gray-300'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -315,7 +315,7 @@ export default function GalleryFilters({
               onClick={() => onFilterChange({ type: 'video' })}
               className={`flex-1 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-1 ${
                 filters.type === 'video'
-                  ? 'bg-red-100 text-red-700 border border-red-300'
+                  ? 'bg-gray-100 text-black border border-gray-300'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -334,7 +334,7 @@ export default function GalleryFilters({
           <select
             value={filters.sortBy}
             onChange={(e) => onFilterChange({ sortBy: e.target.value as any })}
-            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition"
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
@@ -362,7 +362,7 @@ export default function GalleryFilters({
                 }}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
                   filters.tags.includes(tag)
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md'
+                    ? 'bg-gradient-to-r from-gray-700 to-black text-white shadow-md'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -384,27 +384,27 @@ export default function GalleryFilters({
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm text-gray-600">Active:</span>
             {filters.category !== 'all' && (
-              <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-2 py-1 rounded text-sm">
+              <span className="inline-flex items-center gap-1 bg-gray-100 text-black px-2 py-1 rounded text-sm">
                 {filters.category}
-                <button onClick={() => onFilterChange({ category: 'all' })} className="hover:text-red-900">
+                <button onClick={() => onFilterChange({ category: 'all' })} className="hover:text-black">
                   <X className="h-3 w-3" />
                 </button>
               </span>
             )}
             {filters.type !== 'all' && (
-              <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-2 py-1 rounded text-sm">
+              <span className="inline-flex items-center gap-1 bg-gray-100 text-black px-2 py-1 rounded text-sm">
                 {filters.type}
-                <button onClick={() => onFilterChange({ type: 'all' })} className="hover:text-red-900">
+                <button onClick={() => onFilterChange({ type: 'all' })} className="hover:text-black">
                   <X className="h-3 w-3" />
                 </button>
               </span>
             )}
             {filters.tags.map(tag => (
-              <span key={tag} className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-2 py-1 rounded text-sm">
+              <span key={tag} className="inline-flex items-center gap-1 bg-gray-100 text-black px-2 py-1 rounded text-sm">
                 {tag}
                 <button
                   onClick={() => onFilterChange({ tags: filters.tags.filter(t => t !== tag) })}
-                  className="hover:text-red-900"
+                  className="hover:text-black"
                 >
                   <X className="h-3 w-3" />
                 </button>

@@ -80,7 +80,7 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
         </button>
 
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-gradient-to-r from-gray-700 to-black rounded-full flex items-center justify-center mx-auto mb-4">
             <CloudArrowUpIcon className="h-8 w-8 text-white" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900">Upload Media</h2>
@@ -91,25 +91,25 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
           <div className="flex gap-4 justify-center">
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="radio" name="type" value="image" checked={formData.type === 'image'} onChange={handleInputChange} className="sr-only" />
-              <div className={`px-4 py-2 rounded-lg ${formData.type === 'image' ? 'bg-red-600 text-white' : 'bg-gray-100'}`}>
+              <div className={`px-4 py-2 rounded-lg ${formData.type === 'image' ? 'bg-gray-700 text-white' : 'bg-gray-100'}`}>
                 <PhotoIcon className="h-5 w-5" /> Image
               </div>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="radio" name="type" value="video" checked={formData.type === 'video'} onChange={handleInputChange} className="sr-only" />
-              <div className={`px-4 py-2 rounded-lg ${formData.type === 'video' ? 'bg-red-600 text-white' : 'bg-gray-100'}`}>
+              <div className={`px-4 py-2 rounded-lg ${formData.type === 'video' ? 'bg-gray-700 text-white' : 'bg-gray-100'}`}>
                 <VideoCameraIcon className="h-5 w-5" /> Video
               </div>
             </label>
           </div>
 
-          <input type="file" accept={formData.type === 'image' ? 'image/*' : 'video/*'} onChange={handleFileChange} required className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-red-600" />
+          <input type="file" accept={formData.type === 'image' ? 'image/*' : 'video/*'} onChange={handleFileChange} required className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-gray-700" />
 
           {preview && formData.type === 'image' && <img src={preview} alt="Preview" className="w-full h-64 object-cover rounded-xl" />}
 
-          <input type="text" name="title" value={formData.title} onChange={handleInputChange} placeholder="Title *" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-red-600" />
+          <input type="text" name="title" value={formData.title} onChange={handleInputChange} placeholder="Title *" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-gray-700" />
 
-          <select name="category" value={formData.category} onChange={handleInputChange} className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-red-600">
+          <select name="category" value={formData.category} onChange={handleInputChange} className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-gray-700">
             <option value="destination">Destination</option>
             <option value="vehicle">Vehicle</option>
             <option value="pilgrimage">Pilgrimage</option>
@@ -118,20 +118,20 @@ export default function UploadModal({ onClose, onUploadSuccess }: UploadModalPro
           </select>
 
           {formData.category === 'vehicle' && (
-            <input type="text" name="vehicleName" value={formData.vehicleName} onChange={handleInputChange} placeholder="Vehicle Name" className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-red-600" />
+            <input type="text" name="vehicleName" value={formData.vehicleName} onChange={handleInputChange} placeholder="Vehicle Name" className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-gray-700" />
           )}
 
-          <input type="text" name="location" value={formData.location} onChange={handleInputChange} placeholder="Location" className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-red-600" />
+          <input type="text" name="location" value={formData.location} onChange={handleInputChange} placeholder="Location" className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-gray-700" />
 
-          <textarea name="description" value={formData.description} onChange={handleInputChange} placeholder="Description" rows={3} className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-red-600 resize-none" />
+          <textarea name="description" value={formData.description} onChange={handleInputChange} placeholder="Description" rows={3} className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-gray-700 resize-none" />
 
-          {error && <p className="text-red-600 text-center font-medium">{error}</p>}
-          {success && <p className="text-green-600 text-center font-medium">{success}</p>}
+          {error && <p className="text-gray-700 text-center font-medium">{error}</p>}
+          {success && <p className="text-gray-700 text-center font-medium">{success}</p>}
 
           <button
             type="submit"
             disabled={uploading}
-            className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-xl font-bold hover:from-red-700 hover:to-red-800 disabled:opacity-60 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-gray-700 to-black text-white py-4 rounded-xl font-bold hover:from-black hover:to-black disabled:opacity-60 flex items-center justify-center gap-2"
           >
             {uploading ? 'Uploading...' : (
               <>
